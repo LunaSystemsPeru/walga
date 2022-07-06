@@ -52,7 +52,7 @@
                             <li class="dropdown">
                                 <a href="%21.html#">Inicio</a>
                                 <ul class="dropdown-menu clearfix">
-                                    <li><a href="index-1.html">Home Page 1</a></li>
+                                    <li><a href="index.php">Home Page 1</a></li>
                                     <li><a href="index-2.html">Home Page 2</a></li>
                                     <li><a href="index-3.html">Home Page 3</a></li>
                                     <li><a href="index-4.html">Home Page 4</a></li>
@@ -103,7 +103,7 @@
                                 <li class="dropdown">
                                     <a href="%21.html#">Home</a>
                                     <ul class="dropdown-menu clearfix">
-                                        <li><a href="index-1.html">Home Page 1</a></li>
+                                        <li><a href="index.php">Home Page 1</a></li>
                                         <li><a href="index-2.html">Home Page 2</a></li>
                                         <li><a href="index-3.html">Home Page 3</a></li>
                                         <li><a href="index-4.html">Home Page 4</a></li>
