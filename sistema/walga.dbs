@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="walga" id="Project-2e9" database="LogicalDesign" >
+	<schema name="INSTANCE" catalogname="walga" >
+		<table name="chofer" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="brevete" type="VARCHAR" length="9" jt="12" />
+			<column name="datos" type="VARCHAR" length="150" jt="12" />
+			<column name="categoria" type="CHAR" length="2" jt="1" />
+			<column name="fec_vencimiento" type="DATE" jt="91" />
+			<column name="estado" type="INT" length="1" jt="4" />
+			<column name="empresa_id" type="INT" jt="4" />
+			<index name="pk_chofer" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_chofer_vehiculos" virtual="y" to_schema="walga.INSTANCE" to_table="vehiculos" type="Identifying" >
+				<fk_column name="id" pk="chofer_id" />
+			</fk>
+			<fk name="fk_chofer_contratos" virtual="y" to_schema="walga.INSTANCE" to_table="contratos" type="Identifying" >
+				<fk_column name="id" pk="chofer_id" />
+			</fk>
+		</table>
+		<table name="clientes" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="datos" type="VARCHAR" length="150" jt="12" />
+			<column name="celular" type="VARCHAR" length="9" jt="12" />
+			<column name="email" type="VARCHAR" length="200" jt="12" />
+			<column name="entidad_id" type="INT" jt="4" />
+			<column name="empresa_id" type="INT" jt="4" />
+			<index name="pk_clientes" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_clientes_contratos" virtual="y" to_schema="walga.INSTANCE" to_table="contratos" type="Identifying" >
+				<fk_column name="id" pk="cliente_id" />
+			</fk>
+		</table>
+		<table name="contratos" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="fecha" type="DATE" jt="91" />
+			<column name="cliente_id" type="INT" jt="4" />
+			<column name="usuario_id" type="INT" jt="4" />
+			<column name="chofer_id" type="INT" jt="4" />
+			<column name="vehiculo_id" type="INT" jt="4" />
+			<column name="comprobante_id" type="INT" jt="4" />
+			<column name="empresa_id" type="INT" jt="4" />
+			<column name="estado_comprobante" type="CHAR" length="1" jt="1" />
+			<column name="tiposervicio_id" type="INT" jt="4" />
+			<column name="origen" type="VARCHAR" length="100" jt="12" />
+			<column name="destino" type="VARCHAR" length="100" jt="12" />
+			<column name="servicio" type="VARCHAR" length="245" jt="12" />
+			<column name="estado_contrato" type="CHAR" length="1" jt="1" >
+				<comment><![CDATA[0 en proceso
+1 finalizado]]></comment>
+			</column>
+			<column name="horas_servicio" type="INT" jt="4" />
+			<index name="pk_contratos" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_contratos_ventas" virtual="y" to_schema="walga.INSTANCE" to_table="ventas" type="Identifying" >
+				<fk_column name="id" pk="contrato_id" />
+			</fk>
+		</table>
+		<table name="empresas" prior="empresa" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="razonsocial" type="VARCHAR" length="245" jt="12" />
+			<column name="ruc" type="VARCHAR" length="11" jt="12" />
+			<column name="dirfiscal" type="VARCHAR" length="245" jt="12" />
+			<column name="ubigeo" type="VARCHAR" length="6" jt="12" />
+			<column name="departamento" type="VARCHAR" length="45" jt="12" />
+			<column name="provincia" type="VARCHAR" length="45" jt="12" />
+			<column name="distrito" type="VARCHAR" length="45" jt="12" />
+			<column name="codsunat" type="VARCHAR" length="4" jt="12" />
+			<column name="usersunat" type="VARCHAR" length="15" jt="12" />
+			<column name="passsunat" type="VARCHAR" length="20" jt="12" />
+			<index name="pk_empresa" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_empresas_vehiculos" virtual="y" to_schema="walga.INSTANCE" to_table="vehiculos" type="Identifying" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_usuarios" virtual="y" to_schema="walga.INSTANCE" to_table="usuarios" type="Identifying" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_contratos" virtual="y" to_schema="walga.INSTANCE" to_table="contratos" type="Identifying" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_ventas" virtual="y" to_schema="walga.INSTANCE" to_table="ventas" type="Identifying" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_clientes" virtual="y" to_schema="walga.INSTANCE" to_table="clientes" type="Identifying" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_chofer" virtual="y" to_schema="walga.INSTANCE" to_table="chofer" type="Identifying" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+		</table>
+		<table name="entidades" prior="entidad" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="razonsocial" type="VARCHAR" length="245" jt="12" />
+			<column name="direccion" type="VARCHAR" length="245" jt="12" />
+			<index name="pk_entidades" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_entidades_clientes" virtual="y" to_schema="walga.INSTANCE" to_table="clientes" type="Identifying" >
+				<fk_column name="id" pk="entidad_id" />
+			</fk>
+			<fk name="fk_entidades_vehiculos_documentos" virtual="y" to_schema="walga.INSTANCE" to_table="vehiculos_documentos" type="Identifying" >
+				<fk_column name="id" pk="emisor" />
+			</fk>
+			<fk name="fk_entidades_ventas" virtual="y" to_schema="walga.INSTANCE" to_table="ventas" type="Identifying" >
+				<fk_column name="id" pk="entidad_id" />
+			</fk>
+		</table>
+		<table name="parametros" prior="generales" >
+			<comment><![CDATA[tipo documento
+tipo pago (contado credito)]]></comment>
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="descripcion" type="VARCHAR" length="200" jt="12" />
+			<column name="tipo" type="INT" jt="4" />
+			<index name="pk_parametros" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_parametros_parametros_valores" virtual="y" to_schema="walga.INSTANCE" to_table="parametros_valores" type="Identifying" >
+				<fk_column name="id" pk="parametro_id" />
+			</fk>
+		</table>
+		<table name="parametros_valores" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="parametro_id" type="INT" jt="4" />
+			<column name="descripcion" type="VARCHAR" length="100" jt="12" />
+			<column name="valor1" type="VARCHAR" length="50" jt="12" />
+			<column name="valor2" type="VARCHAR" length="50" jt="12" />
+			<index name="pk_parametros_valores" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_parametros_valores_ventas" virtual="y" to_schema="walga.INSTANCE" to_table="ventas" type="Identifying" >
+				<fk_column name="id" pk="comprobante_id" />
+			</fk>
+			<fk name="fk_parametros_valores_contratos" virtual="y" to_schema="walga.INSTANCE" to_table="contratos" type="Identifying" >
+				<fk_column name="id" pk="comprobante_id" />
+			</fk>
+			<fk name="fk_parametros_valores_contratos_0" virtual="y" to_schema="walga.INSTANCE" to_table="contratos" type="Identifying" >
+				<fk_column name="id" pk="tiposervicio_id" />
+			</fk>
+		</table>
+		<table name="permisos_sistema" prior="permisos_usuarios" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="descripcion" prior="descripcio " type="VARCHAR" length="100" jt="12" />
+			<index name="pk_permisos_usuarios" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_permisos_sistema_usuarios_permisos" virtual="y" to_schema="walga.INSTANCE" to_table="usuarios_permisos" type="Identifying" >
+				<fk_column name="id" pk="permiso_id" />
+			</fk>
+		</table>
+		<table name="usuarios" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="username" type="VARCHAR" length="100" jt="12" />
+			<column name="password" type="VARCHAR" length="20" jt="12" />
+			<column name="fec_login" type="DATE" jt="91" />
+			<column name="fec_creacion" type="DATE" jt="91" />
+			<column name="estado" type="CHAR" length="1" jt="1" />
+			<column name="empresa_id" type="INT" jt="4" />
+			<index name="pk_usuarios" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_usuarios_contratos" virtual="y" to_schema="walga.INSTANCE" to_table="contratos" type="Identifying" >
+				<fk_column name="id" pk="usuario_id" />
+			</fk>
+			<fk name="fk_usuarios_usuarios_permisos" virtual="y" to_schema="walga.INSTANCE" to_table="usuarios_permisos" type="Identifying" >
+				<fk_column name="id" pk="usuario_id" />
+			</fk>
+			<fk name="fk_usuarios_ventas" virtual="y" to_schema="walga.INSTANCE" to_table="ventas" type="Identifying" >
+				<fk_column name="id" pk="usuario_id" />
+			</fk>
+		</table>
+		<table name="usuarios_permisos" prior="entity" >
+			<column name="usuario_id" type="INT" jt="4" />
+			<column name="permiso_id" type="INT" jt="4" />
+			<column name="valor" type="CHAR" length="1" jt="1" />
+		</table>
+		<table name="vehiculos" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="placa" type="VARCHAR" length="6" jt="12" />
+			<column name="seriebin" type="VARCHAR" length="100" jt="12" />
+			<column name="marca" type="VARCHAR" length="45" jt="12" />
+			<column name="modelo" type="VARCHAR" length="45" jt="12" />
+			<column name="anio" type="VARCHAR" length="4" jt="12" />
+			<column name="capacidad_ton" type="INT" jt="4" />
+			<column name="estado" type="INT" jt="4" />
+			<column name="chofer_id" type="INT" jt="4" />
+			<column name="empresa_id" type="INT" jt="4" />
+			<index name="pk_vehiculos" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_vehiculos_contratos" virtual="y" to_schema="walga.INSTANCE" to_table="contratos" type="Identifying" >
+				<fk_column name="id" pk="vehiculo_id" />
+			</fk>
+			<fk name="fk_vehiculos_vehiculos_documentos" virtual="y" to_schema="walga.INSTANCE" to_table="vehiculos_documentos" type="Identifying" >
+				<fk_column name="id" pk="vehiculo_id" />
+			</fk>
+		</table>
+		<table name="vehiculos_documentos" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="vehiculo_id" type="INT" jt="4" />
+			<column name="documento" type="VARCHAR" length="150" jt="12" />
+			<column name="fec_emision" type="DATE" jt="91" />
+			<column name="fec_vencimiento" type="DATE" jt="91" />
+			<column name="estado" type="CHAR" length="1" jt="1" />
+			<column name="emisor" type="INT" jt="4" />
+			<index name="pk_vehiculos_documentos" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="ventas" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="fecha" type="DATE" jt="91" />
+			<column name="comprobante_id" type="INT" jt="4" />
+			<column name="serie" type="VARCHAR" length="4" jt="12" />
+			<column name="numero" type="INT" jt="4" />
+			<column name="contrato_id" type="INT" jt="4" />
+			<column name="empresa_id" type="INT" jt="4" />
+			<column name="usuario_id" type="INT" jt="4" />
+			<column name="igv" type="DECIMAL" length="5" decimal="2" jt="3" />
+			<column name="total" type="DECIMAL" length="8" decimal="2" jt="3" />
+			<column name="estado" type="CHAR" length="1" jt="1" >
+				<defo><![CDATA[1]]></defo>
+			</column>
+			<column name="enviado_sunat" type="CHAR" length="1" jt="1" >
+				<defo><![CDATA[0]]></defo>
+			</column>
+			<column name="entidad_id" type="INT" jt="4" />
+			<index name="pk_ventas" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-21f6" show_relation="columns" >
+		<entity schema="walga.INSTANCE" name="chofer" color="C1D8EE" x="48" y="48" />
+		<entity schema="walga.INSTANCE" name="clientes" color="C1D8EE" x="288" y="64" />
+		<entity schema="walga.INSTANCE" name="contratos" color="C1D8EE" x="288" y="288" />
+		<entity schema="walga.INSTANCE" name="empresas" color="C1D8EE" x="544" y="288" />
+		<entity schema="walga.INSTANCE" name="entidades" color="C1D8EE" x="496" y="64" />
+		<entity schema="walga.INSTANCE" name="parametros" color="C1D8EE" x="768" y="672" />
+		<entity schema="walga.INSTANCE" name="parametros_valores" color="C1D8EE" x="544" y="672" />
+		<entity schema="walga.INSTANCE" name="permisos_sistema" color="C1D8EE" x="720" y="928" />
+		<entity schema="walga.INSTANCE" name="usuarios" color="C1D8EE" x="288" y="672" />
+		<entity schema="walga.INSTANCE" name="usuarios_permisos" color="C1D8EE" x="496" y="928" />
+		<entity schema="walga.INSTANCE" name="vehiculos" color="C1D8EE" x="64" y="672" />
+		<entity schema="walga.INSTANCE" name="vehiculos_documentos" color="C1D8EE" x="64" y="976" />
+		<entity schema="walga.INSTANCE" name="ventas" color="C1D8EE" x="48" y="336" />
+	</layout>
+</project>
