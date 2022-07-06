@@ -52,6 +52,7 @@
 1 finalizado]]></comment>
 			</column>
 			<column name="horas_servicio" type="INT" jt="4" />
+			<column name="monto" type="DECIMAL" length="6" decimal="2" jt="3" />
 			<index name="pk_contratos" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>

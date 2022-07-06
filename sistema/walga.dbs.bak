@@ -106,6 +106,9 @@
 			<fk name="fk_entidades_vehiculos_documentos" virtual="y" to_schema="walga.INSTANCE" to_table="vehiculos_documentos" type="Identifying" >
 				<fk_column name="id" pk="emisor" />
 			</fk>
+			<fk name="fk_entidades_ventas" virtual="y" to_schema="walga.INSTANCE" to_table="ventas" type="Identifying" >
+				<fk_column name="id" pk="entidad_id" />
+			</fk>
 		</table>
 		<table name="parametros" prior="generales" >
 			<comment><![CDATA[tipo documento
@@ -225,6 +228,7 @@ tipo pago (contado credito)]]></comment>
 			<column name="enviado_sunat" type="CHAR" length="1" jt="1" >
 				<defo><![CDATA[0]]></defo>
 			</column>
+			<column name="entidad_id" type="INT" jt="4" />
 			<index name="pk_ventas" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
