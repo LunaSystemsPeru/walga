@@ -76,7 +76,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="../intranet/admin/index.php">Intranet</a>
+                                <a href="../intranet/index.php">Intranet</a>
                             </li>
                         </ul>
                     </nav>
