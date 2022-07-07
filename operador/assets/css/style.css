@@ -4254,11 +4254,19 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .table--5cols .table__inner {
-    width: 125%;
+    width: 175%;
 }
 
 .table--5cols .table__section {
-    width: 25%;
+    width: 20%;
+}
+
+.table--5cols .table__section__id {
+    width: 5%;
+}
+
+.table--5cols .table__section__email {
+    width: 35%;
 }
 
 .table--6cols {
