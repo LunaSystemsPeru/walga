@@ -38,6 +38,7 @@ $(document).ready(function () {
     $("#popup-notifications").load("../fixed/popup-notifications.html");
 
     //LOAD BOTTOM NAVIGATION
+    /*
     $("#bottom-toolbar").load("../fixed/bottom-navigation.html", function () {
         var swipernav = new Swiper('.swiper-toolbar', {
             direction: 'horizontal',
@@ -45,9 +46,6 @@ $(document).ready(function () {
             slidesPerView: 1,
             slidesPerGroup: 1,
             spaceBetween: 0,
-            /* 			pagination: {
-                        el: '.bottom-navigation__pagination'
-                        }, */
             on: {
                 reachEnd: function () {
                     $('.bottom-navigation__more').hide();
@@ -61,7 +59,7 @@ $(document).ready(function () {
             swipernav.slideNext();
         });
     });
-
+*/
 
     //OPEN PANEL ACTION
     $(document).on('click', '.open-panel', function () {

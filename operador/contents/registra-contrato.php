@@ -25,24 +25,33 @@
         <div class="header__inner">
             <div class="header__icon header__icon--menu open-panel" data-panel="left"><span></span><span></span><span></span><span></span><span></span><span></span></a></div>
             <div class="header__logo header__logo--text"><a href="#">Walga<strong>Transportes</strong></a></div>
-            <div class="header__icon open-panel" data-panel="right"><img src="../assets/images/icons/white/search.svg" alt="" title=""/></div>
         </div>
     </header>
 
 
     <!-- PAGE CONTENT -->
-    <div class="page__content page__content--with-header page__content--with-bottom-nav">
+    <div class="page__content page__content--with-header">
         <h2 class="page__title">Nuevo Contrato Servicio</h2>
         <div class="fieldset">
             <div class="form">
                 <form id="Form" method="post" action="checkout.html">
                     <div class="form__row">
                         <label class="form__label">fecha</label>
-                        <input type="date" name="Username" placeholder="Buscar Cliente" value="" class="form__input required" />
+                        <input type="date" name="Username" placeholder="Buscar Cliente" value="" class="form__input required"/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">buscar Cliente</label>
-                        <input type="text" name="Username" placeholder="Buscar Cliente" value="" class="form__input required" />
+                        <input type="text" name="Username" placeholder="Buscar Cliente" value="" class="form__input required"/>
+                    </div>
+                    <div class="form__row">
+                        <label class="form__label">Tipo Servicio</label>
+                        <div class="form__select">
+                            <select name="selectoptions" class="required">
+                                <option value="1">Traslado e Izaje</option>
+                                <option value="2">Canastilla</option>
+                                <option value="2">Auxilio Vehicular</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Servicio</label>
@@ -50,19 +59,19 @@
                     </div>
                     <div class="form__row">
                         <label class="form__label">Origen</label>
-                        <input type="text" name="Username" placeholder="Ref Origen" value="" class="form__input required" />
+                        <input type="text" name="Username" placeholder="Ref Origen" value="" class="form__input required"/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Destino</label>
-                        <input type="text" name="Username" placeholder="Ref Punto Llegada" value="" class="form__input required" />
+                        <input type="text" name="Username" placeholder="Ref Punto Llegada" value="" class="form__input required"/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">monto Pactado</label>
-                        <input type="text" name="Username" placeholder="0.00" value="" class="form__input required" />
+                        <input type="text" name="Username" placeholder="0.00" value="" class="form__input required"/>
                     </div>
 
                     <div class="form__row mt-40">
-                        <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar" />
+                        <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
                     </div>
                 </form>
             </div>
@@ -73,7 +82,7 @@
     <!-- PAGE END -->
 
     <!-- Bottom navigation -->
-    <div id="bottom-toolbar" class="bottom-toolbar"></div>
+    <!--<div id="bottom-toolbar" class="bottom-toolbar"></div>-->
 
     <!-- Social Icons Popup -->
     <div id="popup-social"></div>

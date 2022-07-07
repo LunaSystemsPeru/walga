@@ -25,13 +25,12 @@
 		<div class="header__inner">	
 			<div class="header__icon header__icon--menu open-panel" data-panel="left"><span></span><span></span><span></span><span></span><span></span><span></span></a></div>
 			<div class="header__logo header__logo--text"><a href="#">Mobio<strong>Kit</strong></a></div>	
-			<div class="header__icon open-panel" data-panel="right"><img src="../assets/images/icons/white/search.svg" alt="" title=""/></div>
                 </div>
 	</header>
 	
 	
 	<!-- PAGE CONTENT -->
-	<div class="page__content page__content--with-header page__content--with-bottom-nav">
+	<div class="page__content page__content--with-header ">
 	      <h2 class="page__title">Welcome</h2>
               <p class="welcome">
               To the new MobioKit. This mobile template can be used to create a mobile website, a mobile web app, or even a native mobile app. The design is unique, creative and multipurpose. There are multiple demos included to showcase some examples of what you can do with this template.

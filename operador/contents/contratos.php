@@ -25,13 +25,12 @@
         <div class="header__inner">
             <div class="header__icon header__icon--menu open-panel" data-panel="left"><span></span><span></span><span></span><span></span><span></span><span></span></a></div>
             <div class="header__logo header__logo--text"><a href="#">Walga<strong>Transportes</strong></a></div>
-            <div class="header__icon open-panel" data-panel="right"><img src="../assets/images/icons/white/search.svg" alt="" title=""/></div>
         </div>
     </header>
 
 
     <!-- PAGE CONTENT -->
-    <div class="page__content page__content--with-header page__content--with-bottom-nav">
+    <div class="page__content page__content--with-header">
         <div class="buttons buttons--centered mb-20">
             <a href="registra-contrato.php" data-popup="success" class="button button--main button--full open-popup">Nuevo Contrato</a>
         </div>
@@ -40,10 +39,27 @@
         <div class="cards cards--11">
             <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
                 <div class="card__details">
-                    <h4 class="card__title">Servicio de Carga de 45 Postes Electricos de Cemento</h4>
-                    <p class="card__text">La Florida - AAHH San Pedro</p>
-                    <p class="card__text"><i ></i> Cliente: Zully Pinchi</p>
+                    <h4 class="card__title">Carga de 45 Postes Electricos de Cemento <p class="card__text">La Florida - AAHH San Pedro</p></h4>
+                    <p class="card__text"><i></i> Cliente: Zully Pinchi</p>
                     <p class="card__text">Programado para 2022-07-07 | 03:30 pm</p>
+                    <div class="caption__content">
+                        <a class="caption__category" href="shop.html">Pendiente</a>
+                    </div>
+                </div>
+                <div class="card__more"><a href="sliders.html"><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
+            </div>
+        </div>
+
+        <div class="cards cards--11">
+            <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
+                <div class="card__details">
+                    <h4 class="card__title">Traslado de herramientas <p class="card__text">3 Estrellas - AAHH Los Consquistadores</p></h4>
+                    <p class="card__text"><i></i> Cliente: Martin Vizcarra</p>
+                    <p class="card__text">Programado para 2022-07-07 | 01:30 pm</p>
+                    <div class="caption__content">
+                        <a class="caption__category" href="shop.html">en Proceso desde las 12:45 pm</a>
+                    </div>
+
                 </div>
                 <div class="card__more"><a href="sliders.html"><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
             </div>

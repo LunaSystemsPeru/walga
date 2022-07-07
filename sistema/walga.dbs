@@ -35,6 +35,26 @@
 			<fk name="fk_clientes_contratos_pagos" virtual="y" to_schema="walga.instance" to_table="contratos_pagos" >
 				<fk_column name="id" pk="id" />
 			</fk>
+			<fk name="fk_clientes_contratos_pagos_0" to_schema="walga.instance" to_table="contratos_pagos" />
+			<fk name="fk_clientes_clientes_pagos" to_schema="walga.instance" to_table="clientes_pagos" >
+				<fk_column name="id" pk="cliente_id" />
+			</fk>
+		</table>
+		<table name="clientes_pagos" prior="tbl_0" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="fecha_pago" type="DATE" jt="91" />
+			<column name="monto" type="DECIMAL" length="6" jt="3" />
+			<column name="cliente_id" type="INT" jt="4" />
+			<index name="pk_clientes_pagos" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="unq_clientes_pagos_cliente_id" unique="UNIQUE_KEY" >
+				<column name="cliente_id" />
+			</index>
+			<fk name="fk_clientes_pagos_contratos_pagos" to_schema="walga.instance" to_table="contratos_pagos" >
+				<fk_column name="id" pk="pago_id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
 		</table>
 		<table name="comprobantes_empresas" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
@@ -67,7 +87,7 @@
 			<column name="horas_servicio" type="INT" jt="4" />
 			<column name="monto" type="DECIMAL" length="6" decimal="2" jt="3" />
 			<column name="monto_pagado" type="DECIMAL" length="6" decimal="2" jt="3" />
-			<column name="horainicio" type="VARCHAR" length="5" jt="12" />
+			<column name="hora_inicio" prior="horainicio" type="VARCHAR" length="5" jt="12" />
 			<column name="hora_termino" type="VARCHAR" length="5" jt="12" />
 			<index name="pk_contratos" unique="PRIMARY_KEY" >
 				<column name="id" />
@@ -75,14 +95,24 @@
 			<fk name="fk_contratos_ventas" virtual="y" to_schema="walga.instance" to_table="ventas" >
 				<fk_column name="id" pk="contrato_id" />
 			</fk>
+			<fk name="fk_contratos_contratos_pagos" to_schema="walga.instance" to_table="contratos_pagos" >
+				<fk_column name="id" pk="contrato_id" />
+			</fk>
 		</table>
 		<table name="contratos_pagos" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
 			<column name="fecha_pago" type="DATE" jt="91" />
 			<column name="monto" type="DECIMAL" length="6" jt="3" />
-			<column name="cliente_id" type="INT" jt="4" />
+			<column name="pago_id" type="INT" jt="4" />
+			<column name="contrato_id" type="INT" jt="4" />
 			<index name="pk_contratos_pagos" unique="PRIMARY_KEY" >
 				<column name="id" />
+			</index>
+			<index name="unq_contratos_pagos_contrato_id" unique="UNIQUE_KEY" >
+				<column name="contrato_id" />
+			</index>
+			<index name="unq_contratos_pagos_pago_id" unique="UNIQUE_KEY" >
+				<column name="pago_id" />
 			</index>
 		</table>
 		<table name="empresas" >
@@ -184,6 +214,7 @@ tipo pago (contado credito)]]></comment>
 				<fk_column name="id" pk="permiso_id" />
 			</fk>
 		</table>
+		<table name="tbl" />
 		<table name="usuarios" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
 			<column name="username" type="VARCHAR" length="100" jt="12" />
@@ -269,9 +300,10 @@ tipo pago (contado credito)]]></comment>
 	<layout name="default layout" id="Layout-15f7" confirmed="y" show_relation="columns" >
 		<entity schema="walga.instance" name="chofer" color="C1D8EE" x="48" y="48" />
 		<entity schema="walga.instance" name="clientes" color="C1D8EE" x="288" y="64" />
+		<entity schema="walga.instance" name="clientes_pagos" color="C1D8EE" x="848" y="240" />
 		<entity schema="walga.instance" name="comprobantes_empresas" color="C1D8EE" x="752" y="480" />
-		<entity schema="walga.instance" name="contratos" color="C1D8EE" x="288" y="288" />
-		<entity schema="walga.instance" name="contratos_pagos" color="C1D8EE" x="864" y="320" />
+		<entity schema="walga.instance" name="contratos" color="C1D8EE" x="272" y="272" />
+		<entity schema="walga.instance" name="contratos_pagos" color="C1D8EE" x="704" y="256" />
 		<entity schema="walga.instance" name="empresas" color="C1D8EE" x="544" y="288" />
 		<entity schema="walga.instance" name="entidades" color="C1D8EE" x="496" y="64" />
 		<entity schema="walga.instance" name="parametros" color="C1D8EE" x="768" y="672" />
