@@ -31,20 +31,35 @@
 
     <!-- PAGE CONTENT -->
     <div class="page__content page__content--with-header">
-        <div class="buttons buttons--centered mb-20">
-            <a href="registra-cliente.php" data-popup="success" class="button button--main button--full open-popup">Nuevo Cliente</a>
-            <a href="registra-contrato.php" data-popup="success" class="button button--secondary button--full open-popup">Buscar Cliente</a>
+        <h2 class="page__title">Registrar Mantenimiento / Llenado Combustible</h2>
+        <div class="fieldset">
+            <div class="form">
+                <form id="Form" method="post" action="checkout.html">
+                    <div class="form__row">
+                        <label class="form__label">Fecha</label>
+                        <input type="date" name="Username" value="<?php echo date("Y-m-d")?>" class="form__input required"/>
+                    </div>
+                    <div class="form__row">
+                        <label class="form__label">Descripcion</label>
+                        <input type="text" name="Username" placeholder="" value="" class="form__input "/>
+                    </div>
+                    <div class="form__row">
+                        <label class="form__label">Kilometraje / Marcador Orometro</label>
+                        <input type="text" name="Username" placeholder="marcador actual" value="" class="form__input "/>
+                    </div>
+                    <div class="form__row mt-40">
+                        <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <h4>Lista de Clientes</h4>
-
 
 
     </div>
     <!-- PAGE END -->
 
     <!-- Bottom navigation -->
-    <div id="bottom-toolbar" class="bottom-toolbar"></div>
+    <!--<div id="bottom-toolbar" class="bottom-toolbar"></div>-->
 
     <!-- Social Icons Popup -->
     <div id="popup-social"></div>

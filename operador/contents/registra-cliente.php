@@ -31,47 +31,36 @@
 
     <!-- PAGE CONTENT -->
     <div class="page__content page__content--with-header">
-        <h2 class="page__title">Nuevo Contrato Servicio</h2>
+        <h2 class="page__title">Nuevo Cliente</h2>
         <div class="fieldset">
             <div class="form">
-                <form id="Form" method="post" action="acepta-contrato.php">
+                <form id="Form" method="post" action="checkout.html">
                     <div class="form__row">
-                        <label class="form__label">fecha</label>
-                        <input type="date" name="Username" placeholder="Buscar Cliente" value="<?php echo date("Y-m-d")?>" class="form__input required"/>
+                        <label class="form__label">Apellidos y Nombres</label>
+                        <input type="text" name="Username" placeholder="Buscar Cliente" value="" class="form__input required"/>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">buscar Cliente</label>
-                        <input type="text" name="Username" placeholder="escoger Cliente" value="" class="form__input required"/>
+                        <label class="form__label">Nro Celular</label>
+                        <input type="text" name="Username" placeholder="# celular" value="" class="form__input "/>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">Tipo Servicio</label>
-                        <div class="form__select">
-                            <select name="selectoptions" class="required">
-                                <option value="1">Traslado e Izaje</option>
-                                <option value="2">Canastilla</option>
-                                <option value="3">Auxilio Vehicular</option>
-                            </select>
-                        </div>
+                        <label class="form__label">email</label>
+                        <input type="text" name="Username" placeholder="correo electronico" value="" class="form__input "/>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">Servicio</label>
-                        <textarea class="form__textarea"></textarea>
+                        <label class="form__label">Nro RUC para facturas</label>
+                        <input type="text" name="Username" placeholder="Solo si requiere factura" value="" class="form__input "/>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">Origen</label>
-                        <input type="text" name="Username" placeholder="Ref Origen" value="" class="form__input required"/>
+                        <label class="form__label">Razon Social</label>
+                        <input type="text" name="Username" placeholder="solo si llenan RUC" value="" class="form__input required" readonly/>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">Destino</label>
-                        <input type="text" name="Username" placeholder="Ref Punto Llegada" value="" class="form__input required"/>
+                        <label class="form__label">Referencia</label>
+                        <input type="text" name="Username" placeholder="solo si llenan RUC" value="" class="form__input required" readonly/>
                     </div>
-                    <div class="form__row">
-                        <label class="form__label">monto Pactado</label>
-                        <input type="text" name="Username" placeholder="0.00" value="" class="form__input required"/>
-                    </div>
-
                     <div class="form__row mt-40">
-                        <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="ir al paso 2"/>
+                        <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
                     </div>
                 </form>
             </div>

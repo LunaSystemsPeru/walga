@@ -23,7 +23,7 @@
 		<div class="login__content">	
 			<p class="login__text">Bienvenido Operador</p>
 				<div class="login-form">
-					<form id="LoginForm" method="post" action="main.php">
+					<form id="LoginForm" method="post" action="contratos.php">
 						<div class="login-form__row">
 							<label class="login-form__label">Usuario</label>
 							<input type="text" name="Username" value="" class="login-form__input required" />
