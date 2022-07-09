@@ -152,212 +152,56 @@
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
                     <li class="has-submenu">
-                        <a href="#">
+                        <a href="main.php">
                             <span><i data-feather="home" class="align-self-center hori-menu-icon"></i>Dashboard</span>
                         </a>
+                    </li><!--end has-submenu-->
+
+                    <li class="has-submenu">
+                        <a href="#">
+                            <span><i data-feather="dollar-sign" class="align-self-center hori-menu-icon"></i>Ventas</span>
+                        </a>
                         <ul class="submenu">
-                            <li><a href="index.html"><i class="ti ti-minus"></i>Analytics</a></li>
-                            <li><a href="sales-index.html"><i class="ti ti-minus"></i>Sales</a></li>
+                            <li><a href="apps-chat.html"><i class="ti ti-minus"></i>Facturacion</a></li>
+                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Empresas</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->
 
                     <li class="has-submenu">
                         <a href="#">
-                            <span><i data-feather="grid" class="align-self-center hori-menu-icon"></i>Apps</span>
+                            <span><i data-feather="grid" class="align-self-center hori-menu-icon"></i>Servicios</span>
                         </a>
                         <ul class="submenu">
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Email</a>
-                                <ul class="submenu">
-                                    <li><a href="apps-email-inbox.html"><i class="ti ti-minus"></i>Inbox</a></li>
-                                    <li><a href="apps-email-read.html"><i class="ti ti-minus"></i>Read Email</a></li>
-                                </ul>
-                            </li> <!--end has-submenu-->
-                            <li><a href="apps-chat.html"><i class="ti ti-minus"></i>Chat</a></li>
-                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Contact List</a></li>
-                            <li><a href="apps-calendar.html"><i class="ti ti-minus"></i>Calendar</a></li>
-                            <li><a href="apps-files.html"><i class="ti ti-minus"></i>File Manager</a></li>
-                            <li><a href="apps-invoice.html"><i class="ti ti-minus"></i>Invoice</a></li>
-                            <li><a href="apps-tasks.html"><i class="ti ti-minus"></i>Tasks</a></li>
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Projects </a>
-                                <ul class="submenu">
-                                    <li><a href="apps-project-overview.html"><i class="ti ti-minus"></i>Overview</a></li>
-                                    <li><a href="apps-project-projects.html"><i class="ti ti-minus"></i>Projects</a></li>
-                                    <li><a href="apps-project-board.html"><i class="ti ti-minus"></i>Board</a></li>
-                                    <li><a href="apps-project-teams.html"><i class="ti ti-minus"></i>Teams</a></li>
-                                    <li><a href="apps-project-files.html"><i class="ti ti-minus"></i>Files</a></li>
-                                    <li><a href="apps-new-project.html"><i class="ti ti-minus"></i>New Project</a></li>
-                                </ul>
-                            </li> <!--end has-submenu-->
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Ecommerce </a>
-                                <ul class="submenu">
-                                    <li><a href="apps-ecommerce-products.html"><i class="ti ti-minus"></i>Products</a></li>
-                                    <li><a href="apps-ecommerce-product-list.html"><i class="ti ti-minus"></i>Product List</a></li>
-                                    <li><a href="apps-ecommerce-product-detail.html"><i class="ti ti-minus"></i>Product Detail</a></li>
-                                    <li><a href="apps-ecommerce-cart.html"><i class="ti ti-minus"></i>Cart</a></li>
-                                    <li><a href="apps-ecommerce-checkout.html"><i class="ti ti-minus"></i>Checkout</a></li>
-                                </ul>
-                            </li> <!--end has-submenu-->
+                            <li><a href="lista-contratos.php"><i class="ti ti-minus"></i>Contratos</a></li>
+                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Clientes</a></li>
+                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Deuda por Cobrar</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->
 
                     <li class="has-submenu">
                         <a href="#">
-                            <span><i data-feather="box" class="align-self-center hori-menu-icon"></i>UI Kit</span>
+                            <span><i data-feather="box" class="align-self-center hori-menu-icon"></i>Flota</span>
                         </a>
                         <ul class="submenu">
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>UI Elements</a>
-                                <ul class="submenu megamenu">
-                                    <li>
-                                        <ul>
-                                            <li><a href="ui-alerts.html"><i class="ti ti-minus"></i>Alerts</a></li>
-                                            <li><a href="ui-avatar.html"><i class="ti ti-minus"></i>Avatar</a></li>
-                                            <li><a href="ui-buttons.html"><i class="ti ti-minus"></i>Buttons</a></li>
-                                            <li><a href="ui-badges.html"><i class="ti ti-minus"></i>Badges</a></li>
-                                            <li><a href="ui-cards.html"><i class="ti ti-minus"></i>Cards</a></li>
-                                            <li><a href="ui-carousels.html"><i class="ti ti-minus"></i>Carousels</a></li>
-                                            <li><a href="ui-check-radio.html"><i class="ti ti-minus"></i>Check & Radio</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li><a href="ui-dropdowns.html"><i class="ti ti-minus"></i>Dropdowns</a></li>
-                                            <li><a href="ui-grids.html"><i class="ti ti-minus"></i>Grids</a></li>
-                                            <li><a href="ui-images.html"><i class="ti ti-minus"></i>Images</a></li>
-                                            <li><a href="ui-list.html"><i class="ti ti-minus"></i>List</a></li>
-                                            <li><a href="ui-modals.html"><i class="ti ti-minus"></i>Modals</a></li>
-                                            <li><a href="ui-navs.html"><i class="ti ti-minus"></i>Navs</a></li>
-                                            <li><a href="ui-navbar.html"><i class="ti ti-minus"></i>Navbar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li><a href="ui-paginations.html"><i class="ti ti-minus"></i>Paginations</a></li>
-                                            <li><a href="ui-popover-tooltips.html"><i class="ti ti-minus"></i>Popover & Tooltips</a></li>
-                                            <li><a href="ui-progress.html"><i class="ti ti-minus"></i>Progress</a></li>
-                                            <li><a href="ui-spinners.html"><i class="ti ti-minus"></i>Spinners</a></li>
-                                            <li><a href="ui-tabs-accordions.html"><i class="ti ti-minus"></i>Tabs & Accordions</a></li>
-                                            <li><a href="ui-toasts.html"><i class="ti ti-minus"></i>Toasts</a></li>
-                                            <li><a href="ui-typography.html"><i class="ti ti-minus"></i>Typography</a></li>
-                                            <li><a href="ui-videos.html"><i class="ti ti-minus"></i>Videos</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li><!--end has-submenu-->
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Advanced UI</a>
-                                <ul class="submenu">
-                                    <li><a href="advanced-animation.html"><i class="ti ti-minus"></i>Animation</a></li>
-                                    <li><a href="advanced-clipboard.html"><i class="ti ti-minus"></i>Clip Board</a></li>
-                                    <li><a href="advanced-highlight.html"><i class="ti ti-minus"></i>Highlight</a></li>
-                                    <li><a href="advanced-idle-timer.html"><i class="ti ti-minus"></i>Idle Timer</a></li>
-                                    <li><a href="advanced-kanban.html"><i class="ti ti-minus"></i>Kanban</a></li>
-                                    <li><a href="advanced-lightbox.html"><i class="ti ti-minus"></i>Lightbox</a></li>
-                                    <li><a href="advanced-nestable.html"><i class="ti ti-minus"></i>Nestable List</a></li>
-                                    <li><a href="advanced-rangeslider.html"><i class="ti ti-minus"></i>Range Slider</a></li>
-                                    <li><a href="advanced-ratings.html"><i class="ti ti-minus"></i>Ratings</a></li>
-                                    <li><a href="advanced-ribbons.html"><i class="ti ti-minus"></i>Ribbons</a></li>
-                                    <li><a href="advanced-session.html"><i class="ti ti-minus"></i>Session Timeout</a></li>
-                                    <li><a href="advanced-sweetalerts.html"><i class="ti ti-minus"></i>Sweet Alerts</a></li>
-                                </ul>
-                            </li><!--end has-submenu-->
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Forms</a>
-                                <ul class="submenu">
-                                    <li><a href="forms-advanced.html"><i class="ti ti-minus"></i>Advance Elements</a></li>
-                                    <li><a href="forms-elements.html"><i class="ti ti-minus"></i>Basic Elements</a></li>
-                                    <li><a href="forms-editors.html"><i class="ti ti-minus"></i>Editors</a></li>
-                                    <li><a href="forms-uploads.html"><i class="ti ti-minus"></i>File Upload</a></li>
-                                    <li><a href="forms-repeater.html"><i class="ti ti-minus"></i>Repeater</a></li>
-                                    <li><a href="forms-validation.html"><i class="ti ti-minus"></i>Validation</a></li>
-                                    <li><a href="forms-wizard.html"><i class="ti ti-minus"></i>Wizard</a></li>
-                                    <li><a href="forms-x-editable.html"><i class="ti ti-minus"></i>X Editable</a></li>
-                                </ul>
-                            </li> <!--end has-submenu-->
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Charts</a>
-                                <ul class="submenu">
-                                    <li><a href="charts-apex.html"><i class="ti ti-minus"></i>Apex</a></li>
-                                    <li><a href="charts-chartjs.html"><i class="ti ti-minus"></i>Chartjs</a></li>
-                                    <li><a href="charts-flot.html"><i class="ti ti-minus"></i>Flot</a></li>
-                                    <li><a href="charts-morris.html"><i class="ti ti-minus"></i>Morris</a></li>
-                                </ul>
-                            </li><!--end has-submenu-->
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Tables </a>
-                                <ul class="submenu">
-                                    <li><a href="tables-basic.html"><i class="ti ti-minus"></i>Basic</a></li>
-                                    <li><a href="tables-datatable.html"><i class="ti ti-minus"></i>Datatables</a></li>
-                                    <li><a href="tables-editable.html"><i class="ti ti-minus"></i>Editable</a></li>
-                                    <li><a href="tables-responsive.html"><i class="ti ti-minus"></i>Responsive</a></li>
-                                </ul>
-                            </li><!--end has-submenu-->
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Icons</a>
-                                <ul class="submenu">
-                                    <li><a href="icons-dripicons.html"><i class="ti ti-minus"></i>Dripicons</a></li>
-                                    <li><a href="icons-feather.html"><i class="ti ti-minus"></i>Feather</a></li>
-                                    <li><a href="icons-fontawesome.html"><i class="ti ti-minus"></i>Font awesome</a></li>
-                                    <li><a href="icons-materialdesign.html"><i class="ti ti-minus"></i>Material Design</a></li>
-                                    <li><a href="icons-themify.html"><i class="ti ti-minus"></i>Themify</a></li>
-                                    <li><a href="icons-typicons.html"><i class="ti ti-minus"></i>Typicons</a></li>
-                                </ul>
-                            </li> <!--end has-submenu-->
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Maps</a>
-                                <ul class="submenu">
-                                    <li><a href="maps-google.html"><i class="ti ti-minus"></i>Google Maps</a></li>
-                                    <li><a href="maps-leaflet.html"><i class="ti ti-minus"></i>Leaflet Maps</a></li>
-                                    <li><a href="maps-vector.html"><i class="ti ti-minus"></i>Vector Maps</a></li>
-                                </ul>
-                            </li> <!--end has-submenu-->
-                            <li class="has-submenu">
-                                <a href="#"><i class="ti ti-minus"></i>Email Template</a>
-                                <ul class="submenu">
-                                    <li><a href="email-templates-alert.html"><i class="ti ti-minus"></i>Alert Email</a></li>
-                                    <li><a href="email-templates-basic.html"><i class="ti ti-minus"></i>Basic Action Email</a></li>
-                                    <li><a href="email-templates-billing.html"><i class="ti ti-minus"></i>Billing Email</a></li>
-                                </ul>
-                            </li> <!--end has-submenu-->
+                            <li><a href="apps-chat.html"><i class="ti ti-minus"></i>Vehiculos</a></li>
+                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Choferes</a></li>
+                            <li><a href="apps-calendar.html"><i class="ti ti-minus"></i>Vencimientos</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->
 
                     <li class="has-submenu">
                         <a href="#">
-                            <span><i data-feather="file-plus" class="align-self-center hori-menu-icon"></i>Pages</span>
+                            <span><i data-feather="lock" class="align-self-center hori-menu-icon"></i>Configuracion</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="pages-blogs.html"><i class="ti ti-minus"></i>Blogs</a></li>
-                            <li><a href="pages-faqs.html"><i class="ti ti-minus"></i>FAQs</a></li>
-                            <li><a href="pages-pricing.html"><i class="ti ti-minus"></i>Pricing</a></li>
-                            <li><a href="pages-profile.html"><i class="ti ti-minus"></i>Profile</a></li>
-                            <li><a href="horizontal-starter.html"><i class="ti ti-minus"></i>Starter Page</a></li>
-                            <li><a href="pages-timeline.html"><i class="ti ti-minus"></i>Timeline</a></li>
-                            <li><a href="pages-treeview.html"><i class="ti ti-minus"></i>Treeview</a></li>
-                        </ul>
-                    </li><!--end has-submenu-->
-
-                    <li class="has-submenu">
-                        <a href="#">
-                            <span><i data-feather="lock" class="align-self-center hori-menu-icon"></i>Authentication</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="auth-login.html"><i class="ti ti-minus"></i>Log in</a></li>
-                            <li><a href="auth-register.html"><i class="ti ti-minus"></i>Register</a></li>
-                            <li><a href="auth-recover-pw.html"><i class="ti ti-minus"></i>Recover Password</a></li>
-                            <li><a href="auth-lock-screen.html"><i class="ti ti-minus"></i>Lock Screen</a></li>
-                            <li><a href="auth-404.html"><i class="ti ti-minus"></i>Error 404</a></li>
-                            <li><a href="auth-500.html"><i class="ti ti-minus"></i>Error 500</a></li>
+                            <li><a href="apps-chat.html"><i class="ti ti-minus"></i>Usuarios</a></li>
+                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Documentos SUNAT</a></li>
+                            <li><a href="apps-calendar.html"><i class="ti ti-minus"></i>Parametros</a></li>
+                            <li><a href="apps-calendar.html"><i class="ti ti-minus"></i>Empresa</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->
-                    <li class="has-submenu">
-                        <a href="widgets.html">
-                            <span><i data-feather="layers" class="align-self-center hori-menu-icon"></i>Widgets</span>
-                        </a>
-                    </li><!--end has-submenu-->
+
+
                 </ul><!-- End navigation menu -->
             </div> <!-- end navigation -->
         </div>
