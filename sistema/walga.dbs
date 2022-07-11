@@ -214,6 +214,9 @@ tipo pago (contado credito)]]></comment>
 			<fk name="fk_parametros_valores_ventas_amarre" to_schema="walga.instance" to_table="ventas_amarre" >
 				<fk_column name="id" pk="motivo_id" />
 			</fk>
+			<fk name="fk_parametros_valores_usuarios" to_schema="walga.instance" to_table="usuarios" >
+				<fk_column name="id" pk="nivelacceso_id" />
+			</fk>
 		</table>
 		<table name="permisos_sistema" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
@@ -234,8 +237,13 @@ tipo pago (contado credito)]]></comment>
 			<column name="fec_creacion" type="DATE" jt="91" />
 			<column name="estado" type="CHAR" length="1" jt="1" />
 			<column name="empresa_id" type="INT" jt="4" />
+			<column name="datos" type="VARCHAR" length="150" jt="12" />
+			<column name="nivelacceso_id" prior="nivelacceso" type="INT" length="1" jt="4" />
 			<index name="pk_usuarios" unique="PRIMARY_KEY" >
 				<column name="id" />
+			</index>
+			<index name="unq_usuarios_nivelacceso_id" unique="UNIQUE_KEY" >
+				<column name="nivelacceso_id" />
 			</index>
 			<fk name="fk_usuarios_contratos" virtual="y" to_schema="walga.instance" to_table="contratos" >
 				<fk_column name="id" pk="usuario_id" />
