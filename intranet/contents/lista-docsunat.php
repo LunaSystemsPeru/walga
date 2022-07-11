@@ -62,7 +62,7 @@
 
                     </div><!--end card-header-->
                     <div class="card-body">
-                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModalSignup">
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalSignup">
                             Agregar Documento SUNAT
                         </button>
                         <!--start signup-->
