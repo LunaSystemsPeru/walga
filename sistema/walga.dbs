@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="walga" id="Project-1f0d" database="MariaDb" >
-	<schema name="instance" catalogname="walga" >
+	<schema name="goempres_walga" catalogname="walga" >
 		<table name="chofer" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
 			<column name="brevete" type="VARCHAR" length="9" jt="12" />
@@ -12,10 +12,19 @@
 			<index name="pk_chofer" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_chofer_vehiculos" virtual="y" to_schema="walga.instance" to_table="vehiculos" >
+			<index name="unq_chofer_empresa_id" unique="UNIQUE_KEY" >
+				<column name="empresa_id" />
+			</index>
+			<fk name="fk_chofer_vehiculos" virtual="y" to_schema="walga.goempres_walga" to_table="vehiculos" >
 				<fk_column name="id" pk="chofer_id" />
 			</fk>
-			<fk name="fk_chofer_contratos" virtual="y" to_schema="walga.instance" to_table="contratos" >
+			<fk name="fk_chofer_contratos" virtual="y" to_schema="walga.goempres_walga" to_table="contratos" >
+				<fk_column name="id" pk="chofer_id" />
+			</fk>
+			<fk name="fk_chofer_contratos_0" to_schema="walga.goempres_walga" to_table="contratos" >
+				<fk_column name="id" pk="chofer_id" />
+			</fk>
+			<fk name="fk_chofer_vehiculos_0" to_schema="walga.goempres_walga" to_table="vehiculos" >
 				<fk_column name="id" pk="chofer_id" />
 			</fk>
 		</table>
@@ -29,14 +38,23 @@
 			<index name="pk_clientes" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_clientes_contratos" virtual="y" to_schema="walga.instance" to_table="contratos" >
+			<index name="unq_clientes_entidad_id" unique="UNIQUE_KEY" >
+				<column name="entidad_id" />
+			</index>
+			<index name="unq_clientes_empresa_id" unique="UNIQUE_KEY" >
+				<column name="empresa_id" />
+			</index>
+			<fk name="fk_clientes_contratos" virtual="y" to_schema="walga.goempres_walga" to_table="contratos" >
 				<fk_column name="id" pk="cliente_id" />
 			</fk>
-			<fk name="fk_clientes_contratos_pagos" virtual="y" to_schema="walga.instance" to_table="contratos_pagos" >
+			<fk name="fk_clientes_contratos_pagos" virtual="y" to_schema="walga.goempres_walga" to_table="contratos_pagos" >
 				<fk_column name="id" pk="id" />
 			</fk>
-			<fk name="fk_clientes_contratos_pagos_0" to_schema="walga.instance" to_table="contratos_pagos" />
-			<fk name="fk_clientes_clientes_pagos" to_schema="walga.instance" to_table="clientes_pagos" >
+			<fk name="fk_clientes_contratos_pagos_0" to_schema="walga.goempres_walga" to_table="contratos_pagos" />
+			<fk name="fk_clientes_clientes_pagos" to_schema="walga.goempres_walga" to_table="clientes_pagos" >
+				<fk_column name="id" pk="cliente_id" />
+			</fk>
+			<fk name="fk_clientes_contratos_0" to_schema="walga.goempres_walga" to_table="contratos" >
 				<fk_column name="id" pk="cliente_id" />
 			</fk>
 		</table>
@@ -55,7 +73,7 @@
 			<index name="unq_clientes_pagos_usuario_id" unique="UNIQUE_KEY" >
 				<column name="usuario_id" />
 			</index>
-			<fk name="fk_clientes_pagos_contratos_pagos" to_schema="walga.instance" to_table="contratos_pagos" >
+			<fk name="fk_clientes_pagos_contratos_pagos" to_schema="walga.goempres_walga" to_table="contratos_pagos" >
 				<fk_column name="id" pk="pago_id" />
 			</fk>
 			<options><![CDATA[engine=InnoDB]]></options>
@@ -69,6 +87,15 @@
 			<index name="pk_comprobantes_empresas" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
+			<index name="unq_comprobantes_empresas_comprobante_id" unique="UNIQUE_KEY" >
+				<column name="comprobante_id" />
+			</index>
+			<index name="unq_comprobantes_empresas_empresa_id" unique="UNIQUE_KEY" >
+				<column name="empresa_id" />
+			</index>
+			<fk name="fk_comprobantes_empresas_ventas" to_schema="walga.goempres_walga" to_table="ventas" >
+				<fk_column name="id" pk="comprobante_id" />
+			</fk>
 		</table>
 		<table name="contratos" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
@@ -96,10 +123,34 @@
 			<index name="pk_contratos" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_contratos_ventas" virtual="y" to_schema="walga.instance" to_table="ventas" >
+			<index name="unq_contratos_cliente_id" unique="UNIQUE_KEY" >
+				<column name="cliente_id" />
+			</index>
+			<index name="unq_contratos_chofer_id" unique="UNIQUE_KEY" >
+				<column name="chofer_id" />
+			</index>
+			<index name="unq_contratos_empresa_id" unique="UNIQUE_KEY" >
+				<column name="empresa_id" />
+			</index>
+			<index name="unq_contratos_comprobante_id" unique="UNIQUE_KEY" >
+				<column name="comprobante_id" />
+			</index>
+			<index name="unq_contratos_tiposervicio_id" unique="UNIQUE_KEY" >
+				<column name="tiposervicio_id" />
+			</index>
+			<index name="unq_contratos_usuario_id" unique="UNIQUE_KEY" >
+				<column name="usuario_id" />
+			</index>
+			<index name="unq_contratos_vehiculo_id" unique="UNIQUE_KEY" >
+				<column name="vehiculo_id" />
+			</index>
+			<fk name="fk_contratos_ventas" virtual="y" to_schema="walga.goempres_walga" to_table="ventas" >
 				<fk_column name="id" pk="contrato_id" />
 			</fk>
-			<fk name="fk_contratos_contratos_pagos" to_schema="walga.instance" to_table="contratos_pagos" >
+			<fk name="fk_contratos_contratos_pagos" to_schema="walga.goempres_walga" to_table="contratos_pagos" >
+				<fk_column name="id" pk="contrato_id" />
+			</fk>
+			<fk name="fk_contratos_ventas_0" to_schema="walga.goempres_walga" to_table="ventas" >
 				<fk_column name="id" pk="contrato_id" />
 			</fk>
 		</table>
@@ -134,25 +185,46 @@
 			<index name="pk_empresa" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_empresas_vehiculos" virtual="y" to_schema="walga.instance" to_table="vehiculos" >
+			<fk name="fk_empresas_vehiculos" virtual="y" to_schema="walga.goempres_walga" to_table="vehiculos" >
 				<fk_column name="id" pk="empresa_id" />
 			</fk>
-			<fk name="fk_empresas_usuarios" virtual="y" to_schema="walga.instance" to_table="usuarios" >
+			<fk name="fk_empresas_usuarios" virtual="y" to_schema="walga.goempres_walga" to_table="usuarios" >
 				<fk_column name="id" pk="empresa_id" />
 			</fk>
-			<fk name="fk_empresas_contratos" virtual="y" to_schema="walga.instance" to_table="contratos" >
+			<fk name="fk_empresas_contratos" virtual="y" to_schema="walga.goempres_walga" to_table="contratos" >
 				<fk_column name="id" pk="empresa_id" />
 			</fk>
-			<fk name="fk_empresas_ventas" virtual="y" to_schema="walga.instance" to_table="ventas" >
+			<fk name="fk_empresas_ventas" virtual="y" to_schema="walga.goempres_walga" to_table="ventas" >
 				<fk_column name="id" pk="empresa_id" />
 			</fk>
-			<fk name="fk_empresas_clientes" virtual="y" to_schema="walga.instance" to_table="clientes" >
+			<fk name="fk_empresas_clientes" virtual="y" to_schema="walga.goempres_walga" to_table="clientes" >
 				<fk_column name="id" pk="empresa_id" />
 			</fk>
-			<fk name="fk_empresas_chofer" virtual="y" to_schema="walga.instance" to_table="chofer" >
+			<fk name="fk_empresas_chofer" virtual="y" to_schema="walga.goempres_walga" to_table="chofer" >
 				<fk_column name="id" pk="empresa_id" />
 			</fk>
-			<fk name="fk_empresas_comprobantes_empresas" virtual="y" to_schema="walga.instance" to_table="comprobantes_empresas" >
+			<fk name="fk_empresas_comprobantes_empresas" virtual="y" to_schema="walga.goempres_walga" to_table="comprobantes_empresas" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_chofer_0" to_schema="walga.goempres_walga" to_table="chofer" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_ventas_0" to_schema="walga.goempres_walga" to_table="ventas" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_contratos_0" to_schema="walga.goempres_walga" to_table="contratos" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_clientes_0" to_schema="walga.goempres_walga" to_table="clientes" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_comprobantes_empresas_0" to_schema="walga.goempres_walga" to_table="comprobantes_empresas" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_usuarios_0" to_schema="walga.goempres_walga" to_table="usuarios" >
+				<fk_column name="id" pk="empresa_id" />
+			</fk>
+			<fk name="fk_empresas_vehiculos_0" to_schema="walga.goempres_walga" to_table="vehiculos" >
 				<fk_column name="id" pk="empresa_id" />
 			</fk>
 		</table>
@@ -164,13 +236,22 @@
 			<index name="pk_entidades" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_entidades_clientes" virtual="y" to_schema="walga.instance" to_table="clientes" >
+			<fk name="fk_entidades_clientes" virtual="y" to_schema="walga.goempres_walga" to_table="clientes" >
 				<fk_column name="id" pk="entidad_id" />
 			</fk>
-			<fk name="fk_entidades_vehiculos_documentos" virtual="y" to_schema="walga.instance" to_table="vehiculos_documentos" >
+			<fk name="fk_entidades_vehiculos_documentos" virtual="y" to_schema="walga.goempres_walga" to_table="vehiculos_documentos" >
 				<fk_column name="id" pk="emisor" />
 			</fk>
-			<fk name="fk_entidades_ventas" virtual="y" to_schema="walga.instance" to_table="ventas" >
+			<fk name="fk_entidades_ventas" virtual="y" to_schema="walga.goempres_walga" to_table="ventas" >
+				<fk_column name="id" pk="entidad_id" />
+			</fk>
+			<fk name="fk_entidades_ventas_0" to_schema="walga.goempres_walga" to_table="ventas" >
+				<fk_column name="id" pk="entidad_id" />
+			</fk>
+			<fk name="fk_entidades_vehiculos_documentos_0" to_schema="walga.goempres_walga" to_table="vehiculos_documentos" >
+				<fk_column name="id" pk="emisor" />
+			</fk>
+			<fk name="fk_entidades_clientes_0" to_schema="walga.goempres_walga" to_table="clientes" >
 				<fk_column name="id" pk="entidad_id" />
 			</fk>
 		</table>
@@ -183,7 +264,10 @@ tipo pago (contado credito)]]></comment>
 			<index name="pk_parametros" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_parametros_parametros_valores" virtual="y" to_schema="walga.instance" to_table="parametros_valores" >
+			<fk name="fk_parametros_parametros_valores" virtual="y" to_schema="walga.goempres_walga" to_table="parametros_valores" >
+				<fk_column name="id" pk="parametro_id" />
+			</fk>
+			<fk name="fk_parametros_parametros_valores_0" to_schema="walga.goempres_walga" to_table="parametros_valores" >
 				<fk_column name="id" pk="parametro_id" />
 			</fk>
 		</table>
@@ -196,26 +280,38 @@ tipo pago (contado credito)]]></comment>
 			<index name="pk_parametros_valores" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_parametros_valores_ventas" virtual="y" to_schema="walga.instance" to_table="ventas" >
+			<index name="unq_parametros_valores_parametro_id" unique="UNIQUE_KEY" >
+				<column name="parametro_id" />
+			</index>
+			<fk name="fk_parametros_valores_ventas" virtual="y" to_schema="walga.goempres_walga" to_table="ventas" >
 				<fk_column name="id" pk="comprobante_id" />
 			</fk>
-			<fk name="fk_parametros_valores_contratos" virtual="y" to_schema="walga.instance" to_table="contratos" >
+			<fk name="fk_parametros_valores_contratos" virtual="y" to_schema="walga.goempres_walga" to_table="contratos" >
 				<fk_column name="id" pk="comprobante_id" />
 			</fk>
-			<fk name="fk_parametros_valores_contratos_0" virtual="y" to_schema="walga.instance" to_table="contratos" >
+			<fk name="fk_parametros_valores_contratos_0" virtual="y" to_schema="walga.goempres_walga" to_table="contratos" >
 				<fk_column name="id" pk="tiposervicio_id" />
 			</fk>
-			<fk name="fk_parametros_valores_comprobantes_empresas" virtual="y" to_schema="walga.instance" to_table="comprobantes_empresas" >
+			<fk name="fk_parametros_valores_comprobantes_empresas" virtual="y" to_schema="walga.goempres_walga" to_table="comprobantes_empresas" >
 				<fk_column name="id" pk="comprobante_id" />
 			</fk>
-			<fk name="fk_parametros_valores_ventas_servicios" to_schema="walga.instance" to_table="ventas_servicios" >
+			<fk name="fk_parametros_valores_ventas_servicios" to_schema="walga.goempres_walga" to_table="ventas_servicios" >
 				<fk_column name="id" pk="unidad_id" />
 			</fk>
-			<fk name="fk_parametros_valores_ventas_amarre" to_schema="walga.instance" to_table="ventas_amarre" >
+			<fk name="fk_parametros_valores_ventas_amarre" to_schema="walga.goempres_walga" to_table="ventas_amarre" >
 				<fk_column name="id" pk="motivo_id" />
 			</fk>
-			<fk name="fk_parametros_valores_usuarios" to_schema="walga.instance" to_table="usuarios" >
-				<fk_column name="id" pk="nivelacceso_id" />
+			<fk name="fk_parametros_valores_contratos_1" to_schema="walga.goempres_walga" to_table="contratos" >
+				<fk_column name="id" pk="comprobante_id" />
+			</fk>
+			<fk name="fk_parametros_valores_contratos_2" to_schema="walga.goempres_walga" to_table="contratos" >
+				<fk_column name="id" pk="tiposervicio_id" />
+			</fk>
+			<fk name="fk_parametros_valores_comprobantes_empresas_0" to_schema="walga.goempres_walga" to_table="comprobantes_empresas" >
+				<fk_column name="id" pk="comprobante_id" />
+			</fk>
+			<fk name="fk_parametros_valores_ventas_0" to_schema="walga.goempres_walga" to_table="ventas" >
+				<fk_column name="id" pk="comprobante_id" />
 			</fk>
 		</table>
 		<table name="permisos_sistema" >
@@ -224,11 +320,13 @@ tipo pago (contado credito)]]></comment>
 			<index name="pk_permisos_usuarios" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_permisos_sistema_usuarios_permisos" virtual="y" to_schema="walga.instance" to_table="usuarios_permisos" >
+			<fk name="fk_permisos_sistema_usuarios_permisos" virtual="y" to_schema="walga.goempres_walga" to_table="usuarios_permisos" >
+				<fk_column name="id" pk="permiso_id" />
+			</fk>
+			<fk name="fk_permisos_sistema_usuarios_permisos_0" to_schema="walga.goempres_walga" to_table="usuarios_permisos" >
 				<fk_column name="id" pk="permiso_id" />
 			</fk>
 		</table>
-		<table name="tbl" />
 		<table name="usuarios" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
 			<column name="username" type="VARCHAR" length="100" jt="12" />
@@ -237,24 +335,31 @@ tipo pago (contado credito)]]></comment>
 			<column name="fec_creacion" type="DATE" jt="91" />
 			<column name="estado" type="CHAR" length="1" jt="1" />
 			<column name="empresa_id" type="INT" jt="4" />
-			<column name="datos" type="VARCHAR" length="150" jt="12" />
-			<column name="nivelacceso_id" prior="nivelacceso" type="INT" length="1" jt="4" />
 			<index name="pk_usuarios" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<index name="unq_usuarios_nivelacceso_id" unique="UNIQUE_KEY" >
-				<column name="nivelacceso_id" />
+			<index name="unq_usuarios_empresa_id" unique="UNIQUE_KEY" >
+				<column name="empresa_id" />
 			</index>
-			<fk name="fk_usuarios_contratos" virtual="y" to_schema="walga.instance" to_table="contratos" >
+			<fk name="fk_usuarios_contratos" virtual="y" to_schema="walga.goempres_walga" to_table="contratos" >
 				<fk_column name="id" pk="usuario_id" />
 			</fk>
-			<fk name="fk_usuarios_usuarios_permisos" virtual="y" to_schema="walga.instance" to_table="usuarios_permisos" >
+			<fk name="fk_usuarios_usuarios_permisos" virtual="y" to_schema="walga.goempres_walga" to_table="usuarios_permisos" >
 				<fk_column name="id" pk="usuario_id" />
 			</fk>
-			<fk name="fk_usuarios_ventas" virtual="y" to_schema="walga.instance" to_table="ventas" >
+			<fk name="fk_usuarios_ventas" virtual="y" to_schema="walga.goempres_walga" to_table="ventas" >
 				<fk_column name="id" pk="usuario_id" />
 			</fk>
-			<fk name="fk_usuarios_clientes_pagos" to_schema="walga.instance" to_table="clientes_pagos" >
+			<fk name="fk_usuarios_clientes_pagos" to_schema="walga.goempres_walga" to_table="clientes_pagos" >
+				<fk_column name="id" pk="usuario_id" />
+			</fk>
+			<fk name="fk_usuarios_contratos_0" to_schema="walga.goempres_walga" to_table="contratos" >
+				<fk_column name="id" pk="usuario_id" />
+			</fk>
+			<fk name="fk_usuarios_ventas_0" to_schema="walga.goempres_walga" to_table="ventas" >
+				<fk_column name="id" pk="usuario_id" />
+			</fk>
+			<fk name="fk_usuarios_usuarios_permisos_0" to_schema="walga.goempres_walga" to_table="usuarios_permisos" >
 				<fk_column name="id" pk="usuario_id" />
 			</fk>
 		</table>
@@ -262,6 +367,12 @@ tipo pago (contado credito)]]></comment>
 			<column name="usuario_id" type="INT" jt="4" />
 			<column name="permiso_id" type="INT" jt="4" />
 			<column name="valor" type="CHAR" length="1" jt="1" />
+			<index name="unq_usuarios_permisos_permiso_id" unique="UNIQUE_KEY" >
+				<column name="permiso_id" />
+			</index>
+			<index name="unq_usuarios_permisos_usuario_id" unique="UNIQUE_KEY" >
+				<column name="usuario_id" />
+			</index>
 		</table>
 		<table name="vehiculos" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
@@ -277,10 +388,22 @@ tipo pago (contado credito)]]></comment>
 			<index name="pk_vehiculos" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_vehiculos_contratos" virtual="y" to_schema="walga.instance" to_table="contratos" >
+			<index name="unq_vehiculos_empresa_id" unique="UNIQUE_KEY" >
+				<column name="empresa_id" />
+			</index>
+			<index name="unq_vehiculos_chofer_id" unique="UNIQUE_KEY" >
+				<column name="chofer_id" />
+			</index>
+			<fk name="fk_vehiculos_contratos" virtual="y" to_schema="walga.goempres_walga" to_table="contratos" >
 				<fk_column name="id" pk="vehiculo_id" />
 			</fk>
-			<fk name="fk_vehiculos_vehiculos_documentos" virtual="y" to_schema="walga.instance" to_table="vehiculos_documentos" >
+			<fk name="fk_vehiculos_vehiculos_documentos" virtual="y" to_schema="walga.goempres_walga" to_table="vehiculos_documentos" >
+				<fk_column name="id" pk="vehiculo_id" />
+			</fk>
+			<fk name="fk_vehiculos_vehiculos_documentos_0" to_schema="walga.goempres_walga" to_table="vehiculos_documentos" >
+				<fk_column name="id" pk="vehiculo_id" />
+			</fk>
+			<fk name="fk_vehiculos_contratos_0" to_schema="walga.goempres_walga" to_table="contratos" >
 				<fk_column name="id" pk="vehiculo_id" />
 			</fk>
 		</table>
@@ -295,6 +418,12 @@ tipo pago (contado credito)]]></comment>
 			<column name="archivo" type="VARCHAR" length="45" jt="12" />
 			<index name="pk_vehiculos_documentos" unique="PRIMARY_KEY" >
 				<column name="id" />
+			</index>
+			<index name="unq_vehiculos_documentos_vehiculo_id" unique="UNIQUE_KEY" >
+				<column name="vehiculo_id" />
+			</index>
+			<index name="unq_vehiculos_documentos_emisor" unique="UNIQUE_KEY" >
+				<column name="emisor" />
 			</index>
 		</table>
 		<table name="ventas" >
@@ -318,13 +447,28 @@ tipo pago (contado credito)]]></comment>
 			<index name="pk_ventas" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_ventas_ventas_servicios" to_schema="walga.instance" to_table="ventas_servicios" >
+			<index name="unq_ventas_contrato_id" unique="UNIQUE_KEY" >
+				<column name="contrato_id" />
+			</index>
+			<index name="unq_ventas_empresa_id" unique="UNIQUE_KEY" >
+				<column name="empresa_id" />
+			</index>
+			<index name="unq_ventas_usuario_id" unique="UNIQUE_KEY" >
+				<column name="usuario_id" />
+			</index>
+			<index name="unq_ventas_entidad_id" unique="UNIQUE_KEY" >
+				<column name="entidad_id" />
+			</index>
+			<index name="unq_ventas_comprobante_id" unique="UNIQUE_KEY" >
+				<column name="comprobante_id" />
+			</index>
+			<fk name="fk_ventas_ventas_servicios" to_schema="walga.goempres_walga" to_table="ventas_servicios" >
 				<fk_column name="id" pk="venta_id" />
 			</fk>
-			<fk name="fk_ventas_ventas_amarre" to_schema="walga.instance" to_table="ventas_amarre" >
+			<fk name="fk_ventas_ventas_amarre" to_schema="walga.goempres_walga" to_table="ventas_amarre" >
 				<fk_column name="id" pk="venta_id" />
 			</fk>
-			<fk name="fk_ventas_ventas_amarre_0" to_schema="walga.instance" to_table="ventas_amarre" >
+			<fk name="fk_ventas_ventas_amarre_0" to_schema="walga.goempres_walga" to_table="ventas_amarre" >
 				<fk_column name="id" pk="docafecto_id" />
 			</fk>
 		</table>
@@ -366,25 +510,28 @@ tipo pago (contado credito)]]></comment>
 			<options><![CDATA[engine=InnoDB]]></options>
 		</table>
 	</schema>
+	<connector name="MariaDb" database="MariaDb" driver_class="org.mariadb.jdbc.Driver" driver_jar="mariadb-java-client-3.0.5.jar" driver_desc="Standard" host="localhost" port="3306" user="lspadmin" passwd="OjE4O3Q0QkM5WmZqY0Y=" />
+	<connector name="MyDb" database="MySql" host="localhost" port="3306" user="root" />
+	<connector name="MyDb" database="MySql" host="localhost" port="3306" user="root" />
 	<layout name="default layout" id="Layout-15f7" confirmed="y" show_relation="columns" >
-		<entity schema="walga.instance" name="chofer" color="C1D8EE" x="624" y="96" />
-		<entity schema="walga.instance" name="clientes" color="C1D8EE" x="368" y="864" />
-		<entity schema="walga.instance" name="clientes_pagos" color="C1D8EE" x="368" y="1136" />
-		<entity schema="walga.instance" name="comprobantes_empresas" color="C1D8EE" x="1216" y="1216" />
-		<entity schema="walga.instance" name="contratos" color="C1D8EE" x="624" y="384" />
-		<entity schema="walga.instance" name="contratos_pagos" color="C1D8EE" x="624" y="1136" />
-		<entity schema="walga.instance" name="empresas" color="C1D8EE" x="944" y="864" />
-		<entity schema="walga.instance" name="entidades" color="C1D8EE" x="1232" y="384" />
-		<entity schema="walga.instance" name="parametros" color="C1D8EE" x="1232" y="160" />
-		<entity schema="walga.instance" name="parametros_valores" color="C1D8EE" x="624" y="864" />
-		<entity schema="walga.instance" name="permisos_sistema" color="C1D8EE" x="96" y="1088" />
-		<entity schema="walga.instance" name="usuarios" color="C1D8EE" x="368" y="576" />
-		<entity schema="walga.instance" name="usuarios_permisos" color="C1D8EE" x="96" y="864" />
-		<entity schema="walga.instance" name="vehiculos" color="C1D8EE" x="352" y="48" />
-		<entity schema="walga.instance" name="vehiculos_documentos" color="C1D8EE" x="48" y="384" />
-		<entity schema="walga.instance" name="ventas" color="C1D8EE" x="944" y="384" />
-		<entity schema="walga.instance" name="ventas_amarre" color="C1D8EE" x="1232" y="768" />
-		<entity schema="walga.instance" name="ventas_servicios" color="C1D8EE" x="944" y="128" />
+		<entity schema="walga.goempres_walga" name="chofer" color="C1D8EE" x="800" y="96" />
+		<entity schema="walga.goempres_walga" name="clientes" color="C1D8EE" x="560" y="864" />
+		<entity schema="walga.goempres_walga" name="clientes_pagos" color="C1D8EE" x="560" y="1136" />
+		<entity schema="walga.goempres_walga" name="comprobantes_empresas" color="C1D8EE" x="1344" y="864" />
+		<entity schema="walga.goempres_walga" name="contratos" color="C1D8EE" x="800" y="384" />
+		<entity schema="walga.goempres_walga" name="contratos_pagos" color="C1D8EE" x="784" y="1136" />
+		<entity schema="walga.goempres_walga" name="empresas" color="C1D8EE" x="1088" y="864" />
+		<entity schema="walga.goempres_walga" name="entidades" color="C1D8EE" x="320" y="1136" />
+		<entity schema="walga.goempres_walga" name="parametros" color="C1D8EE" x="1280" y="688" />
+		<entity schema="walga.goempres_walga" name="parametros_valores" color="C1D8EE" x="800" y="864" />
+		<entity schema="walga.goempres_walga" name="permisos_sistema" color="C1D8EE" x="48" y="1088" />
+		<entity schema="walga.goempres_walga" name="usuarios" color="C1D8EE" x="560" y="576" />
+		<entity schema="walga.goempres_walga" name="usuarios_permisos" color="C1D8EE" x="304" y="864" />
+		<entity schema="walga.goempres_walga" name="vehiculos" color="C1D8EE" x="544" y="48" />
+		<entity schema="walga.goempres_walga" name="vehiculos_documentos" color="C1D8EE" x="272" y="384" />
+		<entity schema="walga.goempres_walga" name="ventas" color="C1D8EE" x="1088" y="384" />
+		<entity schema="walga.goempres_walga" name="ventas_amarre" color="C1D8EE" x="1360" y="384" />
+		<entity schema="walga.goempres_walga" name="ventas_servicios" color="C1D8EE" x="1088" y="128" />
 		<script name="SQL_Editor" id="Editor-cdb" language="SQL" confirmed="y" >
 			<string><![CDATA[CREATE SCHEMA instance;
 
@@ -543,5 +690,34 @@ ALTER TABLE contratos MODIFY estado_contrato CHAR(1)     COMMENT '0 en proceso\n
 ALTER TABLE parametros COMMENT 'tipo documento\ntipo pago (contado credito)';
 ]]></string>
 		</script>
+		<script name="contratos" id="Editor-107a" language="SQL" >
+			<string><![CDATA[CREATE TABLE goempres_walga.contratos ( 
+	id                   INT  NOT NULL    PRIMARY KEY,
+	fecha                DATE      ,
+	cliente_id           INT      ,
+	usuario_id           INT      ,
+	chofer_id            INT      ,
+	vehiculo_id          INT      ,
+	comprobante_id       INT      ,
+	empresa_id           INT      ,
+	estado_comprobante   CHAR(1)      ,
+	tiposervicio_id      INT      ,
+	origen               VARCHAR(100)      ,
+	destino              VARCHAR(100)      ,
+	servicio             VARCHAR(245)      ,
+	estado_contrato      CHAR(1)      ,
+	horas_servicio       INT      ,
+	monto                DECIMAL(6,2)      ,
+	monto_pagado         DECIMAL(6,2)      ,
+	hora_inicio          VARCHAR(5)      ,
+	hora_termino         VARCHAR(5)      
+ );
+
+ALTER TABLE goempres_walga.contratos ADD CONSTRAINT fk_contratos_contratos_pagos FOREIGN KEY ( id ) REFERENCES goempres_walga.contratos_pagos( contrato_id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE goempres_walga.contratos MODIFY estado_contrato CHAR(1)     COMMENT '0 en proceso\n1 finalizado';
+]]></string>
+		</script>
+		<script name="walga.sql" id="Editor-1e07" language="SQL" file="file:/C:/Users/Luis/Downloads/walga/walga.sql" />
 	</layout>
 </project>
