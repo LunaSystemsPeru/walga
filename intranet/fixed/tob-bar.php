@@ -194,10 +194,10 @@
                             <span><i data-feather="lock" class="align-self-center hori-menu-icon"></i>Configuracion</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="apps-chat.html"><i class="ti ti-minus"></i>Usuarios</a></li>
-                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Documentos SUNAT</a></li>
-                            <li><a href="apps-calendar.html"><i class="ti ti-minus"></i>Parametros</a></li>
-                            <li><a href="apps-calendar.html"><i class="ti ti-minus"></i>Empresa</a></li>
+                            <li><a href="lista-usuarios.php"><i class="ti ti-minus"></i>Usuarios</a></li>
+                            <li><a href="lista-docsunat.php"><i class="ti ti-minus"></i>Documentos SUNAT</a></li>
+                            <li><a href="lista-parametros.php"><i class="ti ti-minus"></i>Parametros</a></li>
+                            <li><a href="form-empresa.php"><i class="ti ti-minus"></i>Empresa</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->
 
