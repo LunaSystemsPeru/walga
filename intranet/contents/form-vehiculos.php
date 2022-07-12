@@ -38,10 +38,10 @@
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Registrar Usuario</h4>
+                                <h4 class="page-title">Registrar Vehiculo</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Configuracion</a></li>
-                                    <li class="breadcrumb-item active">Usuario</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Flota</a></li>
+                                    <li class="breadcrumb-item active">Vehiculos</li>
                                 </ol>
                             </div><!--end col-->
 
@@ -57,26 +57,34 @@
                     <div class="card-body">
                         <form>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="apellidosynombres">Apellidos y Nombres</label>
-                                        <input type="text" class="form-control" id="ruc"
-                                               placeholder="Apellidos y Nombres">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="usuario">Usuario</label>
-                                        <input type="text" class="form-control" id="usuario" placeholder="Usuario">
+                                        <label class="form-label" for="placa">Placa</label>
+                                        <input type="text" class="form-control" id="placa" placeholder="Placa">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1"
-                                               placeholder="Password">
+                                        <label class="form-label" for="serie">Serie</label>
+                                        <input type="text" class="form-control" id="serie" placeholder="Serie">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="marca">Marca</label>
+                                        <input type="text" class="form-control" id="marca" placeholder="Marca">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="modelo">Modelo</label>
+                                        <input type="text" class="form-control" id="modelo" placeholder="Modelo">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="año">Año</label>
+                                        <input type="text" class="form-control" id="año" placeholder="año">
                                     </div>
                                 </div>
                             </div>
@@ -93,9 +101,9 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="exampleInputPassword1">Nivel de Acceso</label>
+                                        <label class="form-label" for="exampleInputPassword1">Choferes</label>
                                         <select class="form-control" aria-label="Default select example">
-                                            <option selected>Abrir para Seleccionar</option>
+                                            <option selected>Abrir para seleccionar</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -110,7 +118,7 @@
 
                         <a href="#" class="btn btn-sm btn-soft-primary">
                             <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                            Guardar Usuario
+                            Guardar Vehiculo
                         </a>
                     </div><!--end col-->
                 </div>

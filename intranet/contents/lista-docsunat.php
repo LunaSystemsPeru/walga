@@ -44,12 +44,6 @@
                                     <li class="breadcrumb-item active">Documentos Sunat</li>
                                 </ol>
                             </div><!--end col-->
-                            <div class="col-auto align-self-center">
-                                <a href="#" class="btn btn-sm btn-soft-primary" >
-                                    <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                    Agregar Doc Sunat
-                                </a>
-                            </div><!--end col-->
                         </div><!--end row-->
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -62,7 +56,7 @@
 
                     </div><!--end card-header-->
                     <div class="card-body">
-                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModalSignup">
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalSignup">
                             Agregar Documento SUNAT
                         </button>
                         <!--start signup-->
@@ -70,83 +64,45 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h6 class="modal-title m-0" id="exampleModalDefaultSignup">SignUp Modal</h6>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Registrar Documento SUNAT</h6>
+                                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                     </div><!--end modal-header-->
                                     <div class="modal-body">
                                         <div class="auth-page">
                                             <div class="auth-card">
                                                 <div class="">
                                                     <div class="px-3">
-                                                        <div class="auth-logo-box text-center">
-                                                            <a href="analytics-index.html" class="logo logo-admin"><img src="assets/images/logo-sm.png" height="40" alt="logo" class="auth-logo"></a>
-                                                        </div><!--end auth-logo-box-->
-
-                                                        <div class="text-center auth-logo-text">
-                                                            <h4 class="mt-0 m2-3 mt-3">Free Register for Maxdot</h4>
-                                                            <p class="text-muted mb-0">Get your free Maxdot account now.</p>
-                                                        </div> <!--end auth-logo-text-->
-
                                                         <form class="form-horizontal auth-form my-4" action="index.html">
-
                                                             <div class="form-group">
-                                                                <label for="username">Username</label>
-                                                                <div class="input-group mb-3">
-                                                                    <input type="text" class="form-control" id="username" placeholder="Enter username">
-                                                                </div>
-                                                            </div><!--end form-group-->
-
-                                                            <div class="form-group">
-                                                                <label for="useremail">Email</label>
-                                                                <div class="input-group mb-3">
-                                                                    <input type="email" class="form-control" id="useremail" placeholder="Enter Email">
-                                                                </div>
+                                                                <label for="comprobante">Seleccionar Comprobante</label>
+                                                                <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;">
+                                                                    <option>Boleta</option>
+                                                                    <option>Factura</option>
+                                                                </select>
                                                             </div><!--end form-group-->
 
                                                             <div class="form-group">
-                                                                <label for="userpassword">Password</label>
+                                                                <label for="serie">Serie</label>
                                                                 <div class="input-group mb-3">
-                                                                    <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                                                    <input type="email" class="form-control" id="serie" placeholder="Serie">
                                                                 </div>
                                                             </div><!--end form-group-->
-
                                                             <div class="form-group">
-                                                                <label for="conf_password">Confirm Password</label>
+                                                                <label for="numero">Numero</label>
                                                                 <div class="input-group mb-3">
-                                                                    <input type="password" class="form-control" id="conf_password" placeholder="Enter Confirm Password">
+                                                                    <input type="text" class="form-control" id="numero" placeholder="Numero">
                                                                 </div>
-
-                                                                <div class="form-group">
-                                                                    <label for="mo_number">Mobile Number</label>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control" id="mo_number" placeholder="Enter Mobile Number">
-                                                                    </div>
-                                                                </div><!--end form-group-->
                                                             </div><!--end form-group-->
-
-                                                            <div class="form-group row mt-4">
-                                                                <div class="col-sm-12">
-                                                                    <div class="custom-control custom-switch switch-success">
-                                                                        <input type="checkbox" class="custom-control-input" id="customSwitchSuccess_Signup">
-                                                                        <label class="custom-control-label text-muted" for="customSwitchSuccess_Signup">By registering you agree to the Frogetor <a href="#" class="text-primary">Terms of Use</a></label>
-                                                                    </div>
-                                                                </div><!--end col-->
-                                                            </div><!--end form-group-->
-
-                                                            <div class="form-group mb-0 row">
-                                                                <div class="col-12 mt-2">
-                                                                    <button class="btn btn-primary btn-rounded btn-block" type="submit">Register <i class="fas fa-sign-in-alt ms-1"></i></button>
-                                                                </div><!--end col-->
-                                                            </div> <!--end form-group-->
                                                         </form><!--end form-->
                                                     </div><!--end /div-->
 
-                                                    <div class="m-3 text-center text-muted">
-                                                        <p class="">Already have an account ? <a href="auth-login.html" class="text-primary ms-2">Log in</a></p>
-                                                    </div>
                                                 </div><!--end card-body-->
                                             </div><!--end card-->
                                         </div><!--end auth-page-->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-soft-primary btn-sm">Guardar</button>
+                                            <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                                        </div><!--end modal-footer-->
                                     </div><!--end modal-body-->
 
                                 </div><!--end modal-content-->
