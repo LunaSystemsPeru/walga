@@ -1,3 +1,6 @@
+<?php
+require '../../models/Chofer.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
