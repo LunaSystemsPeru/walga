@@ -510,6 +510,8 @@ tipo pago (contado credito)]]></comment>
 			<options><![CDATA[engine=InnoDB]]></options>
 		</table>
 	</schema>
+	<connector name="MariaDb" database="MariaDb" driver_class="org.mariadb.jdbc.Driver" driver_jar="mariadb-java-client-3.0.5.jar" driver_desc="Standard" host="localhost" port="3306" user="lspadmin" passwd="OjE4O3Q0QkM5WmZqY0Y=" />
+	<connector name="MyDb" database="MySql" host="localhost" port="3306" user="root" />
 	<connector name="MyDb" database="MySql" host="localhost" port="3306" user="root" />
 	<layout name="default layout" id="Layout-15f7" confirmed="y" show_relation="columns" >
 		<entity schema="walga.goempres_walga" name="chofer" color="C1D8EE" x="800" y="96" />
@@ -517,7 +519,7 @@ tipo pago (contado credito)]]></comment>
 		<entity schema="walga.goempres_walga" name="clientes_pagos" color="C1D8EE" x="560" y="1136" />
 		<entity schema="walga.goempres_walga" name="comprobantes_empresas" color="C1D8EE" x="1344" y="864" />
 		<entity schema="walga.goempres_walga" name="contratos" color="C1D8EE" x="800" y="384" />
-		<entity schema="walga.goempres_walga" name="contratos_pagos" color="C1D8EE" x="800" y="1136" />
+		<entity schema="walga.goempres_walga" name="contratos_pagos" color="C1D8EE" x="784" y="1136" />
 		<entity schema="walga.goempres_walga" name="empresas" color="C1D8EE" x="1088" y="864" />
 		<entity schema="walga.goempres_walga" name="entidades" color="C1D8EE" x="320" y="1136" />
 		<entity schema="walga.goempres_walga" name="parametros" color="C1D8EE" x="1280" y="688" />

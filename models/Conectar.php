@@ -15,8 +15,8 @@ class conectar
     private $_link;
     //private $_host = "localhost";
     private $_host = "localhost";
-    private $_user = "lspadmin";
-    private $_pass = ":18;t4BC9ZfjcF";
+    private $_user = "goempres_root";
+    private $_pass = "k;6?6,m{7ePs";
     // Almacenar una unica instancia
     private $_db = "goempres_walga";
 
@@ -47,6 +47,8 @@ class conectar
     }
 
     /**
+     * @param $sql
+     * @return array
      *  Funcion que ejecuta el SQL y retorna un ROW
      *        Esta funcion esta pensada para SQLs,
      *        que retornen unicamente UNA sola línea
