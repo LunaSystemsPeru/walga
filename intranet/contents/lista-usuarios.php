@@ -46,10 +46,11 @@
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
 
-                                <a href="form-usuario.php" class="btn btn-sm btn-soft-primary">
+                                <a href="form-usuario.php" class="btn btn-sm btn-soft-primary" >
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                     Agregar Usuario
                                 </a>
+
                             </div><!--end col-->
                         </div><!--end row-->
                     </div><!--end page-title-box-->
@@ -67,7 +68,7 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th>#</th>
-                                    <th>Usuario </th>
+                                    <th>Usuario</th>
                                     <th>Datos</th>
                                     <th>Nivel Acceso</th>
                                     <th>Fec. Ult. Ingreso</th>
@@ -83,7 +84,9 @@
                                     <td>Principal</td>
                                     <td>09/07/2022</td>
                                     <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
+                                    <td>
+                                        <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                    </td>
                                 </tr>
 
                                 </tbody>
@@ -117,11 +120,14 @@ include('../fixed/footer.php');
 <script src="../assets/js/moment.js"></script>
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
-<script src="../plugins/apex-charts/apexcharts.min.js"></script>
-<script src="../assets/pages/jquery.analytics_dashboard.init.js"></script>
-
 <!-- App js -->
 <script src="../assets/js/app.js"></script>
+
+<script>
+    function abrirModal () {
+        $("#bd-example-modal-xl").modal("toggle");
+    }
+</script>
 
 </body>
 
