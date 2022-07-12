@@ -183,8 +183,8 @@
                             <span><i data-feather="box" class="align-self-center hori-menu-icon"></i>Flota</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="apps-chat.html"><i class="ti ti-minus"></i>Vehiculos</a></li>
-                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Choferes</a></li>
+                            <li><a href="lista-vehiculos.php"><i class="ti ti-minus"></i>Vehiculos</a></li>
+                            <li><a href="lista-choferes.php"><i class="ti ti-minus"></i>Choferes</a></li>
                             <li><a href="apps-calendar.html"><i class="ti ti-minus"></i>Vencimientos</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->
