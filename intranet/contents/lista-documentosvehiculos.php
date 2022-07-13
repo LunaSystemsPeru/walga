@@ -46,7 +46,7 @@
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
 
-                                <a href="form-vehiculos.php" class="btn btn-sm btn-soft-primary">
+                                <a href="form-documentosvehiculos.php" class="btn btn-sm btn-soft-primary">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                     Agregar Documento de Vehiculo
                                 </a>
