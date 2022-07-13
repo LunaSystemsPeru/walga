@@ -85,6 +85,7 @@
                                     </div><!--end col-->
                                 </div><!--end row-->
                                 <div class="input-group mb-3">
+                                    <label class="form-label">Emisor</label>
                                     <button class="btn btn-secondary" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
                                     <input type="text" class="form-control" placeholder="" aria-label="Buscar emisor" aria-describedby="button-addon1">
                                 </div>

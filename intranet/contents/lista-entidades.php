@@ -64,7 +64,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Registrar Entidades</h6>
+                                        <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Registrar Entidad</h6>
                                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                     </div><!--end modal-header-->
                                     <div class="modal-body">
