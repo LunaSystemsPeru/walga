@@ -38,10 +38,10 @@
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Lista de Empresa</h4>
+                                <h4 class="page-title">Registrar Choferes</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Configuracion</a></li>
-                                    <li class="breadcrumb-item active">Empresa</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Flota</a></li>
+                                    <li class="breadcrumb-item active">Choferes</li>
                                 </ol>
                             </div><!--end col-->
 
@@ -57,78 +57,49 @@
                     <div class="card-body">
                         <form>
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label class="form-label" for="ruc">Ruc</label>
-                                        <input type="text" class="form-control" id="ruc" placeholder="Ruc">
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="razonsocial">Razon Social</label>
-                                        <input type="text" class="form-control" id="razonsocial"
-                                               placeholder="Razon Social">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="codsunat">Codigo Sunat</label>
-                                        <input type="text" class="form-control" id="codsunat"
-                                               placeholder="Codigo Sunat">
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="dirfiscal">Direccion Fiscal</label>
-                                        <input type="text" class="form-control" id="dirfiscal"
-                                               placeholder="Direccion Fiscal">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="ubigeo">Ubigeo</label>
-                                        <input type="text" class="form-control" id="ubigeo" placeholder="Ubigeo">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="departamento">Departamento</label>
-                                        <input type="text" class="form-control" id="departamento"
-                                               placeholder="Departamento">
+                                        <label class="form-label" for="apellidosynombres">Apellidos y Nombres</label>
+                                        <input type="text" class="form-control" id="apellidosynombres"
+                                               placeholder="Apellidos y Nombres">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="provincia">Provincia</label>
-                                        <input type="text" class="form-control" id="provincia" placeholder="Provincia">
+                                        <label class="form-label" for="brevete">Brevete</label>
+                                        <input type="text" class="form-control" id="brevete" placeholder="Brevete">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="distrito">Distrito</label>
-                                        <input type="text" class="form-control" id="distrito" placeholder="Distrito">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="usuario">Usuario SUNAT</label>
-                                        <input type="text" class="form-control" id="usuario" placeholder="Usuario">
+                                        <label class="form-label" for="categoria">Categoria</label>
+                                        <input type="text" class="form-control" id="categoria" placeholder="Categoria">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="exampleInputPassword1">Clave SOL</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1"
-                                               placeholder="Password">
+                                        <label class="form-label" for="fecha">Fecha de Vencimiento</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="date" value="2020-08-19" id="Fecha de vencimiento">
+                                    </div>
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="col-sm-10 ms-auto">
+                                            <label class="form-label" for="estado">Estado</label>
+                                            <div class="form-check form-switch form-switch-secondary">
+                                                <input class="form-check-input" type="checkbox"
+                                                       id="customSwitchSecondary"
+                                                       checked>
+                                                <label class="form-check-label"
+                                                       for="customSwitchSecondary">Activo</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                         </form>
                     </div><!--end card-body-->
                     <div class="card-footer">
@@ -136,7 +107,7 @@
 
                             <a href="#" class="btn btn-sm btn-soft-primary">
                                 <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                Guardar Empresa
+                                Guardar Choferes
                             </a>
                         </div><!--end col-->
                     </div>
@@ -167,8 +138,6 @@ include('../fixed/footer.php');
 <script src="../assets/js/moment.js"></script>
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
-<script src="../plugins/apex-charts/apexcharts.min.js"></script>
-<script src="../assets/pages/jquery.analytics_dashboard.init.js"></script>
 
 <!-- App js -->
 <script src="../assets/js/app.js"></script>

@@ -38,21 +38,17 @@
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Analytics</h4>
+                                <h4 class="page-title">Lista de Vehiculos</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Dastone</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Analytics</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Flota</a></li>
+                                    <li class="breadcrumb-item active">Vehiculos</li>
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
-                                <a href="#" class="btn btn-sm btn-outline-primary" id="Dash_Date">
-                                    <span class="day-name" id="Day_Name">Today:</span>&nbsp;
-                                    <span class="" id="Select_date">Jan 11</span>
-                                    <i data-feather="calendar" class="align-self-center icon-xs ml-1"></i>
-                                </a>
-                                <a href="#" class="btn btn-sm btn-outline-primary">
-                                    <i data-feather="download" class="align-self-center icon-xs"></i>
+
+                                <a href="form-vehiculos.php" class="btn btn-sm btn-soft-primary">
+                                    <i data-feather="plus" class="fas fa-plus mr-2"></i>
+                                    Agregar Vehiculo
                                 </a>
                             </div><!--end col-->
                         </div><!--end row-->
@@ -70,15 +66,12 @@
                             <table class="table mb-0">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th>#</th>
-                                    <th>Fecha </th>
-                                    <th>Vehiculo</th>
-                                    <th>Servicio</th>
-                                    <th>Cliente</th>
-                                    <th>Comprobante?</th>
-                                    <th>Emitido?</th>
-                                    <th>Monto Aprobado</th>
-                                    <th>Deuda</th>
+                                    <th>Item</th>
+                                    <th>placa </th>
+                                    <th>Marca</th>
+                                    <th>Modelo</th>
+                                    <th>Año</th>
+                                    <th>Capacidad</th>
                                     <th>Estado</th>
                                     <th></th>
                                 </tr>
@@ -86,29 +79,12 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>2022-07-08</td>
-                                    <td>D2D744</td>
-                                    <td>TRASLADO | O. PARDO  - D. TIERRA PROMETIDA | CARGA DE HERRAMIENTAS</td>
-                                    <td>Pachin</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">Factura</span></td>
-                                    <td><i data-feather="check"></i></td>
-                                    <td>150.00</td>
-                                    <td>70.00</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">en Curso</span></td>
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>2022-07-08</td>
-                                    <td>D2D744</td>
-                                    <td>TRASLADO | O. PARDO  - D. TIERRA PROMETIDA | CARGA DE HERRAMIENTAS</td>
-                                    <td>Pachin</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">Factura</span></td>
-                                    <td><button type="button" class="btn btn-info btn-sm"><i class="ti ti-plus"></i></button></td>
-                                    <td>150.00</td>
-                                    <td>70.00</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">en Curso</span></td>
+                                    <td>MHL123</td>
+                                    <td>TOYOTA</td>
+                                    <td>C-HR</td>
+                                    <td>2019</td>
+                                    <td>5</td>
+                                    <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
                                     <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
                                 </tr>
 

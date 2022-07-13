@@ -8,7 +8,7 @@
     <meta name="description" content="WALGA Inversiones | Alquiler de Vehiculos">
     <meta name="keywords" content="cargo, clean, contractor, corporate, freight, industry, localization, logistics, page builder, shipment, transport, transportation, truck, trucking">
     <meta name="author" content="Themexriver">
-    <link rel="shortcut icon" href="assets/img/logo/ficon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/logo/faviconwalga.png" type="image/x-icon">
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
