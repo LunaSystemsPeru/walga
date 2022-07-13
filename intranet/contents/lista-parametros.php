@@ -1,13 +1,25 @@
+<?php
+require '../../models/Parametro.php';
+require '../../models/ParametroValor.php';
+$Parametro = new Parametro();
+$Valor = new ParametroValor();
+$Valor->setParametroId(1);
+if (filter_input(INPUT_GET, 'tipo', FILTER_SANITIZE_NUMBER_INT)) {
+    $Valor->setParametroId(filter_input(INPUT_GET, 'tipo', FILTER_SANITIZE_NUMBER_INT));
+}
+
+$Parametro->setId($Valor->getParametroId());
+$Parametro->obtenerDatos();
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 
 <!-- Mirrored from mannatthemes.com/dastone/default/horizontal-index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 May 2021 20:34:16 GMT -->
 <head>
     <meta charset="utf-8"/>
-    <title>Dastone - Admin & Dashboard Template</title>
+    <title>Walga Inversiones | Transporte y Alquiler de Gruas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description"/>
+    <meta content="Walga Inversiones | Transporte y Alquiler de Gruas" name="description"/>
     <meta content="" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
@@ -48,7 +60,7 @@
 
                                 <a href="#" class="btn btn-sm btn-soft-primary">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                    Agregar Detalles
+                                    Agregar <?php echo $Parametro->getDescripcion() ?>
                                 </a>
                             </div><!--end col-->
                         </div><!--end row-->
@@ -67,16 +79,27 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th>#</th>
-                                    <th>Descripcion </th>
+                                    <th>Descripcion</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Clasificacion</td>
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-pencil"></i></button></td>
-                                </tr>
+                                <?php
+                                $array_parametros = $Parametro->verFilas();
+                                $item = 1;
+                                foreach ($array_parametros as $fila) {
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $item ?></th>
+                                        <td><?php echo $fila['descripcion'] ?></td>
+                                        <td>
+                                            <a href="lista-parametros.php?tipo=<?php echo $fila['id'] ?>" class="btn btn-info btn-sm"><i class="ti ti-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $item++;
+                                }
+                                ?>
 
                                 </tbody>
                             </table><!--end /table-->
@@ -92,22 +115,30 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th>#</th>
-                                    <th>Descripcion </th>
-                                    <th>Valor1 </th>
-                                    <th>Valor2 </th>
+                                    <th>Descripcion</th>
+                                    <th>Valor1</th>
+                                    <th>Valor2</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Clasificacion</td>
-                                    <td>01</td>
-                                    <td>50</td>
-
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-pencil"></i></button></td>
-                                </tr>
-
+                                <?php
+                                $array_valores = $Valor->verFilas();
+                                $itemvalor = 1;
+                                foreach ($array_valores as $filavalor) {
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $itemvalor?></th>
+                                        <td><?php echo $filavalor['descripcion'] ?></td>
+                                        <td><?php echo $filavalor['valor1'] ?></td>
+                                        <td><?php echo $filavalor['valor2'] ?></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm"><i class="ti ti-pencil"></i></button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
                                 </tbody>
                             </table><!--end /table-->
                         </div><!--end /tableresponsive-->

@@ -5,9 +5,9 @@
 <!-- Mirrored from mannatthemes.com/dastone/default/auth-lock-screen.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 May 2021 20:37:26 GMT -->
 <head>
     <meta charset="utf-8" />
-    <title>Dastone - Admin & Dashboard Template</title>
+    <title>Walga Inversiones | Transporte y Alquiler de Gruas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Walga Inversiones | Transporte y Alquiler de Gruas" name="description" />
     <meta content="" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
