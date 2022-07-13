@@ -100,7 +100,7 @@ class Parametro
         $sql = "update parametros
                 set descripcion = '$this->descripcion',
                     tipo = '$this->tipo'
-                    id = '$this->dd'
+                    id = '$this->id'
                 where id = $this->id";
         $this->conectar->ejecutar_idu($sql);
     }

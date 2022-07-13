@@ -327,8 +327,9 @@ Template:	MobioKit
 }
 
 .gradient-blue, .header--page, .card--style-plan-premium, .page--intro, .page--splash, .page--login {
-    background-color: #4352e0 !important;
-    background: linear-gradient(60deg, #4352e0 0%, #6876fd 100%) !important;
+    background-color: #0A8C0D !important;
+    background: linear-gradient(60deg, #0A8C0D 0%, #48C43B 100%) !important;
+    /*background: linear-gradient(60deg, #046E06 0%, #6876fd 100%) !important;*/
 }
 
 /*===============================================*/
@@ -492,7 +493,7 @@ textarea, input, select {
 }
 
 .button--main {
-    background-color: #30e391;
+    background-color: #ea750e;
     color: #fff;
 }
 
@@ -1378,7 +1379,7 @@ body.panel-closing .page, body.panel-closing .bottom-toolbar {
     overflow: hidden;
     width: 16px;
     height: 16px;
-    background-image: url('../images/icons/blue/search.svg');
+    background-image: url(../../../assets/images/icons/blue/search.svg);
     background-color: transparent;
     border: none;
     background-repeat: no-repeat;
@@ -2637,7 +2638,7 @@ body.panel-closing .page, body.panel-closing .bottom-toolbar {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    /* height: 100%;*/
 }
 
 .login__content {
@@ -4254,19 +4255,11 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .table--5cols .table__inner {
-    width: 175%;
+    width: 125%;
 }
 
 .table--5cols .table__section {
-    width: 20%;
-}
-
-.table--5cols .table__section__id {
-    width: 5%;
-}
-
-.table--5cols .table__section__email {
-    width: 35%;
+    width: 25%;
 }
 
 .table--6cols {

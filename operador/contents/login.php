@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
     <title>MobioKit - Premium Mobile Template</title>
     <link rel="stylesheet" href="../vendor/swiper/swiper.min.css">
-    <link rel="stylesheet" href="main/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
 </head>
 <body>
@@ -13,16 +13,13 @@
 <div class="page page--login" data-page="login">
 
     <!-- HEADER -->
-    <header class="header header--absolute">
+    <header class="header ">
         <div class="header__logo--intro">
-            <img src="../../public/images/logowalga.png" style="width: 40%">
+                <img src="../../public/images/logowalga.png" style="width: 45%; height: auto">
         </div>
-
     </header>
-        <br>
     <div class="login">
         <div class="login__content">
-            <p class="login__text">Bienvenido Operador</p>
             <div class="login-form">
                 <form id="LoginForm" method="post" action="contratos.php">
                     <div class="login-form__row">
@@ -38,8 +35,9 @@
                         <div class="form__select">
                             <select name="selectoptions" class="required">
                                 <option value="" disabled selected>Seleccionar Vehiculo</option>
-                                <option value="1">D2D744</option>
-                                <option value="2">BDO254</option>
+                                <option value="1">B8K911</option>
+                                <option value="2">B0H847</option>
+                                <option value="2">B4W773</option>
                             </select>
                         </div>
                     </div>
