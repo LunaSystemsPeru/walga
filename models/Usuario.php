@@ -161,6 +161,7 @@ class Usuario
         $sql = "select ifnull(id, 0) as id 
         from usuarios 
         where username = '$this->username'";
+        echo $sql;
         $this->id = $this->conectar->get_valor_query($sql, "id");
     }
 

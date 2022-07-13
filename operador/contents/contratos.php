@@ -1,3 +1,8 @@
+<?php
+include "../fixed/cargarSesion.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

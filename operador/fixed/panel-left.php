@@ -1,3 +1,7 @@
+<?php
+include "../fixed/cargarSesion.php";
+
+?>
 <div class="panel panel--left">
                   <!-- Slider -->
                  <div class="panel__navigation">

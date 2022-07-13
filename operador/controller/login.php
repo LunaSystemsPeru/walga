@@ -7,15 +7,18 @@ require '../../tools/Zebra_Session.php';
 require_once '../../models/Conectar.php';
 require '../../models/Usuario.php';
 require '../../models/ParametroValor.php';
+require '../../models/Vehiculo.php';
 
 $Conectar = Conectar::getInstancia();
 $Usuario = new Usuario();
 $Valor = new ParametroValor();
+$Vehiculo = new Vehiculo();
 
 $password = filter_input(INPUT_POST, 'input-password');
-$Usuario->setUsername(filter_input(INPUT_POST, 'input-username'));
+$Usuario->setUsername(filter_input(INPUT_POST, 'input-usuario'));
 $placa = filter_input(INPUT_POST, 'select-vehiculo');
 $Usuario->validarUsername();
+//echo "hola" . $Usuario->getId();
 
 if ($Usuario->getId() > 0) {
     //usuario existe
@@ -35,9 +38,13 @@ if ($Usuario->getId() > 0) {
                     echo $e;
                 }
 
+                $Vehiculo->setId($placa);
+                $Vehiculo->obtenerDatos();
+
                 $_SESSION['usuario_id'] = $Usuario->getId();
                 $_SESSION['empresa_id'] = $Usuario->getEmpresaId();
                 $_SESSION['vehiculo'] = $placa;
+                $_SESSION['placa'] = $Vehiculo->getPlaca();
                 header("Location: ../contents/contratos.php");
             } else {
                 //contraseña incorrecta

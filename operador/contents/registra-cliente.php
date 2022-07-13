@@ -1,3 +1,7 @@
+<?php
+include "../fixed/cargarSesion.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,30 +38,32 @@
         <h2 class="page__title">Nuevo Cliente</h2>
         <div class="fieldset">
             <div class="form">
-                <form id="Form" method="post" action="checkout.html">
+                <form id="Form" method="post" action="../controller/registrar-cliente.php">
                     <div class="form__row">
                         <label class="form__label">Apellidos y Nombres</label>
-                        <input type="text" name="Username" placeholder="Buscar Cliente" value="" class="form__input required"/>
+                        <input type="text" name="input-datos" placeholder="Datos de Contacto del Cliente" value="" class="form__input required"/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Nro Celular</label>
-                        <input type="text" name="Username" placeholder="# celular" value="" class="form__input "/>
+                        <input type="text" name="input-celular" placeholder="# celular" value="" class="form__input " maxlength="9"/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">email</label>
-                        <input type="text" name="Username" placeholder="correo electronico" value="" class="form__input "/>
+                        <input type="email" name="input-email" placeholder="correo electronico" value="" class="form__input "/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Nro RUC para facturas</label>
-                        <input type="text" name="Username" placeholder="Solo si requiere factura" value="" class="form__input "/>
+                        <input type="text" name="input-ruc" id="input-ruc" placeholder="Solo si requiere factura" class="form__input " maxlength="11" minlength="8"/>
+                        <button class="button button--small button--secondary" type="button" id="button-addon1" onclick="validarRUC()">Obtener Razon Social</button>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Razon Social</label>
-                        <input type="text" name="Username" placeholder="solo si llenan RUC" value="" class="form__input required" readonly/>
+                        <input type="text" name="input-razon-social" id="input-razon-social" placeholder="solo si llenan RUC" value="" class="form__input required" readonly/>
+                        <input type="hidden" id="input-direccion-ruc" name="input-direccion-ruc">
                     </div>
                     <div class="form__row">
                         <label class="form__label">Referencia</label>
-                        <input type="text" name="Username" placeholder="solo si llenan RUC" value="" class="form__input required" readonly/>
+                        <input type="text" name="input-referencia" id="input-referencia" placeholder="como ubicarlo" class="form__input required"/>
                     </div>
                     <div class="form__row mt-40">
                         <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
@@ -86,5 +92,18 @@
     <script src="../vendor/jquery/jquery.validate.min.js"></script>
     <script src="../vendor/swiper/swiper.min.js"></script>
     <script src="../assets/js/jquery.custom.js"></script>
+
+    <script>
+        function validarRUC() {
+            var arraypost = {nrodocumento: $("#input-ruc").val().trim()};
+
+            $.post("../../inputAjax/obtenerDatosInternet.php", arraypost, function (data) {
+                var jsonresultado = JSON.parse(data);
+                $("#input-razon-social").val(jsonresultado.datos)
+                $("#input-direccion-ruc").val(jsonresultado.direccion)
+                $("#input-referencia").focus();
+            });
+        }
+    </script>
 </body>
 </html>

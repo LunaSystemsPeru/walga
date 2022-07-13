@@ -383,7 +383,7 @@ blockquote {
     font-size: 1.8rem;
     line-height: 1.5;
     font-weight: 300;
-    background-image: url(../../../assets/images/icons/blue/quote.svg);
+    background-image: url(../../assets/images/icons/blue/quote.svg);
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 40px;
@@ -515,7 +515,7 @@ textarea, input, select {
 }
 
 .button--chat {
-    background-image: url(../../../assets/images/icons/white/chat.svg);
+    background-image: url(../../assets/images/icons/white/chat.svg);
     background-repeat: no-repeat;
     background-position: 20px 50%;
     background-size: 18px;
@@ -535,7 +535,7 @@ ul.custom-listing li span {
 }
 
 ul.custom-listing li.email {
-    background-image: url(../../../assets/images/icons/blue/contact.svg);
+    background-image: url(../../assets/images/icons/blue/contact.svg);
     background-repeat: no-repeat;
     background-position: 0px 50%;
     background-size: 24px;
@@ -543,7 +543,7 @@ ul.custom-listing li.email {
 }
 
 ul.custom-listing li.phone {
-    background-image: url(../../../assets/images/icons/blue/mobile.svg);
+    background-image: url(../../assets/images/icons/blue/mobile.svg);
     background-repeat: no-repeat;
     background-position: 0px 50%;
     background-size: 24px;
@@ -551,7 +551,7 @@ ul.custom-listing li.phone {
 }
 
 ul.custom-listing li.address {
-    background-image: url(../../../assets/images/icons/blue/home.svg);
+    background-image: url(../../assets/images/icons/blue/home.svg);
     background-repeat: no-repeat;
     background-position: 0px 50%;
     background-size: 24px;
@@ -560,7 +560,7 @@ ul.custom-listing li.address {
 
 ul.custom-listing--checked li {
     padding: 5px 0 5px 30px;
-    background-image: url(../../../assets/images/icons/blue/checked-simple.svg);
+    background-image: url(../../assets/images/icons/blue/checked-simple.svg);
     background-repeat: no-repeat;
     background-position: 0px 50%;
     background-size: 18px;
@@ -1200,7 +1200,7 @@ body.panel-closing .page, body.panel-closing .bottom-toolbar {
 }
 
 .bottom-navigation__shop-cart {
-    background-image: url(../../../assets/images/icons/white/cart.svg);
+    background-image: url(../../assets/images/icons/white/cart.svg);
     background-repeat: no-repeat;
     background-position: 20px 50%;
     background-size: 18px;
@@ -1379,7 +1379,7 @@ body.panel-closing .page, body.panel-closing .bottom-toolbar {
     overflow: hidden;
     width: 16px;
     height: 16px;
-    background-image: url(../../../assets/images/icons/blue/search.svg);
+    background-image: url(../../assets/images/icons/blue/search.svg);
     background-color: transparent;
     border: none;
     background-repeat: no-repeat;
@@ -3109,14 +3109,14 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .color-selectors input[type=radio]:checked + label {
-    background-image: url(../../../assets/images/icons/black/checked-simple.svg);
+    background-image: url(../../assets/images/icons/black/checked-simple.svg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 14px 14px;
 }
 
 .color-selectors input[type=radio]:checked + label.black {
-    background-image: url(../../../assets/images/icons/white/checked-simple.svg);
+    background-image: url(../../assets/images/icons/white/checked-simple.svg);
 }
 
 .cart {
@@ -3347,7 +3347,7 @@ a.plyr__controls__item.plyr__control:hover,
     overflow: hidden;
     border-radius: 10px;
     background-color: #f6f9fa;
-    background-image: url(../../../assets/images/icons/blue/arrow-down.svg);
+    background-image: url(../../assets/images/icons/blue/arrow-down.svg);
     background-repeat: no-repeat;
     background-position: 95% 50%;
     background-size: 16px;
@@ -3424,7 +3424,7 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .radio-option--full input[type="radio"]:checked + label {
-    background-image: url(../../../assets/images/icons/white/checked-simple.svg);
+    background-image: url(../../assets/images/icons/white/checked-simple.svg);
     background-repeat: no-repeat;
     background-position: 15px 50%;
     background-size: 16px;
@@ -3478,7 +3478,7 @@ a.plyr__controls__item.plyr__control:hover,
 }
 
 .checkbox-option--full input[type="checkbox"]:checked + label {
-    background-image: url(../../../assets/images/icons/white/checked-simple.svg);
+    background-image: url(../../assets/images/icons/white/checked-simple.svg);
     background-repeat: no-repeat;
     background-position: 15px 50%;
     background-size: 16px;
@@ -3497,7 +3497,7 @@ a.plyr__controls__item.plyr__control:hover,
     display: block;
     padding: 20px 20px 20px 60px;
     background-color: #f6f9fa;
-    background-image: url(../../../assets/images/icons/blue/card.svg);
+    background-image: url(../../assets/images/icons/blue/card.svg);
     background-repeat: no-repeat;
     background-position: 15px 50%;
     background-size: 30px;
@@ -3520,7 +3520,7 @@ a.plyr__controls__item.plyr__control:hover,
 
 .card-selector input[type="radio"]:checked + label {
     background-color: #83cbf8;
-    background-image: url(../../../assets/images/icons/white/checked-simple.svg);
+    background-image: url(../../assets/images/icons/white/checked-simple.svg);
     background-repeat: no-repeat;
     background-position: 15px 50%;
     background-size: 16px;
@@ -4109,7 +4109,7 @@ a.plyr__controls__item.plyr__control:hover,
     width: 14px;
     height: 14px;
     text-align: center;
-    background-image: url(../../../assets/images/icons/blue/arrow-down.svg);
+    background-image: url(../../assets/images/icons/blue/arrow-down.svg);
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 14px;
@@ -4120,7 +4120,7 @@ a.plyr__controls__item.plyr__control:hover,
 
 .accordion__input[type=radio]:checked + .accordion__label span {
     transform: rotateX(180deg);
-    background-image: url(../../../assets/images/icons/white/arrow-down.svg);
+    background-image: url(../../assets/images/icons/white/arrow-down.svg);
 }
 
 /* ------Toggle---------- */
@@ -4185,7 +4185,7 @@ a.plyr__controls__item.plyr__control:hover,
     width: 14px;
     height: 14px;
     text-align: center;
-    background-image: url(../../../assets/images/icons/blue/arrow-down.svg);
+    background-image: url(../../assets/images/icons/blue/arrow-down.svg);
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 14px;
@@ -4196,7 +4196,7 @@ a.plyr__controls__item.plyr__control:hover,
 
 .toggle__input[type=checkbox]:checked + .toggle__label span {
     transform: rotateX(180deg);
-    background-image: url(../../../assets/images/icons/white/arrow-down.svg);
+    background-image: url(../../assets/images/icons/white/arrow-down.svg);
 }
 
 /* TABLES */

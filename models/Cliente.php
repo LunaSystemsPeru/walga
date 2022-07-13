@@ -7,6 +7,7 @@ class Cliente
     private $datos;
     private $celular;
     private $email;
+    private $referencia;
     private $entidad_id;
     private $empresa_id;
     private $conectar;
@@ -48,7 +49,7 @@ class Cliente
      */
     public function setDatos($datos)
     {
-        $this->datos = $datos;
+        $this->datos = strtoupper($datos);
     }
 
     /**
@@ -115,6 +116,22 @@ class Cliente
         $this->empresa_id = $empresa_id;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getReferencia()
+    {
+        return $this->referencia;
+    }
+
+    /**
+     * @param mixed $referencia
+     */
+    public function setReferencia($referencia)
+    {
+        $this->referencia = trim(strtoupper($referencia));
+    }
+
     public function obtenerId()
     {
         $sql = "select ifnull(max(id)+1, 1) as codigo 
@@ -134,6 +151,7 @@ class Cliente
             $this->email = $resultado['email'];
             $this->entidad_id = $resultado['entidad_id'];
             $this->empresa_id = $resultado['empresa_id'];
+            $this->referencia = $resultado['referencia'];
             return true;
         } else {
             return false;
@@ -148,7 +166,8 @@ class Cliente
                         '$this->celular', 
                         '$this->email',
                         '$this->entidad_id',
-                        '$this->empresa_id')";
+                        '$this->empresa_id',
+                        '$this->referencia')";
         $this->conectar->ejecutar_idu($sql);
     }
 
@@ -158,7 +177,8 @@ class Cliente
                 set datos = '$this->datos',
                     celular = '$this->celular',
                     email = '$this->email',
-                    entidad_id = '$this->entidad_id'
+                    entidad_id = '$this->entidad_id',
+                    referencia = '$this->referencia'
                 where id = $this->id";
         $this->conectar->ejecutar_idu($sql);
     }
@@ -167,6 +187,14 @@ class Cliente
     {
         $sql = "select * from clientes 
                 where empresa_id = '$this->empresa_id'
+                order by datos asc";
+        return $this->conectar->get_Cursor($sql);
+    }
+
+    public function buscarClientes($term)
+    {
+        $sql = "select * from clientes 
+                where empresa_id = '$this->empresa_id' and datos like '%$term%'
                 order by datos asc";
         return $this->conectar->get_Cursor($sql);
     }

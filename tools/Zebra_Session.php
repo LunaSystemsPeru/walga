@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  A drop-in replacement for PHP's default session handler, using MySQL for storage and providing better performance as
  *  well as better security and protection against session fixation and session hijacking.
@@ -7,13 +8,14 @@
  *
  *  Read more {@link https://github.com/stefangabos/Zebra_Session/ here}
  *
- *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    3.1 (last revision: May 31, 2020)
- *  @copyright  (c) 2006 - 2020 Stefan Gabos
- *  @license    https://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
- *  @package    Zebra_Session
+ * @author     Stefan Gabos <contact@stefangabos.ro>
+ * @version    3.1 (last revision: May 31, 2020)
+ * @copyright  (c) 2006 - 2020 Stefan Gabos
+ * @license    https://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
+ * @package    Zebra_Session
  */
-class Zebra_Session {
+class Zebra_Session
+{
 
     private $flash_data;
     private $flash_data_var;
@@ -61,7 +63,7 @@ class Zebra_Session {
      *
      *  From now on whenever PHP sets the 'PHPSESSID' cookie, the cookie will be available to all subdomains!
      *
-     *  @param  resource    &$link              An object representing the connection to a MySQL Server, as returned
+     * @param resource    &$link An object representing the connection to a MySQL Server, as returned
      *                                          by calling {@link https://www.php.net/manual/en/mysqli.construct.php mysqli_connect},
      *                                          or a {@link https://www.php.net/manual/en/intro.pdo.php PDO} instance.
      *
@@ -70,7 +72,7 @@ class Zebra_Session {
      *                                          via Zebra_Database's {@link https://stefangabos.github.io/Zebra_Database/Zebra_Database/Zebra_Database.html#methodget_link get_link}
      *                                          method.
      *
-     *  @param  string      $security_code      The value of this argument is appended to the string created by
+     * @param string $security_code The value of this argument is appended to the string created by
      *                                          concatenating the user browser's User Agent string (or an empty string
      *                                          if "lock_to_user_agent" is FALSE) and the user's IP address (or an
      *                                          empty string if "lock_to_ip" is FALSE), before creating an MD5 hash out
@@ -85,7 +87,7 @@ class Zebra_Session {
      *                                          digits. To simplify the process, use {@link https://www.random.org/passwords/?num=1&len=12&format=html&rnd=new this}
      *                                          link to generate such a random string.</samp>
      *
-     *  @param  integer     $session_lifetime   (Optional) The number of seconds after which a session will be considered
+     * @param integer $session_lifetime (Optional) The number of seconds after which a session will be considered
      *                                          as <i>expired</i>.
      *
      *                                          Expired sessions are cleaned up from the database whenever the <i>garbage
@@ -111,7 +113,7 @@ class Zebra_Session {
      *
      *                                          Pass an empty string to keep default value.
      *
-     *  @param  boolean     $lock_to_user_agent (Optional) Whether to restrict the session to the same User Agent (browser)
+     * @param boolean $lock_to_user_agent (Optional) Whether to restrict the session to the same User Agent (browser)
      *                                          as when the session was first opened.
      *
      *                                          <i>The user agent check only adds minor security, since an attacker that
@@ -132,7 +134,7 @@ class Zebra_Session {
      *
      *                                          Default is TRUE.
      *
-     *  @param  boolean     $lock_to_ip         (Optional) Whether to restrict the session to the same IP as when the
+     * @param boolean $lock_to_ip (Optional) Whether to restrict the session to the same IP as when the
      *                                          session was first opened.
      *
      *                                          Use this with caution as users may have a dynamic IP address which may
@@ -142,7 +144,7 @@ class Zebra_Session {
      *
      *                                          Default is FALSE.
      *
-     *  @param  integer     $gc_probability     (Optional) Used in conjunction with <i>$gc_divisor</i>. It defines the
+     * @param integer $gc_probability (Optional) Used in conjunction with <i>$gc_divisor</i>. It defines the
      *                                          probability that the <i>garbage collection routine</i> is started.
      *
      *                                          The probability is expressed by the formula:
@@ -164,7 +166,7 @@ class Zebra_Session {
      *
      *                                          Pass an empty string to keep default value.
      *
-     *  @param  integer     $gc_divisor         (Optional) Used in conjunction with <i>$gc_probability</i>. It defines the
+     * @param integer $gc_divisor (Optional) Used in conjunction with <i>$gc_probability</i>. It defines the
      *                                          probability that the <i>garbage collection routine</i> is started.
      *
      *                                          The probability is expressed by the formula:
@@ -186,11 +188,11 @@ class Zebra_Session {
      *
      *                                          Pass an empty string to keep default value.
      *
-     *  @param  string      $table_name         (Optional) Name of the MySQL table to be used by the class.
+     * @param string $table_name (Optional) Name of the MySQL table to be used by the class.
      *
      *                                          Default is <i>session_data</i>.
      *
-     *  @param  string      $lock_timeout       (Optional) The maximum amount of time (in seconds) for which a lock on
+     * @param string $lock_timeout (Optional) The maximum amount of time (in seconds) for which a lock on
      *                                          the session data can be kept.
      *
      *                                          <i>This must be lower than the maximum execution time of the script!</i>
@@ -203,17 +205,17 @@ class Zebra_Session {
      *
      *                                          Default is <i>60</i>
      *
-     *  @param  boolean     $start_session      (Optional) Whether to start the session by default after object
+     * @param boolean $start_session (Optional) Whether to start the session by default after object
      *                                          construction (by calling {@link https://php.net/manual/en/function.session-start.php session_start()})
      *
      *                                          Default is TRUE.
      *
-     *  @param  boolean     $read_only          (Optional) Opens session in read-only mode and without row locks. Any changes
+     * @param boolean $read_only (Optional) Opens session in read-only mode and without row locks. Any changes
      *                                          made to $_SESSION will not be saved, although the variable can be read/written.
      *
      *                                          Default is FALSE (the default session behaviour).
      *
-     *  @return void
+     * @return void
      */
     public function __construct(
         &$link,
@@ -227,7 +229,8 @@ class Zebra_Session {
         $lock_timeout = 60,
         $start_session = true,
         $read_only = false
-    ) {
+    )
+    {
 
         // continue if the provided link is valid
         if (($link instanceof MySQLi && $link->connect_error === null) || $link instanceof PDO) {
@@ -338,9 +341,10 @@ class Zebra_Session {
     /**
      *  Custom close() function
      *
-     *  @access private
+     * @access private
      */
-    function close() {
+    function close()
+    {
 
         // release the lock associated with the current session
         return $this->query('
@@ -353,9 +357,10 @@ class Zebra_Session {
     /**
      *  Custom destroy() function
      *
-     *  @access private
+     * @access private
      */
-    function destroy($session_id) {
+    function destroy($session_id)
+    {
 
         // delete the current session from the database
         return $this->query('
@@ -370,9 +375,10 @@ class Zebra_Session {
     /**
      *  Custom gc() function (garbage collector)
      *
-     *  @access private
+     * @access private
      */
-    function gc() {
+    function gc()
+    {
 
         // delete expired sessions from database
         $this->query('
@@ -395,9 +401,10 @@ class Zebra_Session {
      *  $active_sessions = $session->get_active_sessions();
      *  </code>
      *
-     *  @return integer     Returns the number of active (not expired) sessions.
+     * @return integer     Returns the number of active (not expired) sessions.
      */
-    public function get_active_sessions() {
+    public function get_active_sessions()
+    {
 
         // call the garbage collector
         $this->gc();
@@ -435,25 +442,26 @@ class Zebra_Session {
      *  // )
      *  </code>
      *
-     *  @since 1.0.8
-     *
-     *  @return array   Returns the values of <i>session.gc_maxlifetime</i>, <i>session.gc_probability</i> and <i>session.gc_divisor</i>
+     * @return array   Returns the values of <i>session.gc_maxlifetime</i>, <i>session.gc_probability</i> and <i>session.gc_divisor</i>
      *                  as an associative array.
      *
+     * @since 1.0.8
+     *
      */
-    public function get_settings() {
+    public function get_settings()
+    {
 
         // get the settings
         $gc_maxlifetime = ini_get('session.gc_maxlifetime');
         $gc_probability = ini_get('session.gc_probability');
-        $gc_divisor     = ini_get('session.gc_divisor');
+        $gc_divisor = ini_get('session.gc_divisor');
 
         // return them as an array
         return array(
-            'session.gc_maxlifetime'    =>  $gc_maxlifetime . ' seconds (' . round($gc_maxlifetime / 60) . ' minutes)',
-            'session.gc_probability'    =>  $gc_probability,
-            'session.gc_divisor'        =>  $gc_divisor,
-            'probability'               =>  $gc_probability / $gc_divisor * 100 . '%',
+            'session.gc_maxlifetime' => $gc_maxlifetime . ' seconds (' . round($gc_maxlifetime / 60) . ' minutes)',
+            'session.gc_probability' => $gc_probability,
+            'session.gc_divisor' => $gc_divisor,
+            'probability' => $gc_probability / $gc_divisor * 100 . '%',
         );
 
     }
@@ -461,9 +469,10 @@ class Zebra_Session {
     /**
      *  Custom open() function
      *
-     *  @access private
+     * @access private
      */
-    function open() {
+    function open()
+    {
 
         return true;
 
@@ -472,9 +481,10 @@ class Zebra_Session {
     /**
      *  Custom read() function
      *
-     *  @access private
+     * @access private
      */
-    function read($session_id) {
+    function read($session_id)
+    {
 
         // get the lock name associated with the current session
         // notice the use of sha1() which shortens the session ID to 40 characters so that it does not exceed the limit of
@@ -548,9 +558,10 @@ class Zebra_Session {
      *  $session->regenerate_id();
      *  </code>
      *
-     *  @return void
+     * @return void
      */
-    public function regenerate_id() {
+    public function regenerate_id()
+    {
 
         // regenerates the id (create a new session with a new id and containing the data from the old session)
         // also, delete the old session
@@ -582,13 +593,14 @@ class Zebra_Session {
      *  }
      *  </code>
      *
-     *  @param  string  $name   The name of the session variable.
+     * @param string $name The name of the session variable.
      *
-     *  @param  string  $value  The value of the session variable.
+     * @param string $value The value of the session variable.
      *
-     *  @return void
+     * @return void
      */
-    public function set_flashdata($name, $value) {
+    public function set_flashdata($name, $value)
+    {
 
         // set session variable
         $_SESSION[$name] = $value;
@@ -609,11 +621,12 @@ class Zebra_Session {
      *  $session->stop();
      *  </code>
      *
-     *  @since 1.0.1
+     * @return void
+     * @since 1.0.1
      *
-     *  @return void
      */
-    public function stop() {
+    public function stop()
+    {
 
         // if a cookie is used to pass the session id
         if (ini_get('session.use_cookies')) {
@@ -635,9 +648,10 @@ class Zebra_Session {
     /**
      *  Custom write() function
      *
-     *  @access private
+     * @access private
      */
-    function write($session_id, $session_data) {
+    function write($session_id, $session_data)
+    {
 
         // we don't write session variable when in read-only mode
         if ($this->read_only) return true;
@@ -677,9 +691,10 @@ class Zebra_Session {
     /**
      *  Manages flash data behind the scenes
      *
-     *  @access private
+     * @access private
      */
-    function _manage_flash_data() {
+    function _manage_flash_data()
+    {
 
         // if there is flash data to be handled
         if (!empty($this->flash_data)) {
@@ -716,9 +731,10 @@ class Zebra_Session {
     /**
      *  Mini-wrapper for running MySQL queries with parameter binding with or without PDO
      *
-     *  @access private
+     * @access private
      */
-    private function query($query) {
+    private function query($query)
+    {
 
         // if the provided connection link is a PDO instance
         if ($this->link instanceof PDO) {
@@ -728,8 +744,8 @@ class Zebra_Session {
 
                 // prepare a standardized return value
                 $result = array(
-                    'num_rows'  =>  $stmt->rowCount(),
-                    'data'      =>  $stmt->columnCount() == 0 ? array() : $stmt->fetch(PDO::FETCH_ASSOC),
+                    'num_rows' => $stmt->rowCount(),
+                    'data' => $stmt->columnCount() == 0 ? array() : $stmt->fetch(PDO::FETCH_ASSOC),
                 );
 
                 // close the statement
@@ -776,8 +792,8 @@ class Zebra_Session {
 
                     // prepare a standardized return value
                     $result = array(
-                        'num_rows'  =>  is_bool($results) ? $stmt->affected_rows : $results->num_rows,
-                        'data'      =>  is_bool($results) ? array() : $results->fetch_assoc(),
+                        'num_rows' => is_bool($results) ? $stmt->affected_rows : $results->num_rows,
+                        'data' => is_bool($results) ? array() : $results->fetch_assoc(),
                     );
 
                     // close the statement

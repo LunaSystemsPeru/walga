@@ -26,19 +26,19 @@ $Vehiculo->setEmpresaId(1);
     <div class="login">
         <div class="login__content">
             <div class="login-form">
-                <form id="LoginForm" method="post" action="contratos.php">
+                <form id="LoginForm" method="post" action="../controller/login.php">
                     <div class="login-form__row">
                         <label class="login-form__label">Usuario</label>
-                        <input type="text" name="input-usuario" value="" class="login-form__input required"/>
+                        <input type="text" name="input-usuario" value="" class="login-form__input required" required/>
                     </div>
                     <div class="login-form__row">
                         <label class="login-form__label">Contraseña</label>
-                        <input type="password" name="input-password" value="" class="login-form__input required"/>
+                        <input type="password" name="input-password" value="" class="login-form__input required" required/>
                     </div>
                     <div class="login-form__row">
                         <label class="login-form__label">Vehiculo</label>
                         <div class="form__select">
-                            <select name="select-vehiculo" class="required">
+                            <select name="select-vehiculo" class="required" required>
                                 <option value="" disabled selected>Seleccionar Vehiculo</option>
                                 <?php
                                 $array_vehiculos =$Vehiculo->verFilas();

@@ -1,5 +1,10 @@
 <?php
 include "../fixed/cargarSesion.php";
+require '../../models/ParametroValor.php';
+
+$Valor = new ParametroValor();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +15,7 @@ include "../fixed/cargarSesion.php";
     <link rel="stylesheet" href="../vendor/swiper/swiper.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all"/>
 </head>
 <body>
 
@@ -44,21 +50,26 @@ include "../fixed/cargarSesion.php";
                     </div>
                     <div class="form__row">
                         <label class="form__label">buscar Cliente</label>
-                        <input type="text" name="Username" placeholder="escoger Cliente" value="" class="form__input required"/>
+                        <a href="registra-cliente.php" target="_blank" class="button button--small button--secondary" type="button" id="button-addon1">Agregar Nuevo Cliente</a>
+                        <input type="text" name="input-cliente" id="input-cliente" placeholder="escoger Cliente" value="" class="form__input required" aria-label="Buscar emisor" aria-describedby="button-addon1"/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Tipo Servicio</label>
                         <div class="form__select">
-                            <select name="selectoptions" class="required">
-                                <option value="1">Traslado e Izaje</option>
-                                <option value="2">Canastilla</option>
-                                <option value="3">Auxilio Vehicular</option>
+                            <select name="select-tipo-servicio" id="select-tipo-servicio" class="required">
+                                <?php
+                                $Valor->setParametroId(2);
+                                $array_servicios =  $Valor->verFilas();
+                                foreach ($array_servicios as $fila) {
+                                    echo ' <option value="'.$fila['id'] .'">'.$fila['descripcion'] .'</option>';
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Servicio</label>
-                        <textarea class="form__textarea"></textarea>
+                        <textarea class="form__textarea" id="text-servicio" name="input-servicio"></textarea>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Origen</label>
@@ -100,5 +111,22 @@ include "../fixed/cargarSesion.php";
     <script src="../vendor/jquery/jquery.validate.min.js"></script>
     <script src="../vendor/swiper/swiper.min.js"></script>
     <script src="../assets/js/jquery.custom.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+            integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
+            crossorigin="anonymous"></script>
+
+    <script>
+        //buscar clientes
+        $("#input-cliente").autocomplete({
+            source: "../../inputAjax/obtenerJsonClientes.php",
+            minLength: 3,
+            select: function (event, ui) {
+                event.preventDefault();
+                $("#input-cliente").val(ui.item.datos);
+                $("#text-servicio").focus();
+            }
+        });
+    </script>
 </body>
 </html>
