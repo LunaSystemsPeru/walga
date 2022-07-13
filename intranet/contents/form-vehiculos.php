@@ -1,3 +1,7 @@
+<?php
+require '../../models/Vehiculo.php';
+$Vehiculo = new Vehiculo();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

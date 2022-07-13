@@ -44,26 +44,26 @@
                                      <!-- Tab panes -->
                                     <div class="tab-content">
                                         <div class="tab-pane active p-3" id="LogIn_Tab" role="tabpanel">                                        
-                                            <form class="form-horizontal auth-form" method="post" action="main.php">
+                                            <form class="form-horizontal auth-form" method="post" action="../controller/login.php">
                 
                                                 <div class="form-group mb-2">
                                                     <label for="username">Usuario</label>
                                                     <div class="input-group">                                                                                         
-                                                        <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
+                                                        <input type="text" class="form-control" name="input-usuario" id="input-usuario" placeholder="Escribir usuario" required>
                                                     </div>                                    
                                                 </div><!--end form-group--> 
                     
                                                 <div class="form-group mb-2">
                                                     <label for="userpassword">Contraseña</label>
                                                     <div class="input-group">                                  
-                                                        <input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password">
+                                                        <input type="password" class="form-control" name="input-password" id="input-password" placeholder="Ingrese Contraseña" required>
                                                     </div>                               
                                                 </div><!--end form-group--> 
 
                     
                                                 <div class="form-group mb-0 row">
                                                     <div class="col-12">
-                                                        <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Log In <i class="fas fa-sign-in-alt ml-1"></i></button>
+                                                        <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Acceder <i class="fas fa-sign-in-alt ml-1"></i></button>
                                                     </div><!--end col--> 
                                                 </div> <!--end form-group-->                           
                                             </form><!--end form-->

@@ -66,7 +66,7 @@ class Parametro
 
     public function obtenerId()
     {
-        $sql = "select ifnull(max(id), 1) as codigo 
+        $sql = "select ifnull(max(id)+1, 1) as codigo 
                 from parametros";
         $this->id = $this->conectar->get_valor_query($sql, "codigo");
     }

@@ -151,7 +151,7 @@ class Usuario
 
     public function obtenerId()
     {
-        $sql = "select ifnull(max(id), 1) as codigo 
+        $sql = "select ifnull(max(id)+1, 1) as codigo 
                 from usuarios";
         $this->id = $this->conectar->get_valor_query($sql, "codigo");
     }
@@ -161,7 +161,7 @@ class Usuario
         $sql = "select ifnull(id, 0) as id 
         from usuarios 
         where username = '$this->username'";
-        $this->id = $this->conectar->get_valor_query($sql, "codigo");
+        $this->id = $this->conectar->get_valor_query($sql, "id");
     }
 
     public function obtenerDatos()

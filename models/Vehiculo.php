@@ -185,7 +185,7 @@ class Vehiculo
 
     public function obtenerId()
     {
-        $sql = "select ifnull(max(id), 1) as codigo 
+        $sql = "select ifnull(max(id)+1, 1) as codigo 
                 from vehiculos";
         $this->id = $this->conectar->get_valor_query($sql, "codigo");
     }

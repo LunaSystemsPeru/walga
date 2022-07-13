@@ -132,7 +132,7 @@
                     <a class="dropdown-item" href="#"><i data-feather="user" class="align-self-center icon-xs icon-dual mr-1"></i> Profile</a>
                     <a class="dropdown-item" href="#"><i data-feather="settings" class="align-self-center icon-xs icon-dual mr-1"></i> Settings</a>
                     <div class="dropdown-divider mb-0"></div>
-                    <a class="dropdown-item" href="#"><i data-feather="power" class="align-self-center icon-xs icon-dual mr-1"></i> Logout</a>
+                    <a class="dropdown-item" href="../controller/logout.php"><i data-feather="power" class="align-self-center icon-xs icon-dual mr-1"></i> Logout</a>
                 </div>
             </li>
             <li class="menu-item">

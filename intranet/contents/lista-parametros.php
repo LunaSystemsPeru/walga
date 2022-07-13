@@ -57,11 +57,63 @@ $Parametro->obtenerDatos();
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
-
-                                <a href="#" class="btn btn-sm btn-soft-primary">
+                                <button type="button" class="btn btn-sm btn-soft-primary" data-toggle="modal" data-target="#exampleModalSignup">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                     Agregar <?php echo $Parametro->getDescripcion() ?>
-                                </a>
+                                </button>
+                                <!--start signup-->
+                                <div class="modal fade" id="exampleModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Registrar Valor de Parametros</h6>
+                                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                            </div><!--end modal-header-->
+                                            <div class="modal-body">
+                                                <form class="form-horizontal auth-form my-4" method="post" action="../controller/registra-parametro-valor.php">
+                                                    <div class="auth-page">
+                                                        <div class="auth-card">
+                                                            <div class="">
+                                                                <div class="px-3">
+                                                                    <div class="form-group">
+                                                                        <label for="serie">Parametro Afecto</label>
+                                                                        <div class="input-group mb-3">
+                                                                            <input type="text" class="form-control" id="input-parametro" value="<?php echo $Parametro->getDescripcion() ?>" readonly>
+                                                                            <input type="hidden" name="input-parametro-id" value="<?php echo $Parametro->getId()?>">
+                                                                        </div>
+                                                                    </div><!--end form-group-->
+                                                                    <div class="form-group">
+                                                                        <label for="numero">Descripcion</label>
+                                                                        <div class="input-group mb-3">
+                                                                            <input type="text" class="form-control" name="input-descripcion" placeholder="Descripcion">
+                                                                        </div>
+                                                                    </div><!--end form-group-->
+                                                                    <div class="form-group">
+                                                                        <label for="numero">Valor 1</label>
+                                                                        <div class="input-group mb-3">
+                                                                            <input type="text" class="form-control" name="input-valor1" placeholder="Valor 1">
+                                                                        </div>
+                                                                    </div><!--end form-group-->
+                                                                    <div class="form-group">
+                                                                        <label for="numero">Valor 2</label>
+                                                                        <div class="input-group mb-3">
+                                                                            <input type="text" class="form-control" name="input-valor2" placeholder="Valor 2">
+                                                                        </div>
+                                                                    </div><!--end form-group-->
+                                                                </div><!--end /div-->
+                                                            </div><!--end card-body-->
+                                                        </div><!--end card-->
+                                                    </div><!--end auth-page-->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-soft-primary btn-sm">Guardar</button>
+                                                        <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                                                    </div><!--end modal-footer-->
+                                                </form><!--end form-->
+                                            </div><!--end modal-body-->
+
+                                        </div><!--end modal-content-->
+                                    </div><!--end modal-dialog-->
+                                </div><!--end modal-->
                             </div><!--end col-->
                         </div><!--end row-->
                     </div><!--end page-title-box-->
@@ -128,7 +180,7 @@ $Parametro->obtenerDatos();
                                 foreach ($array_valores as $filavalor) {
                                     ?>
                                     <tr>
-                                        <th scope="row"><?php echo $itemvalor?></th>
+                                        <th scope="row"><?php echo $itemvalor ?></th>
                                         <td><?php echo $filavalor['descripcion'] ?></td>
                                         <td><?php echo $filavalor['valor1'] ?></td>
                                         <td><?php echo $filavalor['valor2'] ?></td>
@@ -137,6 +189,7 @@ $Parametro->obtenerDatos();
                                         </td>
                                     </tr>
                                     <?php
+                                    $itemvalor++;
                                 }
                                 ?>
                                 </tbody>
@@ -171,8 +224,6 @@ include('../fixed/footer.php');
 <script src="../assets/js/moment.js"></script>
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
-<script src="../plugins/apex-charts/apexcharts.min.js"></script>
-<script src="../assets/pages/jquery.analytics_dashboard.init.js"></script>
 
 <!-- App js -->
 <script src="../assets/js/app.js"></script>

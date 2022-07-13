@@ -1,20 +1,13 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require '../../tools/Zebra_Session.php';
-require_once '../../models/Conectar.php';
+session_start();
 require '../../models/Usuario.php';
 require '../../models/ParametroValor.php';
-
-$Conectar = Conectar::getInstancia();
 $Usuario = new Usuario();
 $Valor = new ParametroValor();
 
 $password = filter_input(INPUT_POST, 'input-password');
-$Usuario->setUsername(filter_input(INPUT_POST, 'input-username'));
-$placa = filter_input(INPUT_POST, 'select-vehiculo');
+$Usuario->setUsername(filter_input(INPUT_POST, 'input-usuario'));
+
 $Usuario->validarUsername();
 
 if ($Usuario->getId() > 0) {
@@ -24,21 +17,12 @@ if ($Usuario->getId() > 0) {
     if ($Usuario->getEstado() == 1) {
         $Valor->setId($Usuario->getTipousuarioId());
         $Valor->obtenerDatos();
-        if ($Valor->getValor2() == "a") {
+        if ($Valor->getValor1() == "w") {
             //verificar contraseña :
             if ($Usuario->getPassword() == $password) {
-                $link = $Conectar->getLink();
-                try {
-                    $zebra = new Zebra_Session($link, 'sEcUr1tY_c0dE');
-                    $activesession = $zebra->get_active_sessions();
-                } catch (Exception $e) {
-                    echo $e;
-                }
-
                 $_SESSION['usuario_id'] = $Usuario->getId();
                 $_SESSION['empresa_id'] = $Usuario->getEmpresaId();
-                $_SESSION['vehiculo'] = $placa;
-                header("Location: ../contents/contratos.php");
+                header("Location: ../contents/main.php");
             } else {
                 //contraseña incorrecta
                 header("Location: ../contents/login.php?error=4");
@@ -55,7 +39,3 @@ if ($Usuario->getId() > 0) {
     //usuario no existe
     header("Location: ../contents/login.php?error=1");
 }
-
-
-
-

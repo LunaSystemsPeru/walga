@@ -7,7 +7,7 @@ $(document).ready(function () {
     var pageid = $('.page').data("page");
 
     // LOAD PANEL LEFT
-    $("#panel-left").load("../fixed/panel-left.html", function () {
+    $("#panel-left").load("../fixed/panel-left.php", function () {
         var swipersubnav = new Swiper('.panel__navigation', {
             direction: 'horizontal',
             effect: 'slide',

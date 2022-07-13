@@ -63,7 +63,7 @@ class ParametroValor
      */
     public function setDescripcion($descripcion)
     {
-        $this->descripcion = $descripcion;
+        $this->descripcion = trim(strtoupper($descripcion));
     }
 
     /**
@@ -100,7 +100,7 @@ class ParametroValor
 
     public function obtenerId()
     {
-        $sql = "select ifnull(max(id), 1) as codigo 
+        $sql = "select ifnull(max(id)+1, 1) as codigo 
                 from parametros_valores";
         $this->id = $this->conectar->get_valor_query($sql, "codigo");
     }

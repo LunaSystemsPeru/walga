@@ -1,9 +1,14 @@
+<?php
+require '../../models/Vehiculo.php' ;
+$Vehiculo = new Vehiculo();
+$Vehiculo->setEmpresaId(1);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
-    <title>MobioKit - Premium Mobile Template</title>
+    <title>Walga Transportes | Alquiler de Gruas y Logistica</title>
     <link rel="stylesheet" href="../vendor/swiper/swiper.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
@@ -24,20 +29,23 @@
                 <form id="LoginForm" method="post" action="contratos.php">
                     <div class="login-form__row">
                         <label class="login-form__label">Usuario</label>
-                        <input type="text" name="Username" value="" class="login-form__input required"/>
+                        <input type="text" name="input-usuario" value="" class="login-form__input required"/>
                     </div>
                     <div class="login-form__row">
                         <label class="login-form__label">Contraseña</label>
-                        <input type="password" name="password" value="" class="login-form__input required"/>
+                        <input type="password" name="input-password" value="" class="login-form__input required"/>
                     </div>
                     <div class="login-form__row">
                         <label class="login-form__label">Vehiculo</label>
                         <div class="form__select">
-                            <select name="selectoptions" class="required">
+                            <select name="select-vehiculo" class="required">
                                 <option value="" disabled selected>Seleccionar Vehiculo</option>
-                                <option value="1">B8K911</option>
-                                <option value="2">B0H847</option>
-                                <option value="2">B4W773</option>
+                                <?php
+                                $array_vehiculos =$Vehiculo->verFilas();
+                                foreach ($array_vehiculos as $fila) {
+                                echo '<option value="'.$fila['id'] .'">'.$fila['placa'] .'</option>';
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>

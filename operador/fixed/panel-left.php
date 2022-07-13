@@ -5,7 +5,7 @@
 			<div class="swiper-slide">
 				<div class="user-details">
 					<div class="user-details__thumb"><img src="../../public/images/logowalga.png" alt="" title=""/></div>
-					<div class="user-details__title">Degner Guerrero</div>
+					<div class="user-details__title"><?php echo $_SESSION['placa'] ?></div>
 				</div>
 				<nav class="main-nav">
 					<ul>
