@@ -38,10 +38,10 @@
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Registrar Usuario</h4>
+                                <h4 class="page-title">Registrar Clientes</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Configuracion</a></li>
-                                    <li class="breadcrumb-item active">Usuario</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Servicios</a></li>
+                                    <li class="breadcrumb-item active">Clientes</li>
                                 </ol>
                             </div><!--end col-->
                         </div><!--end row-->
@@ -66,22 +66,21 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label" for="usuario">Usuario</label>
-                                            <input type="text" class="form-control" id="usuario" placeholder="Usuario">
+                                            <label class="form-label" for="celular">Celular</label>
+                                            <input type="text" class="form-control" id="celular" placeholder="987654321">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                                   placeholder="Password">
+                                            <label class="form-label" for="email">Email</label>
+                                            <input type="text" class="form-control" id="email" placeholder="leog.1992@gmail.com">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleInputPassword1">Nivel de Acceso</label>
+                                            <label class="form-label" for="exampleInputPassword1">Entidad</label>
                                             <select class="form-control" aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
                                                 <option value="1">One</option>
@@ -109,7 +108,7 @@
                             <div class="col-auto align-self-center">
                                 <a href="#" class="btn btn-sm btn-soft-primary">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                    Guardar Usuario
+                                    Guardar Cliente
                                 </a>
                             </div><!--end col-->
                         </div>

@@ -44,7 +44,6 @@
                                     <li class="breadcrumb-item active">Choferes</li>
                                 </ol>
                             </div><!--end col-->
-
                         </div><!--end row-->
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -84,7 +83,6 @@
                                     </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="col-sm-10 ms-auto">
@@ -98,13 +96,11 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                         </form>
                     </div><!--end card-body-->
                     <div class="card-footer">
                         <div class="col-auto align-self-center">
-
                             <a href="#" class="btn btn-sm btn-soft-primary">
                                 <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                 Guardar Choferes
@@ -114,10 +110,7 @@
                 </div><!--end card-->
             </div> <!-- end col -->
         </div> <!-- end row -->
-
     </div><!--end row-->
-
-
 </div><!-- container -->
 </div>
 <!-- end page content -->

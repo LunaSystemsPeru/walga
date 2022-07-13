@@ -163,7 +163,7 @@
                         </a>
                         <ul class="submenu">
                             <li><a href="apps-chat.html"><i class="ti ti-minus"></i>Facturacion</a></li>
-                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Empresas</a></li>
+                            <li><a href="lista-entidades.php"><i class="ti ti-minus"></i>Empresas</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->
 
@@ -173,7 +173,7 @@
                         </a>
                         <ul class="submenu">
                             <li><a href="lista-contratos.php"><i class="ti ti-minus"></i>Contratos</a></li>
-                            <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Clientes</a></li>
+                            <li><a href="lista-clientes.php"><i class="ti ti-minus"></i>Clientes</a></li>
                             <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Deuda por Cobrar</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->

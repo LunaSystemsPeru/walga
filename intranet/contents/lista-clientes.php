@@ -1,6 +1,3 @@
-<?php
-require '../../models/Chofer.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,16 +38,16 @@ require '../../models/Chofer.php';
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Lista de Choferes</h4>
+                                <h4 class="page-title">Lista de Clientes</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Flota</a></li>
-                                    <li class="breadcrumb-item active">Choferes</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Servicios</a></li>
+                                    <li class="breadcrumb-item active">Clientes</li>
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
-                                <a href="form-choferes.php" class="btn btn-sm btn-soft-primary">
+                                <a href="form-clientes.php" class="btn btn-sm btn-soft-primary" >
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                    Agregar Choferes
+                                    Agregar Clientes
                                 </a>
                             </div><!--end col-->
                         </div><!--end row-->
@@ -67,11 +64,11 @@ require '../../models/Chofer.php';
                             <table class="table mb-0">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th>Item</th>
+                                    <th>#</th>
                                     <th>Datos</th>
-                                    <th>Brevete</th>
-                                    <th>Cat. Brevete</th>
-                                    <th>Fec. Renovacion</th>
+                                    <th>Celular</th>
+                                    <th>Email</th>
+                                    <th>Entidad</th>
                                     <th>Estado</th>
                                     <th></th>
                                 </tr>
@@ -80,12 +77,15 @@ require '../../models/Chofer.php';
                                 <tr>
                                     <th scope="row">1</th>
                                     <td>Luis Oyanguren</td>
-                                    <td>Abc1234</td>
-                                    <td>AII</td>
-                                    <td>2022</td>
+                                    <td>987654321</td>
+                                    <td>leog.1992@gmail.com</td>
+                                    <td>entidad</td>
                                     <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
+                                    <td>
+                                        <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                    </td>
                                 </tr>
+
                                 </tbody>
                             </table><!--end /table-->
                         </div><!--end /tableresponsive-->
@@ -93,7 +93,10 @@ require '../../models/Chofer.php';
                 </div><!--end card-->
             </div> <!-- end col -->
         </div> <!-- end row -->
+
     </div><!--end row-->
+
+
 </div><!-- container -->
 </div>
 <!-- end page content -->
@@ -114,11 +117,14 @@ include('../fixed/footer.php');
 <script src="../assets/js/moment.js"></script>
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
-<script src="../plugins/apex-charts/apexcharts.min.js"></script>
-<script src="../assets/pages/jquery.analytics_dashboard.init.js"></script>
-
 <!-- App js -->
 <script src="../assets/js/app.js"></script>
+
+<script>
+    function abrirModal () {
+        $("#bd-example-modal-xl").modal("toggle");
+    }
+</script>
 
 </body>
 
