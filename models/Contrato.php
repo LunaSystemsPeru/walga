@@ -1,7 +1,404 @@
 <?php
-
+require_once 'Conectar.php';
 
 class Contrato
 {
+    private $id;
+    private $fecha;
+    private $clienteid;
+    private $usuarioid;
+    private $choferid;
+    private $vehiculoid;
+    private $comprobanteid;
+    private $empresaid;
+    private $estadocomprobante;
+    private $tiposervicioid;
+    private $origen;
+    private $destino;
+    private $servicio;
+    private $estado;
+    private $horasservicio;
+    private $montocontrato;
+    private $montopagado;
+    private $horainicio;
+    private $horatermino;
+    private $conectar;
+
+    /**
+     * Contrato constructor.
+     */
+    public function __construct()
+    {
+        $this->conectar = Conectar::getInstancia();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * @param mixed $fecha
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClienteid()
+    {
+        return $this->clienteid;
+    }
+
+    /**
+     * @param mixed $clienteid
+     */
+    public function setClienteid($clienteid)
+    {
+        $this->clienteid = $clienteid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsuarioid()
+    {
+        return $this->usuarioid;
+    }
+
+    /**
+     * @param mixed $usuarioid
+     */
+    public function setUsuarioid($usuarioid)
+    {
+        $this->usuarioid = $usuarioid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChoferid()
+    {
+        return $this->choferid;
+    }
+
+    /**
+     * @param mixed $choferid
+     */
+    public function setChoferid($choferid)
+    {
+        $this->choferid = $choferid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVehiculoid()
+    {
+        return $this->vehiculoid;
+    }
+
+    /**
+     * @param mixed $vehiculoid
+     */
+    public function setVehiculoid($vehiculoid)
+    {
+        $this->vehiculoid = $vehiculoid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComprobanteid()
+    {
+        return $this->comprobanteid;
+    }
+
+    /**
+     * @param mixed $comprobanteid
+     */
+    public function setComprobanteid($comprobanteid)
+    {
+        $this->comprobanteid = $comprobanteid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmpresaid()
+    {
+        return $this->empresaid;
+    }
+
+    /**
+     * @param mixed $empresaid
+     */
+    public function setEmpresaid($empresaid)
+    {
+        $this->empresaid = $empresaid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEstadocomprobante()
+    {
+        return $this->estadocomprobante;
+    }
+
+    /**
+     * @param mixed $estadocomprobante
+     */
+    public function setEstadocomprobante($estadocomprobante)
+    {
+        $this->estadocomprobante = $estadocomprobante;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTiposervicioid()
+    {
+        return $this->tiposervicioid;
+    }
+
+    /**
+     * @param mixed $tiposervicioid
+     */
+    public function setTiposervicioid($tiposervicioid)
+    {
+        $this->tiposervicioid = $tiposervicioid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrigen()
+    {
+        return $this->origen;
+    }
+
+    /**
+     * @param mixed $origen
+     */
+    public function setOrigen($origen)
+    {
+        $this->origen = $origen;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDestino()
+    {
+        return $this->destino;
+    }
+
+    /**
+     * @param mixed $destino
+     */
+    public function setDestino($destino)
+    {
+        $this->destino = $destino;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getServicio()
+    {
+        return $this->servicio;
+    }
+
+    /**
+     * @param mixed $servicio
+     */
+    public function setServicio($servicio)
+    {
+        $this->servicio = $servicio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param mixed $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHorasservicio()
+    {
+        return $this->horasservicio;
+    }
+
+    /**
+     * @param mixed $horasservicio
+     */
+    public function setHorasservicio($horasservicio)
+    {
+        $this->horasservicio = $horasservicio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMontocontrato()
+    {
+        return $this->montocontrato;
+    }
+
+    /**
+     * @param mixed $montocontrato
+     */
+    public function setMontocontrato($montocontrato)
+    {
+        $this->montocontrato = $montocontrato;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMontopagado()
+    {
+        return $this->montopagado;
+    }
+
+    /**
+     * @param mixed $montopagado
+     */
+    public function setMontopagado($montopagado)
+    {
+        $this->montopagado = $montopagado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHorainicio()
+    {
+        return $this->horainicio;
+    }
+
+    /**
+     * @param mixed $horainicio
+     */
+    public function setHorainicio($horainicio)
+    {
+        $this->horainicio = $horainicio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHoratermino()
+    {
+        return $this->horatermino;
+    }
+
+    /**
+     * @param mixed $horatermino
+     */
+    public function setHoratermino($horatermino)
+    {
+        $this->horatermino = $horatermino;
+    }
+
+
+    public function obtenerId()
+    {
+        $sql = "select ifnull(max(id)+1, 1) as codigo 
+                from contratos";
+        $this->id = $this->conectar->get_valor_query($sql, "codigo");
+    }
+
+    public function obtenerDatos()
+    {
+        $sql = "select * 
+        from contratos 
+        where id = '$this->id'";
+        $resultado = $this->conectar->get_Row($sql);
+        if ($resultado) {
+            $this->fecha = $resultado['fecha'];
+            $this->clienteid = $resultado['cliente_id'];
+            $this->usuarioid = $resultado['usuario_id'];
+            $this->choferid = $resultado['chofer_id'];
+            $this->vehiculoid = $resultado['vehiculo_id'];
+            $this->comprobanteid = $resultado['comprobante_id'];
+            $this->empresaid = $resultado['empresa_id'];
+            $this->estadocomprobante = $resultado['estado_comprobante'];
+            $this->tiposervicioid = $resultado['tiposervicio_id'];
+            $this->origen = $resultado['origen'];
+            $this->destino = $resultado['destino'];
+            $this->servicio = $resultado['servicio'];
+            $this->estado = $resultado['estado_contrato'];
+            $this->horasservicio = $resultado['horas_servicio'];
+            $this->montocontrato = $resultado['monto'];
+            $this->montopagado = $resultado['monto_pagado'];
+            $this->horainicio = $resultado['hora_inicio'];
+            $this->horatermino = $resultado['hora_termino'];
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function insertar()
+    {
+        $sql = "insert into contratos
+                values ('$this->id',
+                        '$this->fecha',
+                        '$this->clienteid', 
+                        '$this->usuarioid',
+                        '$this->choferid',
+                        '$this->vehiculoid',
+                        '11',
+                        '$this->empresaid',
+                        '0',
+                        '$this->tiposervicioid',
+                        '$this->origen',
+                        '$this->destino',
+                        '$this->servicio',
+                        '0',
+                        '$this->horasservicio',
+                        '$this->montocontrato',
+                        '0',
+                        '00:00',
+                        '00:00')";
+        $this->conectar->ejecutar_idu($sql);
+    }
+
 
 }

@@ -43,15 +43,16 @@ $Valor = new ParametroValor();
         <h2 class="page__title">Nuevo Contrato Servicio</h2>
         <div class="fieldset">
             <div class="form">
-                <form id="Form" method="post" action="acepta-contrato.php">
+                <form id="Form" method="post" action="../controller/registra-contrato.php">
                     <div class="form__row">
                         <label class="form__label">fecha</label>
-                        <input type="date" name="Username" placeholder="Buscar Cliente" value="<?php echo date("Y-m-d")?>" class="form__input required"/>
+                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo date("Y-m-d")?>" class="form__input required"/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">buscar Cliente</label>
                         <a href="registra-cliente.php" target="_blank" class="button button--small button--secondary" type="button" id="button-addon1">Agregar Nuevo Cliente</a>
                         <input type="text" name="input-cliente" id="input-cliente" placeholder="escoger Cliente" value="" class="form__input required" aria-label="Buscar emisor" aria-describedby="button-addon1"/>
+                        <input type="hidden" name="input-id-cliente" id="input-id-cliente">
                     </div>
                     <div class="form__row">
                         <label class="form__label">Tipo Servicio</label>
@@ -73,15 +74,15 @@ $Valor = new ParametroValor();
                     </div>
                     <div class="form__row">
                         <label class="form__label">Origen</label>
-                        <input type="text" name="Username" placeholder="Ref Origen" value="" class="form__input required"/>
+                        <input type="text" name="input-origen" placeholder="Ref Origen" value="" class="form__input required" required/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Destino</label>
-                        <input type="text" name="Username" placeholder="Ref Punto Llegada" value="" class="form__input required"/>
+                        <input type="text" name="input-destino" placeholder="Ref Punto Llegada" value="" class="form__input required" required/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">monto Pactado</label>
-                        <input type="text" name="Username" placeholder="0.00" value="" class="form__input required"/>
+                        <input type="text" name="input-monto" placeholder="0.00" value="" class="form__input required" required/>
                     </div>
 
                     <div class="form__row mt-40">
@@ -124,6 +125,7 @@ $Valor = new ParametroValor();
             select: function (event, ui) {
                 event.preventDefault();
                 $("#input-cliente").val(ui.item.datos);
+                $("#input-id-cliente").val(ui.item.id);
                 $("#text-servicio").focus();
             }
         });

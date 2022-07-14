@@ -16,7 +16,7 @@ $Vehiculo = new Vehiculo();
 
 $password = filter_input(INPUT_POST, 'input-password');
 $Usuario->setUsername(filter_input(INPUT_POST, 'input-usuario'));
-$placa = filter_input(INPUT_POST, 'select-vehiculo');
+$vehiculoid = filter_input(INPUT_POST, 'select-vehiculo');
 $Usuario->validarUsername();
 //echo "hola" . $Usuario->getId();
 
@@ -38,12 +38,13 @@ if ($Usuario->getId() > 0) {
                     echo $e;
                 }
 
-                $Vehiculo->setId($placa);
+                $Vehiculo->setId($vehiculoid);
                 $Vehiculo->obtenerDatos();
 
                 $_SESSION['usuario_id'] = $Usuario->getId();
                 $_SESSION['empresa_id'] = $Usuario->getEmpresaId();
-                $_SESSION['vehiculo'] = $placa;
+                $_SESSION['vehiculo_id'] = $vehiculoid;
+                $_SESSION['chofer_id'] = $Vehiculo->getChoferId();
                 $_SESSION['placa'] = $Vehiculo->getPlaca();
                 header("Location: ../contents/contratos.php");
             } else {
