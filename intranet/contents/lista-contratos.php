@@ -1,3 +1,11 @@
+<?php
+include '../fixed/cargarSession.php';
+require '../../models/Contrato.php';
+
+$Contrato = new Contrato();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,66 +66,77 @@
 
                 <div class="col-lg-12">
                     <div class="card">
-                    </div><!--end card-header-->
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead class="thead-light">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Fecha </th>
-                                    <th>Vehiculo</th>
-                                    <th>Servicio</th>
-                                    <th>Cliente</th>
-                                    <th>Comprobante?</th>
-                                    <th>Emitido?</th>
-                                    <th>Monto Aprobado</th>
-                                    <th>Deuda</th>
-                                    <th>Estado</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>2022-07-08</td>
-                                    <td>D2D744</td>
-                                    <td>TRASLADO | O. PARDO  - D. TIERRA PROMETIDA | CARGA DE HERRAMIENTAS</td>
-                                    <td>Pachin</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">Factura</span></td>
-                                    <td><i data-feather="check"></i></td>
-                                    <td>150.00</td>
-                                    <td>70.00</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">en Curso</span></td>
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
-                                </tr>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Fecha</th>
+                                        <th>Vehiculo</th>
+                                        <th>Servicio</th>
+                                        <th>Cliente</th>
+                                        <th>Comprobante?</th>
+                                        <th>Emitido?</th>
+                                        <th>Monto Aprobado</th>
+                                        <th>Deuda</th>
+                                        <th>Estado</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $array_contratos = $Contrato->verContratosActivos();
+                                    $item = 1;
+                                    foreach ($array_contratos as $fila) {
+                                        $iestado = $fila['estado_contrato'];
+                                        $label_estado = "";
+                                        if ($iestado == 0) {
+                                            $label_estado ='<span class="badge badge-boxed  badge-outline-warning">Programado</span>';
+                                        }
+                                        if ($iestado == 1) {
+                                            $label_estado ='<span class="badge badge-boxed  badge-outline-info">en Proceso</span>';
+                                        }
+                                        if ($iestado == 2) {
+                                            $label_estado ='<span class="badge badge-boxed  badge-outline-dark">Finalizado</span>';
+                                        }
+                                        $botoncomprobante = '<i data-feather="check"></i>';
+                                        if ($fila['comprobante_id'] == 11) {
+                                            $botoncomprobante = '<i data-feather="check"></i>';
+                                        } else {
+                                            if ($fila['estado_comprobante'] == 0) {
+                                                $botoncomprobante = '<button type="button" class="btn btn-info btn-sm"><i class="ti ti-plus"></i></button>';
+                                            }
+                                        }
+                                        ?>
+                                        <tr>
+                                            <th scope="row"><?php echo $item ?></th>
+                                            <td><?php echo $fila['fecha'] ?></td>
+                                            <td><?php echo $fila['placa'] ?></td>
+                                            <td><?php echo strtoupper($fila['tiposervicio'] . " | O. " . $fila['origen'] . " - D. " . $fila['destino'] . " | " . $fila['servicio']) ?></td>
+                                            <td><?php echo $fila['datos'] ?></td>
+                                            <td><span class="badge badge-boxed  badge-outline-success"><?php echo ucwords(strtolower($fila['comprobante'])) ?></span></td>
+                                            <td><?php echo $botoncomprobante ?></td>
+                                            <td><?php echo $fila['monto'] ?></td>
+                                            <td><?php echo $fila['monto_pagado'] ?></td>
+                                            <td><?php echo $label_estado ?></td>
+                                            <td>
+                                                <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        $item++;
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /tableresponsive-->
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div> <!-- end col -->
+            </div> <!-- end row -->
 
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>2022-07-08</td>
-                                    <td>D2D744</td>
-                                    <td>TRASLADO | O. PARDO  - D. TIERRA PROMETIDA | CARGA DE HERRAMIENTAS</td>
-                                    <td>Pachin</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">Factura</span></td>
-                                    <td><button type="button" class="btn btn-info btn-sm"><i class="ti ti-plus"></i></button></td>
-                                    <td>150.00</td>
-                                    <td>70.00</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">en Curso</span></td>
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
-                                </tr>
-
-                                </tbody>
-                            </table><!--end /table-->
-                        </div><!--end /tableresponsive-->
-                    </div><!--end card-body-->
-                </div><!--end card-->
-            </div> <!-- end col -->
-        </div> <!-- end row -->
-
-    </div><!--end row-->
-
-
-</div><!-- container -->
+    </div><!-- container -->
 </div>
 <!-- end page content -->
 </div>

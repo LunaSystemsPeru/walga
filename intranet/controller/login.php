@@ -1,9 +1,15 @@
 <?php
-session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require '../../tools/Zebra_Session.php';
 require '../../models/Usuario.php';
 require '../../models/ParametroValor.php';
+
 $Usuario = new Usuario();
 $Valor = new ParametroValor();
+$Conectar = Conectar::getInstancia();
 
 $password = filter_input(INPUT_POST, 'input-password');
 $Usuario->setUsername(filter_input(INPUT_POST, 'input-usuario'));
@@ -20,6 +26,14 @@ if ($Usuario->getId() > 0) {
         if ($Valor->getValor1() == "w") {
             //verificar contraseña :
             if ($Usuario->getPassword() == $password) {
+                $link = $Conectar->getLink();
+                try {
+                    $zebra = new Zebra_Session($link, 'sEcUr1tY_c0dE');
+                    $activesession = $zebra->get_active_sessions();
+                } catch (Exception $e) {
+                    echo $e;
+                }
+
                 $_SESSION['usuario_id'] = $Usuario->getId();
                 $_SESSION['empresa_id'] = $Usuario->getEmpresaId();
                 header("Location: ../contents/main.php");

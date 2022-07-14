@@ -412,10 +412,14 @@ class Contrato
     }
 
     public function verContratosActivos() {
-        $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio 
+        $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, 
+                pv.descripcion as comprobante, pv2.descripcion as tiposervicio, v.placa, c.comprobante_id, c.estado_comprobante
                 from contratos as c 
                 inner join clientes c2 on c.cliente_id = c2.id
-                where c.estado_contrato = '0' 
+                inner join parametros_valores pv on c.comprobante_id = pv.id
+                inner join parametros_valores as pv2 on c.tiposervicio_id = pv2.id
+                inner join vehiculos v on c.vehiculo_id = v.id
+                where c.estado_contrato in (0,1) 
                 order by c.fecha asc";
         return $this->conectar->get_Cursor($sql);
     }

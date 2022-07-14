@@ -12,7 +12,7 @@ $Contrato->setId(filter_input(INPUT_POST, 'input-id-contrato'));
 $Contrato->obtenerDatos();
 
 $desea_comprobante = filter_input(INPUT_POST, 'select-comprobante');
-if ($desea_comprobante == 14) {
+if ($desea_comprobante == 4) {
     $Contrato->setComprobanteid($desea_comprobante);
 }
 
