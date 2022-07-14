@@ -400,5 +400,23 @@ class Contrato
         $this->conectar->ejecutar_idu($sql);
     }
 
+    public function modificar () {
+        $sql = "update contratos 
+                set comprobante_id = '$this->comprobanteid',
+                    hora_inicio = '$this->horainicio', 
+                    hora_termino = '$this->horatermino'
+                where id = '$this->id'";
+        echo $sql;
+        $this->conectar->ejecutar_idu($sql);
+    }
+
+    public function verContratosActivos() {
+        $sql = "select * 
+                from contratos as c 
+                inner join clientes c2 on c.cliente_id = c2.id
+                where c.estado_contrato = '0' 
+                order by c.fecha asc";
+        return $this->conectar->get_Cursor($sql);
+    }
 
 }

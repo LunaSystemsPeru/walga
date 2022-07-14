@@ -50,7 +50,7 @@ $Valor = new ParametroValor();
                     </div>
                     <div class="form__row">
                         <label class="form__label">buscar Cliente</label>
-                        <a href="registra-cliente.php" target="_blank" class="button button--small button--secondary" type="button" id="button-addon1">Agregar Nuevo Cliente</a>
+                        <a href="registra-cliente.php"  class="button button--small button--secondary" type="button" id="button-addon1">Agregar Nuevo Cliente</a>
                         <input type="text" name="input-cliente" id="input-cliente" placeholder="escoger Cliente" value="" class="form__input required" aria-label="Buscar emisor" aria-describedby="button-addon1"/>
                         <input type="hidden" name="input-id-cliente" id="input-id-cliente">
                     </div>
@@ -82,7 +82,7 @@ $Valor = new ParametroValor();
                     </div>
                     <div class="form__row">
                         <label class="form__label">monto Pactado</label>
-                        <input type="text" name="input-monto" placeholder="0.00" value="" class="form__input required" required/>
+                        <input type="number" name="input-monto" placeholder="0.00" value="" class="form__input required" required/>
                     </div>
 
                     <div class="form__row mt-40">

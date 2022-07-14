@@ -15,6 +15,7 @@ $Contrato->setServicio(filter_input(INPUT_POST, 'input-servicio'));
 $Contrato->setOrigen(filter_input(INPUT_POST, 'input-origen'));
 $Contrato->setDestino(filter_input(INPUT_POST, 'input-destino'));
 $Contrato->setMontocontrato(filter_input(INPUT_POST, 'input-monto'));
+$Contrato->setHorasservicio(0);
 
 $Contrato->obtenerId();
 $Contrato->insertar();

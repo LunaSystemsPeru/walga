@@ -1,3 +1,29 @@
+<?php
+require '../../models/Contrato.php';
+require '../../models/Cliente.php';
+require '../../models/Entidad.php';
+require '../../models/ParametroValor.php';
+
+$Contrato = new Contrato();
+$Cliente = new Cliente();
+$Entidad = new Entidad();
+$Valor = new ParametroValor();
+
+$Contrato->setId(filter_input(INPUT_GET, 'id'));
+if ($Contrato->getId()) {
+    $Contrato->obtenerDatos();
+    $Cliente->setId($Contrato->getClienteid());
+    $Cliente->obtenerDatos();
+    $Entidad->setId($Cliente->getEntidadId());
+    $Entidad->obtenerDatos();
+    $Valor->setId($Contrato->getTiposervicioid());
+    $Valor->obtenerDatos();
+} else {
+    header("Location: contratos.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,39 +60,46 @@
         <h2 class="page__title">Cierre de Contrato</h2>
         <div class="fieldset">
             <div class="form">
-                <form id="Form" method="post" action="checkout.html">
+                <form id="Form" method="post" action="../controller/acepta-contrato.php">
                     <div class="form__row">
                         <label class="form__label">fecha</label>
-                        <input type="date" name="Username" placeholder="Buscar Cliente" value="<?php echo date("Y-m-d")?>" class="form__input required"/>
+                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo $Contrato->getFecha() ?>" class="form__input"/>
+                        <input type="hidden" name="input-id-contrato" value="<?php echo $Contrato->getId()?>">
                     </div>
                     <div class="form__row">
                         <label class="form__label">Cliente</label>
-                        <input type="text" name="Username" placeholder="Buscar Cliente" value="" class="form__input required"/>
+                        <input type="text" name="input-cliente" placeholder="Buscar Cliente" value="<?php echo $Cliente->getDatos() ?>" class="form__input " readonly/>
+                        <input type="hidden" value="<?php echo $Entidad->getNrodocumento() . " | " . $Entidad->getRazonsocial() ?>" id="input-datos-facturacion">
                     </div>
                     <div class="form__row">
                         <label class="form__label">Desea Comprobante?</label>
                         <div class="form__select">
-                            <select name="selectoptions" class="required">
-                                <option value="1">No</option>
-                                <option value="2">Factura</option>
+                            <select name="select-comprobante" id="select-comprobante" class="required" onchange="preguntarComprobante()">
+                                <option value="0">No</option>
+                                <option value="4">Factura</option>
                             </select>
                         </div>
                     </div>
                     <div class="form__row">
                         <label class="form__label">RUC a facturar</label>
-                        <input type="text" name="Username" placeholder="" value="" class="form__input required"/>
+                        <input type="text" name="input-datos-factura" id="input-datos-factura" placeholder="" value="" class="form__input required" readonly/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Servicio</label>
-                        <textarea name="txt_servicio" class="form__textarea"></textarea>
+                        <textarea name="txt_servicio" class="form__textarea"><?php echo strtoupper($Valor->getDescripcion() . " | " . $Contrato->getServicio() . " - desde: " . $Contrato->getOrigen() . " hasta: " . $Contrato->getDestino()) ?></textarea>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Monto Pactado</label>
-                        <input type="text" name="Username" placeholder="Ref Origen" value="" class="form__input required"/>
+                        <input type="text" name="Username" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input required"/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Adelanto</label>
-                        <input type="text" name="Username" placeholder="Ref Punto Llegada" value="" class="form__input required"/>
+                        <input type="number" name="input-pago" placeholder="ingrese monto adelanto sino 0" value="" class="form__input required" required/>
+                    </div>
+                    <hr>
+                    <div class="form__row">
+                        <label class="form__label">Hora Inicio</label>
+                        <input type="text" name="input-hora" placeholder="0.00" value="" class="form__input required" required/>
                     </div>
                     <div class="form__row mt-40">
                         <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
@@ -74,26 +107,37 @@
                 </form>
             </div>
         </div>
-
-
     </div>
-    <!-- PAGE END -->
 
-    <!-- Bottom navigation -->
-    <!--<div id="bottom-toolbar" class="bottom-toolbar"></div>-->
+</div>
+<!-- PAGE END -->
 
-    <!-- Social Icons Popup -->
-    <div id="popup-social"></div>
+<!-- Bottom navigation -->
+<!--<div id="bottom-toolbar" class="bottom-toolbar"></div>-->
 
-    <!-- Alert -->
-    <div id="popup-alert"></div>
+<!-- Social Icons Popup -->
+<div id="popup-social"></div>
 
-    <!-- Notifications -->
-    <div id="popup-notifications"></div>
+<!-- Alert -->
+<div id="popup-alert"></div>
 
-    <script src="../vendor/jquery/jquery-3.5.1.min.js"></script>
-    <script src="../vendor/jquery/jquery.validate.min.js"></script>
-    <script src="../vendor/swiper/swiper.min.js"></script>
-    <script src="../assets/js/jquery.custom.js"></script>
+<!-- Notifications -->
+<div id="popup-notifications"></div>
+
+<script src="../vendor/jquery/jquery-3.5.1.min.js"></script>
+<script src="../vendor/jquery/jquery.validate.min.js"></script>
+<script src="../vendor/swiper/swiper.min.js"></script>
+<script src="../assets/js/jquery.custom.js"></script>
+<script>
+function preguntarComprobante () {
+    var idopcion = $("#select-comprobante").val();
+    var nrodocumento = $("#input-datos-facturacion").val();
+    if (idopcion == "4") {
+        $("#input-datos-factura").val(nrodocumento);
+    } else {
+        $("#input-datos-factura").val("");
+    }
+}
+</script>
 </body>
 </html>

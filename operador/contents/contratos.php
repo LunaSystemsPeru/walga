@@ -1,6 +1,7 @@
 <?php
 include "../fixed/cargarSesion.php";
-
+require '../../models/Contrato.php';
+$Contrato = new Contrato();
 ?>
 
 <!DOCTYPE html>
@@ -41,54 +42,46 @@ include "../fixed/cargarSesion.php";
         </div>
 
         <h4>Contratos Activos</h4>
-        <div class="cards cards--11">
-            <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
-                <div class="card__details">
-                    <h4 class="card__title">Carga de 45 Postes Electricos de Cemento <p class="card__text">La Florida - AAHH San Pedro</p></h4>
-                    <p class="card__text"><i></i> Cliente: Zully Pinchi</p>
-                    <p class="card__text">Programado para 2022-07-07 | 03:30 pm</p>
-                    <div class="caption__content">
-                        <a class="caption__category" href="shop.html">Pendiente</a>
+        <?php
+        $array_contratos = $Contrato->verContratosActivos();
+        foreach ($array_contratos as $fila) {
+            ?>
+            <div class="cards cards--11">
+                <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
+                    <div class="card__details">
+                        <h4 class="card__title"><?php echo strtoupper($fila['servicio']) ?> <p class="card__text"><?php echo $fila['origen'] . " - " . $fila['destino'] ?></p></h4>
+                        <p class="card__text"><i></i> Cliente: <?php echo $fila['datos'] ?></p>
+                        <p class="card__text">Programado para <?php echo $fila['fecha'] . " | " . $fila['hora_inicio'] ?></p>
+                        <div class="caption__content">
+                            <a class="caption__category" href="shop.html">en Proceso</a>
+                        </div>
                     </div>
+                    <div class="card__more"><a href="sliders.html"><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
                 </div>
-                <div class="card__more"><a href="sliders.html"><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
             </div>
-        </div>
-
-        <div class="cards cards--11">
-            <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
-                <div class="card__details">
-                    <h4 class="card__title">Traslado de herramientas <p class="card__text">3 Estrellas - AAHH Los Consquistadores</p></h4>
-                    <p class="card__text"><i></i> Cliente: Martin Vizcarra</p>
-                    <p class="card__text">Programado para 2022-07-07 | 01:30 pm</p>
-                    <div class="caption__content">
-                        <a class="caption__category" href="shop.html">en Proceso desde las 12:45 pm</a>
-                    </div>
-
-                </div>
-                <div class="card__more"><a href="sliders.html"><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
-            </div>
-        </div>
-
-
+            <?php
+        }
+        ?>
     </div>
-    <!-- PAGE END -->
 
-    <!-- Bottom navigation -->
-    <div id="bottom-toolbar" class="bottom-toolbar"></div>
+</div>
+<!-- PAGE END -->
 
-    <!-- Social Icons Popup -->
-    <div id="popup-social"></div>
+<!-- Bottom navigation -->
+<div id="bottom-toolbar" class="bottom-toolbar"></div>
 
-    <!-- Alert -->
-    <div id="popup-alert"></div>
+<!-- Social Icons Popup -->
+<div id="popup-social"></div>
 
-    <!-- Notifications -->
-    <div id="popup-notifications"></div>
+<!-- Alert -->
+<div id="popup-alert"></div>
 
-    <script src="../vendor/jquery/jquery-3.5.1.min.js"></script>
-    <script src="../vendor/jquery/jquery.validate.min.js"></script>
-    <script src="../vendor/swiper/swiper.min.js"></script>
-    <script src="../assets/js/jquery.custom.js"></script>
+<!-- Notifications -->
+<div id="popup-notifications"></div>
+
+<script src="../vendor/jquery/jquery-3.5.1.min.js"></script>
+<script src="../vendor/jquery/jquery.validate.min.js"></script>
+<script src="../vendor/swiper/swiper.min.js"></script>
+<script src="../assets/js/jquery.custom.js"></script>
 </body>
 </html>
