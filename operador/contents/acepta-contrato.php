@@ -25,7 +25,7 @@ if ($Contrato->getId()) {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
@@ -99,7 +99,7 @@ if ($Contrato->getId()) {
                     <hr>
                     <div class="form__row">
                         <label class="form__label">Hora Inicio</label>
-                        <input type="text" name="input-hora" placeholder="0.00" value="" class="form__input required" required/>
+                        <input type="time" name="input-hora" placeholder="0.00" value="" class="form__input required" required/>
                     </div>
                     <div class="form__row mt-40">
                         <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>

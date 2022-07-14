@@ -5,7 +5,7 @@ $Contrato = new Contrato();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
@@ -45,6 +45,17 @@ $Contrato = new Contrato();
         <?php
         $array_contratos = $Contrato->verContratosActivos();
         foreach ($array_contratos as $fila) {
+            $iestado = $fila['estado_contrato'];
+            $label_estado = "";
+            if ($iestado == 0) {
+                $label_estado = "Programado";
+            }
+            if ($iestado == 1) {
+                $label_estado = "en  Proceso";
+            }
+            if ($iestado == 2) {
+                $label_estado = "Finalizado";
+            }
             ?>
             <div class="cards cards--11">
                 <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
@@ -53,10 +64,10 @@ $Contrato = new Contrato();
                         <p class="card__text"><i></i> Cliente: <?php echo $fila['datos'] ?></p>
                         <p class="card__text">Programado para <?php echo $fila['fecha'] . " | " . $fila['hora_inicio'] ?></p>
                         <div class="caption__content">
-                            <a class="caption__category" href="shop.html">en Proceso</a>
+                            <a class="caption__category" ><?php echo $label_estado ?></a>
                         </div>
                     </div>
-                    <div class="card__more"><a href="sliders.html"><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
+                    <div class="card__more"><a href="finaliza-contrato.php?id=<?php echo $fila['id'] ?>"><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
                 </div>
             </div>
             <?php
