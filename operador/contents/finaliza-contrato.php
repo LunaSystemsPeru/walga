@@ -60,10 +60,10 @@ if ($Contrato->getId()) {
         <h2 class="page__title">Cierre de Contrato</h2>
         <div class="fieldset">
             <div class="form">
-                <form id="Form" method="post" action="../controller/acepta-contrato.php">
+                <form id="Form" method="post" action="../controller/finaliza-contrato.php">
                     <div class="form__row">
                         <label class="form__label">fecha</label>
-                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo $Contrato->getFecha() ?>" class="form__input"/>
+                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo $Contrato->getFecha() ?>" class="form__input" readonly/>
                         <input type="hidden" name="input-id-contrato" value="<?php echo $Contrato->getId()?>">
                     </div>
                     <div class="form__row">
@@ -72,34 +72,25 @@ if ($Contrato->getId()) {
                         <input type="hidden" value="<?php echo $Entidad->getNrodocumento() . " | " . $Entidad->getRazonsocial() ?>" id="input-datos-facturacion">
                     </div>
                     <div class="form__row">
-                        <label class="form__label">Desea Comprobante?</label>
-                        <div class="form__select">
-                            <select name="select-comprobante" id="select-comprobante" class="required" onchange="preguntarComprobante()">
-                                <option value="0">No</option>
-                                <option value="4">Factura</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">RUC a facturar</label>
-                        <input type="text" name="input-datos-factura" id="input-datos-factura" placeholder="" value="" class="form__input required" readonly/>
-                    </div>
-                    <div class="form__row">
                         <label class="form__label">Servicio</label>
-                        <textarea name="txt_servicio" class="form__textarea"><?php echo strtoupper($Valor->getDescripcion() . " | " . $Contrato->getServicio() . " - desde: " . $Contrato->getOrigen() . " hasta: " . $Contrato->getDestino()) ?></textarea>
+                        <textarea name="txt_servicio" disabled class="form__textarea"><?php echo strtoupper($Valor->getDescripcion() . " | " . $Contrato->getServicio() . " - desde: " . $Contrato->getOrigen() . " hasta: " . $Contrato->getDestino()) ?></textarea>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Monto Pactado</label>
-                        <input type="text" name="Username" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input required"/>
+                        <input type="text" name="Username" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input text-right required" readonly/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Adelanto</label>
-                        <input type="number" name="input-pago" placeholder="ingrese monto adelanto sino 0" value="" class="form__input required" required/>
+                        <input type="number" name="input-pago" value="<?php echo $Contrato->getMontopagado() ?>" class="form__input required text-right" readonly/>
                     </div>
                     <hr>
                     <div class="form__row">
-                        <label class="form__label">Hora Inicio</label>
-                        <input type="time" name="input-hora" placeholder="0.00" value="" class="form__input required" required/>
+                        <label class="form__label">Hora Fin</label>
+                        <input type="time" name="input-hora" placeholder="00:00" value="" class="form__input required" required/>
+                    </div>
+                    <div class="form__row">
+                        <label class="form__label">Pago Final</label>
+                        <input type="number" name="input-pago-final" placeholder="ingrese pago restante sino 0" value="" class="form__input text-right required" required/>
                     </div>
                     <div class="form__row mt-40">
                         <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>

@@ -44,21 +44,13 @@
             </div>
             <div class="ft-header-main-menu d-flex align-items-center justify-content-between">
                 <div class="ft-brand-logo">
-                    <a href="#"><img src="assets/img/logo/logo5.png" alt=""></a>
+                    <a href="#"><img src="assets/img/logo/logowebwalga.png" alt=""></a>
                 </div>
                 <div class="ft-header-main-menu-cta  d-flex align-items-center">
                     <nav class="ft-main-navigation clearfix ul-li">
                         <ul id="ft-main-nav" class="nav navbar-nav clearfix">
-                            <li class="dropdown">
-                                <a href="%21.html#">Inicio</a>
-                                <ul class="dropdown-menu clearfix">
-                                    <li><a href="index.php">Home Page 1</a></li>
-                                    <li><a href="index-2.html">Home Page 2</a></li>
-                                    <li><a href="index-3.html">Home Page 3</a></li>
-                                    <li><a href="index-4.html">Home Page 4</a></li>
-                                    <li><a href="index-5.html">Home Page 5</a></li>
-                                    <li><a href="index-6.html">Home Page 6</a></li>
-                                </ul>
+                            <li>
+                                <a href="index.php">Inicio</a>
                             </li>
                             <li><a href="about.html">Nosotros</a></li>
                             <li class="dropdown">
@@ -96,53 +88,26 @@
                             <i class="fal fa-times"></i>
                         </div>
                         <div class="m-brand-logo">
-                            <a href="%21.html#"><img src="assets/img/logo/logo4.png" alt=""></a>
+                            <a href="index.php"><img src="assets/img/logo/logowalgablanco.png" alt=""></a>
                         </div>
                         <nav class="mobile-main-navigation  clearfix ul-li">
                             <ul id="m-main-nav" class="navbar-nav text-capitalize clearfix">
-                                <li class="dropdown">
-                                    <a href="%21.html#">Home</a>
-                                    <ul class="dropdown-menu clearfix">
-                                        <li><a href="index.php">Home Page 1</a></li>
-                                        <li><a href="index-2.html">Home Page 2</a></li>
-                                        <li><a href="index-3.html">Home Page 3</a></li>
-                                        <li><a href="index-4.html">Home Page 4</a></li>
-                                        <li><a href="index-5.html">Home Page 5</a></li>
-                                        <li><a href="index-6.html">Home Page 6</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="index.php">Inicio</a>
                                 </li>
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="about.html">Nosotros</a></li>
                                 <li class="dropdown">
-                                    <a href="%21.html#">Service</a>
+                                    <a href="%21.html#">Servicios</a>
                                     <ul class="dropdown-menu clearfix">
                                         <li><a href="service.html">Service Page </a></li>
                                         <li><a href="service-single.html">Service Details</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="%21.html#">Project</a>
-                                    <ul class="dropdown-menu clearfix">
-                                        <li><a href="project.html">Services</a></li>
-                                        <li><a href="project-single.html">Team Page</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="%21.html#">Galeria de Servicios</a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="%21.html#">News</a>
-                                    <ul class="dropdown-menu clearfix">
-                                        <li><a href="blog.html">News </a></li>
-                                        <li><a href="blog-single.html">News Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="%21.html#">Others</a>
-                                    <ul class="dropdown-menu clearfix">
-                                        <li><a href="team.html">Team Page </a></li>
-                                        <li><a href="team-single.html">Team Details </a></li>
-                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                        <li><a href="faq.html">Faq Page</a></li>
-                                        <li><a href="contact.html">Contact Page</a></li>
-                                        <li><a href="pricing.html">Pricing Page</a></li>
-                                    </ul>
+                                    <a href="../intranet/index.php">Intranet</a>
                                 </li>
                             </ul>
                         </nav>
@@ -218,24 +183,24 @@
                     </rs-layer><!--
 
 							--><a
-                        id="slider-29-slide-76-layer-3"
-                        class="rs-layer rev-btn"
-                        href="service.html" target="_blank" rel="noopener"
-                        data-type="button"
-                        data-rsp_ch="on"
-                        data-xy="xo:0,11px,8px,15px;yo:580px,478px,363px,250px;"
-                        data-text="w:normal;s:15,12,9,14;l:50,41,31,40;fw:700;a:center;"
-                        data-dim="w:200px,165px,125px,150px;h:50px,41px,31px,40px;minh:0px,none,none,none;"
-                        data-padding="r:25,21,16,10;l:25,21,16,10;"
-                        data-frame_0="x:100%;"
-                        data-frame_0_mask="u:t;"
-                        data-frame_1="st:1500;sp:1500;"
-                        data-frame_1_mask="u:t;"
-                        data-frame_999="o:0;st:w;"
-                        data-frame_hover="bgc:#ff3a2d;gs:sliding;bor:0px,0px,0px,0px;bri:120%;"
-                        style="z-index:8;background-color:#007aff;font-family:'Poppins';text-transform:uppercase;cursor:pointer;"
-                ><i class="fas fa-cog"></i> Interesado
-                </a><!--
+                            id="slider-29-slide-76-layer-3"
+                            class="rs-layer rev-btn"
+                            href="service.html" target="_blank" rel="noopener"
+                            data-type="button"
+                            data-rsp_ch="on"
+                            data-xy="xo:0,11px,8px,15px;yo:580px,478px,363px,250px;"
+                            data-text="w:normal;s:15,12,9,14;l:50,41,31,40;fw:700;a:center;"
+                            data-dim="w:200px,165px,125px,150px;h:50px,41px,31px,40px;minh:0px,none,none,none;"
+                            data-padding="r:25,21,16,10;l:25,21,16,10;"
+                            data-frame_0="x:100%;"
+                            data-frame_0_mask="u:t;"
+                            data-frame_1="st:1500;sp:1500;"
+                            data-frame_1_mask="u:t;"
+                            data-frame_999="o:0;st:w;"
+                            data-frame_hover="bgc:#ff3a2d;gs:sliding;bor:0px,0px,0px,0px;bri:120%;"
+                            style="z-index:8;background-color:#007aff;font-family:'Poppins';text-transform:uppercase;cursor:pointer;"
+                    ><i class="fas fa-cog"></i> Interesado
+                    </a><!--
 
 							-->
                     <rs-layer
@@ -252,7 +217,8 @@
                             style="z-index:9;"
                     ><img src="assets/s-truck-1.png" alt="Img" class="tp-rs-img" width="1034" height="599" data-no-retina>
                     </rs-layer><!--
-							-->                        </rs-slide>
+							-->
+                </rs-slide>
                 <rs-slide style="position: absolute;" data-key="rs-77" data-title="Slide" data-thumb="assets/slider1-50x100.png" data-in="o:0;" data-out="a:false;">
                     <img src="assets/slider1.png" alt="img" title="slider1" width="1920" height="989" class="rev-slidebg tp-rs-img" data-no-retina>
                     <!--
@@ -270,7 +236,7 @@
                             data-frame_1_mask="u:t;"
                             data-frame_999="o:0;st:w;"
                             style="z-index:5;font-family:'Roboto';text-transform:uppercase;"
-                    Nuevo Servicio
+                            Nuevo Servicio
                     </rs-layer><!--
 
 							-->
@@ -308,24 +274,24 @@
                     </rs-layer><!--
 
 							--><a
-                        id="slider-29-slide-77-layer-3"
-                        class="rs-layer rev-btn"
-                        href="service.html" target="_blank" rel="noopener"
-                        data-type="button"
-                        data-rsp_ch="on"
-                        data-xy="xo:0,11px,8px,15px;yo:580px,478px,363px,250px;"
-                        data-text="w:normal;s:15,12,9,14;l:50,41,31,40;fw:700;a:center;"
-                        data-dim="w:200px,165px,125px,150px;h:50px,41px,31px,40px;minh:0px,none,none,none;"
-                        data-padding="r:25,21,16,10;l:25,21,16,10;"
-                        data-frame_0="x:100%;"
-                        data-frame_0_mask="u:t;"
-                        data-frame_1="st:1500;sp:1500;"
-                        data-frame_1_mask="u:t;"
-                        data-frame_999="o:0;st:w;"
-                        data-frame_hover="bgc:#ff3a2d;gs:sliding;bor:0px,0px,0px,0px;bri:120%;"
-                        style="z-index:8;background-color:#007aff;font-family:'Poppins';text-transform:uppercase;cursor:pointer;"
-                ><i class="fas fa-cog"></i> Interesado
-                </a><!--
+                            id="slider-29-slide-77-layer-3"
+                            class="rs-layer rev-btn"
+                            href="service.html" target="_blank" rel="noopener"
+                            data-type="button"
+                            data-rsp_ch="on"
+                            data-xy="xo:0,11px,8px,15px;yo:580px,478px,363px,250px;"
+                            data-text="w:normal;s:15,12,9,14;l:50,41,31,40;fw:700;a:center;"
+                            data-dim="w:200px,165px,125px,150px;h:50px,41px,31px,40px;minh:0px,none,none,none;"
+                            data-padding="r:25,21,16,10;l:25,21,16,10;"
+                            data-frame_0="x:100%;"
+                            data-frame_0_mask="u:t;"
+                            data-frame_1="st:1500;sp:1500;"
+                            data-frame_1_mask="u:t;"
+                            data-frame_999="o:0;st:w;"
+                            data-frame_hover="bgc:#ff3a2d;gs:sliding;bor:0px,0px,0px,0px;bri:120%;"
+                            style="z-index:8;background-color:#007aff;font-family:'Poppins';text-transform:uppercase;cursor:pointer;"
+                    ><i class="fas fa-cog"></i> Interesado
+                    </a><!--
 
 							-->
                     <rs-layer
@@ -342,7 +308,8 @@
                             style="z-index:9;"
                     ><img src="assets/s-truck-1.png" alt="Img" class="tp-rs-img" width="1034" height="599" data-no-retina>
                     </rs-layer><!--
-							-->                        </rs-slide>
+							-->
+                </rs-slide>
                 <rs-slide style="position: absolute;" data-key="rs-78" data-title="Slide" data-thumb="assets/slider1-50x100.png" data-in="o:0;" data-out="a:false;">
                     <img src="assets/slider1.png" alt="img" title="slider1" width="1920" height="989" class="rev-slidebg tp-rs-img" data-no-retina>
                     <!--
@@ -400,24 +367,24 @@
                     </rs-layer><!--
 
 							--><a
-                        id="slider-29-slide-78-layer-3"
-                        class="rs-layer rev-btn"
-                        href="service.html" target="_blank" rel="noopener"
-                        data-type="button"
-                        data-rsp_ch="on"
-                        data-xy="xo:0,11px,8px,15px;yo:580px,478px,363px,250px;"
-                        data-text="w:normal;s:15,12,9,14;l:50,41,31,40;fw:700;a:center;"
-                        data-dim="w:200px,165px,125px,150px;h:50px,41px,31px,40px;minh:0px,none,none,none;"
-                        data-padding="r:25,21,16,10;l:25,21,16,10;"
-                        data-frame_0="x:100%;"
-                        data-frame_0_mask="u:t;"
-                        data-frame_1="st:1500;sp:1500;"
-                        data-frame_1_mask="u:t;"
-                        data-frame_999="o:0;st:w;"
-                        data-frame_hover="bgc:#ff3a2d;gs:sliding;bor:0px,0px,0px,0px;bri:120%;"
-                        style="z-index:8;background-color:#007aff;font-family:'Poppins';text-transform:uppercase;cursor:pointer;"
-                ><i class="fas fa-cog"></i> View services
-                </a><!--
+                            id="slider-29-slide-78-layer-3"
+                            class="rs-layer rev-btn"
+                            href="service.html" target="_blank" rel="noopener"
+                            data-type="button"
+                            data-rsp_ch="on"
+                            data-xy="xo:0,11px,8px,15px;yo:580px,478px,363px,250px;"
+                            data-text="w:normal;s:15,12,9,14;l:50,41,31,40;fw:700;a:center;"
+                            data-dim="w:200px,165px,125px,150px;h:50px,41px,31px,40px;minh:0px,none,none,none;"
+                            data-padding="r:25,21,16,10;l:25,21,16,10;"
+                            data-frame_0="x:100%;"
+                            data-frame_0_mask="u:t;"
+                            data-frame_1="st:1500;sp:1500;"
+                            data-frame_1_mask="u:t;"
+                            data-frame_999="o:0;st:w;"
+                            data-frame_hover="bgc:#ff3a2d;gs:sliding;bor:0px,0px,0px,0px;bri:120%;"
+                            style="z-index:8;background-color:#007aff;font-family:'Poppins';text-transform:uppercase;cursor:pointer;"
+                    ><i class="fas fa-cog"></i> View services
+                    </a><!--
 
 							-->
                     <rs-layer
@@ -434,7 +401,8 @@
                             style="z-index:9;"
                     ><img src="assets/s-truck-1.png" alt="Img" class="tp-rs-img" width="1034" height="599" data-no-retina>
                     </rs-layer><!--
-							-->                        </rs-slide>
+							-->
+                </rs-slide>
             </rs-slides>
         </rs-module>
     </rs-module-wrap>
@@ -448,8 +416,8 @@
 <section id="ft-service-3" class="ft-service-section-3">
     <div class="container">
         <div class="ft-section-title-3 headline text-center wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-            <span class="text-uppercase">We specialise in the transportation</span>
-            <h2>Specialist Logistics Services</h2>
+            <span class="text-uppercase">Somos especialistas en tranporte</span>
+            <h2>Carga, Transporte, Descarga y Montaje</h2>
         </div>
         <div class="ft-service-content-3">
             <div class="ft-service-content-items-3">
@@ -464,13 +432,12 @@
                                     <i class="flaticon-plane"></i>
                                 </div>
                                 <div class="ft-service-text position-relative headline pera-content">
-                                    <h3><a href="service-single.html">Air Freight Service</a></h3>
-                                    <p>Once your business gets last-mile
-                                        delivery right, it becomes a hallmark of your service which creates a serious business opportunity.</p>
+                                    <h3><a href="service-single.html">Alquiler de Camion Gruas</a></h3>
+                                    <p>hasta 10 Ton de carga. Recogemos desde tu ubicacion y llevamos hasta donde quieras. Tambien vamos a zonas alejadas</p>
                                 </div>
                             </div>
                             <div class="more-btn position-absolute">
-                                <a class="d-flex align-items-center justify-content-center text-uppercase" href="service-single.html">Read more <i class="far fa-arrow-right"></i></a>
+                                <a class="d-flex align-items-center justify-content-center text-uppercase" href="service-single.html">estoy interesado <i class="far fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -484,13 +451,12 @@
                                     <i class="flaticon-boat"></i>
                                 </div>
                                 <div class="ft-service-text position-relative headline pera-content">
-                                    <h3><a href="service-single.html">Sea Transportation</a></h3>
-                                    <p>Once your business gets last-mile
-                                        delivery right, it becomes a hallmark of your service which creates a serious business opportunity.</p>
+                                    <h3><a href="service-single.html">Auxilio Vehicular</a></h3>
+                                    <p>Camion especializado para cargar tu vehiculo y llevarlo al taller o a tu cochera.</p>
                                 </div>
                             </div>
                             <div class="more-btn position-absolute">
-                                <a class="d-flex align-items-center justify-content-center text-uppercase" href="service-single.html">Read more <i class="far fa-arrow-right"></i></a>
+                                <a class="d-flex align-items-center justify-content-center text-uppercase" href="service-single.html">Estoy Interesado <i class="far fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -504,21 +470,20 @@
                                     <i class="flaticon-free-shipping"></i>
                                 </div>
                                 <div class="ft-service-text position-relative headline pera-content">
-                                    <h3><a href="service-single.html">Road Transportation</a></h3>
-                                    <p>Once your business gets last-mile
-                                        delivery right, it becomes a hallmark of your service which creates a serious business opportunity.</p>
+                                    <h3><a href="service-single.html">Ultima milla</a></h3>
+                                    <p>Paqueteria local y entregas a negocios</p>
                                 </div>
                             </div>
                             <div class="more-btn position-absolute">
-                                <a class="d-flex align-items-center justify-content-center text-uppercase" href="service-single.html">Read more <i class="far fa-arrow-right"></i></a>
+                                <a class="d-flex align-items-center justify-content-center text-uppercase" href="service-single.html">Estoy interesado <i class="far fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="ft-service-more-btn d-flex flex-wrap justify-content-center align-items-center wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-					<span>Our list of services does not end here. Find out how we can help you and your business.
-					</span> <a class="text-uppercase align-items-center justify-content-center d-flex" href="service.html" target="_blank">More Services</a>
+					<span>nuestros servicios no finalizar aqui, mira nuestra pagina de servicios y encontraras una solucion a tu problema.
+					</span> <a class="text-uppercase align-items-center justify-content-center d-flex" href="service.html" target="_blank">mas Servicios</a>
             </div>
         </div>
     </div>
@@ -718,17 +683,14 @@
                 <div class="col-lg-6">
                     <div class="ft-why-choose-text-2">
                         <div class="ft-section-title-3 headline">
-                            <span class="text-uppercase">Why choose us?</span>
-                            <h2>We Create Opportunity
-                                to Reach Potential.</h2>
+                            <span class="text-uppercase">Somos las mejor opcion</span>
+                            <h2>xxx</h2>
                         </div>
                         <div class="ft-why-choose-list-wrapper ul-li-block">
                             <ul>
-                                <li>Career progression</li>
-                                <li>Fasttrans offers a clear and transparent career
-                                    journey and provides the support
-                                </li>
-                                <li>Make long term business decisions</li>
+                                <li>Operador y Rigger Certificados</li>
+                                <li>Choferes capacitados para mantenerte a salvo</li>
+                                <li>Cumplimos con las normas de Seguridad</li>
                                 <li>Provide a service we are proud of</li>
                                 <li>Be a responsible member of the community</li>
                                 <li>Always seek to improve</li>
@@ -743,33 +705,21 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="wc-input">
-                                            <span>Freight type:</span>
+                                            <span>Que servicio deseas:</span>
                                             <div class="wc-select position-relative">
                                                 <select name="#">
                                                     <option value="#">Seelct</option>
-                                                    <option value="#">Air Freight</option>
-                                                    <option value="#">Sea Freight</option>
-                                                    <option value="#">Road Freight</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="wc-input">
-                                            <span>Load:</span>
-                                            <div class="wc-select position-relative">
-                                                <select name="#">
-                                                    <option value="#">Seelct</option>
-                                                    <option value="#">500kg</option>
-                                                    <option value="#">1000kg</option>
-                                                    <option value="#">1500kg</option>
+                                                    <option value="#">Alquiler de Camion Grua</option>
+                                                    <option value="#">Alquiler de Camioneta + Chofer</option>
+                                                    <option value="#">Auxilio Vehicular</option>
+                                                    <option value="#">Delivery Paqueteria (Ultima Milla)</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="wc-input-range" data-background="assets/img/bg/wc-f-bg.jpg">
-                                            <span>DIST (Miles):</span>
+                                            <span>Rango de Carga</span>
                                             <div class="wc-input-range-area d-flex align-items-center">
                                                 <div id="slider-range" class="range-bar"></div>
                                                 <div class="range-value clearfix">
@@ -780,24 +730,24 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="wc-input">
-                                            <span>Your name:</span>
+                                            <span>breve descripcion del servicio:</span>
                                             <div class="wc-text-input position-relative">
-                                                <input type="text" placeholder="Jhon Doe..">
+                                                <input type="text" placeholder="algo breve">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="wc-input">
-                                            <span>Phone number:</span>
+                                            <span>Tu nombre:</span>
                                             <div class="wc-text-input position-relative">
-                                                <input type="text" placeholder="+883...">
+                                                <input type="text" placeholder="nombre para contacto">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="text-uppercase" type="submit">Submit request</button>
+                                <button class="text-uppercase" type="submit">Enviar WhatsApp</button>
                             </form>
-                            <p>By clicking on <a href="#">this button</a>, I agree to the processing.</p>
+                            <p>Llene sus datos y cotice sin compromiso</p>
                         </div>
                     </div>
                 </div>
@@ -872,7 +822,7 @@
                                 <a href="#"><i class="fas fa-user"></i> Admin</a>
                             </div>
                             <h3><a href="blog-single.html">Organisational teams of
-                                the are just like families.</a></h3>
+                                    the are just like families.</a></h3>
                             <a class="more-btn text-uppercase d-flex justify-content-center align-items-center position-absolute" href="blog-single.html">Read More</a>
                         </div>
                     </div>
@@ -888,7 +838,7 @@
                                 <a href="#"><i class="fas fa-user"></i> Admin</a>
                             </div>
                             <h3><a href="blog-single.html">From Monday 14th June
-                                we look a little different!</a></h3>
+                                    we look a little different!</a></h3>
                             <a class="more-btn text-uppercase d-flex justify-content-center align-items-center position-absolute" href="blog-single.html">Read More</a>
                         </div>
                     </div>
@@ -904,7 +854,7 @@
                                 <a href="#"><i class="fas fa-user"></i> Admin</a>
                             </div>
                             <h3><a href="blog-single.html">The current UK Haulage
-                                Market – How will this...</a></h3>
+                                    Market – How will this...</a></h3>
                             <a class="more-btn text-uppercase d-flex justify-content-center align-items-center position-absolute" href="blog-single.html">Read More</a>
                         </div>
                     </div>
@@ -920,7 +870,7 @@
                                 <a href="#"><i class="fas fa-user"></i> Admin</a>
                             </div>
                             <h3><a href="blog-single.html">Organisational teams of
-                                the are just like families.</a></h3>
+                                    the are just like families.</a></h3>
                             <a class="more-btn text-uppercase d-flex justify-content-center align-items-center position-absolute" href="blog-single.html">Read More</a>
                         </div>
                     </div>
@@ -936,7 +886,7 @@
                                 <a href="#"><i class="fas fa-user"></i> Admin</a>
                             </div>
                             <h3><a href="blog-single.html">From Monday 14th June
-                                we look a little different!</a></h3>
+                                    we look a little different!</a></h3>
                             <a class="more-btn text-uppercase d-flex justify-content-center align-items-center position-absolute" href="blog-single.html">Read More</a>
                         </div>
                     </div>
@@ -972,7 +922,7 @@
                         <div class="ft-footer-widget">
                             <div class="ft-footer-logo-widget headline pera-content">
                                 <div class="ft-footer-logo">
-                                    <a href="#"><img src="assets/img/logo/logo2.png" alt=""></a>
+                                    <a href="#"><img src="assets/img/logo/logowalgablanco.png" alt=""></a>
                                 </div>
                                 <p>We work with a passion of taking challenges and creating new ones in advertising sector.</p>
                                 <a class="footer-logo-btn text-center text-uppercase" href="about.html">About us</a>
@@ -982,14 +932,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="ft-footer-widget">
                             <div class="ft-footer-newslatter-widget pera-content headline">
-                                <h3 class="widget-title">Newsletter</h3>
-                                <p>Subscribe our newsletter to get our
-                                    latest update & news
-                                </p>
-                                <form action="#">
-                                    <input type="email" placeholder="Your mail address">
-                                    <button type="submit"><i class="far fa-paper-plane"></i></button>
-                                </form>
+                                <h3 class="widget-title">Siguenos en Redes Sociales</h3>
                                 <div class="ft-footer-social ul-li">
                                     <ul>
                                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -1005,21 +948,20 @@
                         <div class="ft-footer-widget">
                             <div class="ft-footer-newslatter-widget pera-content headline">
                                 <div class="ft-footer-info-widget ul-li ">
-                                    <h3 class="widget-title">Official info:</h3>
+                                    <h3 class="widget-title">Oficinas:</h3>
                                     <ul>
                                         <li>
                                             <i class="fas fa-map-marker-alt"></i>
-                                            <a href="#">30 Commercial Road
-                                                Fratton, Australia</a>
+                                            <a href="https://goo.gl/maps/jgqc7NS7KJ4Zq5jWA">Jr. Chancay Mz J Lt 16 Chimbote</a>
                                         </li>
                                         <li>
-                                            <i class="fas fa-phone"></i><a href="#">1-888-452-1505</a>
+                                            <i class="fas fa-phone"></i><a href="tel:+51949490436">949 490 436</a>
                                         </li>
                                     </ul>
                                     <div class="office-open-hour">
-                                        <span>Open Hours: </span>
-                                        <p>Mon - Sat: 8 am - 5 pm,
-                                            Sunday: CLOSED
+                                        <span>Horario Oficina: </span>
+                                        <p>Lun - Sab: 8 am - 5 pm,
+                                            Domingo: CERRADO
                                         </p>
                                     </div>
                                 </div>
@@ -1029,7 +971,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="ft-footer-widget ul-li-block headline pera-content">
                             <div class="gallery-widget clearfix">
-                                <h3 class="widget-title">Gallery </h3>
+                                <h3 class="widget-title">Galeria </h3>
                                 <ul class="zoom-gallery">
                                     <li><a href="assets/img/gallery/gl1.jpg" data-source="assets/img/gallery/gl1.jpg"><img src="assets/img/gallery/gl1.jpg" alt=""></a></li>
                                     <li><a href="assets/img/gallery/gl2.jpg" data-source="assets/img/gallery/gl2.jpg"><img src="assets/img/gallery/gl2.jpg" alt=""></a></li>
@@ -1043,7 +985,7 @@
                     </div>
                 </div>
                 <div class="ft-footer-copyright text-center">
-                    <span>© 2021 Fastrans - Transport Services. All rights reserved.</span>
+                    <span>© <?php echo date("Y")?> - Transportes y Servicios WALGA</span>
                 </div>
             </div>
         </div>
