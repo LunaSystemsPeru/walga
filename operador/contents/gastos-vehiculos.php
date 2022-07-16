@@ -1,7 +1,9 @@
 <?php
 include "../fixed/cargarSesion.php";
-require '../../models/Cliente.php';
-$Cliente = new Cliente();
+require '../../models/VehiculoGasto.php';
+$Gastos = new VehiculoGasto();
+$Gastos->setVehiculoid($_SESSION['vehiculo_id']);
+$Gastos->setFecha(date("Y-m-d"));
 ?>
 
 <!DOCTYPE html>
@@ -38,34 +40,31 @@ $Cliente = new Cliente();
     <!-- PAGE CONTENT -->
     <div class="page__content page__content--with-header">
         <div class="buttons buttons--centered mb-20">
-            <!--<a href="registra-cliente.php" data-popup="success" class="button button--main button--full open-popup">Nuevo Cliente</a>
-            <a href="registra-contrato.php" data-popup="success" class="button button--secondary button--full open-popup">Buscar Cliente</a>-->
+            <a href="registra-gasto.php" data-popup="success" class="button button--main button--full open-popup">Agregar Gasto</a>
+            <!--<a href="registra-contrato.php" data-popup="success" class="button button--secondary button--full open-popup">Buscar Cliente</a>-->
         </div>
 
-        <h4>Lista de Clientes</h4>
+        <h4>Gastos del dia</h4>
         <div class="cards cards--11">
             <?php
-            $array_clientes = $Cliente->ultimos50Clientes();
-            foreach ($array_clientes as $fila) {
+            $array_gastos_dia = $Gastos->verFilas();
+            $montofinal = 0;
+            foreach ($array_gastos_dia  as $fila) {
                 ?>
                 <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
-                    <div class="card__icon">
-                        <a href="tel:+51<?php echo $fila['celular'] ?>" target="_blank">
-                        <img src="../assets/images/icons/blue/mobile.svg" alt="" title=""/>
-                        </a>
-                    </div>
+
                     <div class="card__details">
-                        <h4 class="card__title"><?php echo $fila['datos'] ?></h4>
-                        <p class="card__text"><?php echo $fila['email'] ?></p>
+                        <h4 class="card__title"><?php echo $fila['descripcion'] . " | Kilometraje - Orometro: " . $fila['orometro'] ?></h4>
+                        <p class="card__text">S/ <?php echo $fila['monto'] ?></p>
                     </div>
-                    <div class="card__more"><a target="_blank" href="https://wa.me/+51<?php echo $fila['celular'] ?>?text=Hola, te escribo de WALGA Inversiones EIRL " ><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
                 </div>
             <?php
+                $montofinal = $montofinal + $fila['monto'];
             }
             ?>
 
         </div>
-
+        <h4>Total Gastos: S/ <?php echo $montofinal?></h4>
 
     </div>
     <!-- PAGE END -->

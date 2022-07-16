@@ -22,6 +22,7 @@ class Contrato
     private $montopagado;
     private $horainicio;
     private $horatermino;
+    private $incluyeigv;
     private $conectar;
 
     /**
@@ -336,6 +337,21 @@ class Contrato
         $this->horatermino = $horatermino;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIncluyeigv()
+    {
+        return $this->incluyeigv;
+    }
+
+    /**
+     * @param mixed $incluyeigv
+     */
+    public function setIncluyeigv($incluyeigv)
+    {
+        $this->incluyeigv = $incluyeigv;
+    }
 
     public function obtenerId()
     {
@@ -369,6 +385,7 @@ class Contrato
             $this->montopagado = $resultado['monto_pagado'];
             $this->horainicio = $resultado['hora_inicio'];
             $this->horatermino = $resultado['hora_termino'];
+            $this->incluyeigv = $resultado['incluye_igv'];
             return true;
         } else {
             return false;
@@ -396,7 +413,8 @@ class Contrato
                         '$this->montocontrato',
                         '0',
                         '00:00',
-                        '00:00')";
+                        '00:00', 
+                        '0')";
         $this->conectar->ejecutar_idu($sql);
     }
 
@@ -405,7 +423,8 @@ class Contrato
                 set comprobante_id = '$this->comprobanteid',
                     hora_inicio = '$this->horainicio', 
                     hora_termino = '$this->horatermino', 
-                    estado_contrato = '$this->estado'
+                    estado_contrato = '$this->estado', 
+                    incluye_igv = '$this->incluyeigv'
                 where id = '$this->id'";
         //echo $sql;
         $this->conectar->ejecutar_idu($sql);
@@ -420,6 +439,19 @@ class Contrato
                 inner join parametros_valores as pv2 on c.tiposervicio_id = pv2.id
                 inner join vehiculos v on c.vehiculo_id = v.id
                 where c.estado_contrato = 0 or (c.estado_contrato = 1 and c.vehiculo_id = '$this->vehiculoid')
+                order by c.fecha asc";
+        return $this->conectar->get_Cursor($sql);
+    }
+
+    public function verContratosdelDia() {
+        $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, 
+                pv.descripcion as comprobante, pv2.descripcion as tiposervicio, v.placa, c.comprobante_id, c.estado_comprobante
+                from contratos as c 
+                inner join clientes c2 on c.cliente_id = c2.id
+                inner join parametros_valores pv on c.comprobante_id = pv.id
+                inner join parametros_valores as pv2 on c.tiposervicio_id = pv2.id
+                inner join vehiculos v on c.vehiculo_id = v.id
+                where c.fecha = '$this->fecha'
                 order by c.fecha asc";
         return $this->conectar->get_Cursor($sql);
     }

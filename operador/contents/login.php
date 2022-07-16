@@ -11,6 +11,7 @@ $Vehiculo->setEmpresaId(1);
     <title>Walga Transportes | Alquiler de Gruas y Logistica</title>
     <link rel="stylesheet" href="../vendor/swiper/swiper.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="shortcut icon" href="../../landing/assets/img/logo/faviconwalga.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
 </head>
 <body>

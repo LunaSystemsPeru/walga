@@ -2,6 +2,7 @@
 include "../fixed/cargarSesion.php";
 require '../../models/Contrato.php';
 $Contrato = new Contrato();
+$Contrato->setVehiculoid($_SESSION['vehiculo_id']);
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +13,7 @@ $Contrato = new Contrato();
     <title>Walga Transportes | Alquiler de Gruas y Logistica</title>
     <link rel="stylesheet" href="../vendor/swiper/swiper.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="shortcut icon" href="../../landing/assets/img/logo/faviconwalga.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 </head>
 <body>
@@ -67,7 +69,18 @@ $Contrato = new Contrato();
                             <a class="caption__category" ><?php echo $label_estado ?></a>
                         </div>
                     </div>
-                    <div class="card__more"><a href="finaliza-contrato.php?id=<?php echo $fila['id'] ?>"><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
+                    <?php
+                    $url = "";
+                    if ($iestado == 0) {
+                        $url = 'acepta-contrato.php?id='.$fila['id'];
+                    } else {
+                        $url = 'finaliza-contrato.php?id='.$fila['id'];
+                    }
+                    ?>
+                    <div class="card__more">
+                        <a href="<?php echo $url ?>">
+                            <img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a>
+                    </div>
                 </div>
             </div>
             <?php
