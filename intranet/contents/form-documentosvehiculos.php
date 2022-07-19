@@ -1,3 +1,9 @@
+<?php
+include '../fixed/cargarSession.php';
+require '../../models/Vehiculo.php';
+$Vehiculo = new Vehiculo();
+$Vehiculo->setEmpresaId($_SESSION['empresa_id']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,84 +61,88 @@
                     <div class="card">
                     </div><!--end card-header-->
                     <div class="card-body">
-                        <form>
+                        <form method="post" action="../controller/registra-documentos-vehiculo.php">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="exampleInputPassword1">Vehiculo</label>
-                                        <select class="form-control" aria-label="Default select example">
+                                        <label class="form-label" for="select_vehiculo">Seleccionar Vehiculo</label>
+                                        <select class="form-control" aria-label="Default select example" name="select_vehiculo" id="select_vehiculo">
                                             <option selected>Abrir para seleccionar</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            <?php
+                                            $array_vehiculos = $Vehiculo->verFilas();
+                                            foreach ($array_vehiculos as $fila) {
+                                                echo '<option value="'.$fila['id'] .'">'.$fila['placa'] .'</option>';
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="input-datos-vehiculo">Marca | Modelo | Año</label>
+                                        <input type="text" class="form-control" id="input-datos-vehiculo" name="input-datos-vehiculo" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label class="form-label" for="documento">Documento</label>
-                                        <input type="text" class="form-control" id="documento" placeholder="Documento">
+                                        <label class="form-label" for="input_documento">Descripcion del documento</label>
+                                        <input type="text" class="form-control" id="input_documento" name="input_documento" required>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="my-3">Fecha de Emision</label>
-                                        <input type="text" class="form-control" placeholder="Fecha de emision" id="Fechaemision">
-                                    </div><!--end col-->
-                                    <div class="col-md-6">
-                                        <label class="my-3">Fecha de Vencimiento</label>
-                                        <input type="text" class="form-control" placeholder="Fecha de Vencimiento" id="Fechavencimiento">
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                                <div class="input-group mb-3">
-                                    <label class="form-label">Emisor</label>
-                                    <button class="btn btn-secondary" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Buscar emisor" aria-describedby="button-addon1">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="inputGroupFile02">
-                                    <label class="input-group-text" for="inputGroupFile02">File</label>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="input_datos_emisor">Empresa que emite el documento (escribir para buscar, clic para seleccionar)</label>
+                                        <input type="text" class="form-control" id="input_datos_emisor" >
+                                        <input type="hidden" id="input_emisor_id" name="input_emisor_id" >
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="col-sm-10 ms-auto">
-                                        <label class="form-label" for="estado">Estado</label>
-                                        <div class="form-check form-switch form-switch-secondary">
-                                            <input class="form-check-input" type="checkbox" id="customSwitchSecondary"
-                                                   checked>
-                                            <label class="form-check-label" for="customSwitchSecondary">Activo</label>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="input_emision">Fec. Emision</label>
+                                        <input type="date" class="form-control" id="input_emision" name="input_emision" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="exampleInputPassword1">Choferes</label>
-                                        <select class="form-control" aria-label="Default select example">
-                                            <option selected>Abrir para seleccionar</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
+                                        <label class="form-label" for="input_vencimiento">Fec. Vencimiento</label>
+                                        <input type="date" class="form-control" id="input_vencimiento" name="input_vencimiento" required>
                                     </div>
                                 </div>
                             </div>
-                    </form>
-                </div><!--end card-body-->
-                <div class="card-footer">
-                    <div class="col-auto align-self-center">
 
-                        <a href="#" class="btn btn-sm btn-soft-primary">
-                            <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                            Guardar Vehiculo
-                        </a>
-                    </div><!--end col-->
-                </div>
-            </div><!--end card-->
-        </div> <!-- end col -->
-    </div> <!-- end row -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="usuario">Cargar PDF</label>
+                                        <input type="file" class="form-control" id="usuario" >
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!--end card-body-->
+                    <div class="card-footer">
+                        <div class="col-auto align-self-center">
 
-</div><!--end row-->
+                            <a href="#" class="btn btn-sm btn-soft-primary">
+                                <i data-feather="plus" class="fas fa-plus mr-2"></i>
+                                Guardar Documento
+                            </a>
+                        </div><!--end col-->
+                    </div>
+                </div><!--end card-->
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div><!--end row-->
 
 
 </div><!-- container -->
