@@ -19,10 +19,14 @@ if ($desea_comprobante == 4) {
 $Contrato->setMontopagado(filter_input(INPUT_POST, 'input-pago'));
 $Contrato->setHorainicio(filter_input(INPUT_POST, 'input-hora'));
 $Contrato->setEstado(1);
+$Contrato->setIncluyeigv(filter_input(INPUT_POST, 'select-incluido'));
+if (!$Contrato->getIncluyeigv()) {
+    $Contrato->setIncluyeigv(0);
+}
 
 $Contrato->modificar();
 
-if ($Contrato->getMontopagado()>0) {
+if ($Contrato->getMontopagado() > 0) {
     $PagoCliente->setMonto($Contrato->getMontopagado());
     $PagoCliente->setClienteid($Contrato->getClienteid());
     $PagoCliente->setUsuarioid($_SESSION['usuario_id']);

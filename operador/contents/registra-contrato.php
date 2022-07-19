@@ -46,12 +46,21 @@ $Valor = new ParametroValor();
                 <form id="Form" method="post" action="../controller/registra-contrato.php">
                     <div class="form__row">
                         <label class="form__label">fecha</label>
-                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo date("Y-m-d")?>" class="form__input required"/>
+                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo date("Y-m-d") ?>" class="form__input required"/>
+                    </div>
+                    <div class="form__row">
+                        <label class="form__label">es Cliente Express?</label>
+                        <div class="form__select">
+                            <select name="select-tiene-cliente" id="select-tiene-cliente" class="required" onchange="esclienteExpress()">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form__row">
                         <label class="form__label">buscar Cliente</label>
-                        <a href="registra-cliente.php"  class="button button--small button--secondary" type="button" id="button-addon1">Agregar Nuevo Cliente</a>
-                        <input type="text" name="input-cliente" id="input-cliente" placeholder="escoger Cliente" value="" class="form__input required" aria-label="Buscar emisor" aria-describedby="button-addon1"/>
+                        <input type="text" name="input-cliente" id="input-cliente" placeholder="Buscar Cliente" value="" class="form__input required" aria-label="Buscar emisor" aria-describedby="button-addon1"/>
+                        <button class="button button--small button--secondary" type="button" id="href-cliente" onclick="agregarCliente()">Agregar Nuevo Cliente</button>
                         <input type="hidden" name="input-id-cliente" id="input-id-cliente">
                     </div>
                     <div class="form__row">
@@ -60,9 +69,9 @@ $Valor = new ParametroValor();
                             <select name="select-tipo-servicio" id="select-tipo-servicio" class="required">
                                 <?php
                                 $Valor->setParametroId(2);
-                                $array_servicios =  $Valor->verFilas();
+                                $array_servicios = $Valor->verFilas();
                                 foreach ($array_servicios as $fila) {
-                                    echo ' <option value="'.$fila['id'] .'">'.$fila['descripcion'] .'</option>';
+                                    echo ' <option value="' . $fila['id'] . '">' . $fila['descripcion'] . '</option>';
                                 }
                                 ?>
                             </select>
@@ -129,6 +138,26 @@ $Valor = new ParametroValor();
                 $("#text-servicio").focus();
             }
         });
+
+        function esclienteExpress() {
+            var tienecliente = $("#select-tiene-cliente").val()
+            if (tienecliente == 1) {
+                $("#input-cliente").prop("readonly", true);
+                $("#href-cliente").prop("disabled", true);
+                $("#input-cliente").val("CLIENTE NO IDENTIFICADO")
+                $("#input-id-cliente").val(0)
+                $("#text-servicio").focus();
+            } else {
+                $("#href-cliente").prop("disabled", false);
+                $("#input-cliente").prop("readonly", false);
+                $("#input-id-cliente").val("")
+                $("#input-cliente").focus();
+            }
+        }
+
+        function agregarCliente() {
+            window.location.href = "registra-cliente.php";
+        }
     </script>
 </body>
 </html>

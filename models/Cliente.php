@@ -198,4 +198,14 @@ class Cliente
                 order by datos asc";
         return $this->conectar->get_Cursor($sql);
     }
+
+    public function ultimos50Clientes () {
+        $sql = "select c.cliente_id, c2.datos, c2.celular, c2.email 
+        from contratos as c 
+        inner join clientes c2 on c.cliente_id = c2.id
+        where c.cliente_id != 0
+        group by c.cliente_id
+        order by c2.datos asc ";
+        return $this->conectar->get_Cursor($sql);
+    }
 }

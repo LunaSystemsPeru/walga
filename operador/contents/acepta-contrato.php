@@ -64,19 +64,36 @@ if ($Contrato->getId()) {
                     <div class="form__row">
                         <label class="form__label">fecha</label>
                         <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo $Contrato->getFecha() ?>" class="form__input"/>
-                        <input type="hidden" name="input-id-contrato" value="<?php echo $Contrato->getId()?>">
+                        <input type="hidden" name="input-id-contrato" value="<?php echo $Contrato->getId() ?>">
                     </div>
                     <div class="form__row">
                         <label class="form__label">Cliente</label>
                         <input type="text" name="input-cliente" placeholder="Buscar Cliente" value="<?php echo $Cliente->getDatos() ?>" class="form__input " readonly/>
                         <input type="hidden" value="<?php echo $Entidad->getNrodocumento() . " | " . $Entidad->getRazonsocial() ?>" id="input-datos-facturacion">
                     </div>
+                    <?php
+                    $disabled = "";
+                    if ($Contrato->getClienteid() == 0) {
+                        $disabled = 'disabled';
+                    } else {
+                        $disabled = "";
+                    }
+                    ?>
                     <div class="form__row">
                         <label class="form__label">Desea Comprobante?</label>
                         <div class="form__select">
-                            <select name="select-comprobante" id="select-comprobante" class="required" onchange="preguntarComprobante()">
+                            <select name="select-comprobante" id="select-comprobante" class="required" onchange="preguntarComprobante()" <?php echo $disabled ?>>
                                 <option value="0">No</option>
                                 <option value="4">Factura</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <label class="form__label">Precio Incluye IGV?</label>
+                        <div class="form__select">
+                            <select name="select-incluido" id="select-incluido" onchange="incluyeIGV()" <?php echo $disabled ?> >
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
                             </select>
                         </div>
                     </div>
@@ -90,7 +107,7 @@ if ($Contrato->getId()) {
                     </div>
                     <div class="form__row">
                         <label class="form__label">Monto Pactado</label>
-                        <input type="text" name="Username" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input required"/>
+                        <input type="text" name="input-monto" id="input-monto" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input " readonly/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Adelanto</label>
@@ -129,15 +146,28 @@ if ($Contrato->getId()) {
 <script src="../vendor/swiper/swiper.min.js"></script>
 <script src="../assets/js/jquery.custom.js"></script>
 <script>
-function preguntarComprobante () {
-    var idopcion = $("#select-comprobante").val();
-    var nrodocumento = $("#input-datos-facturacion").val();
-    if (idopcion == "4") {
-        $("#input-datos-factura").val(nrodocumento);
-    } else {
-        $("#input-datos-factura").val("");
+    function preguntarComprobante() {
+        var idopcion = $("#select-comprobante").val();
+        var nrodocumento = $("#input-datos-facturacion").val();
+        if (idopcion == "4") {
+            $("#input-datos-factura").val(nrodocumento);
+            $("#select-incluido").prop("disabled", false);
+        } else {
+            $("#input-datos-factura").val("");
+            $("#select-incluido").prop("disabled", true);
+            $("#select-incluido").val(0)
+        }
     }
-}
+
+    function incluyeIGV() {
+        var monto = <?php echo $Contrato->getMontocontrato()?>;
+        var selectcincluye = $("#select-incluido").val()
+        if (selectcincluye == 0) {
+            $("#input-monto").val(monto.toFixed(2));
+        } else {
+            $("#input-monto").val((monto * 1.18).toFixed(2));
+        }
+    }
 </script>
 </body>
 </html>
