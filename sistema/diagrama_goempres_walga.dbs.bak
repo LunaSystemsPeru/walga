@@ -36,6 +36,7 @@
 			<column name="monto" type="DECIMAL" length="6" jt="3" />
 			<column name="cliente_id" type="INT" jt="4" />
 			<column name="usuario_id" type="INT" jt="4" />
+			<column name="formapago_id" type="INT" jt="4" />
 			<index name="pk_clientes_pagos" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -44,6 +45,9 @@
 			</fk>
 			<fk name="fk_clientes_pagos_usuarios" to_schema="goempres_walga" to_table="usuarios" >
 				<fk_column name="usuario_id" pk="id" />
+			</fk>
+			<fk name="fk_clientes_pagos_parametros_valores" to_schema="goempres_walga" to_table="parametros_valores" >
+				<fk_column name="formapago_id" pk="id" />
 			</fk>
 		</table>
 		<table name="comprobantes_empresas" spec="" >

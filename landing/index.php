@@ -128,7 +128,7 @@
         <rs-module id="rev_slider_29_1" style="" data-version="6.5.8">
             <rs-slides>
                 <rs-slide style="position: absolute;" data-key="rs-76" data-title="Slide" data-thumb="assets/slider1-50x100.png" data-in="o:0;" data-out="a:false;">
-                    <img src="assets/slider1.png" alt="img" title="slider1" width="1920" height="989" class="rev-slidebg tp-rs-img" data-no-retina>
+                    <img src="assets/slider1-bg3.png" alt="img" title="slider1" width="1920" height="989" class="rev-slidebg tp-rs-img" data-no-retina>
                     <!--
                     -->
                     <rs-layer
@@ -220,7 +220,7 @@
 							-->
                 </rs-slide>
                 <rs-slide style="position: absolute;" data-key="rs-77" data-title="Slide" data-thumb="assets/slider1-50x100.png" data-in="o:0;" data-out="a:false;">
-                    <img src="assets/slider1.png" alt="img" title="slider1" width="1920" height="989" class="rev-slidebg tp-rs-img" data-no-retina>
+                    <img src="assets/slider1-bg3.png" alt="img" title="slider1" width="1920" height="989" class="rev-slidebg tp-rs-img" data-no-retina>
                     <!--
                     -->
                     <rs-layer
@@ -425,7 +425,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <div class="ft-service-innerbox-3 position-relative">
                             <div class="ft-service-img position-relative">
-                                <img src="assets/img/service/ser4.jpg" alt="">
+                                <img src="assets/img/service/ser1w.jpeg" alt="">
                             </div>
                             <div class="ft-service-text-icon position-relative">
                                 <div class="ft-service-icon d-flex align-items-center justify-content-center position-absolute">
@@ -444,7 +444,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
                         <div class="ft-service-innerbox-3 position-relative">
                             <div class="ft-service-img position-relative">
-                                <img src="assets/img/service/ser6.jpg" alt="">
+                                <img src="assets/img/service/ser3w.jpeg" alt="">
                             </div>
                             <div class="ft-service-text-icon position-relative">
                                 <div class="ft-service-icon d-flex align-items-center justify-content-center position-absolute">
@@ -463,7 +463,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
                         <div class="ft-service-innerbox-3 position-relative">
                             <div class="ft-service-img position-relative">
-                                <img src="assets/img/service/ser8.jpg" alt="">
+                                <img src="assets/img/service/ser4w.jpg" alt="">
                             </div>
                             <div class="ft-service-text-icon position-relative">
                                 <div class="ft-service-icon d-flex align-items-center justify-content-center position-absolute">
