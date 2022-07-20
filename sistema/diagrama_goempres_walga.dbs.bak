@@ -354,7 +354,7 @@
 		<entity schema="goempres_walga" name="usuarios_permisos" color="BED3F4" x="752" y="208" />
 		<entity schema="goempres_walga" name="vehiculos" color="BED3F4" x="704" y="464" />
 		<entity schema="goempres_walga" name="vehiculos_documentos" color="BED3F4" x="944" y="432" />
-		<entity schema="goempres_walga" name="ventas" color="BED3F4" x="464" y="640" />
+		<entity schema="goempres_walga" name="ventas" color="BED3F4" x="432" y="624" />
 		<entity schema="goempres_walga" name="ventas_amarre" color="BED3F4" x="960" y="704" />
 		<entity schema="goempres_walga" name="ventas_servicios" color="BED3F4" x="704" y="720" />
 		<script name="SQL_Editor" id="Editor-16e3" language="SQL" >

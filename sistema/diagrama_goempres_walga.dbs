@@ -63,6 +63,12 @@
 				<column name="comprobante_id" />
 				<column name="serie" />
 			</index>
+			<fk name="fk_comprobantes_empresas_empresas" to_schema="goempres_walga" to_table="empresas" >
+				<fk_column name="empresa_id" pk="id" />
+			</fk>
+			<fk name="fk_comprobantes_empresas_parametros_valores" to_schema="goempres_walga" to_table="parametros_valores" >
+				<fk_column name="comprobante_id" pk="id" />
+			</fk>
 		</table>
 		<table name="contratos" spec="" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
@@ -124,6 +130,17 @@
 			<fk name="fk_contratos_pagos_clientes_pagos" to_schema="goempres_walga" to_table="clientes_pagos" >
 				<fk_column name="pago_id" pk="id" />
 			</fk>
+		</table>
+		<table name="contratos_ventas" prior="tbl" >
+			<column name="contratoid" type="INT" jt="4" />
+			<column name="ventaid" prior="ventai" type="INT" jt="4" />
+			<fk name="fk_contratos_ventas_ventas" to_schema="goempres_walga" to_table="ventas" >
+				<fk_column name="ventaid" pk="id" />
+			</fk>
+			<fk name="fk_contratos_ventas_contratos" to_schema="goempres_walga" to_table="contratos" >
+				<fk_column name="contratoid" pk="id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
 		</table>
 		<table name="empresas" spec="" >
 			<column name="id" type="INT" jt="4" mandatory="y" />
@@ -261,7 +278,6 @@
 			<column name="comprobante_id" type="INT" jt="4" />
 			<column name="serie" type="VARCHAR" length="4" jt="12" />
 			<column name="numero" type="INT" jt="4" />
-			<column name="contrato_id" type="INT" jt="4" />
 			<column name="empresa_id" type="INT" jt="4" />
 			<column name="usuario_id" type="INT" jt="4" />
 			<column name="igv" type="DECIMAL" length="5" decimal="2" jt="3" />
@@ -284,9 +300,7 @@
 			<fk name="fk_ventas_parametros_valores" to_schema="goempres_walga" to_table="parametros_valores" >
 				<fk_column name="comprobante_id" pk="id" />
 			</fk>
-			<fk name="fk_ventas_contratos" to_schema="goempres_walga" to_table="contratos" >
-				<fk_column name="contrato_id" pk="id" />
-			</fk>
+			<fk name="fk_ventas_contratos" to_schema="goempres_walga" to_table="contratos" />
 			<fk name="fk_ventas_empresas" to_schema="goempres_walga" to_table="empresas" >
 				<fk_column name="empresa_id" pk="id" />
 			</fk>
@@ -339,24 +353,25 @@
 		</table>
 	</schema>
 	<layout name="Layout" id="Layout-731" show_column_type="y" show_relation="cascade" >
-		<entity schema="goempres_walga" name="chofer" color="BED3F4" x="288" y="208" />
-		<entity schema="goempres_walga" name="clientes" color="BED3F4" x="528" y="208" />
-		<entity schema="goempres_walga" name="clientes_pagos" color="BED3F4" x="1232" y="256" />
-		<entity schema="goempres_walga" name="comprobantes_empresas" color="BED3F4" x="400" y="464" />
-		<entity schema="goempres_walga" name="contratos" color="BED3F4" x="128" y="496" />
-		<entity schema="goempres_walga" name="contratos_pagos" color="BED3F4" x="976" y="208" />
-		<entity schema="goempres_walga" name="empresas" color="BED3F4" x="48" y="224" />
-		<entity schema="goempres_walga" name="entidades" color="BED3F4" x="272" y="48" />
-		<entity schema="goempres_walga" name="parametros" color="BED3F4" x="544" y="48" />
-		<entity schema="goempres_walga" name="parametros_valores" color="BED3F4" x="1088" y="48" />
-		<entity schema="goempres_walga" name="permisos_sistema" color="BED3F4" x="832" y="48" />
-		<entity schema="goempres_walga" name="usuarios" color="BED3F4" x="1264" y="608" />
-		<entity schema="goempres_walga" name="usuarios_permisos" color="BED3F4" x="752" y="208" />
-		<entity schema="goempres_walga" name="vehiculos" color="BED3F4" x="704" y="464" />
-		<entity schema="goempres_walga" name="vehiculos_documentos" color="BED3F4" x="944" y="432" />
-		<entity schema="goempres_walga" name="ventas" color="BED3F4" x="432" y="624" />
-		<entity schema="goempres_walga" name="ventas_amarre" color="BED3F4" x="960" y="704" />
-		<entity schema="goempres_walga" name="ventas_servicios" color="BED3F4" x="704" y="720" />
+		<entity schema="goempres_walga" name="chofer" color="BED3F4" x="336" y="208" />
+		<entity schema="goempres_walga" name="clientes" color="BED3F4" x="576" y="208" />
+		<entity schema="goempres_walga" name="clientes_pagos" color="BED3F4" x="1280" y="256" />
+		<entity schema="goempres_walga" name="comprobantes_empresas" color="BED3F4" x="464" y="432" />
+		<entity schema="goempres_walga" name="contratos" color="BED3F4" x="48" y="480" />
+		<entity schema="goempres_walga" name="contratos_pagos" color="BED3F4" x="1024" y="208" />
+		<entity schema="goempres_walga" name="contratos_ventas" color="C1D8EE" x="304" y="544" />
+		<entity schema="goempres_walga" name="empresas" color="BED3F4" x="96" y="224" />
+		<entity schema="goempres_walga" name="entidades" color="BED3F4" x="320" y="48" />
+		<entity schema="goempres_walga" name="parametros" color="BED3F4" x="592" y="48" />
+		<entity schema="goempres_walga" name="parametros_valores" color="BED3F4" x="1136" y="48" />
+		<entity schema="goempres_walga" name="permisos_sistema" color="BED3F4" x="880" y="48" />
+		<entity schema="goempres_walga" name="usuarios" color="BED3F4" x="1312" y="608" />
+		<entity schema="goempres_walga" name="usuarios_permisos" color="BED3F4" x="800" y="208" />
+		<entity schema="goempres_walga" name="vehiculos" color="BED3F4" x="752" y="464" />
+		<entity schema="goempres_walga" name="vehiculos_documentos" color="BED3F4" x="992" y="432" />
+		<entity schema="goempres_walga" name="ventas" color="BED3F4" x="480" y="624" />
+		<entity schema="goempres_walga" name="ventas_amarre" color="BED3F4" x="1008" y="704" />
+		<entity schema="goempres_walga" name="ventas_servicios" color="BED3F4" x="752" y="720" />
 		<script name="SQL_Editor" id="Editor-16e3" language="SQL" >
 			<string><![CDATA[CREATE SCHEMA goempres_walga;
 

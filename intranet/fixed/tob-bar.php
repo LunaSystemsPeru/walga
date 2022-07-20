@@ -162,7 +162,7 @@
                             <span><i data-feather="dollar-sign" class="align-self-center hori-menu-icon"></i>Ventas</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="apps-chat.html"><i class="ti ti-minus"></i>Facturacion</a></li>
+                            <li><a href="lista-ventas.php"><i class="ti ti-minus"></i>Facturacion</a></li>
                             <li><a href="lista-entidades.php"><i class="ti ti-minus"></i>Empresas</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->

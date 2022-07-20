@@ -38,17 +38,21 @@
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Lista de Usuarios</h4>
+                                <h4 class="page-title">Comprobantes de Ventas del mes</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Configuracion</a></li>
-                                    <li class="breadcrumb-item active">Usuarios</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Ventas</a></li>
+                                    <li class="breadcrumb-item active">Facturacion</li>
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
 
                                 <a href="form-usuario.php" class="btn btn-sm btn-soft-primary" >
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                    Agregar Usuario
+                                    Agregar Comprobante BOL/FAC
+                                </a>
+                                <a href="form-usuario.php" class="btn btn-sm btn-soft-primary" >
+                                    <i data-feather="plus" class="fas fa-plus mr-2"></i>
+                                    Agregar Nota DEB/CRE
                                 </a>
 
                             </div><!--end col-->
@@ -68,24 +72,33 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th>#</th>
-                                    <th>Usuario</th>
-                                    <th>Datos</th>
-                                    <th>Nivel Acceso</th>
-                                    <th>Fec. Ult. Ingreso</th>
-                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                    <th>Nro Documento</th>
+                                    <th>Cliente</th>
+                                    <th>Monto</th>
+                                    <th>Estado Doc</th>
+                                    <th>Enviado SUNAT</th>
+                                    <th>PDF</th>
+                                    <th>XML</th>
+                                    <th>Emitido por</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>LOyanguren</td>
-                                    <td>Luis Oyanguren Giron</td>
-                                    <td>Principal</td>
-                                    <td>09/07/2022</td>
+                                    <td>20/07/2022</td>
+                                    <td>FT | FW02-0025</td>
+                                    <td>20531904991 | MARLUC INDUSTRIA CONSTRUCTORA S.A.C.</td>
+                                    <td>250.00</td>
                                     <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
+                                    <td><span class="badge badge-boxed  badge-outline-success">SI</span></td>
+                                    <td><a href="" class="btn btn-info btn-sm"><i class="fa fa-file-pdf"></i></a></td>
+                                    <td><a href="" class="btn btn-danger btn-sm"><i class="fa fa-file-archive"></i></a></td>
+                                    <td>dguerrero</td>
                                     <td>
                                         <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                        <button class="btn btn-danger btn-sm"><i class="ti ti-trash"></i></button>
                                     </td>
                                 </tr>
 
