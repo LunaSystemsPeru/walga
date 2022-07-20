@@ -115,7 +115,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: visible;
-  background: #ffff url("../img/loader.svg") no-repeat center center;
+  background: #ffff url("../lift_and_crane_trucks.svg") no-repeat center center;
 }
 
 [data-background] {

@@ -38,7 +38,7 @@
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Registrar Clientes</h4>
+                                <h4 class="page-title">Registrar Cliente</h4>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="javascript:void(0);">Servicios</a></li>
                                     <li class="breadcrumb-item active">Clientes</li>
@@ -66,7 +66,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label" for="celular">Celular</label>
+                                            <label class="form-label" for="celular">Nro Celular</label>
                                             <input type="text" class="form-control" id="celular" placeholder="987654321">
                                         </div>
                                     </div>
@@ -78,27 +78,36 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleInputPassword1">Entidad</label>
-                                            <select class="form-control" aria-label="Default select example">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
+                                            <label class="form-label" for="estado">No es una empresa</label>
+                                            <div class="form-check form-switch form-switch-secondary">
+                                                <input class="form-check-input" type="checkbox" id="customSwitchSecondary"
+                                                       checked>
+                                                <label class="form-check-label" for="customSwitchSecondary">No Requiere Comprobante</label>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="col-sm-10 ms-auto">
-                                                <label class="form-label" for="estado">Estado</label>
-                                                    <div class="form-check form-switch form-switch-secondary">
-                                                    <input class="form-check-input" type="checkbox" id="customSwitchSecondary"
-                                                           checked>
-                                                    <label class="form-check-label" for="customSwitchSecondary">Activo</label>
-                                                </div>
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="email">Nro de RUC</label>
+                                            <input type="text" class="form-control" id="email" placeholder="leog.1992@gmail.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="email">Razon Social</label>
+                                            <input type="text" class="form-control" id="email" placeholder="leog.1992@gmail.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="email">Direccion</label>
+                                            <input type="text" class="form-control" id="email" placeholder="leog.1992@gmail.com">
                                         </div>
                                     </div>
                                 </div>

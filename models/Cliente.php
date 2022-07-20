@@ -185,7 +185,9 @@ class Cliente
 
     public function verFilas()
     {
-        $sql = "select * from clientes 
+        $sql = "select c.id, c.datos, c.email, c.celular, e.documento 
+                from clientes as c 
+                inner join entidades as e on e.id = c.entidad_id
                 where empresa_id = '$this->empresa_id'
                 order by datos asc";
         return $this->conectar->get_Cursor($sql);
@@ -204,7 +206,7 @@ class Cliente
         from contratos as c 
         inner join clientes c2 on c.cliente_id = c2.id
         where c.cliente_id != 0
-        group by c.cliente_id
+        group by c2.datos
         order by c2.datos asc ";
         return $this->conectar->get_Cursor($sql);
     }

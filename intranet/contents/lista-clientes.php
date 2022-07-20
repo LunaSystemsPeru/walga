@@ -1,3 +1,9 @@
+<?php
+include_once '../fixed/cargarSession.php';
+require '../../models/Cliente.php';
+$Cliente = new Cliente();
+$Cliente->setEmpresaId($_SESSION['empresa_id']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +51,7 @@
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
-                                <a href="form-clientes.php" class="btn btn-sm btn-soft-primary" >
+                                <a href="form-clientes.php" class="btn btn-sm btn-soft-primary">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                     Agregar Clientes
                                 </a>
@@ -69,23 +75,30 @@
                                     <th>Celular</th>
                                     <th>Email</th>
                                     <th>Entidad</th>
-                                    <th>Estado</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Luis Oyanguren</td>
-                                    <td>987654321</td>
-                                    <td>leog.1992@gmail.com</td>
-                                    <td>entidad</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                    <td>
-                                        <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
-                                    </td>
-                                </tr>
+                                <?php
+                                $array_clientes = $Cliente->verFilas();
+                                $item = 1;
+                                foreach ($array_clientes as $fila) {
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $item ?></th>
+                                        <td><?php echo $fila['datos'] ?></td>
+                                        <td><?php echo $fila['celular'] ?></td>
+                                        <td><?php echo $fila['email'] ?></td>
+                                        <td><?php echo $fila['documento'] ?></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                        </td>
+                                    </tr>
 
+                                    <?php
+                                    $item++;
+                                }
+                                ?>
                                 </tbody>
                             </table><!--end /table-->
                         </div><!--end /tableresponsive-->
@@ -121,7 +134,7 @@ include('../fixed/footer.php');
 <script src="../assets/js/app.js"></script>
 
 <script>
-    function abrirModal () {
+    function abrirModal() {
         $("#bd-example-modal-xl").modal("toggle");
     }
 </script>
