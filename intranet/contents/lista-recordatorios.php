@@ -1,3 +1,11 @@
+<?php
+include '../fixed/cargarSession.php';
+require '../../models/Recordatorio.php';
+require '../../tools/Util.php';
+$Recordatorio = new Recordatorio();
+$Util = new Util();
+$Recordatorio->setEmpresaid($_SESSION['empresa_id']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +34,7 @@
 <body data-layout="horizontal" class="">
 
 <!-- Top Bar Start -->
-<?php require '../fixed/tob-bar.php' ?>
+<?php require '../fixed/top-bar.php' ?>
 <!-- Top Bar End -->
 <div class="page-wrapper">
     <!-- Page Content-->
@@ -41,14 +49,14 @@
                                 <h4 class="page-title">Lista Documentos de Vehiculos</h4>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="javascript:void(0);">Flota</a></li>
-                                    <li class="breadcrumb-item active">Documentos de Vehiculos</li>
+                                    <li class="breadcrumb-item active">Recordatorios</li>
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
 
-                                <a href="form-documentosvehiculos.php" class="btn btn-sm btn-soft-primary">
+                                <a href="form-recordatorio.php" class="btn btn-sm btn-soft-primary">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                    Agregar Documento de Vehiculo
+                                    Agregar nuevo Recordatorio
                                 </a>
                             </div><!--end col-->
                         </div><!--end row-->
@@ -67,29 +75,39 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th>Item</th>
-                                    <th>Placa </th>
-                                    <th>Marca</th>
-                                    <th>Modelo</th>
-                                    <th>Nombre Documento</th>
+                                    <th>Dias a Vencer</th>
                                     <th>F. Vencimiento</th>
+                                    <th>Nombre Documento</th>
+                                    <th>F. Emision</th>
                                     <th>Estado</th>
                                     <th>Emisor</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>MHL123</td>
-                                    <td>TOYOTA</td>
-                                    <td>C-HR</td>
-                                    <td>Boleta</td>
-                                    <td>25/08/2022</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                    <td>Emisor</td>
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
-                                </tr>
-
+                                <?php
+                                $array_recordatorios = $Recordatorio->verFilas();
+                                foreach ($array_recordatorios as $fila) {
+                                 ?>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td class="text-center"><?php echo $fila['diasfaltantes'] ?></td>
+                                        <td class="text-center"><?php echo $Util->fecha_mysql_web($fila['fec_vencimiento']) ?></td>
+                                        <td><?php echo $fila['documento'] ?></td>
+                                        <td class="text-center"><?php echo $Util->fecha_mysql_web($fila['fec_emision']) ?></td>
+                                        <td class="text-center">
+                                            <span class="badge badge-boxed  badge-outline-success">Activo</span>
+                                        </td>
+                                        <td><?php echo $fila['razonsocial'] ?></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm"><i class="ti ti-file"></i></button>
+                                            <button class="btn btn-success btn-sm"><i class="ti ti-reddit"></i></button>
+                                            <button class="btn btn-danger btn-sm"><i class="ti ti-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                                 </tbody>
                             </table><!--end /table-->
                         </div><!--end /tableresponsive-->

@@ -1,9 +1,14 @@
 <?php
+error_reporting(-1);
+error_reporting(0);
+error_reporting(E_ALL);
+ini_set('error_reporting', E_ALL);
+
 include '../fixed/cargarSession.php';
 require '../../models/Contrato.php';
 
 $Contrato = new Contrato();
-
+$Contrato->setFecha(date("Y-m-d"));
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +39,7 @@ $Contrato = new Contrato();
 <body data-layout="horizontal" class="">
 
 <!-- Top Bar Start -->
-<?php require '../fixed/tob-bar.php' ?>
+<?php require '../fixed/top-bar.php' ?>
 <!-- Top Bar End -->
 <div class="page-wrapper">
     <!-- Page Content-->
@@ -86,7 +91,7 @@ $Contrato = new Contrato();
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $array_contratos = $Contrato->verContratosActivos();
+                                    $array_contratos = $Contrato->verContratosdelDia();
                                     $item = 1;
                                     foreach ($array_contratos as $fila) {
                                         $iestado = $fila['estado_contrato'];

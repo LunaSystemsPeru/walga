@@ -1,3 +1,9 @@
+<?php
+include '../fixed/cargarSession.php';
+require '../../models/Vehiculo.php';
+$Vehiculo = new Vehiculo();
+$Vehiculo->setEmpresaId($_SESSION['empresa_id']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +27,8 @@
     <link href="../plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css"/>
     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css"/>
 
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all"/>
+
 </head>
 
 <body data-layout="horizontal" class="">
@@ -38,12 +46,13 @@
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Registrar Cliente</h4>
+                                <h4 class="page-title">Registrar Recordatorio de Documentos</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Servicios</a></li>
-                                    <li class="breadcrumb-item active">Clientes</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Flota</a></li>
+                                    <li class="breadcrumb-item active">Recordatorio de Documentos</li>
                                 </ol>
                             </div><!--end col-->
+
                         </div><!--end row-->
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -51,80 +60,72 @@
             <!-- end page title end breadcrumb -->
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="card">
-                        <div class="card-body">
-                            <form>
+                    <form method="post" action="../controller/registra-documentos-vehiculo.php">
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="apellidosynombres">Apellidos y Nombres</label>
-                                            <input type="text" class="form-control" id="ruc"
-                                                   placeholder="Apellidos y Nombres">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="celular">Nro Celular</label>
-                                            <input type="text" class="form-control" id="celular" placeholder="987654321">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" placeholder="leog.1992@gmail.com">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="estado">No es una empresa</label>
-                                            <div class="form-check form-switch form-switch-secondary">
-                                                <input class="form-check-input" type="checkbox" id="customSwitchSecondary"
-                                                       checked>
-                                                <label class="form-check-label" for="customSwitchSecondary">No Requiere Comprobante</label>
+                                            <label class="form-label" for="input_datos_emisor">Empresa que emite el documento (escribir para buscar, clic para seleccionar)</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="input_datos_emisor"
+                                                       placeholder="buscar por Razon Social" maxlength="200">
+                                                <button class="btn btn-secondary" type="button"><i class="fas fa-plus"></i> Agregar Empresa Emisora</button>
                                             </div>
+                                            <input type="hidden" id="input_emisor_id" name="input_emisor_id">
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="input_documento">Descripcion del documento</label>
+                                            <input type="text" class="form-control" id="input_documento" name="input_documento" required>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label" for="email">Nro de RUC</label>
-                                            <input type="text" class="form-control" id="email" placeholder="leog.1992@gmail.com">
+                                            <label class="form-label" for="input_emision">Fec. Emision</label>
+                                            <input type="date" class="form-control" id="input_emision" name="input_emision" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label" for="email">Razon Social</label>
-                                            <input type="text" class="form-control" id="email" placeholder="leog.1992@gmail.com">
+                                            <label class="form-label" for="input_vencimiento">Fec. Vencimiento</label>
+                                            <input type="date" class="form-control" id="input_vencimiento" name="input_vencimiento" required>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="email">Direccion</label>
-                                            <input type="text" class="form-control" id="email" placeholder="leog.1992@gmail.com">
+                                            <label class="form-label" for="usuario">Cargar PDF</label>
+                                            <input type="file" class="form-control" id="usuario">
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div><!--end card-body-->
-                        <div class="card-footer">
-                            <div class="col-auto align-self-center">
-                                <a href="#" class="btn btn-sm btn-soft-primary">
-                                    <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                    Guardar Cliente
-                                </a>
-                            </div><!--end col-->
-                        </div>
-                    </div><!--end card-->
+                            </div><!--end card-body-->
+                            <div class="card-footer">
+                                <div class="col-auto align-self-center">
+                                    <button type="submit" class="btn btn-sm btn-soft-primary">
+                                        <i data-feather="save" class="fas fa-save mr-2"></i>
+                                        Guardar Documento y Recordatorio
+                                    </button>
+                                </div><!--end col-->
+                            </div>
+                        </div><!--end card-->
+                    </form>
                 </div> <!-- end col -->
             </div> <!-- end row -->
+
         </div><!--end row-->
+
+
     </div><!-- container -->
 </div>
 <!-- end page content -->
@@ -145,10 +146,27 @@ include('../fixed/footer.php');
 <script src="../assets/js/moment.js"></script>
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+        integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
+        crossorigin="anonymous"></script>
+
 
 <!-- App js -->
 <script src="../assets/js/app.js"></script>
 
+<script>
+    //buscar clientes
+    $("#input_datos_emisor").autocomplete({
+        source: "../../inputAjax/obtenerJsonEntidades.php",
+        minLength: 3,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#input_datos_emisor").val(ui.item.razonsocial);
+            $("#input_emisor_id").val(ui.item.id);
+            $("#input_documento").focus();
+        }
+    });
+</script>
 </body>
 
 

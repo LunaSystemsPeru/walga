@@ -1,3 +1,9 @@
+<?php
+include '../fixed/cargarSession.php';
+require '../../models/Vehiculo.php';
+$Vehiculo = new Vehiculo();
+$Vehiculo->setEmpresaId($_SESSION['empresa_id']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +32,7 @@
 <body data-layout="horizontal" class="">
 
 <!-- Top Bar Start -->
-<?php require '../fixed/tob-bar.php' ?>
+<?php require '../fixed/top-bar.php' ?>
 <!-- Top Bar End -->
 <div class="page-wrapper">
     <!-- Page Content-->
@@ -57,51 +63,57 @@
             </div><!--end row-->
             <!-- end page title end breadcrumb -->
             <div class="row justify-content-center">
-
                 <div class="col-lg-12">
                     <div class="card">
-                    </div><!--end card-header-->
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead class="thead-light">
-                                <tr>
-                                    <th>Item</th>
-                                    <th>placa </th>
-                                    <th>Marca</th>
-                                    <th>Modelo</th>
-                                    <th>Año</th>
-                                    <th>Capacidad</th>
-                                    <th>Estado</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>MHL123</td>
-                                    <td>TOYOTA</td>
-                                    <td>C-HR</td>
-                                    <td>2019</td>
-                                    <td>5</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
-                                </tr>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>placa </th>
+                                        <th>Marca | Modelo</th>
+                                        <th>Año</th>
+                                        <th>Capacidad</th>
+                                        <th>VIN</th>
+                                        <th>Chofer</th>
+                                        <th>Estado</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $array_vehiculos = $Vehiculo->verFilas();
+                                    $item = 1;
+                                    foreach ($array_vehiculos as $fila) {
+                                        ?>
+                                        <tr>
+                                            <th scope="row"><?php echo $item ?></th>
+                                            <td><?php echo $fila['placa'] ?></td>
+                                            <td><?php echo $fila['marca'] . " | " . $fila['modelo'] ?></td>
+                                            <td><?php echo $fila['anio'] ?></td>
+                                            <td><?php echo $fila['capacidad_ton'] ?></td>
+                                            <td><?php echo $fila['seriebin'] ?></td>
+                                            <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
+                                            <td>
+                                                <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
 
-                                </tbody>
-                            </table><!--end /table-->
-                        </div><!--end /tableresponsive-->
-                    </div><!--end card-body-->
-                </div><!--end card-->
-            </div> <!-- end col -->
-        </div> <!-- end row -->
 
-    </div><!--end row-->
-
-
-</div><!-- container -->
-</div>
-<!-- end page content -->
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /tableresponsive-->
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+            </div><!-- container -->
+    </div>
+    <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
 <?php

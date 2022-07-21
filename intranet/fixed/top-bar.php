@@ -185,7 +185,7 @@
                         <ul class="submenu">
                             <li><a href="lista-vehiculos.php"><i class="ti ti-minus"></i>Vehiculos</a></li>
                             <li><a href="lista-choferes.php"><i class="ti ti-minus"></i>Choferes</a></li>
-                            <li><a href="lista-documentosvehiculos.php"><i class="ti ti-minus"></i>Vencimientos</a></li>
+                            <li><a href="lista-recordatorios.php"><i class="ti ti-minus"></i>Vencimientos</a></li>
                         </ul><!--end submenu-->
                     </li><!--end has-submenu-->
 

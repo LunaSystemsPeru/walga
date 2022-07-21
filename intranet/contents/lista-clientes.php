@@ -32,7 +32,7 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
 <body data-layout="horizontal" class="">
 
 <!-- Top Bar Start -->
-<?php require '../fixed/tob-bar.php' ?>
+<?php require '../fixed/top-bar.php' ?>
 <!-- Top Bar End -->
 <div class="page-wrapper">
     <!-- Page Content-->

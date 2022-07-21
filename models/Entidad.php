@@ -138,4 +138,13 @@ class Entidad
         return $this->conectar->get_Cursor($sql);
     }
 
+    public function buscarEntidad($term)
+    {
+        $sql = "select * 
+                from entidades 
+                where razonsocial like '%$term%'
+                order by razonsocial asc";
+        return $this->conectar->get_Cursor($sql);
+    }
+
 }

@@ -1,16 +1,16 @@
 <?php
 require_once 'Conectar.php';
 
-class VehiculoDocumento
+class Recordatorio
 {
     private $id;
-    private $vehiculoid;
     private $nombre;
     private $fec_emision;
     private $fec_vencimiento;
     private $estado;
     private $emisorid;
     private $nombrearchivo;
+    private $empresaid;
     private $conectar;
 
     /**
@@ -35,22 +35,6 @@ class VehiculoDocumento
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getVehiculoid()
-    {
-        return $this->vehiculoid;
-    }
-
-    /**
-     * @param mixed $vehiculoid
-     */
-    public function setVehiculoid($vehiculoid)
-    {
-        $this->vehiculoid = $vehiculoid;
     }
 
     /**
@@ -149,21 +133,36 @@ class VehiculoDocumento
         $this->nombrearchivo = $nombrearchivo;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEmpresaid()
+    {
+        return $this->empresaid;
+    }
+
+    /**
+     * @param mixed $empresaid
+     */
+    public function setEmpresaid($empresaid)
+    {
+        $this->empresaid = $empresaid;
+    }
+
     public function obtenerId()
     {
         $sql = "select ifnull(max(id)+1, 1) as codigo 
-                from vehiculos_documentos";
+                from recordatorios_documentos";
         $this->id = $this->conectar->get_valor_query($sql, "codigo");
     }
 
     public function obtenerDatos()
     {
         $sql = "select * 
-        from vehiculos_documentos 
+        from recordatorios_documentos 
         where id = '$this->id'";
         $resultado = $this->conectar->get_Row($sql);
         if ($resultado) {
-            $this->vehiculoid = $resultado['vehiculo_id'];
             $this->nombre = $resultado['documento'];
             $this->fec_emision = $resultado['fec_emision'];
             $this->fec_vencimiento = $resultado['fec_vencimiento'];
@@ -178,23 +177,24 @@ class VehiculoDocumento
 
     public function insertar()
     {
-        $sql = "insert into vehiculos_documentos
+        $sql = "insert into recordatorios_documentos
                 values ('$this->id',
-                        '$this->vehiculoid',
                         '$this->nombre',
                         '$this->fec_emision',
                         '$this->fec_vencimiento',
                         '1',
                         '$this->emisorid',
-                        '$this->nombrearchivo')";
+                        '$this->nombrearchivo', 
+                        '$this->empresaid')";
         $this->conectar->ejecutar_idu($sql);
     }
 
     public function verFilas()
     {
-        $sql = "select vd.id, vd.documento, vd.estado, vd.fec_vencimiento, vd.fec_emision, v.placa, v.marca, v.modelo 
-                from vehiculos_documentos as vd 
-                inner join vehiculos v on vd.vehiculo_id = v.id
+        $sql = "select vd.id, vd.documento, vd.estado, vd.fec_vencimiento, vd.fec_emision, e.razonsocial, TIMESTAMPDIFF(day, current_date(), vd.fec_vencimiento) as diasfaltantes
+                from recordatorios_documentos as vd
+                inner join entidades e on vd.emisor_id = e.id
+                where vd.estado = 1 and vd.empresa_id = '$this->empresaid'
                 order by fec_vencimiento desc";
         return $this->conectar->get_Cursor($sql);
     }
