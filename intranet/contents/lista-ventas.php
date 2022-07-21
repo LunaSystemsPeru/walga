@@ -46,11 +46,11 @@
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
 
-                                <a href="form-usuario.php" class="btn btn-sm btn-soft-primary" >
+                                <a href="form-venta.php" class="btn btn-sm btn-soft-primary" >
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                     Agregar Comprobante BOL/FAC
                                 </a>
-                                <a href="form-usuario.php" class="btn btn-sm btn-soft-primary" >
+                                <a href="form-nota.php" class="btn btn-sm btn-soft-primary" >
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                     Agregar Nota DEB/CRE
                                 </a>
