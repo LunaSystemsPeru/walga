@@ -684,16 +684,16 @@
                     <div class="ft-why-choose-text-2">
                         <div class="ft-section-title-3 headline">
                             <span class="text-uppercase">Somos las mejor opcion</span>
-                            <h2>xxx</h2>
+                            <h2>TRANSPORTES WALGA</h2>
                         </div>
                         <div class="ft-why-choose-list-wrapper ul-li-block">
                             <ul>
                                 <li>Operador y Rigger Certificados</li>
                                 <li>Choferes capacitados para mantenerte a salvo</li>
                                 <li>Cumplimos con las normas de Seguridad</li>
-                                <li>Provide a service we are proud of</li>
-                                <li>Be a responsible member of the community</li>
-                                <li>Always seek to improve</li>
+                                <li>Mantenimiento constante de los Vehiculos</li>
+                                <li>Gruas con certificacion de carga</li>
+                                <li>Buen trato al cliente</li>
                             </ul>
                         </div>
                     </div>
@@ -701,18 +701,17 @@
                 <div class="col-lg-6">
                     <div class="ft-why-choose-form-wrapper">
                         <div class="ft-why-choose-form pera-content">
-                            <form action="#">
+                            <form action="controller/enviarWhatsapp.php" method="post">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="wc-input">
                                             <span>Que servicio deseas:</span>
                                             <div class="wc-select position-relative">
-                                                <select name="#">
-                                                    <option value="#">Seelct</option>
-                                                    <option value="#">Alquiler de Camion Grua</option>
-                                                    <option value="#">Alquiler de Camioneta + Chofer</option>
-                                                    <option value="#">Auxilio Vehicular</option>
-                                                    <option value="#">Delivery Paqueteria (Ultima Milla)</option>
+                                                <select name="select-servicio">
+                                                    <option value="ALQUILER CAMION GRUA">Alquiler de Camion Grua</option>
+                                                    <option value="ALQUILER CAMIONETA + CHOFER">Alquiler de Camioneta + Chofer</option>
+                                                    <option value="AUXILIO VEHICULAR">Auxilio Vehicular</option>
+                                                    <option value="DELIVERY DE PAQUETERIA">Delivery Paqueteria (Ultima Milla)</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -728,19 +727,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="wc-input">
                                             <span>breve descripcion del servicio:</span>
                                             <div class="wc-text-input position-relative">
-                                                <input type="text" placeholder="algo breve">
+                                                <input type="text" placeholder="algo breve" name="input-servicio">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="wc-input">
                                             <span>Tu nombre:</span>
                                             <div class="wc-text-input position-relative">
-                                                <input type="text" placeholder="nombre para contacto">
+                                                <input type="text" placeholder="nombre para contacto" name="input-contacto">
                                             </div>
                                         </div>
                                     </div>
@@ -770,7 +769,7 @@
                 <div class="ft-testimonial-slider-area-3">
                     <div class="ft-testimonial-slider-3">
                         <div class="ft-testimonial-slider-items-3 pera-content position-relative">
-                            <p>Recruiting for my required role hadn't been easy so Cast UK jumped in with several desirable candidates for the role.</p>
+                            <p>Buen servicio, los recomiendo, tienen </p>
                             <div class="ft-testimonial-slider-author">
                                 <span class="name">Lucy Davies</span>
                                 <span class="designation">Head of Supply Chain, Pharma Company</span>
@@ -801,7 +800,7 @@
 	============================================= -->
 
 <!-- Start of Blog section
-	============================================= -->
+	=============================================
 <section id="ft-blog-3" class="ft-blog-section-3">
     <div class="container">
         <div class="ft-section-title-3 headline text-center">
@@ -895,8 +894,8 @@
         </div>
     </div>
 </section>
-<!-- End of Blog section
-	============================================= -->
+End of Blog section
+	========================================== -->
 
 <!-- Start Of Footer section
 	============================================= -->
@@ -905,11 +904,11 @@
         <div class="container">
             <div class="ft-newslatter-content-3 d-flex justify-content-between align-items-center">
                 <div class="ft-newslatter-text headline">
-                    <h3>Looking for the Best Transport Services?</h3>
-                    <span>As a app web crawler expert, We will help to organize.</span>
+                    <h3>Interesado en uno de nuestros servicios?</h3>
+                    <span>Alquiler de Camion grua, Traslado de Carga, Canastilla Reforzada para trabajos electricos, Entrega de Carga local</span>
                 </div>
                 <div class="ft-newslatter-btn position-relative">
-                    <a class="d-flex align-items-center justify-content-center text-uppercase" href="contact.html">Get a quote</a>
+                    <a class="d-flex align-items-center justify-content-center text-uppercase" href="contacto.php">Escribenos</a>
                 </div>
             </div>
         </div>
@@ -924,8 +923,8 @@
                                 <div class="ft-footer-logo">
                                     <a href="#"><img src="assets/img/logo/logowalgablanco.png" alt=""></a>
                                 </div>
-                                <p>We work with a passion of taking challenges and creating new ones in advertising sector.</p>
-                                <a class="footer-logo-btn text-center text-uppercase" href="about.html">About us</a>
+                                <p>Trabajamos cumpliendo los estandares para ser el mejor en nuestro sector</p>
+                                <a class="footer-logo-btn text-center text-uppercase" href="nosotros.php">Nosotros</a>
                             </div>
                         </div>
                     </div>
@@ -935,10 +934,7 @@
                                 <h3 class="widget-title">Siguenos en Redes Sociales</h3>
                                 <div class="ft-footer-social ul-li">
                                     <ul>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="https://facebook.com/WALGA.EIRL"><i class="fab fa-facebook-f"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

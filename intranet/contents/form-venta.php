@@ -25,6 +25,8 @@ $Parametro = new ParametroValor();
     <link href="../plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css"/>
     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css"/>
 
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all"/>
+
 </head>
 
 <body data-layout="horizontal" class="">
@@ -64,16 +66,16 @@ $Parametro = new ParametroValor();
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="apellidosynombres">Descripcion del Servicio</label>
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <label class="form-label" for="input-descripcion">Descripcion del Servicio</label>
+                                            <textarea class="form-control" rows="3" id="input-descripcion"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label" for="usuario">Unidad Medida</label>
-                                            <select class="form-control" aria-label="Default select example">
+                                            <label class="form-label" for="select-unidad">Unidad Medida</label>
+                                            <select class="form-control" aria-label="Default select example" id="select-unidad">
                                                 <?php
                                                 $Parametro->setParametroId(6);
                                                 $array_medidas = $Parametro->verFilas();
@@ -86,16 +88,16 @@ $Parametro = new ParametroValor();
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleInputPassword1">Precio Unit c/IGV</label>
-                                            <input type="number" class="form-control text-right" id="exampleInputPassword1"
-                                                   placeholder="0.00">
+                                            <label class="form-label" for="input-precio-sinigv">Precio Unit s/IGV</label>
+                                            <input type="number" class="form-control text-right" id="input-precio-sinigv"
+                                                   placeholder="0.00" onkeyup="obtenerTotal()">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleInputPassword1">Precio Unit s/IGV</label>
-                                            <input type="number" class="form-control text-right" id="exampleInputPassword1"
-                                                   placeholder="0.00">
+                                            <label class="form-label" for="input-precio-total">Precio Unit c/IGV</label>
+                                            <input type="number" class="form-control text-right" id="input-precio-total"
+                                                   placeholder="0.00" onkeyup="obtenerBase()">
                                         </div>
                                     </div>
                                 </div>
@@ -103,10 +105,10 @@ $Parametro = new ParametroValor();
                         </div><!--end card-body-->
                         <div class="card-footer">
                             <div class="col-auto align-self-center">
-                                <a href="#" class="btn btn-sm btn-soft-primary">
+                                <button onclick="agregarServicio()" class="btn btn-sm btn-soft-primary">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                     Agregar Servicio a la lista
-                                </a>
+                                </button>
                             </div><!--end col-->
                         </div>
                     </div><!--end card-->
@@ -126,7 +128,7 @@ $Parametro = new ParametroValor();
                                     <th>Acciones</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="contenido-detalle">
                                 <tr>
                                     <td class="text-center">1</td>
                                     <td>ALQUILER DE CAMION GRUA PARA TRASLADO DE TANQUE DE FIERRO DE 2TON DESDE COISHCO HASTA AV PARDO</td>
@@ -141,9 +143,7 @@ $Parametro = new ParametroValor();
                             </table><!--end /table-->
                         </div><!--end card-body-->
                     </div>
-
                 </div> <!-- end col -->
-
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header">
@@ -154,14 +154,14 @@ $Parametro = new ParametroValor();
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="mb-3">
-                                            <label class="form-label" for="apellidosynombres">Fecha Comprobante</label>
-                                            <input type="date" class="form-control">
+                                            <label class="form-label" for="input-fecha">Fecha Comprobante</label>
+                                            <input type="date" class="form-control" id="input-fecha" value="<?php echo date("Y-m-d") ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="mb-3">
-                                            <label class="form-label" for="usuario">Tipo Comprobante</label>
-                                            <select class="form-control">
+                                            <label class="form-label" for="select-comprobante">Tipo Comprobante</label>
+                                            <select class="form-control" id="select-comprobante">
                                                 <option value="1">BOLETA</option>
                                                 <option value="2">FACTURA</option>
                                             </select>
@@ -171,8 +171,8 @@ $Parametro = new ParametroValor();
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleInputPassword1">Buscar Cliente</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                            <label class="form-label" for="input_datos_cliente">Buscar Cliente</label>
+                                            <input type="text" class="form-control" id="input_datos_cliente"
                                                    placeholder="Escriba razon social o ruc">
                                         </div>
                                     </div>
@@ -180,9 +180,9 @@ $Parametro = new ParametroValor();
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleInputPassword1">Nro Documento Cliente</label>
+                                            <label class="form-label" for="input_documento_cliente">Nro Documento Cliente</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="exampleInputPassword1"
+                                                <input type="number" class="form-control" id="input_documento_cliente"
                                                        placeholder="ingrese DNI o RUC" maxlength="11">
                                                 <button class="btn btn-secondary" type="button">Buscar Datos</button>
                                             </div>
@@ -230,13 +230,11 @@ $Parametro = new ParametroValor();
                             </div><!--end col-->
                         </div>
                     </div><!--end card-->
-
                 </div> <!-- end col -->
             </div> <!-- end row -->
-        </div><!--end row-->
-    </div><!-- container -->
-</div>
-<!-- end page content -->
+        </div><!-- container -->
+    </div>
+    <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
 <?php
@@ -254,10 +252,119 @@ include('../fixed/footer.php');
 <script src="../assets/js/moment.js"></script>
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+        integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
+        crossorigin="anonymous"></script>
 
 <!-- App js -->
 <script src="../assets/js/app.js"></script>
+<script>
+    var arrayservicios = new Array();
 
+    //buscar clientes
+    $("#input_datos_cliente").autocomplete({
+        source: "../../inputAjax/obtenerJsonEntidades.php",
+        minLength: 3,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#input_datos_cliente").val(ui.item.razonsocial);
+            $("#input_emisor_id").val(ui.item.id);
+            $("#input_documento_cliente").val(ui.item.documento);
+            $("#input_documento_cliente").focus();
+        }
+    });
+
+    //calcular monto sin igv
+    function obtenerBase() {
+        var montoTotal = $("#input-precio-total").val();
+        var montoBase = montoTotal / 1.18;
+        $("#input-precio-sinigv").val(montoBase.toFixed(2))
+    }
+
+    //calcular monto total
+    function obtenerTotal() {
+        var montoBase = $("#input-precio-sinigv").val();
+        var montoTotal = montoBase * 1.18;
+        $("#input-precio-total").val(montoTotal.toFixed(2))
+    }
+
+    //añadir servicio a un array
+    function agregarServicio() {
+        var item = (arrayservicios.length + 1);
+        var descripcion = $("#input-descripcion").val();
+        var preciototal = $("#input-precio-total").val();
+        var unidadid = $("#select-unidad").val();
+        var unidad_nombre = $("#select-unidad").find('option:selected').text();
+
+        if (descripcion.length < 10) {
+            alert("Falta descripcion del servicio")
+            return false;
+        }
+
+        if (preciototal < 1) {
+            alert("No ha especificado precio del servicio")
+            return false
+        }
+
+        // se cargam los items en el array
+        arrayservicios.push({"id": item, "descripcion": descripcion, "precio": preciototal, "unidadid": unidadid, "unidadnombre": unidad_nombre})
+        mostrarItems()
+        limpiarCampos()
+    }
+
+    function eliminarItem(item) {
+        arrayservicios.forEach(function (car, index, object) {
+            if (car.id == item) {
+                object.splice(index, 1);
+            }
+        });
+
+        mostrarItems();
+    }
+
+    function mostrarItems() {
+        $("#contenido-detalle").html("");
+        totalproductos = 0;
+        var items = 1;
+        for (var i = 0; i < arrayservicios.length; i++) {
+            var totalitem = parseFloat(arrayservicios[i].precio);
+            totalproductos += (arrayservicios[i].precio);
+
+            $("#contenido-detalle").append('<tr>' +
+                '<td class="text-center">' + items + '</td>' +
+                '<td>' + arrayservicios[i].descripcion + '</td>' +
+                '<td class="text-center">' + arrayservicios[i].unidadnombre + '</td>' +
+                '<td class="text-end">'+ totalitem.toFixed(2) +'</td>' +
+                '<td class="text-end">' +
+                '<a href="#"><i class="las la-pen text-secondary font-16"></i></a>' +
+                '<a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>' +
+                '</td>' +
+                '</tr>');
+
+            items++;
+        }
+
+    }
+
+    function limpiarCampos() {
+        $("#input-descripcion").val("");
+        $("#input-precio-total").val("");
+        $("#input-precio-sinigv").val("");
+        $("#input-descripcion").focus()
+    }
+
+    function validarDocumentoComprobante () {
+        //SI ES RUC EL NRO DE DOCUMENTO NO DEBE SER DE 8 DIGITOS SOLO 11;
+        var comprobanteid = $("#select-comprobante").val()
+        var nrodocumento = $("#input_documento_cliente").val()
+        if (nrodocumento.length != 11) {
+            alert("Para emitir una factura debe ser un RUC")
+            return false
+        }
+    }
+
+
+</script>
 </body>
 
 

@@ -9225,13 +9225,24 @@ select:visited {
   color: #fff;
   font-weight: 700;
   padding: 22px 0px;
-  background-color: #003440;
+  background-color: #01480A;
 }
+
+/*
+xx 01480A
+x 003440
+ */
 
 .ft-footer-section-3 .ft-newslatter-section-3 {
   padding: 40px 0px;
-  background-color: #0f0f35;
+  background-color: #01480A;
 }
+
+/*
+01480A
+0f0f35
+ */
+
 .ft-footer-section-3 .ft-newslatter-section-3 .ft-newslatter-text {
   color: #fff;
 }
