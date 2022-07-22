@@ -1,3 +1,11 @@
+<?php
+include '../fixed/cargarSession.php';
+require '../../models/Empresa.php';
+
+$Empresa = new Empresa();
+$Empresa->setId($_SESSION['empresa_id']);
+$Empresa->obtenerDatos();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,19 +63,19 @@
                     <div class="card">
                     </div><!--end card-header-->
                     <div class="card-body">
-                        <form>
+                        <form method="post" action="../controller/actualiza-empresa.php">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label class="form-label" for="ruc">Ruc</label>
-                                        <input type="text" class="form-control" id="ruc" placeholder="Ruc">
+                                        <input type="text" class="form-control text-center" name="input-ruc" value="<?php echo $Empresa->getRuc()?>">
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="mb-3">
                                         <label class="form-label" for="razonsocial">Razon Social</label>
-                                        <input type="text" class="form-control" id="razonsocial"
-                                               placeholder="Razon Social">
+                                        <input type="text" class="form-control" name="input-razonsocial"
+                                               value="<?php echo $Empresa->getRazonsocial()?>">
                                     </div>
                                 </div>
                             </div>
@@ -75,21 +83,21 @@
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <label class="form-label" for="codsunat">Codigo Sunat</label>
-                                        <input type="text" class="form-control" id="codsunat"
-                                               placeholder="Codigo Sunat">
+                                        <input type="text" class="form-control text-center" name="input-codsunat"
+                                               value="<?php echo $Empresa->getCodsunat()?>">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="mb-3">
                                         <label class="form-label" for="dirfiscal">Direccion Fiscal</label>
-                                        <input type="text" class="form-control" id="dirfiscal"
-                                               placeholder="Direccion Fiscal">
+                                        <input type="text" class="form-control" name="input-dirfiscal"
+                                               value="<?php echo $Empresa->getDirfiscal()?>">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <label class="form-label" for="ubigeo">Ubigeo</label>
-                                        <input type="text" class="form-control" id="ubigeo" placeholder="Ubigeo">
+                                        <input type="text" class="form-control text-center" name="input-ubigeo" value="<?php echo $Empresa->getUbigeo()?>">
                                     </div>
                                 </div>
                             </div>
@@ -97,20 +105,20 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label" for="departamento">Departamento</label>
-                                        <input type="text" class="form-control" id="departamento"
-                                               placeholder="Departamento">
+                                        <input type="text" class="form-control text-center" name="input-departamento"
+                                               value="<?php echo $Empresa->getDepartamento()?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label" for="provincia">Provincia</label>
-                                        <input type="text" class="form-control" id="provincia" placeholder="Provincia">
+                                        <input type="text" class="form-control text-center" name="input-provincia" value="<?php echo $Empresa->getProvincia()?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label" for="distrito">Distrito</label>
-                                        <input type="text" class="form-control" id="distrito" placeholder="Distrito">
+                                        <input type="text" class="form-control text-center" name="input-distrito" value="<?php echo $Empresa->getDistrito()?>">
                                     </div>
                                 </div>
                             </div>
@@ -118,14 +126,14 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label" for="usuario">Usuario SUNAT</label>
-                                        <input type="text" class="form-control" id="usuario" placeholder="Usuario">
+                                        <input type="text" class="form-control text-center" name="input-usuario" value="<?php echo $Empresa->getUsersunat()?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="exampleInputPassword1">Clave SOL</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1"
-                                               placeholder="Password">
+                                        <label class="form-label" for="input-clavesol">Clave SOL</label>
+                                        <input type="text" class="form-control text-center" name="input-clavesol"
+                                               value="<?php echo $Empresa->getPasssunat()?>">
                                     </div>
                                 </div>
                             </div>
@@ -134,10 +142,10 @@
                     <div class="card-footer">
                         <div class="col-auto align-self-center">
 
-                            <a href="#" class="btn btn-sm btn-soft-primary">
-                                <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                Guardar Empresa
-                            </a>
+                            <button type="submit" class="btn btn-sm btn-soft-primary">
+                                <i data-feather="save" class="fas fa-plus mr-2"></i>
+                                Actualizar Datos de Empresa
+                            </button>
                         </div><!--end col-->
                     </div>
                 </div><!--end card-->

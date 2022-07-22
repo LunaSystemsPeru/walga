@@ -92,8 +92,8 @@ if ($Contrato->getId()) {
                         <label class="form__label">Precio Incluye IGV?</label>
                         <div class="form__select">
                             <select name="select-incluido" id="select-incluido" onchange="incluyeIGV()" <?php echo $disabled ?> >
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
+                                <option value="0">SI</option>
+                                <option value="1">NO</option>
                             </select>
                         </div>
                     </div>

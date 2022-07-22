@@ -96,37 +96,41 @@ $Contrato->setFecha(date("Y-m-d"));
                                     foreach ($array_contratos as $fila) {
                                         $iestado = $fila['estado_contrato'];
                                         $label_estado = "";
+                                        $monto = $fila['monto'];
+                                        if ($fila['incluye_igv'] == 1) {
+                                            $monto = $fila['monto'] * 1.18;
+                                        }
                                         if ($iestado == 0) {
-                                            $label_estado ='<span class="badge badge-boxed  badge-outline-warning">Programado</span>';
+                                            $label_estado = '<span class="badge badge-boxed  badge-outline-warning">Programado</span>';
                                         }
                                         if ($iestado == 1) {
-                                            $label_estado ='<span class="badge badge-boxed  badge-outline-info">en Proceso</span>';
+                                            $label_estado = '<span class="badge badge-boxed  badge-outline-info">en Proceso</span>';
                                         }
                                         if ($iestado == 2) {
-                                            $label_estado ='<span class="badge badge-boxed  badge-outline-dark">Finalizado</span>';
+                                            $label_estado = '<span class="badge badge-boxed  badge-outline-dark">Finalizado</span>';
                                         }
                                         $botoncomprobante = '<i data-feather="check"></i>';
                                         if ($fila['comprobante_id'] == 11) {
                                             $botoncomprobante = '<i data-feather="check"></i>';
                                         } else {
                                             if ($fila['estado_comprobante'] == 0) {
-                                                $botoncomprobante = '<button type="button" class="btn btn-info btn-sm"><i class="ti ti-plus"></i></button>';
+                                                $botoncomprobante = '<a href="form-venta.php?contratoid=' . $fila['id'] . '" type="button" class="btn btn-info btn-sm"><i class="ti ti-plus"></i></a>';
                                             }
                                         }
                                         ?>
                                         <tr>
                                             <th scope="row"><?php echo $item ?></th>
-                                            <td><?php echo $fila['fecha'] ?></td>
-                                            <td><?php echo $fila['placa'] ?></td>
+                                            <td class="text-center"><?php echo $fila['fecha'] ?></td>
+                                            <td class="text-center"><?php echo $fila['placa'] ?></td>
                                             <td><?php echo strtoupper($fila['tiposervicio'] . " | O. " . $fila['origen'] . " - D. " . $fila['destino'] . " | " . $fila['servicio']) ?></td>
                                             <td><?php echo $fila['datos'] ?></td>
-                                            <td><span class="badge badge-boxed  badge-outline-success"><?php echo ucwords(strtolower($fila['comprobante'])) ?></span></td>
-                                            <td><?php echo $botoncomprobante ?></td>
-                                            <td><?php echo $fila['monto'] ?></td>
-                                            <td><?php echo $fila['monto_pagado'] ?></td>
-                                            <td><?php echo $label_estado ?></td>
-                                            <td>
-                                                <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                            <td class="text-center"><span class="badge badge-boxed  badge-outline-success"><?php echo ucwords(strtolower($fila['comprobante'])) ?></span></td>
+                                            <td class="text-center"><?php echo $botoncomprobante ?></td>
+                                            <td class="text-right"><?php echo number_format($monto, 2) ?></td>
+                                            <td class="text-right"><?php echo $fila['monto_pagado'] ?></td>
+                                            <td class="text-center"><?php echo $label_estado ?></td>
+                                            <td class="text-center">
+                                                <a href="detalle-contrato.php?id=<?php echo $fila['id'] ?>" class="btn btn-info btn-sm"><i class="ti ti-eye"></i></a>
                                             </td>
                                         </tr>
                                         <?php
@@ -139,33 +143,28 @@ $Contrato->setFecha(date("Y-m-d"));
                         </div><!--end card-body-->
                     </div><!--end card-->
                 </div> <!-- end col -->
-            </div> <!-- end row -->
-
-    </div><!-- container -->
-</div>
-<!-- end page content -->
-</div>
-<!-- end page-wrapper -->
-<?php
-include('../fixed/footer.php');
-?>
+            </div><!-- container -->
+        </div>
+        <!-- end page content -->
+    </div>
+    <!-- end page-wrapper -->
+    <?php
+    include('../fixed/footer.php');
+    ?>
 
 
-<!-- jQuery  -->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/js/metismenu.min.js"></script>
-<script src="../assets/js/waves.js"></script>
-<script src="../assets/js/feather.min.js"></script>
-<script src="../assets/js/simplebar.min.js"></script>
-<script src="../assets/js/moment.js"></script>
-<script src="../plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- jQuery  -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/metismenu.min.js"></script>
+    <script src="../assets/js/waves.js"></script>
+    <script src="../assets/js/feather.min.js"></script>
+    <script src="../assets/js/simplebar.min.js"></script>
+    <script src="../assets/js/moment.js"></script>
+    <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
-<script src="../plugins/apex-charts/apexcharts.min.js"></script>
-<script src="../assets/pages/jquery.analytics_dashboard.init.js"></script>
-
-<!-- App js -->
-<script src="../assets/js/app.js"></script>
+    <!-- App js -->
+    <script src="../assets/js/app.js"></script>
 
 </body>
 

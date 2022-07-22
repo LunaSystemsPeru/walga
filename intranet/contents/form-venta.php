@@ -1,6 +1,37 @@
 <?php
+include "../fixed/cargarSession.php";
 require '../../models/ParametroValor.php';
+require '../../models/Contrato.php';
+require '../../models/Entidad.php';
+require '../../models/Cliente.php';
+
+$Contrato = new Contrato();
 $Parametro = new ParametroValor();
+$Entidad = new Entidad();
+$Cliente = new Cliente();
+
+$contratoid = filter_input(INPUT_GET, 'contratoid');
+$concepto = "";
+$monto = 0;
+$clienteid = 0;
+if ($contratoid) {
+    $Contrato->setId($contratoid);
+    $Contrato->obtenerDatos();
+    $Parametro->setId($Contrato->getTiposervicioid());
+    $Parametro->obtenerDatos();
+    $concepto = $Parametro->getDescripcion() . " PARA " . $Contrato->getServicio() . " DESDE " . $Contrato->getOrigen() . " HASTA " . $Contrato->getDestino();
+    $monto = $Contrato->getMontocontrato();
+    if ($Contrato->getIncluyeigv() == 1) {
+        $monto = $Contrato->getMontocontrato() * 1.18;
+    }
+    $Cliente->setId($Contrato->getClienteid());
+    $Cliente->obtenerDatos();
+    $Entidad->setId($Cliente->getEntidadId());
+    $Entidad->obtenerDatos();
+    $clienteid = $Cliente->getId();
+} else {
+    $contratoid = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,10 +75,10 @@ $Parametro = new ParametroValor();
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Registrar Usuario</h4>
+                                <h4 class="page-title">Registrar Comprobante de Venta</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Configuracion</a></li>
-                                    <li class="breadcrumb-item active">Usuario</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Ventas</a></li>
+                                    <li class="breadcrumb-item active">Facturacion</li>
                                 </ol>
                             </div><!--end col-->
                         </div><!--end row-->
@@ -67,7 +98,7 @@ $Parametro = new ParametroValor();
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label class="form-label" for="input-descripcion">Descripcion del Servicio</label>
-                                            <textarea class="form-control" rows="3" id="input-descripcion"></textarea>
+                                            <textarea class="form-control" rows="3" id="input-descripcion"><?php echo strtoupper($concepto) ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -90,13 +121,13 @@ $Parametro = new ParametroValor();
                                         <div class="mb-3">
                                             <label class="form-label" for="input-precio-sinigv">Precio Unit s/IGV</label>
                                             <input type="number" class="form-control text-right" id="input-precio-sinigv"
-                                                   placeholder="0.00" onkeyup="obtenerTotal()">
+                                                   placeholder="0.00" value="<?php echo number_format($monto / 1.18, 2) ?>" onkeyup="obtenerTotal()">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label class="form-label" for="input-precio-total">Precio Unit c/IGV</label>
-                                            <input type="number" class="form-control text-right" id="input-precio-total"
+                                            <input type="number" value="<?php echo number_format($monto, 2) ?>" class="form-control text-right" id="input-precio-total"
                                                    placeholder="0.00" onkeyup="obtenerBase()">
                                         </div>
                                     </div>
@@ -129,16 +160,7 @@ $Parametro = new ParametroValor();
                                 </tr>
                                 </thead>
                                 <tbody id="contenido-detalle">
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>ALQUILER DE CAMION GRUA PARA TRASLADO DE TANQUE DE FIERRO DE 2TON DESDE COISHCO HASTA AV PARDO</td>
-                                    <td class="text-center">SERVICIO</td>
-                                    <td class="text-end">250.00</td>
-                                    <td class="text-end">
-                                        <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
-                                        <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
-                                    </td>
-                                </tr>
+
                                 </tbody>
                             </table><!--end /table-->
                         </div><!--end card-body-->
@@ -155,6 +177,7 @@ $Parametro = new ParametroValor();
                                     <div class="col-md-5">
                                         <div class="mb-3">
                                             <label class="form-label" for="input-fecha">Fecha Comprobante</label>
+                                            <input type="hidden" value="<?php echo $contratoid ?>" id="hidden-idcontrato">
                                             <input type="date" class="form-control" id="input-fecha" value="<?php echo date("Y-m-d") ?>">
                                         </div>
                                     </div>
@@ -162,8 +185,8 @@ $Parametro = new ParametroValor();
                                         <div class="mb-3">
                                             <label class="form-label" for="select-comprobante">Tipo Comprobante</label>
                                             <select class="form-control" id="select-comprobante">
-                                                <option value="1">BOLETA</option>
-                                                <option value="2">FACTURA</option>
+                                                <option value="3">BOLETA</option>
+                                                <option <?php echo($Contrato->getComprobanteid() == 4 ? "selected" : "") ?> value="4">FACTURA</option>
                                             </select>
                                         </div>
                                     </div>
@@ -173,7 +196,7 @@ $Parametro = new ParametroValor();
                                         <div class="mb-3">
                                             <label class="form-label" for="input_datos_cliente">Buscar Cliente</label>
                                             <input type="text" class="form-control" id="input_datos_cliente"
-                                                   placeholder="Escriba razon social o ruc">
+                                                   placeholder="Escriba razon social o ruc" value="<?php echo $Entidad->getRazonsocial() ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -183,8 +206,9 @@ $Parametro = new ParametroValor();
                                             <label class="form-label" for="input_documento_cliente">Nro Documento Cliente</label>
                                             <div class="input-group">
                                                 <input type="number" class="form-control" id="input_documento_cliente"
-                                                       placeholder="ingrese DNI o RUC" maxlength="11">
-                                                <button class="btn btn-secondary" type="button">Buscar Datos</button>
+                                                       placeholder="ingrese DNI o RUC" maxlength="11" value="<?php echo $Entidad->getNrodocumento() ?>">
+                                                <input type="hidden" id="hidden-idcliente" value="<?php echo $clienteid ?>">
+                                                <button class="btn btn-secondary" type="button" onclick="obtenerDatosDocumento()">Buscar Datos</button>
                                             </div>
                                         </div>
                                     </div>
@@ -192,8 +216,8 @@ $Parametro = new ParametroValor();
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="usuario">Tipo Detraccion</label>
-                                            <select class="form-control" aria-label="Default select example">
+                                            <label class="form-label" for="select-detraccion">Tipo Detraccion</label>
+                                            <select class="form-control" aria-label="Default select example" id="select-detraccion">
                                                 <?php
                                                 $Parametro->setParametroId(7);
                                                 $array_medidas = $Parametro->verFilas();
@@ -208,9 +232,9 @@ $Parametro = new ParametroValor();
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="usuario">Forma de Pago</label>
+                                            <label class="form-label" for="select-forma-pago">Forma de Pago</label>
                                             <div class="input-group">
-                                                <select class="form-control" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                                <select class="form-control" id="select-forma-pago" aria-label="Example select with button addon">
                                                     <option value="1">CONTADO</option>
                                                     <option value="2">CREDITO</option>
                                                 </select>
@@ -223,10 +247,10 @@ $Parametro = new ParametroValor();
                         </div><!--end card-body-->
                         <div class="card-footer">
                             <div class="col-auto align-self-center">
-                                <a href="#" class="btn btn-sm btn-soft-primary">
+                                <button onclick="finalizarVenta()" type="button" class="btn btn-sm btn-soft-primary" id="btn-grabar">
                                     <i data-feather="save" class="fas fa-save mr-2"></i>
                                     Generar Comprobante
-                                </a>
+                                </button>
                             </div><!--end col-->
                         </div>
                     </div><!--end card-->
@@ -260,6 +284,7 @@ include('../fixed/footer.php');
 <script src="../assets/js/app.js"></script>
 <script>
     var arrayservicios = new Array();
+    var totalventa = 0;
 
     //buscar clientes
     $("#input_datos_cliente").autocomplete({
@@ -270,6 +295,7 @@ include('../fixed/footer.php');
             $("#input_datos_cliente").val(ui.item.razonsocial);
             $("#input_emisor_id").val(ui.item.id);
             $("#input_documento_cliente").val(ui.item.documento);
+            $("#hidden-idcliente").val(ui.item.id);
             $("#input_documento_cliente").focus();
         }
     });
@@ -298,11 +324,13 @@ include('../fixed/footer.php');
 
         if (descripcion.length < 10) {
             alert("Falta descripcion del servicio")
+            $("#input-descripcion").focus()
             return false;
         }
 
         if (preciototal < 1) {
             alert("No ha especificado precio del servicio")
+            $("#input-precio-total").focus()
             return false
         }
 
@@ -324,17 +352,16 @@ include('../fixed/footer.php');
 
     function mostrarItems() {
         $("#contenido-detalle").html("");
-        totalproductos = 0;
         var items = 1;
         for (var i = 0; i < arrayservicios.length; i++) {
             var totalitem = parseFloat(arrayservicios[i].precio);
-            totalproductos += (arrayservicios[i].precio);
+            totalventa = totalventa + totalitem;
 
             $("#contenido-detalle").append('<tr>' +
                 '<td class="text-center">' + items + '</td>' +
                 '<td>' + arrayservicios[i].descripcion + '</td>' +
                 '<td class="text-center">' + arrayservicios[i].unidadnombre + '</td>' +
-                '<td class="text-end">'+ totalitem.toFixed(2) +'</td>' +
+                '<td class="text-end">' + totalitem.toFixed(2) + '</td>' +
                 '<td class="text-end">' +
                 '<a href="#"><i class="las la-pen text-secondary font-16"></i></a>' +
                 '<a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>' +
@@ -353,7 +380,7 @@ include('../fixed/footer.php');
         $("#input-descripcion").focus()
     }
 
-    function validarDocumentoComprobante () {
+    function validarDocumentoComprobante() {
         //SI ES RUC EL NRO DE DOCUMENTO NO DEBE SER DE 8 DIGITOS SOLO 11;
         var comprobanteid = $("#select-comprobante").val()
         var nrodocumento = $("#input_documento_cliente").val()
@@ -361,6 +388,73 @@ include('../fixed/footer.php');
             alert("Para emitir una factura debe ser un RUC")
             return false
         }
+    }
+
+
+    function obtenerDatosDocumento() {
+        var nrodocumento = $("#input_documento_cliente").val();
+        alert("Cargando Datos...\n espere un momento por favor");
+        var arraypost = {nrodocumento: nrodocumento};
+        $.post("../controller/registra-entidad.php", arraypost, function (data) {
+            console.log(data);
+            var jsonresultado = JSON.parse(data);
+            if (jsonresultado.success == "error") {
+                alert("Error en el dni o ruc");
+                return false;
+            }
+            if (jsonresultado.id > 0) {
+                $("#hidden-idcliente").val(jsonresultado.id)
+                $("#input_datos_cliente").val(jsonresultado.datos);
+            }
+        })
+            .fail(function (data) {
+                alert(data);
+            });
+    }
+
+    function finalizarVenta() {
+        var clienteid = $("#hidden-idcliente").val();
+        if (totalventa == 0) {
+            alert("Debe ingresar al menos un servicio, monto debe ser mayor a 0")
+            return false
+        }
+
+        if (clienteid == 0) {
+            alert("Debe seleccionar un cliente, si no esta registrado escriba el numero de documento (DNI o RUC) y luego clic en buscar Datos")
+            return false
+        }
+
+        validarDocumentoComprobante()
+
+        $("#btn-grabar").prop("disabled", true);
+
+        //enviar datos
+        var arraypost = {
+            inputFecha: $("#input-fecha").val(),
+            inputTido: $("#select-comprobante").val(),
+            inputClienteId: $("#hidden-idcliente").val(),
+            inputContrato: $("#hidden-idcontrato").val(),
+            inputMonto: totalventa,
+            inputDetraccion: $("#select-detraccion").val(),
+            arrayServicios: JSON.stringify(arrayservicios)
+        };
+
+        console.log(arraypost)
+
+
+        $.post("../controller/registra-venta.php", arraypost, function (data) {
+            alert(data);
+            /* var jsonresultado = JSON.parse(data);
+            //si todo correcto enviar a imprimir ticket
+            if (jsonresultado.id > 0) {
+                alert("venta Registrada, por favor imprima el ticket");
+                location.href = "reporte-pdf-documento-venta.php?ventaid=" + jsonresultado.id;
+            } else {
+                alert("error al registrar venta" + data)
+            }
+
+             */
+        });
     }
 
 

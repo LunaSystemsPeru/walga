@@ -71,7 +71,7 @@ $Vehiculo->setEmpresaId($_SESSION['empresa_id']);
                                     <thead class="thead-light">
                                     <tr>
                                         <th>Item</th>
-                                        <th>placa </th>
+                                        <th>placa</th>
                                         <th>Marca | Modelo</th>
                                         <th>Año</th>
                                         <th>Capacidad</th>
@@ -111,7 +111,7 @@ $Vehiculo->setEmpresaId($_SESSION['empresa_id']);
                     </div><!--end card-->
                 </div> <!-- end col -->
             </div> <!-- end row -->
-            </div><!-- container -->
+        </div><!-- container -->
     </div>
     <!-- end page content -->
 </div>
@@ -130,9 +130,6 @@ include('../fixed/footer.php');
 <script src="../assets/js/simplebar.min.js"></script>
 <script src="../assets/js/moment.js"></script>
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
-
-<script src="../plugins/apex-charts/apexcharts.min.js"></script>
-<script src="../assets/pages/jquery.analytics_dashboard.init.js"></script>
 
 <!-- App js -->
 <script src="../assets/js/app.js"></script>

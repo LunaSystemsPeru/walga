@@ -57,85 +57,80 @@ $Vehiculo = new Vehiculo();
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="card">
-                    </div><!--end card-header-->
-                    <div class="card-body">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="placa">Placa</label>
-                                        <input type="text" class="form-control" id="placa" placeholder="Placa">
+                        <div class="card-body">
+                            <form method="post" action="../controller/registra-vehiculo.php">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="placa">Placa</label>
+                                            <input type="text" class="form-control" id="placa" placeholder="Placa">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="serie">Serie</label>
-                                        <input type="text" class="form-control" id="serie" placeholder="Serie">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="serie">Serie</label>
+                                            <input type="text" class="form-control" id="serie" placeholder="Serie">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="marca">Marca</label>
-                                        <input type="text" class="form-control" id="marca" placeholder="Marca">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="marca">Marca</label>
+                                            <input type="text" class="form-control" id="marca" placeholder="Marca">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="modelo">Modelo</label>
-                                        <input type="text" class="form-control" id="modelo" placeholder="Modelo">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="modelo">Modelo</label>
+                                            <input type="text" class="form-control" id="modelo" placeholder="Modelo">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="año">Año</label>
-                                        <input type="text" class="form-control" id="año" placeholder="año">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-sm-10 ms-auto">
-                                        <label class="form-label" for="estado">Estado</label>
-                                        <div class="form-check form-switch form-switch-secondary">
-                                            <input class="form-check-input" type="checkbox" id="customSwitchSecondary"
-                                                   checked>
-                                            <label class="form-check-label" for="customSwitchSecondary">Activo</label>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="año">Año</label>
+                                            <input type="text" class="form-control" id="año" placeholder="año">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleInputPassword1">Choferes</label>
-                                        <select class="form-control" aria-label="Default select example">
-                                            <option selected>Abrir para seleccionar</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="col-sm-10 ms-auto">
+                                            <label class="form-label" for="estado">Estado</label>
+                                            <div class="form-check form-switch form-switch-secondary">
+                                                <input class="form-check-input" type="checkbox" id="customSwitchSecondary"
+                                                       checked>
+                                                <label class="form-check-label" for="customSwitchSecondary">Activo</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="exampleInputPassword1">Choferes</label>
+                                            <select class="form-control" aria-label="Default select example">
+                                                <option selected>Abrir para seleccionar</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                    </form>
-                </div><!--end card-body-->
-                <div class="card-footer">
-                    <div class="col-auto align-self-center">
+                            </form>
+                        </div><!--end card-body-->
+                        <div class="card-footer">
+                            <div class="col-auto align-self-center">
 
-                        <a href="#" class="btn btn-sm btn-soft-primary">
-                            <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                            Guardar Vehiculo
-                        </a>
-                    </div><!--end col-->
-                </div>
-            </div><!--end card-->
-        </div> <!-- end col -->
-    </div> <!-- end row -->
-
-</div><!--end row-->
-
-
-</div><!-- container -->
-</div>
-<!-- end page content -->
+                                <a href="#" class="btn btn-sm btn-soft-primary">
+                                    <i data-feather="plus" class="fas fa-plus mr-2"></i>
+                                    Guardar Vehiculo
+                                </a>
+                            </div><!--end col-->
+                        </div>
+                    </div><!--end card-->
+                </div> <!-- end col -->
+            </div><!-- container -->
+        </div>
+    </div>
+    <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
 <?php

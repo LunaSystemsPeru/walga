@@ -206,7 +206,7 @@ class Contrato
      */
     public function setOrigen($origen)
     {
-        $this->origen = $origen;
+        $this->origen = strtoupper($origen);
     }
 
     /**
@@ -222,7 +222,7 @@ class Contrato
      */
     public function setDestino($destino)
     {
-        $this->destino = $destino;
+        $this->destino = strtoupper($destino);
     }
 
     /**
@@ -238,7 +238,7 @@ class Contrato
      */
     public function setServicio($servicio)
     {
-        $this->servicio = $servicio;
+        $this->servicio = strtoupper($servicio);
     }
 
     /**
@@ -421,6 +421,7 @@ class Contrato
     public function modificar () {
         $sql = "update contratos 
                 set comprobante_id = '$this->comprobanteid',
+                    estado_comprobante = '$this->estadocomprobante', 
                     hora_inicio = '$this->horainicio', 
                     hora_termino = '$this->horatermino', 
                     estado_contrato = '$this->estado', 
@@ -444,14 +445,14 @@ class Contrato
     }
 
     public function verContratosdelDia() {
-        $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, 
+        $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, c.incluye_igv,  
                 pv.descripcion as comprobante, pv2.descripcion as tiposervicio, v.placa, c.comprobante_id, c.estado_comprobante
                 from contratos as c 
                 inner join clientes c2 on c.cliente_id = c2.id
                 inner join parametros_valores pv on c.comprobante_id = pv.id
                 inner join parametros_valores as pv2 on c.tiposervicio_id = pv2.id
                 inner join vehiculos v on c.vehiculo_id = v.id
-                where c.fecha = '$this->fecha'
+                where c.fecha = '$this->fecha' or c.estado_comprobante = 0
                 order by c.fecha asc";
         return $this->conectar->get_Cursor($sql);
     }

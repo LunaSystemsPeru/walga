@@ -12,8 +12,10 @@ $Contrato->setId(filter_input(INPUT_POST, 'input-id-contrato'));
 $Contrato->obtenerDatos();
 
 $desea_comprobante = filter_input(INPUT_POST, 'select-comprobante');
+$Contrato->setEstadocomprobante(1);
 if ($desea_comprobante == 4) {
     $Contrato->setComprobanteid($desea_comprobante);
+    $Contrato->setEstadocomprobante(0);
 }
 
 $Contrato->setMontopagado(filter_input(INPUT_POST, 'input-pago'));

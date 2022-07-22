@@ -1108,1009 +1108,1054 @@
     <table id="360" parent="8" name="vehiculos"/>
     <table id="361" parent="8" name="ventas"/>
     <table id="362" parent="8" name="ventas_amarre"/>
-    <table id="363" parent="8" name="ventas_servicios"/>
-    <column id="364" parent="344" name="id">
+    <table id="363" parent="8" name="ventas_cuotas"/>
+    <table id="364" parent="8" name="ventas_servicios"/>
+    <column id="365" parent="344" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="365" parent="344" name="brevete">
+    <column id="366" parent="344" name="brevete">
       <Position>2</Position>
       <DataType>varchar(9)|0s</DataType>
     </column>
-    <column id="366" parent="344" name="datos">
+    <column id="367" parent="344" name="datos">
       <Position>3</Position>
       <DataType>varchar(150)|0s</DataType>
     </column>
-    <column id="367" parent="344" name="categoria">
+    <column id="368" parent="344" name="categoria">
       <Position>4</Position>
       <DataType>varchar(5)|0s</DataType>
     </column>
-    <column id="368" parent="344" name="fec_vencimiento">
+    <column id="369" parent="344" name="fec_vencimiento">
       <Position>5</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="369" parent="344" name="estado">
+    <column id="370" parent="344" name="estado">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="370" parent="344" name="empresa_id">
+    <column id="371" parent="344" name="empresa_id">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="371" parent="344" name="fk_chofer_empresas">
+    <index id="372" parent="344" name="fk_chofer_empresas">
       <ColNames>empresa_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="372" parent="344" name="PRIMARY">
+    <key id="373" parent="344" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="373" parent="344" name="fk_chofer_empresas">
+    <foreign-key id="374" parent="344" name="fk_chofer_empresas">
       <ColNames>empresa_id</ColNames>
       <RefTableName>empresas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="374" parent="345" name="id">
+    <column id="375" parent="345" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="375" parent="345" name="datos">
+    <column id="376" parent="345" name="datos">
       <Position>2</Position>
       <DataType>varchar(150)|0s</DataType>
     </column>
-    <column id="376" parent="345" name="celular">
+    <column id="377" parent="345" name="celular">
       <Position>3</Position>
       <DataType>varchar(9)|0s</DataType>
     </column>
-    <column id="377" parent="345" name="email">
+    <column id="378" parent="345" name="email">
       <Position>4</Position>
       <DataType>varchar(200)|0s</DataType>
     </column>
-    <column id="378" parent="345" name="entidad_id">
+    <column id="379" parent="345" name="entidad_id">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="379" parent="345" name="empresa_id">
+    <column id="380" parent="345" name="empresa_id">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="380" parent="345" name="referencia">
+    <column id="381" parent="345" name="referencia">
       <Position>7</Position>
       <DataType>varchar(245)|0s</DataType>
     </column>
-    <index id="381" parent="345" name="fk_clientes_entidades">
+    <index id="382" parent="345" name="fk_clientes_entidades">
       <ColNames>entidad_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="382" parent="345" name="fk_clientes_empresas">
+    <index id="383" parent="345" name="fk_clientes_empresas">
       <ColNames>empresa_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="383" parent="345" name="PRIMARY">
+    <key id="384" parent="345" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="384" parent="345" name="fk_clientes_entidades">
+    <foreign-key id="385" parent="345" name="fk_clientes_entidades">
       <ColNames>entidad_id</ColNames>
       <RefTableName>entidades</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="385" parent="345" name="fk_clientes_empresas">
+    <foreign-key id="386" parent="345" name="fk_clientes_empresas">
       <ColNames>empresa_id</ColNames>
       <RefTableName>empresas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="386" parent="346" name="id">
+    <column id="387" parent="346" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="387" parent="346" name="fecha_pago">
+    <column id="388" parent="346" name="fecha_pago">
       <Position>2</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="388" parent="346" name="monto">
+    <column id="389" parent="346" name="monto">
       <Position>3</Position>
       <DataType>decimal(6)|0s</DataType>
     </column>
-    <column id="389" parent="346" name="cliente_id">
+    <column id="390" parent="346" name="cliente_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="390" parent="346" name="usuario_id">
+    <column id="391" parent="346" name="usuario_id">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="391" parent="346" name="fk_clientes_pagos_clientes">
+    <index id="392" parent="346" name="fk_clientes_pagos_clientes">
       <ColNames>cliente_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="392" parent="346" name="fk_clientes_pagos_usuarios">
+    <index id="393" parent="346" name="fk_clientes_pagos_usuarios">
       <ColNames>usuario_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="393" parent="346" name="PRIMARY">
+    <key id="394" parent="346" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="394" parent="346" name="fk_clientes_pagos_clientes">
+    <foreign-key id="395" parent="346" name="fk_clientes_pagos_clientes">
       <ColNames>cliente_id</ColNames>
       <RefTableName>clientes</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="395" parent="346" name="fk_clientes_pagos_usuarios">
+    <foreign-key id="396" parent="346" name="fk_clientes_pagos_usuarios">
       <ColNames>usuario_id</ColNames>
       <RefTableName>usuarios</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="396" parent="347" name="id">
+    <column id="397" parent="347" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="397" parent="347" name="comprobante_id">
+    <column id="398" parent="347" name="comprobante_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="398" parent="347" name="serie">
+    <column id="399" parent="347" name="serie">
       <Position>3</Position>
       <DataType>varchar(4)|0s</DataType>
     </column>
-    <column id="399" parent="347" name="numero">
+    <column id="400" parent="347" name="numero">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="400" parent="347" name="empresa_id">
+    <column id="401" parent="347" name="empresa_id">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="401" parent="347" name="unq_comprobantes_empresas">
+    <index id="402" parent="347" name="unq_comprobantes_empresas">
       <ColNames>comprobante_id
 serie</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="402" parent="347" name="fk_comprobantes_empresas_empresas">
+    <index id="403" parent="347" name="fk_comprobantes_empresas_empresas">
       <ColNames>empresa_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="403" parent="347" name="PRIMARY">
+    <key id="404" parent="347" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="404" parent="347" name="unq_comprobantes_empresas">
+    <key id="405" parent="347" name="unq_comprobantes_empresas">
       <ColNames>comprobante_id
 serie</ColNames>
       <UnderlyingIndexName>unq_comprobantes_empresas</UnderlyingIndexName>
     </key>
-    <foreign-key id="405" parent="347" name="fk_comprobantes_empresas_parametros_valores">
+    <foreign-key id="406" parent="347" name="fk_comprobantes_empresas_parametros_valores">
       <ColNames>comprobante_id</ColNames>
       <RefTableName>parametros_valores</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="406" parent="347" name="fk_comprobantes_empresas_empresas">
+    <foreign-key id="407" parent="347" name="fk_comprobantes_empresas_empresas">
       <ColNames>empresa_id</ColNames>
       <RefTableName>empresas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="407" parent="348" name="id">
+    <column id="408" parent="348" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="408" parent="348" name="fecha">
+    <column id="409" parent="348" name="fecha">
       <Position>2</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="409" parent="348" name="cliente_id">
+    <column id="410" parent="348" name="cliente_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="410" parent="348" name="usuario_id">
+    <column id="411" parent="348" name="usuario_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="411" parent="348" name="chofer_id">
+    <column id="412" parent="348" name="chofer_id">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="412" parent="348" name="vehiculo_id">
+    <column id="413" parent="348" name="vehiculo_id">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="413" parent="348" name="comprobante_id">
+    <column id="414" parent="348" name="comprobante_id">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="414" parent="348" name="empresa_id">
+    <column id="415" parent="348" name="empresa_id">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="415" parent="348" name="estado_comprobante">
+    <column id="416" parent="348" name="estado_comprobante">
       <Position>9</Position>
       <DataType>char(1)|0s</DataType>
     </column>
-    <column id="416" parent="348" name="tiposervicio_id">
+    <column id="417" parent="348" name="tiposervicio_id">
       <Position>10</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="417" parent="348" name="origen">
+    <column id="418" parent="348" name="origen">
       <Position>11</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="418" parent="348" name="destino">
+    <column id="419" parent="348" name="destino">
       <Position>12</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="419" parent="348" name="servicio">
+    <column id="420" parent="348" name="servicio">
       <Position>13</Position>
       <DataType>varchar(245)|0s</DataType>
     </column>
-    <column id="420" parent="348" name="estado_contrato">
+    <column id="421" parent="348" name="estado_contrato">
       <Position>14</Position>
       <DataType>char(1)|0s</DataType>
     </column>
-    <column id="421" parent="348" name="horas_servicio">
+    <column id="422" parent="348" name="horas_servicio">
       <Position>15</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="422" parent="348" name="monto">
+    <column id="423" parent="348" name="monto">
       <Position>16</Position>
       <DataType>decimal(6,2 digit)|0s</DataType>
     </column>
-    <column id="423" parent="348" name="monto_pagado">
+    <column id="424" parent="348" name="monto_pagado">
       <Position>17</Position>
       <DataType>decimal(6,2 digit)|0s</DataType>
     </column>
-    <column id="424" parent="348" name="hora_inicio">
+    <column id="425" parent="348" name="hora_inicio">
       <Position>18</Position>
       <DataType>varchar(8)|0s</DataType>
     </column>
-    <column id="425" parent="348" name="hora_termino">
+    <column id="426" parent="348" name="hora_termino">
       <Position>19</Position>
       <DataType>varchar(8)|0s</DataType>
     </column>
-    <column id="426" parent="348" name="incluye_igv">
+    <column id="427" parent="348" name="incluye_igv">
       <Position>20</Position>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <index id="427" parent="348" name="fk_contratos_clientes">
+    <index id="428" parent="348" name="fk_contratos_clientes">
       <ColNames>cliente_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="428" parent="348" name="fk_contratos_usuarios">
+    <index id="429" parent="348" name="fk_contratos_usuarios">
       <ColNames>usuario_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="429" parent="348" name="fk_contratos_chofer">
+    <index id="430" parent="348" name="fk_contratos_chofer">
       <ColNames>chofer_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="430" parent="348" name="fk_contratos_vehiculos">
+    <index id="431" parent="348" name="fk_contratos_vehiculos">
       <ColNames>vehiculo_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="431" parent="348" name="fk_contratos_parametros_valores_0">
+    <index id="432" parent="348" name="fk_contratos_parametros_valores_0">
       <ColNames>comprobante_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="432" parent="348" name="fk_contratos_empresas">
+    <index id="433" parent="348" name="fk_contratos_empresas">
       <ColNames>empresa_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="433" parent="348" name="fk_contratos_parametros_valores">
+    <index id="434" parent="348" name="fk_contratos_parametros_valores">
       <ColNames>tiposervicio_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="434" parent="348" name="PRIMARY">
+    <key id="435" parent="348" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="435" parent="348" name="fk_contratos_clientes">
+    <foreign-key id="436" parent="348" name="fk_contratos_clientes">
       <ColNames>cliente_id</ColNames>
       <RefTableName>clientes</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="436" parent="348" name="fk_contratos_usuarios">
+    <foreign-key id="437" parent="348" name="fk_contratos_usuarios">
       <ColNames>usuario_id</ColNames>
       <RefTableName>usuarios</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="437" parent="348" name="fk_contratos_chofer">
+    <foreign-key id="438" parent="348" name="fk_contratos_chofer">
       <ColNames>chofer_id</ColNames>
       <RefTableName>chofer</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="438" parent="348" name="fk_contratos_vehiculos">
+    <foreign-key id="439" parent="348" name="fk_contratos_vehiculos">
       <ColNames>vehiculo_id</ColNames>
       <RefTableName>vehiculos</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="439" parent="348" name="fk_contratos_parametros_valores_0">
+    <foreign-key id="440" parent="348" name="fk_contratos_parametros_valores_0">
       <ColNames>comprobante_id</ColNames>
       <RefTableName>parametros_valores</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="440" parent="348" name="fk_contratos_empresas">
+    <foreign-key id="441" parent="348" name="fk_contratos_empresas">
       <ColNames>empresa_id</ColNames>
       <RefTableName>empresas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="441" parent="348" name="fk_contratos_parametros_valores">
+    <foreign-key id="442" parent="348" name="fk_contratos_parametros_valores">
       <ColNames>tiposervicio_id</ColNames>
       <RefTableName>parametros_valores</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="442" parent="349" name="id">
+    <column id="443" parent="349" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="443" parent="349" name="fecha_pago">
+    <column id="444" parent="349" name="fecha_pago">
       <Position>2</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="444" parent="349" name="monto">
+    <column id="445" parent="349" name="monto">
       <Position>3</Position>
       <DataType>decimal(6)|0s</DataType>
     </column>
-    <column id="445" parent="349" name="pago_id">
+    <column id="446" parent="349" name="pago_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="446" parent="349" name="contrato_id">
+    <column id="447" parent="349" name="contrato_id">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="447" parent="349" name="fk_contratos_pagos_clientes_pagos">
+    <index id="448" parent="349" name="fk_contratos_pagos_clientes_pagos">
       <ColNames>pago_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="448" parent="349" name="fk_contratos_pagos_contratos">
+    <index id="449" parent="349" name="fk_contratos_pagos_contratos">
       <ColNames>contrato_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="449" parent="349" name="PRIMARY">
+    <key id="450" parent="349" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="450" parent="349" name="fk_contratos_pagos_clientes_pagos">
+    <foreign-key id="451" parent="349" name="fk_contratos_pagos_clientes_pagos">
       <ColNames>pago_id</ColNames>
       <RefTableName>clientes_pagos</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="451" parent="349" name="fk_contratos_pagos_contratos">
+    <foreign-key id="452" parent="349" name="fk_contratos_pagos_contratos">
       <ColNames>contrato_id</ColNames>
       <RefTableName>contratos</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="452" parent="350" name="contrato_id">
+    <column id="453" parent="350" name="contrato_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="453" parent="350" name="ventas_id">
+    <column id="454" parent="350" name="ventas_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="454" parent="350" name="fk_contratos_ventas_ventas">
+    <index id="455" parent="350" name="fk_contratos_ventas_ventas">
       <ColNames>ventas_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="455" parent="350" name="PRIMARY">
+    <key id="456" parent="350" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>contrato_id
 ventas_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="456" parent="350" name="fk_contratos_ventas_contratos">
+    <foreign-key id="457" parent="350" name="fk_contratos_ventas_contratos">
       <ColNames>contrato_id</ColNames>
       <RefTableName>contratos</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="457" parent="350" name="fk_contratos_ventas_ventas">
+    <foreign-key id="458" parent="350" name="fk_contratos_ventas_ventas">
       <ColNames>ventas_id</ColNames>
       <RefTableName>ventas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="458" parent="351" name="id">
+    <column id="459" parent="351" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="459" parent="351" name="razonsocial">
+    <column id="460" parent="351" name="razonsocial">
       <Position>2</Position>
       <DataType>varchar(245)|0s</DataType>
     </column>
-    <column id="460" parent="351" name="ruc">
+    <column id="461" parent="351" name="ruc">
       <Position>3</Position>
       <DataType>varchar(11)|0s</DataType>
     </column>
-    <column id="461" parent="351" name="dirfiscal">
+    <column id="462" parent="351" name="dirfiscal">
       <Position>4</Position>
       <DataType>varchar(245)|0s</DataType>
     </column>
-    <column id="462" parent="351" name="ubigeo">
+    <column id="463" parent="351" name="ubigeo">
       <Position>5</Position>
       <DataType>varchar(6)|0s</DataType>
     </column>
-    <column id="463" parent="351" name="departamento">
+    <column id="464" parent="351" name="departamento">
       <Position>6</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="464" parent="351" name="provincia">
+    <column id="465" parent="351" name="provincia">
       <Position>7</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="465" parent="351" name="distrito">
+    <column id="466" parent="351" name="distrito">
       <Position>8</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="466" parent="351" name="codsunat">
+    <column id="467" parent="351" name="codsunat">
       <Position>9</Position>
       <DataType>varchar(4)|0s</DataType>
     </column>
-    <column id="467" parent="351" name="usersunat">
+    <column id="468" parent="351" name="usersunat">
       <Position>10</Position>
       <DataType>varchar(15)|0s</DataType>
     </column>
-    <column id="468" parent="351" name="passsunat">
+    <column id="469" parent="351" name="passsunat">
       <Position>11</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <key id="469" parent="351" name="PRIMARY">
+    <key id="470" parent="351" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="470" parent="352" name="id">
+    <column id="471" parent="352" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="471" parent="352" name="razonsocial">
+    <column id="472" parent="352" name="razonsocial">
       <Position>2</Position>
       <DataType>varchar(245)|0s</DataType>
     </column>
-    <column id="472" parent="352" name="direccion">
+    <column id="473" parent="352" name="direccion">
       <Position>3</Position>
       <DataType>varchar(245)|0s</DataType>
     </column>
-    <column id="473" parent="352" name="documento">
+    <column id="474" parent="352" name="documento">
       <Position>4</Position>
       <DataType>varchar(12)|0s</DataType>
     </column>
-    <key id="474" parent="352" name="PRIMARY">
+    <key id="475" parent="352" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="475" parent="353" name="id">
+    <column id="476" parent="353" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="476" parent="353" name="descripcion">
+    <column id="477" parent="353" name="descripcion">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
     </column>
-    <column id="477" parent="353" name="tipo">
+    <column id="478" parent="353" name="tipo">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <key id="478" parent="353" name="PRIMARY">
+    <key id="479" parent="353" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="479" parent="354" name="id">
+    <column id="480" parent="354" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="480" parent="354" name="parametro_id">
+    <column id="481" parent="354" name="parametro_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="481" parent="354" name="descripcion">
+    <column id="482" parent="354" name="descripcion">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="482" parent="354" name="valor1">
+    <column id="483" parent="354" name="valor1">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
     </column>
-    <column id="483" parent="354" name="valor2">
+    <column id="484" parent="354" name="valor2">
       <Position>5</Position>
       <DataType>varchar(50)|0s</DataType>
     </column>
-    <index id="484" parent="354" name="fk_parametros_valores_parametros">
+    <index id="485" parent="354" name="fk_parametros_valores_parametros">
       <ColNames>parametro_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="485" parent="354" name="PRIMARY">
+    <key id="486" parent="354" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="486" parent="354" name="fk_parametros_valores_parametros">
+    <foreign-key id="487" parent="354" name="fk_parametros_valores_parametros">
       <ColNames>parametro_id</ColNames>
       <RefTableName>parametros</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="487" parent="355" name="id">
+    <column id="488" parent="355" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="488" parent="355" name="descripcion">
+    <column id="489" parent="355" name="descripcion">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <key id="489" parent="355" name="PRIMARY">
+    <key id="490" parent="355" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="490" parent="356" name="id">
+    <column id="491" parent="356" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="491" parent="356" name="documento">
+    <column id="492" parent="356" name="documento">
       <Position>2</Position>
       <DataType>varchar(150)|0s</DataType>
     </column>
-    <column id="492" parent="356" name="fec_emision">
+    <column id="493" parent="356" name="fec_emision">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="493" parent="356" name="fec_vencimiento">
+    <column id="494" parent="356" name="fec_vencimiento">
       <Position>4</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="494" parent="356" name="estado">
+    <column id="495" parent="356" name="estado">
       <Position>5</Position>
       <DataType>char(1)|0s</DataType>
     </column>
-    <column id="495" parent="356" name="emisor_id">
+    <column id="496" parent="356" name="emisor_id">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="496" parent="356" name="archivo">
+    <column id="497" parent="356" name="archivo">
       <Position>7</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="497" parent="356" name="empresa_id">
+    <column id="498" parent="356" name="empresa_id">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="498" parent="356" name="fk_vehiculos_documentos_entidades">
+    <index id="499" parent="356" name="fk_vehiculos_documentos_entidades">
       <ColNames>emisor_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="499" parent="356" name="fk_recordatorios_documentos_empresas">
+    <index id="500" parent="356" name="fk_recordatorios_documentos_empresas">
       <ColNames>empresa_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="500" parent="356" name="PRIMARY">
+    <key id="501" parent="356" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="501" parent="356" name="fk_vehiculos_documentos_entidades">
+    <foreign-key id="502" parent="356" name="fk_vehiculos_documentos_entidades">
       <ColNames>emisor_id</ColNames>
       <RefTableName>entidades</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="502" parent="356" name="fk_recordatorios_documentos_empresas">
+    <foreign-key id="503" parent="356" name="fk_recordatorios_documentos_empresas">
       <ColNames>empresa_id</ColNames>
       <RefTableName>empresas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="503" parent="357" name="session_id">
+    <column id="504" parent="357" name="session_id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="504" parent="357" name="hash">
+    <column id="505" parent="357" name="hash">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="505" parent="357" name="session_data">
+    <column id="506" parent="357" name="session_data">
       <Position>3</Position>
       <DataType>blob|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="506" parent="357" name="session_expire">
+    <column id="507" parent="357" name="session_expire">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <key id="507" parent="357" name="PRIMARY">
+    <key id="508" parent="357" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>session_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="508" parent="358" name="id">
+    <column id="509" parent="358" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="509" parent="358" name="username">
+    <column id="510" parent="358" name="username">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="510" parent="358" name="password">
+    <column id="511" parent="358" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <column id="511" parent="358" name="fec_login">
+    <column id="512" parent="358" name="fec_login">
       <Position>4</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="512" parent="358" name="fec_creacion">
+    <column id="513" parent="358" name="fec_creacion">
       <Position>5</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="513" parent="358" name="estado">
+    <column id="514" parent="358" name="estado">
       <Position>6</Position>
       <DataType>char(1)|0s</DataType>
     </column>
-    <column id="514" parent="358" name="empresa_id">
+    <column id="515" parent="358" name="empresa_id">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="515" parent="358" name="tipousuario_id">
+    <column id="516" parent="358" name="tipousuario_id">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="516" parent="358" name="fk_usuarios_empresas">
+    <index id="517" parent="358" name="fk_usuarios_empresas">
       <ColNames>empresa_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="517" parent="358" name="fk_usuarios_parametros_valores">
+    <index id="518" parent="358" name="fk_usuarios_parametros_valores">
       <ColNames>tipousuario_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="518" parent="358" name="PRIMARY">
+    <key id="519" parent="358" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="519" parent="358" name="fk_usuarios_empresas">
+    <foreign-key id="520" parent="358" name="fk_usuarios_empresas">
       <ColNames>empresa_id</ColNames>
       <RefTableName>empresas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="520" parent="358" name="fk_usuarios_parametros_valores">
+    <foreign-key id="521" parent="358" name="fk_usuarios_parametros_valores">
       <ColNames>tipousuario_id</ColNames>
       <RefTableName>parametros_valores</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="521" parent="359" name="usuario_id">
+    <column id="522" parent="359" name="usuario_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="522" parent="359" name="permiso_id">
+    <column id="523" parent="359" name="permiso_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="523" parent="359" name="valor">
+    <column id="524" parent="359" name="valor">
       <Position>3</Position>
       <DataType>char(1)|0s</DataType>
     </column>
-    <index id="524" parent="359" name="unq_usuarios_permisos_usuario_id">
+    <index id="525" parent="359" name="unq_usuarios_permisos_usuario_id">
       <ColNames>usuario_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="525" parent="359" name="unq_usuarios_permisos_permiso_id">
+    <index id="526" parent="359" name="unq_usuarios_permisos_permiso_id">
       <ColNames>permiso_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="526" parent="359" name="PRIMARY">
+    <key id="527" parent="359" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>usuario_id
 permiso_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="527" parent="359" name="unq_usuarios_permisos_usuario_id">
+    <key id="528" parent="359" name="unq_usuarios_permisos_usuario_id">
       <ColNames>usuario_id</ColNames>
       <UnderlyingIndexName>unq_usuarios_permisos_usuario_id</UnderlyingIndexName>
     </key>
-    <key id="528" parent="359" name="unq_usuarios_permisos_permiso_id">
+    <key id="529" parent="359" name="unq_usuarios_permisos_permiso_id">
       <ColNames>permiso_id</ColNames>
       <UnderlyingIndexName>unq_usuarios_permisos_permiso_id</UnderlyingIndexName>
     </key>
-    <foreign-key id="529" parent="359" name="fk_usuarios_permisos_usuarios">
+    <foreign-key id="530" parent="359" name="fk_usuarios_permisos_usuarios">
       <ColNames>usuario_id</ColNames>
       <RefTableName>usuarios</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="530" parent="359" name="fk_usuarios_permisos_permisos_sistema">
+    <foreign-key id="531" parent="359" name="fk_usuarios_permisos_permisos_sistema">
       <ColNames>permiso_id</ColNames>
       <RefTableName>permisos_sistema</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="531" parent="360" name="id">
+    <column id="532" parent="360" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="532" parent="360" name="placa">
+    <column id="533" parent="360" name="placa">
       <Position>2</Position>
       <DataType>varchar(6)|0s</DataType>
     </column>
-    <column id="533" parent="360" name="seriebin">
+    <column id="534" parent="360" name="seriebin">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="534" parent="360" name="marca">
+    <column id="535" parent="360" name="marca">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="535" parent="360" name="modelo">
+    <column id="536" parent="360" name="modelo">
       <Position>5</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="536" parent="360" name="anio">
+    <column id="537" parent="360" name="anio">
       <Position>6</Position>
       <DataType>varchar(4)|0s</DataType>
     </column>
-    <column id="537" parent="360" name="capacidad_ton">
+    <column id="538" parent="360" name="capacidad_ton">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="538" parent="360" name="estado">
+    <column id="539" parent="360" name="estado">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="539" parent="360" name="chofer_id">
+    <column id="540" parent="360" name="chofer_id">
       <Position>9</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="540" parent="360" name="empresa_id">
+    <column id="541" parent="360" name="empresa_id">
       <Position>10</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="541" parent="360" name="fk_vehiculos_chofer">
+    <index id="542" parent="360" name="fk_vehiculos_chofer">
       <ColNames>chofer_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="542" parent="360" name="fk_vehiculos_empresas">
+    <index id="543" parent="360" name="fk_vehiculos_empresas">
       <ColNames>empresa_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="543" parent="360" name="PRIMARY">
+    <key id="544" parent="360" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="544" parent="360" name="fk_vehiculos_chofer">
+    <foreign-key id="545" parent="360" name="fk_vehiculos_chofer">
       <ColNames>chofer_id</ColNames>
       <RefTableName>chofer</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="545" parent="360" name="fk_vehiculos_empresas">
+    <foreign-key id="546" parent="360" name="fk_vehiculos_empresas">
       <ColNames>empresa_id</ColNames>
       <RefTableName>empresas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="546" parent="361" name="id">
+    <column id="547" parent="361" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="547" parent="361" name="fecha">
+    <column id="548" parent="361" name="fecha">
       <Position>2</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="548" parent="361" name="comprobante_id">
+    <column id="549" parent="361" name="comprobante_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="549" parent="361" name="serie">
+    <column id="550" parent="361" name="serie">
       <Position>4</Position>
       <DataType>varchar(4)|0s</DataType>
     </column>
-    <column id="550" parent="361" name="numero">
+    <column id="551" parent="361" name="numero">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="551" parent="361" name="empresa_id">
+    <column id="552" parent="361" name="empresa_id">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="552" parent="361" name="usuario_id">
+    <column id="553" parent="361" name="usuario_id">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="553" parent="361" name="igv">
+    <column id="554" parent="361" name="igv">
       <Position>8</Position>
       <DataType>decimal(5,2 digit)|0s</DataType>
     </column>
-    <column id="554" parent="361" name="total">
+    <column id="555" parent="361" name="total">
       <Position>9</Position>
       <DataType>decimal(8,2 digit)|0s</DataType>
     </column>
-    <column id="555" parent="361" name="estado">
+    <column id="556" parent="361" name="estado">
       <Position>10</Position>
       <DataType>char(1)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
-    <column id="556" parent="361" name="enviado_sunat">
+    <column id="557" parent="361" name="enviado_sunat">
       <Position>11</Position>
       <DataType>char(1)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="557" parent="361" name="entidad_id">
+    <column id="558" parent="361" name="entidad_id">
       <Position>12</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="558" parent="361" name="unq_ventas">
+    <column id="559" parent="361" name="detraccion_id">
+      <Position>13</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <index id="560" parent="361" name="unq_ventas">
       <ColNames>comprobante_id
 serie
 numero</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="559" parent="361" name="fk_ventas_empresas">
+    <index id="561" parent="361" name="fk_ventas_empresas">
       <ColNames>empresa_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="560" parent="361" name="fk_ventas_usuarios">
+    <index id="562" parent="361" name="fk_ventas_usuarios">
       <ColNames>usuario_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="561" parent="361" name="fk_ventas_entidades">
+    <index id="563" parent="361" name="fk_ventas_entidades">
       <ColNames>entidad_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="562" parent="361" name="PRIMARY">
+    <index id="564" parent="361" name="fk_ventas_parametros_valores_0">
+      <ColNames>detraccion_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="565" parent="361" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="563" parent="361" name="unq_ventas">
+    <key id="566" parent="361" name="unq_ventas">
       <ColNames>comprobante_id
 serie
 numero</ColNames>
       <UnderlyingIndexName>unq_ventas</UnderlyingIndexName>
     </key>
-    <foreign-key id="564" parent="361" name="fk_ventas_parametros_valores">
+    <foreign-key id="567" parent="361" name="fk_ventas_parametros_valores">
       <ColNames>comprobante_id</ColNames>
       <RefTableName>parametros_valores</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="565" parent="361" name="fk_ventas_empresas">
+    <foreign-key id="568" parent="361" name="fk_ventas_empresas">
       <ColNames>empresa_id</ColNames>
       <RefTableName>empresas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="566" parent="361" name="fk_ventas_usuarios">
+    <foreign-key id="569" parent="361" name="fk_ventas_usuarios">
       <ColNames>usuario_id</ColNames>
       <RefTableName>usuarios</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="567" parent="361" name="fk_ventas_entidades">
+    <foreign-key id="570" parent="361" name="fk_ventas_entidades">
       <ColNames>entidad_id</ColNames>
       <RefTableName>entidades</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="568" parent="362" name="venta_id">
+    <foreign-key id="571" parent="361" name="fk_ventas_parametros_valores_0">
+      <ColNames>detraccion_id</ColNames>
+      <RefTableName>parametros_valores</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="572" parent="362" name="venta_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="569" parent="362" name="docafecto_id">
+    <column id="573" parent="362" name="docafecto_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="570" parent="362" name="fecha">
+    <column id="574" parent="362" name="fecha">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="571" parent="362" name="motivo_id">
+    <column id="575" parent="362" name="motivo_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="572" parent="362" name="unq_ventas_amarre">
+    <index id="576" parent="362" name="unq_ventas_amarre">
       <ColNames>venta_id
 docafecto_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="573" parent="362" name="fk_ventas_amarre_ventas_0">
+    <index id="577" parent="362" name="fk_ventas_amarre_ventas_0">
       <ColNames>docafecto_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="574" parent="362" name="fk_ventas_amarre_parametros_valores">
+    <index id="578" parent="362" name="fk_ventas_amarre_parametros_valores">
       <ColNames>motivo_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="575" parent="362" name="PRIMARY">
+    <key id="579" parent="362" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>venta_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="576" parent="362" name="unq_ventas_amarre">
+    <key id="580" parent="362" name="unq_ventas_amarre">
       <ColNames>venta_id
 docafecto_id</ColNames>
       <UnderlyingIndexName>unq_ventas_amarre</UnderlyingIndexName>
     </key>
-    <foreign-key id="577" parent="362" name="fk_ventas_amarre_ventas">
+    <foreign-key id="581" parent="362" name="fk_ventas_amarre_ventas">
       <ColNames>venta_id</ColNames>
       <RefTableName>ventas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="578" parent="362" name="fk_ventas_amarre_ventas_0">
+    <foreign-key id="582" parent="362" name="fk_ventas_amarre_ventas_0">
       <ColNames>docafecto_id</ColNames>
       <RefTableName>ventas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="579" parent="362" name="fk_ventas_amarre_parametros_valores">
+    <foreign-key id="583" parent="362" name="fk_ventas_amarre_parametros_valores">
       <ColNames>motivo_id</ColNames>
       <RefTableName>parametros_valores</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="580" parent="363" name="id">
+    <column id="584" parent="363" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="581" parent="363" name="venta_id">
+    <column id="585" parent="363" name="fecha_vencimiento">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>date|0s</DataType>
     </column>
-    <column id="582" parent="363" name="descripcion">
+    <column id="586" parent="363" name="monto">
       <Position>3</Position>
-      <DataType>varchar(245)|0s</DataType>
+      <DataType>decimal(6)|0s</DataType>
     </column>
-    <column id="583" parent="363" name="unidad_id">
+    <column id="587" parent="363" name="venta_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="584" parent="363" name="precio_venta">
-      <Position>5</Position>
-      <DataType>decimal(6,2 digit)|0s</DataType>
-    </column>
-    <index id="585" parent="363" name="fk_ventas_servicios_ventas">
+    <index id="588" parent="363" name="fk_ventas_cuotas_ventas">
       <ColNames>venta_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="586" parent="363" name="fk_ventas_servicios_parametros_valores">
-      <ColNames>unidad_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="587" parent="363" name="PRIMARY">
+    <key id="589" parent="363" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="588" parent="363" name="fk_ventas_servicios_ventas">
+    <foreign-key id="590" parent="363" name="fk_ventas_cuotas_ventas">
       <ColNames>venta_id</ColNames>
       <RefTableName>ventas</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="589" parent="363" name="fk_ventas_servicios_parametros_valores">
+    <column id="591" parent="364" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="592" parent="364" name="venta_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="593" parent="364" name="descripcion">
+      <Position>3</Position>
+      <DataType>varchar(245)|0s</DataType>
+    </column>
+    <column id="594" parent="364" name="unidad_id">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="595" parent="364" name="precio_venta">
+      <Position>5</Position>
+      <DataType>decimal(6,2 digit)|0s</DataType>
+    </column>
+    <index id="596" parent="364" name="fk_ventas_servicios_ventas">
+      <ColNames>venta_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="597" parent="364" name="fk_ventas_servicios_parametros_valores">
+      <ColNames>unidad_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="598" parent="364" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="599" parent="364" name="fk_ventas_servicios_ventas">
+      <ColNames>venta_id</ColNames>
+      <RefTableName>ventas</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="600" parent="364" name="fk_ventas_servicios_parametros_valores">
       <ColNames>unidad_id</ColNames>
       <RefTableName>parametros_valores</RefTableName>
       <RefColNames>id</RefColNames>

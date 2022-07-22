@@ -1,3 +1,13 @@
+<?php
+require '../fixed/cargarSession.php';
+require '../../models/Venta.php';
+require '../../tools/Util.php';
+
+$Venta = new Venta();
+$Util = new Util();
+
+$Venta->setEmpresaid($_SESSION['empresa_id']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,11 +56,11 @@
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
 
-                                <a href="form-venta.php" class="btn btn-sm btn-soft-primary" >
+                                <a href="form-venta.php" class="btn btn-sm btn-soft-primary">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                     Agregar Comprobante BOL/FAC
                                 </a>
-                                <a href="form-nota.php" class="btn btn-sm btn-soft-primary" >
+                                <a href="form-nota.php" class="btn btn-sm btn-soft-primary">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
                                     Agregar Nota DEB/CRE
                                 </a>
@@ -85,22 +95,46 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>20/07/2022</td>
-                                    <td>FT | FW02-0025</td>
-                                    <td>20531904991 | MARLUC INDUSTRIA CONSTRUCTORA S.A.C.</td>
-                                    <td>250.00</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">SI</span></td>
-                                    <td><a href="" class="btn btn-info btn-sm"><i class="fa fa-file-pdf"></i></a></td>
-                                    <td><a href="" class="btn btn-danger btn-sm"><i class="fa fa-file-archive"></i></a></td>
-                                    <td>dguerrero</td>
-                                    <td>
-                                        <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="ti ti-trash"></i></button>
-                                    </td>
-                                </tr>
+                                <?php
+                                $array_ventas = $Venta->verVentasdelMes();
+                                foreach ($array_ventas as $fila) {
+                                    $label_estado = '<span class="badge badge-boxed  badge-outline-success">Activo</span>';
+                                    if ($fila['estado'] == 2) {
+                                        $label_estado = '<span class="badge badge-boxed  badge-outline-danger">Anulado</span>';
+                                    }
+
+                                    $label_enviado = '<span class="badge badge-boxed  badge-outline-success">SI</span>';
+                                    if ($fila['enviado_sunat'] == 0) {
+                                        if ($fila['comprobante_id'] == 4) {
+                                            $label_enviado = '<span class="badge badge-boxed  badge-outline-danger">NO</span> ' .
+                                                '<button class="btn btn-sm btn-success"><i class="fa fa-paper-plane" title="Enviar Documento"></i></button>';
+                                        }
+
+                                        if ($fila['comprobante_id'] == 3) {
+                                            $label_enviado = '<span class="badge badge-boxed  badge-outline-danger">NO</span>';
+                                        }
+                                    }
+                                    ?>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td><?php echo $Util->fecha_mysql_web($fila['fecha']) ?></td>
+                                        <td><?php echo $fila['valor1'] . " | " . $fila['serie'] . "-" . $Util->zerofill($fila['numero'], 5) ?></td>
+                                        <td><?php echo $fila['documento'] . " | " . $fila['razonsocial'] ?></td>
+                                        <td><?php echo number_format($fila['total'], 2) ?></td>
+                                        <td><?php echo $label_estado ?></td>
+                                        <td><?php echo $label_enviado ?></td>
+                                        <td><a href="" class="btn btn-info btn-sm"><i class="fa fa-file-pdf"></i></a></td>
+                                        <td><a href="" class="btn btn-danger btn-sm"><i class="fa fa-file-archive"></i></a></td>
+                                        <td><?php echo $fila['username'] ?></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                            <button class="btn btn-danger btn-sm"><i class="ti ti-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+
 
                                 </tbody>
                             </table><!--end /table-->
@@ -137,7 +171,7 @@ include('../fixed/footer.php');
 <script src="../assets/js/app.js"></script>
 
 <script>
-    function abrirModal () {
+    function abrirModal() {
         $("#bd-example-modal-xl").modal("toggle");
     }
 </script>

@@ -1,3 +1,18 @@
+<?php
+include '../fixed/cargarSession.php';
+require '../../models/ComprobanteSunat.php';
+require '../../models/ParametroValor.php';
+require '../../tools/Util.php';
+
+$Valor = new ParametroValor();
+$Comprobante = new ComprobanteSunat();
+$Util = new Util();
+
+$Comprobante->setEmpresaid($_SESSION['empresa_id']);
+
+$Valor->setParametroId(1);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,16 +59,6 @@
                                     <li class="breadcrumb-item active">Documentos Sunat</li>
                                 </ol>
                             </div><!--end col-->
-                        </div><!--end row-->
-                    </div><!--end page-title-box-->
-                </div><!--end col-->
-            </div><!--end row-->
-            <!-- end page title end breadcrumb -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card">
-                        <div class="card-body">
-                            <form>
                             <button type="button" class="btn btn-outline-primary" data-toggle="modal"
                                     data-target="#exampleModalSignup">
                                 Agregar Documento SUNAT
@@ -69,80 +74,96 @@
                                             <button type="button" class="btn-close" data-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div><!--end modal-header-->
-                                        <div class="modal-body">
-                                            <div class="auth-page">
-                                                <div class="auth-card">
-                                                    <div class="">
+                                        <form class="form-horizontal auth-form my-4" action="../controller/registra-comprobante-sunat.php" method="post">
+                                            <div class="modal-body">
+                                                <div class="auth-page">
+                                                    <div class="auth-card">
                                                         <div class="px-3">
-                                                            <form class="form-horizontal auth-form my-4"
-                                                                  action="index.html">
-                                                                <div class="form-group">
-                                                                    <label for="comprobante">Seleccionar
-                                                                        Comprobante</label>
-                                                                    <select class="select2 form-control mb-3 custom-select"
-                                                                            style="width: 100%; height:36px;">
-                                                                        <option>Boleta</option>
-                                                                        <option>Factura</option>
-                                                                    </select>
-                                                                </div><!--end form-group-->
-                                                                <div class="form-group">
-                                                                    <label for="serie">Serie</label>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="email" class="form-control"
-                                                                               id="serie" placeholder="Serie">
-                                                                    </div>
-                                                                </div><!--end form-group-->
-                                                                <div class="form-group">
-                                                                    <label for="numero">Numero</label>
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" class="form-control"
-                                                                               id="numero" placeholder="Numero">
-                                                                    </div>
-                                                                </div><!--end form-group-->
-                                                            </form><!--end form-->
+                                                            <div class="form-group">
+                                                                <label for="select-comprobante">Seleccionar
+                                                                    Comprobante</label>
+                                                                <select class="form-control mb-3" style="width: 100%; height:36px;" name="select-comprobante" id="select-comprobante">
+                                                                    <?php
+                                                                    $arraycomprobantes = $Valor->verFilas();
+                                                                    foreach ($arraycomprobantes as $fila) {
+                                                                        echo '<option value="' . $fila['id'] . '">' . $fila['descripcion'] . '</option>';
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div><!--end form-group-->
+                                                            <div class="form-group">
+                                                                <label for="serie">Serie</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input type="text" class="form-control" id="input-serie" name="input-serie" placeholder="Serie" maxlength="4">
+                                                                </div>
+                                                            </div><!--end form-group-->
+                                                            <div class="form-group">
+                                                                <label for="input-numero">Numero</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input type="number" class="form-control" id="input-numero" name="input-numero" placeholder="Numero" maxlength="7">
+                                                                </div>
+                                                            </div><!--end form-group-->
+
                                                         </div><!--end /div-->
-                                                    </div><!--end card-body-->
-                                                </div><!--end card-->
-                                            </div><!--end auth-page-->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-soft-primary btn-sm">Guardar
-                                                </button>
-                                                <button type="button" class="btn btn-soft-secondary btn-sm"
-                                                        data-bs-dismiss="modal">Cerrar
-                                                </button>
-                                            </div><!--end modal-footer-->
-                                        </div><!--end modal-body-->
-                                    </div><!--end modal-content-->
-                                </div><!--end modal-dialog-->
-                            </div><!--end modal-->
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead class="thead-light">
+                                                    </div><!--end card-->
+                                                </div><!--end auth-page-->
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-soft-primary btn-sm">Guardar</button>
+                                                    <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                                                </div><!--end modal-footer-->
+                                        </form><!--end form-->
+                                    </div><!--end modal-body-->
+                                </div><!--end modal-content-->
+                            </div><!--end modal-dialog-->
+                        </div><!--end modal-->
+                    </div><!--end row-->
+                </div><!--end page-title-box-->
+            </div><!--end col-->
+        </div><!--end row-->
+        <!-- end page title end breadcrumb -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Comprobante</th>
+                                    <th class="text-center">Serie</th>
+                                    <th class="text-center">Numero</th>
+                                    <th class="text-center">Abreviatura</th>
+                                    <th class="text-center">Cod SUNAT</th>
+                                    <th class="text-center"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $arrayDocumentos = $Comprobante->verFilas();
+                                $item = 1;
+                                foreach ($arrayDocumentos as $fila) {
+                                    ?>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Comprobante</th>
-                                        <th>Serie</th>
-                                        <th>Numero</th>
-                                        <th>Estado</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Factura</td>
-                                        <td>T</td>
-                                        <td>0001</td>
-                                        <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                        <th scope="row"><?php echo $item ?></th>
+                                        <td><?php echo $fila['descripcion'] ?></td>
+                                        <td class="text-center"><?php echo $fila['serie'] ?></td>
+                                        <td class="text-center"><?php echo $Util->zerofill($fila['numero'], 7) ?></td>
+                                        <td class="text-center"><?php echo $fila['valor1'] ?></td>
+                                        <td class="text-center"><?php echo $fila['valor2'] ?></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-info btn-sm"><i class="ti ti-pencil"></i></button>
                                         </td>
                                     </tr>
-                                    </tbody>
-                                </table><!--end /table-->
-                            </div><!--end /tableresponsive-->
-                        </div><!--end card-body-->
-                    </div><!--end card-header-->
+                                    <?php
+                                    $item++;
+                                }
+                                ?>
+
+                                </tbody>
+                            </table><!--end /table-->
+                        </div><!--end /tableresponsive-->
+                    </div><!--end card-body-->
                 </div><!--end card-->
             </div> <!-- end col -->
         </div> <!-- end row -->
