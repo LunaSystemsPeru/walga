@@ -1,3 +1,8 @@
+<?php
+require '../../models/Entidad.php';
+$Entidad = new Entidad();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,33 +61,32 @@
                                                 <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Registrar Entidad</h6>
                                                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                             </div><!--end modal-header-->
-                                            <div class="modal-body">
-                                                <form class="form-horizontal auth-form my-4" action="../controller/registra-entidad.php">
+                                            <form class="form-horizontal auth-form my-4" action="../controller/form-entidad.php" method="post">
+                                                <div class="modal-body">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="exampleInputPassword1">Nro Documento Cliente</label>
+                                                        <label class="form-label" for="input-documento">Nro Documento Cliente</label>
                                                         <div class="input-group">
-                                                            <input type="number" class="form-control" id="exampleInputPassword1"
+                                                            <input type="number" class="form-control" id="input-documento" name="input-documento"
                                                                    placeholder="ingrese DNI o RUC" maxlength="11">
-                                                            <button class="btn btn-secondary" type="button">Buscar Datos</button>
+                                                            <button class="btn btn-secondary" type="button" onclick="obtenerDatosDocumento()">Buscar Datos</button>
                                                         </div>
                                                     </div><!--end form-group-->
                                                     <div class="form-group">
-                                                        <label class="form-label" for="exampleInputPassword1">Razon Social Cliente</label>
-                                                        <input type="text" class="form-control" id="exampleInputPassword1"
+                                                        <label class="form-label" for="input-razon">Razon Social Cliente</label>
+                                                        <input type="text" class="form-control" id="input-razon" name="input-razon"
                                                                placeholder="Escriba razon social o ruc">
                                                     </div><!--end form-group-->
                                                     <div class="form-group">
-                                                            <label class="form-label" for="exampleInputPassword1">Direccion Cliente</label>
-                                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                                   placeholder="Escriba razon social o ruc">
+                                                        <label class="form-label" for="input-direccion">Direccion Cliente</label>
+                                                        <input type="text" class="form-control" id="input-direccion" name="input-direccion"
+                                                               placeholder="Escriba razon social o ruc">
                                                     </div><!--end form-group-->
-                                                </form><!--end form-->
-
-                                            </div><!--end auth-page-->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-soft-primary btn-sm">Guardar</button>
-                                                <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                                            </div><!--end modal-footer-->
+                                                </div><!--end auth-page-->
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-soft-primary btn-sm">Guardar</button>
+                                                    <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                                                </div><!--end modal-footer-->
+                                            </form><!--end form-->
                                         </div><!--end modal-body-->
                                     </div><!--end modal-content-->
                                 </div><!--end modal-dialog-->
@@ -101,24 +105,31 @@
                                     <thead class="thead-light">
                                     <tr>
                                         <th>#</th>
+                                        <th>Documento</th>
                                         <th>Razon Social</th>
                                         <th>Direccion</th>
-                                        <th>Documento</th>
-                                        <th>Estado</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Luis Oyanguren</td>
-                                        <td>Urb. Trapecio</td>
-                                        <td>0001</td>
-                                        <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    $array_entidades = $Entidad->verFilas();
+                                    $item = 1;
+                                    foreach ($array_entidades as $fila) {
+                                        ?>
+                                        <tr>
+                                            <th scope="row"><?php echo $item ?></th>
+                                            <td><?php echo $fila['documento'] ?></td>
+                                            <td><?php echo $fila['razonsocial'] ?></td>
+                                            <td><?php echo $fila['direccion'] ?></td>
+                                            <td>
+                                                <button class="btn btn-info btn-sm"><i class="ti ti-pencil"></i></button>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        $item++;
+                                    }
+                                    ?>
                                     </tbody>
                                 </table><!--end /table-->
                             </div><!--end /tableresponsive-->
@@ -148,6 +159,32 @@ include('../fixed/footer.php');
 
 <!-- App js -->
 <script src="../assets/js/app.js"></script>
+
+<script>
+    function obtenerDatosDocumento() {
+        var nrodocumento = $("#input-documento").val();
+
+        if (nrodocumento.length != 8 && nrodocumento.length != 11) {
+            alert("Ingrese un documento valido (DNI o RUC)")
+            return false;
+        }
+        alert("Cargando Datos...\n espere un momento por favor");
+        var arraypost = {nrodocumento: nrodocumento};
+        $.post("../../inputAjax/obtenerDatosInternet.php", arraypost, function (data) {
+            console.log(data);
+            var jsonresultado = JSON.parse(data);
+            if (jsonresultado.success == "error") {
+                alert("Error en el dni o ruc");
+                return false;
+            }
+            $("#input-razon").val(jsonresultado.datos);
+            $("#input-direccion").val(jsonresultado.direccion);
+        }).fail(function (data) {
+            alert(data);
+        });
+    }
+
+</script>
 </body>
 
 

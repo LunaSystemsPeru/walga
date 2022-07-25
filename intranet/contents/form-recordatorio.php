@@ -105,7 +105,7 @@ $Vehiculo->setEmpresaId($_SESSION['empresa_id']);
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label class="form-label" for="usuario">Cargar PDF</label>
-                                            <input type="file" class="form-control" id="usuario">
+                                            <input type="file" class="form-control" id="uploadedFile" name="uploadedFile">
                                         </div>
                                     </div>
                                 </div>

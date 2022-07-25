@@ -234,14 +234,56 @@ if ($contratoid) {
                                         <div class="mb-3">
                                             <label class="form-label" for="select-forma-pago">Forma de Pago</label>
                                             <div class="input-group">
-                                                <select class="form-control" id="select-forma-pago" aria-label="Example select with button addon">
+                                                <select class="form-control" id="select-forma-pago" >
                                                     <option value="1">CONTADO</option>
                                                     <option value="2">CREDITO</option>
                                                 </select>
-                                                <button class="btn btn-secondary" type="button">Agregar Cuotas</button>
+                                                <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#exampleModalSignup">Agregar Cuotas</button>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="modal fade" id="exampleModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Cuotas de Credito</h6>
+                                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                                </div><!--end modal-header-->
+                                                <div class="modal-body">
+                                                    <form class="form-horizontal auth-form my-4" >
+                                                        <div class="auth-page">
+                                                            <div class="auth-card">
+                                                                <div class="">
+                                                                    <div class="px-3">
+                                                                        <div class="form-group">
+                                                                            <label for="serie">Fecha</label>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="date" class="form-control" id="input-date" value="<?php echo date("Y-m-d") ?>">
+                                                                            </div>
+                                                                        </div><!--end form-group-->
+                                                                        <div class="form-group">
+                                                                            <label for="numero">Monto</label>
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="number" class="form-control" name="input-descripcion" placeholder="0">
+                                                                            </div>
+                                                                        </div><!--end form-group-->
+                                                                        <div>
+
+                                                                        </div>
+                                                                    </div><!--end /div-->
+                                                                </div><!--end card-body-->
+                                                            </div><!--end card-->
+                                                        </div><!--end auth-page-->
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-soft-primary btn-sm">Guardar</button>
+                                                            <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                                                        </div><!--end modal-footer-->
+                                                    </form><!--end form-->
+                                                </div><!--end modal-body-->
+
+                                            </div><!--end modal-content-->
+                                        </div><!--end modal-dialog-->
+                                    </div><!--end modal-->
                                 </div>
                             </form>
                         </div><!--end card-body-->
