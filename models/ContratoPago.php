@@ -134,5 +134,13 @@ class ContratoPago
         $this->conectar->ejecutar_idu($sql);
     }
 
+    public function verFilas()
+    {
+        $sql = "select * 
+                from contratos_pagos as cp 
+                where cp.contrato_id = '$this->contratoid'";
+        return $this->conectar->get_Cursor($sql);
+    }
+
 
 }

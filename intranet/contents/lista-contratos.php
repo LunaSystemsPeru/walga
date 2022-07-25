@@ -97,6 +97,7 @@ $Contrato->setFecha(date("Y-m-d"));
                                         $iestado = $fila['estado_contrato'];
                                         $label_estado = "";
                                         $monto = $fila['monto'];
+                                        $deuda = $fila['monto'] - $fila['monto_pagado'];
                                         if ($fila['incluye_igv'] == 1) {
                                             $monto = $fila['monto'] * 1.18;
                                         }
@@ -127,7 +128,7 @@ $Contrato->setFecha(date("Y-m-d"));
                                             <td class="text-center"><span class="badge badge-boxed  badge-outline-success"><?php echo ucwords(strtolower($fila['comprobante'])) ?></span></td>
                                             <td class="text-center"><?php echo $botoncomprobante ?></td>
                                             <td class="text-right"><?php echo number_format($monto, 2) ?></td>
-                                            <td class="text-right"><?php echo $fila['monto_pagado'] ?></td>
+                                            <td class="text-right"><?php echo number_format($deuda) ?></td>
                                             <td class="text-center"><?php echo $label_estado ?></td>
                                             <td class="text-center">
                                                 <a href="detalle-contrato.php?id=<?php echo $fila['id'] ?>" class="btn btn-info btn-sm"><i class="ti ti-eye"></i></a>
