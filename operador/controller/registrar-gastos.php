@@ -9,7 +9,6 @@ $Gasto->setUsuarioid($_SESSION['usuario_id']);
 $Gasto->setFecha(filter_input(INPUT_POST, 'input-fecha'));
 $Gasto->limpiar();
 
-print_r($_POST);
 $gastos = $_POST['input-gasto'];
 $orometro = $_POST['input-orometro'];
 $ids = $_POST['input-id'];
@@ -22,4 +21,5 @@ for ($i = 0; $i < $contar; $i++) {
     $Gasto->obtenerId();
     $Gasto->insertar();
 }
+
 header("Location: ../contents/gastos-vehiculos.php");

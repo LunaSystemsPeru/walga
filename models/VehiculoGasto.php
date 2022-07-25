@@ -168,13 +168,15 @@ class VehiculoGasto
                         '$this->orometro',
                         '$this->usuarioid', 
                         '$this->gastoid')";
-        $this->conectar->ejecutar_idu($sql);
+        if ($this->monto > 0) {
+            $this->conectar->ejecutar_idu($sql);
+        }
     }
 
     public function limpiar()
     {
         $sql = "delete from vehiculos_gastos
-                where fecha = '$this->fecha' and vehiculo_id '$this->vehiculoid'";
+                where fecha = '$this->fecha' and vehiculo_id = '$this->vehiculoid'";
         $this->conectar->ejecutar_idu($sql);
     }
 
