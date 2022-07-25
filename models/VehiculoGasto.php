@@ -9,7 +9,7 @@ class VehiculoGasto
     private $fecha;
     private $monto;
     private $orometro;
-    private $descripcion;
+    private $gastoid;
     private $conectar;
 
     /**
@@ -119,17 +119,17 @@ class VehiculoGasto
     /**
      * @return mixed
      */
-    public function getDescripcion()
+    public function getGastoid()
     {
-        return $this->descripcion;
+        return $this->gastoid;
     }
 
     /**
-     * @param mixed $descripcion
+     * @param mixed $gastoid
      */
-    public function setDescripcion($descripcion)
+    public function setGastoid($gastoid)
     {
-        $this->descripcion = $descripcion;
+        $this->gastoid = $gastoid;
     }
 
     public function obtenerId()
@@ -150,8 +150,8 @@ class VehiculoGasto
             $this->fecha = $resultado['fecha'];
             $this->monto = $resultado['monto'];
             $this->orometro = $resultado['orometro'];
-            $this->descripcion = $resultado['descripcion'];
             $this->usuarioid = $resultado['usuario_id'];
+            $this->gastoid = $resultado['gasto_id'];
             return true;
         } else {
             return false;
@@ -166,26 +166,41 @@ class VehiculoGasto
                         '$this->fecha', 
                         '$this->monto',
                         '$this->orometro',
-                        '$this->descripcion',
-                        '$this->usuarioid')";
+                        '$this->usuarioid', 
+                        '$this->gastoid')";
+        $this->conectar->ejecutar_idu($sql);
+    }
+
+    public function limpiar()
+    {
+        $sql = "delete from vehiculos_gastos
+                where fecha = '$this->fecha' and vehiculo_id '$this->vehiculoid'";
         $this->conectar->ejecutar_idu($sql);
     }
 
     public function actualizar()
     {
         $sql = "update vehiculos_gastos
-                set monto = '$this->datos',
-                    descripcion = '$this->celular',
-                    orometro = '$this->email',
+                set monto = '$this->monto',
+                    orometro = '$this->orometro',
                 where id = $this->id";
         $this->conectar->ejecutar_idu($sql);
     }
 
+    public function verGastosOperadores()
+    {
+        $sql = "select pv.id, pv.descripcion, pv.valor1, ifnull(vg.monto,0) as monto, vg.orometro
+                from parametros_valores as pv
+                         left join vehiculos_gastos vg on pv.id = vg.gasto_id and  vg.fecha = '$this->fecha' and vg.vehiculo_id = '$this->vehiculoid'
+                where pv.parametro_id = 8";
+        return $this->conectar->get_Cursor($sql);
+    }
+
+
     public function verFilas()
     {
         $sql = "select * from vehiculos_gastos 
-                where fecha = '$this->fecha' and vehiculo_id = '$this->vehiculoid'
-                order by descripcion asc ";
+                where fecha = '$this->fecha' and vehiculo_id = '$this->vehiculoid'";
         return $this->conectar->get_Cursor($sql);
     }
 }

@@ -1,6 +1,14 @@
 <?php
 include "../fixed/cargarSesion.php";
+require '../../tools/Util.php';
+require '../../models/VehiculoGasto.php';
 
+$Util = new Util();
+$Gasto = new VehiculoGasto();
+
+$fecha = filter_input(INPUT_GET, 'input-fecha');
+$Gasto->setFecha($fecha);
+$Gasto->setVehiculoid($_SESSION['vehiculo_id']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,29 +43,40 @@ include "../fixed/cargarSesion.php";
 
     <!-- PAGE CONTENT -->
     <div class="page__content page__content--with-header">
-        <h2 class="page__title">Nuevo Gasto - Mantenimiento</h2>
+        <h2 class="page__title">Gastos del dia <?php echo $Util->fecha_mysql_web($fecha) ?></h2>
         <div class="fieldset">
             <div class="form">
                 <form id="Form" method="post" action="../controller/registrar-gastos.php">
-                    <div class="form__row">
-                        <label class="form__label">Descripcion</label>
-                        <input type="text" name="input-descripcion" placeholder="Ingrese descripcion del gasto" value="" class="form__input required" required/>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">Fecha</label>
-                        <input type="date" name="input-fecha" value="<?php echo date("Y-m-d") ?>" class="form__input " readonly/>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">Orometro / Kilometraje</label>
-                        <input type="number" name="input-orometro" placeholder="Ingrese Valor de Orometro o Kilometraje" value="" class="form__input "/>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">Monto</label>
-                        <input type="number" name="input-monto" id="input-monto" placeholder="ingrese monto" class="form__input " maxlength="11" minlength="8" required/>
-                    </div>
-
+                    <input type="hidden" name="input-fecha" value="<?php echo $fecha?>">
+                    <?php
+                    $arraygastos = $Gasto->verGastosOperadores();
+                    foreach ($arraygastos as $fila) {
+                        if ($fila['valor1'] == 'O') {
+                            ?>
+                            <div class="form__row">
+                                <label class="form__label"><?php echo $fila['descripcion'] ?></label>
+                                <input type="number" step="0.1" name="input-gasto[]" placeholder="Gasto" value="<?php echo $fila['monto'] ?>" class="form__input form__input--12" required/>
+                                <input type="number" step="0.1" name="input-orometro[]" placeholder="Orometro/ Kilometraje" value="<?php echo $fila['orometro'] ?>" class="form__input form__input--12" required/>
+                                <input type="hidden" name="input-id[]" value="<?php echo $fila['id'] ?>"/>
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                            <div class="form__row">
+                                <label class="form__label"><?php echo $fila['descripcion'] ?></label>
+                                <input type="number" step="0.1" name="input-gasto[]" placeholder="Gasto" value="<?php echo $fila['monto'] ?>" class="form__input" required/>
+                                <input type="hidden" name="input-orometro[]" value="0">
+                                <input type="hidden" name="input-id[]" value="<?php echo $fila['id'] ?>"/>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
                     <div class="form__row mt-40">
                         <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
+                    </div>
+                    <div class="form__row mt-40">
+                        <a href="gastos-vehiculos.php" class="form__submit button button--secondary button--full" > Regresar </a>
                     </div>
                 </form>
             </div>

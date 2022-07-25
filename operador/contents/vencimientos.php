@@ -1,9 +1,11 @@
 <?php
 include "../fixed/cargarSesion.php";
-require '../../models/VehiculoGasto.php';
-$Gastos = new VehiculoGasto();
-$Gastos->setVehiculoid($_SESSION['vehiculo_id']);
-$Gastos->setFecha(date("Y-m-d"));
+require '../../models/Recordatorio.php';
+require '../../tools/Util.php';
+$Recordatorio = new Recordatorio();
+$Util = new Util();
+
+$Recordatorio->setEmpresaid($_SESSION['empresa_id']);
 ?>
 
 <!DOCTYPE html>
@@ -39,50 +41,51 @@ $Gastos->setFecha(date("Y-m-d"));
 
     <!-- PAGE CONTENT -->
     <div class="page__content page__content--with-header">
-        <!--
         <div class="buttons buttons--centered mb-20">
-            <a href="registra-gasto.php" data-popup="success" class="button button--main button--full open-popup"><i class="">+</i> Agregar Gasto</a>
-            <button data-popup="success" class="button button--secondary button--full open-popup">Buscar por Fecha</button>
+            <!--<a href="registra-cliente.php" data-popup="success" class="button button--main button--full open-popup">Nuevo Cliente</a>
+            <a href="registra-contrato.php" data-popup="success" class="button button--secondary button--full open-popup">Buscar Cliente</a>-->
         </div>
-        -->
-        <h4>Gastos del dia</h4>
-        <div class="fieldset">
-            <div class="form">
-                <form id="Form" method="get" action="../contents/registra-gasto.php">
-                    <div class="form__row">
-                        <label class="form__label">Fecha</label>
-                        <input type="date" name="input-fecha" value="<?php echo date("Y-m-d")?>" class="form__input" required/>
-                    </div>
-                    <div class="form__row">
-                        <input type="submit" class="form__submit button button--secondary button--full" id="submit" value="Iniciar"/>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!--
+
+        <h4>Lista de Documentos por Vencer</h4>
         <div class="cards cards--11">
             <?php
-            $array_gastos_dia = $Gastos->verFilas();
-            $montofinal = 0;
-            foreach ($array_gastos_dia  as $fila) {
+            $array_vencimientos = $Recordatorio->verFilas();
+            foreach ($array_vencimientos as $fila) {
                 ?>
                 <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
+                    <div class="card__icon">
+                        <?php if ($fila['diasfaltantes'] > 0) {
+                            ?>
+                            <img src="../assets/images/icons/blue/alert.svg" alt="" title=""/>
+                            <?php
+                        } else {
+                            ?>
+                            <img src="../assets/images/icons/red/alert.svg" alt="" title=""/>
+                            <?php
+                        } ?>
 
-                    <div class="card__details">
-                        <h4 class="card__title"><?php echo $fila['descripcion'] . " | Kilometraje - Orometro: " . $fila['orometro'] ?></h4>
-                        <p class="card__text">S/ <?php echo $fila['monto'] ?></p>
                     </div>
+                    <div class="card__details">
+                        <h4 class="card__title"><?php echo $fila['documento'] ?></h4>
+                        <p class="card__text"><?php echo $fila['razonsocial'] ?></p>
+                        <?php if ($fila['diasfaltantes'] > 0) {
+                            ?>
+                            <p class="card__text">Faltan <?php echo $fila['diasfaltantes'] . " para su vencimiento, que sera el " . $Util->fecha_mysql_web($fila['fec_vencimiento']) ?></p>
+                            <?php
+                        } else {
+                            ?>
+                            <p class="card__text">Ya pasaron <?php echo ($fila['diasfaltantes'] * -1) . " para su vencimiento, que fue el " . $Util->fecha_mysql_web($fila['fec_vencimiento']) ?></p>
+                            <?php
+                        } ?>
+                    </div>
+                    <div class="card__more"><a target="_blank" href="https://wa.me/+51<?php echo $fila['celular'] ?>?text=Hola, te escribo de WALGA Inversiones EIRL " ><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
                 </div>
             <?php
-                $montofinal = $montofinal + $fila['monto'];
             }
             ?>
 
         </div>
 
-        <h4>Total Gastos: S/ <?php echo $montofinal?></h4>
-
-        -->
 
     </div>
     <!-- PAGE END -->
