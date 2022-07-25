@@ -7,11 +7,19 @@ $Gasto = new VehiculoGasto();
 $Gasto->setVehiculoid($_SESSION['vehiculo_id']);
 $Gasto->setUsuarioid($_SESSION['usuario_id']);
 $Gasto->setFecha(filter_input(INPUT_POST, 'input-fecha'));
-$Gasto->setDescripcion(filter_input(INPUT_POST, 'input-descripcion'));
-$Gasto->setMonto(filter_input(INPUT_POST, 'input-monto'));
-$Gasto->setOrometro(filter_input(INPUT_POST, 'input-orometro'));
+$Gasto->limpiar();
 
-$Gasto->obtenerId();
-$Gasto->insertar();
-
+print_r($_POST);
+$gastos = $_POST['input-gasto'];
+$orometro = $_POST['input-orometro'];
+$ids = $_POST['input-id'];
+$contar = count($gastos);
+for ($i = 0; $i < $contar; $i++) {
+    echo $gastos[$i], "\n";
+    $Gasto->setGastoid($ids[$i]);
+    $Gasto->setMonto($gastos[$i]);
+    $Gasto->setOrometro($orometro[$i]);
+    $Gasto->obtenerId();
+    $Gasto->insertar();
+}
 header("Location: ../contents/gastos-vehiculos.php");
