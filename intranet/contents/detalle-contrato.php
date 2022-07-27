@@ -118,9 +118,10 @@ $totalhoras = $dateInterval->format('%H horas %i minutos') . PHP_EOL;
                                 <div class="d-flex justify-content-between">
                                     <ul class="list-inline mb-0 align-self-center">
                                         <li class="list-item d-inline-block">
-                                            <a class="ms-2" href="#">
+                                            <button class="ms-2" data-toggle="modal"
+                                                    data-target="#exampleModalSignup">
                                                 <i class="mdi mdi-pencil-outline text-muted font-18"></i>
-                                            </a>
+                                            </button>
                                         </li>
                                         <li class="list-item d-inline-block">
                                             <a class="" href="#">
@@ -129,6 +130,63 @@ $totalhoras = $dateInterval->format('%H horas %i minutos') . PHP_EOL;
                                         </li>
                                     </ul>
                                 </div>
+
+                                <div class="modal fade" id="exampleModalSignup" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Modificar Contrato - Servicio</h6>
+                                                <button type="button" class="btn-close" data-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div><!--end modal-header-->
+                                            <form class="form-horizontal auth-form my-4" action="../controller/modifica-contrato.php" method="post">
+                                                <div class="modal-body">
+                                                    <div class="auth-page">
+                                                        <div class="auth-card">
+                                                            <div class="px-3">
+                                                                <div class="form-group">
+                                                                    <label for="serie">Descripcion del Contrato</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <textarea class="form-control"><?php echo $Contrato->getServicio() ?></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="serie">Origen</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control" id="input-serie" name="input-serie" placeholder="Serie" maxlength="4">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="serie">Destino</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control" id="input-serie" name="input-serie" placeholder="Serie" maxlength="4">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="serie">Monto Aprobado</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="number" step="0.1" class="form-control" id="input-serie" name="input-serie" placeholder="Serie" maxlength="4">
+                                                                    </div>
+                                                                </div><!--end form-group-->
+                                                                <div class="form-group">
+                                                                    <label for="input-numero">Numero</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="number" class="form-control" id="input-numero" name="input-numero" placeholder="Numero" maxlength="7">
+                                                                    </div>
+                                                                </div><!--end form-group-->
+
+                                                            </div><!--end /div-->
+                                                        </div><!--end card-->
+                                                    </div><!--end auth-page-->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-soft-primary btn-sm">Guardar</button>
+                                                        <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div><!--end modal-footer-->
+                                            </form><!--end form-->
+                                        </div><!--end modal-body-->
+                                    </div><!--end modal-content-->
+                                </div><!--end modal-dialog-->
                             </div><!--end task-box-->
                         </div><!--end card-body-->
                     </div><!--end card-->
@@ -157,7 +215,7 @@ $totalhoras = $dateInterval->format('%H horas %i minutos') . PHP_EOL;
                                     foreach ($arrayPagos as $fila) {
                                         ?>
                                         <tr>
-                                            <th scope="row">1</th>
+                                            <th scope="row"><?php echo $item ?></th>
                                             <td><?php echo $Util->fecha_mysql_web($fila['fecha_pago']) ?></td>
                                             <td><?php echo number_format($fila['monto']) ?></td>
                                             <td>EFECTIVO</td>

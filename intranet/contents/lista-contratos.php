@@ -58,6 +58,9 @@ $Contrato->setFecha(date("Y-m-d"));
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
+                                <button class="btn btn-sm btn-outline-success">
+                                    <i data-feather="search" class="align-self-center icon-xs"></i> buscar x Fechas
+                                </button>
                                 <a href="form-contrato.php" class="btn btn-sm btn-outline-primary">
                                     <i data-feather="plus" class="align-self-center icon-xs"></i> Agregar Nuevo Contrato
                                 </a>
