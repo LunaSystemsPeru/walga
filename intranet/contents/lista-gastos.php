@@ -89,17 +89,21 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     $arrayGastos = $Gasto->verGastos($inicio, $fin);
                                     $item = 1;
                                     $saldo = 0;
+                                    $ingresos = 0;
+                                    $egresos = 0;
                                     foreach ($arrayGastos as $fila) {
                                         $saldo = $saldo + $fila['ingreso'] - $fila['monto'];
+                                        $ingresos = $ingresos + $fila['ingreso'];
+                                        $egresos = $egresos - $fila['monto'];
                                         ?>
                                         <tr>
                                             <th scope="row"><?php echo $item ?></th>
                                             <td><?php echo $fila['fecha'] ?></td>
                                             <td><?php echo $fila['placa'] ?></td>
                                             <td><?php echo $fila['descripcion'] ?></td>
-                                            <td><?php echo number_format($fila['ingreso'], 2) ?></td>
-                                            <td><?php echo number_format($fila['monto'], 2) ?></td>
-                                            <td><?php echo number_format($saldo, 2) ?></td>
+                                            <td class="text-right"><?php echo ($fila['ingreso'] > 0 ? number_format($fila['ingreso'], 2) : "") ?></td>
+                                            <td class="text-right"><?php echo ($fila['monto'] > 0 ? number_format($fila['monto'], 2) : "") ?></td>
+                                            <td class="text-right"><?php echo number_format($saldo, 2) ?></td>
                                             <td>
                                                 <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
                                             </td>
@@ -109,6 +113,15 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     }
                                     ?>
                                     </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td scope="row" colspan="4" class="text-right">Total </td>
+                                        <td class="text-right"><?php echo number_format($ingresos, 2) ?></td>
+                                        <td class="text-right"><?php echo number_format($egresos, 2) ?></td>
+                                        <td class="text-right"></td>
+                                        <td></td>
+                                    </tr>
+                                    </tfoot>
                                 </table><!--end /table-->
                             </div><!--end /tableresponsive-->
                         </div><!--end card-body-->

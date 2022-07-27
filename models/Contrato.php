@@ -425,6 +425,10 @@ class Contrato
                     hora_inicio = '$this->horainicio', 
                     hora_termino = '$this->horatermino', 
                     estado_contrato = '$this->estado', 
+                    monto = '$this->montocontrato',
+                    servicio = '$this->servicio',
+                    origen = '$this->origen',
+                    destino = '$this->destino',
                     incluye_igv = '$this->incluyeigv'
                 where id = '$this->id'";
         //echo $sql;

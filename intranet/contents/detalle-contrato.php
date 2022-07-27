@@ -237,6 +237,7 @@ $totalhoras = $dateInterval->format('%H horas %i minutos') . PHP_EOL;
                             <div class="input-group">
                                 <input type="number" step="0.1" class="form-control" name="input_monto" value="<?php echo $Contrato->getMontocontrato()?>">
                             </div>
+                            <input type="hidden" name="hidden_id" value="<?php echo $Contrato->getId()?>">
                         </div>
                     </div><!--end auth-page-->
                     <div class="modal-footer">
