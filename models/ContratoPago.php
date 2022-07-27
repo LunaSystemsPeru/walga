@@ -134,6 +134,20 @@ class ContratoPago
         $this->conectar->ejecutar_idu($sql);
     }
 
+    public function eliminar()
+    {
+        $sql = "delete from contratos_pagos
+                where contrato_id = '$this->contratoid'";
+        $this->conectar->ejecutar_idu($sql);
+    }
+
+    public function eliminarId()
+    {
+        $sql = "delete from contratos_pagos
+                where id = '$this->id'";
+        $this->conectar->ejecutar_idu($sql);
+    }
+
     public function verFilas()
     {
         $sql = "select * 

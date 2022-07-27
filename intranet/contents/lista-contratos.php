@@ -9,6 +9,16 @@ require '../../models/Contrato.php';
 
 $Contrato = new Contrato();
 $Contrato->setFecha(date("Y-m-d"));
+
+$array_contratos = array();
+if (filter_input(INPUT_GET, 'fecha_inicio')) {
+    $fechainicio = filter_input(INPUT_GET, 'fecha_inicio');
+    $fechafin = filter_input(INPUT_GET, 'fecha_final');
+    $array_contratos = $Contrato->verContratosxFecha($fechainicio, $fechafin);
+} else {
+    $array_contratos = $Contrato->verContratosdelDia();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +68,7 @@ $Contrato->setFecha(date("Y-m-d"));
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
-                                <button class="btn btn-sm btn-outline-success">
+                                <button class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#exampleModalSignup">
                                     <i data-feather="search" class="align-self-center icon-xs"></i> buscar x Fechas
                                 </button>
                                 <a href="form-contrato.php" class="btn btn-sm btn-outline-primary">
@@ -71,7 +81,6 @@ $Contrato->setFecha(date("Y-m-d"));
             </div><!--end row-->
             <!-- end page title end breadcrumb -->
             <div class="row justify-content-center">
-
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
@@ -147,28 +156,60 @@ $Contrato->setFecha(date("Y-m-d"));
                         </div><!--end card-body-->
                     </div><!--end card-->
                 </div> <!-- end col -->
-            </div><!-- container -->
-        </div>
-        <!-- end page content -->
+            </div><!-- row -->
+        </div><!-- container -->
     </div>
-    <!-- end page-wrapper -->
-    <?php
-    include('../fixed/footer.php');
-    ?>
+    <!-- end page content -->
+
+    <div class="modal fade" id="exampleModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Buscar Servicios entre Fechas</h6>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div><!--end modal-header-->
+                <form class="form-horizontal auth-form my-4" action="lista-contratos.php" method="get">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Fecha Inicio</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="fecha-inicio" name="fecha_inicio">
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Fecha Final</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="fecha-final" name="fecha_final">
+                            </div>
+                        </div><!--end form-group-->
+                    </div><!--end auth-page-->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-soft-primary btn-sm">Buscar</button>
+                        <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    </div><!--end modal-footer-->
+                </form><!--end form-->
+            </div><!--end modal-body-->
+        </div><!--end modal-content-->
+    </div><!--end modal-dialog-->
+</div>
+<!-- end page-wrapper -->
+<?php
+include('../fixed/footer.php');
+?>
 
 
-    <!-- jQuery  -->
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/metismenu.min.js"></script>
-    <script src="../assets/js/waves.js"></script>
-    <script src="../assets/js/feather.min.js"></script>
-    <script src="../assets/js/simplebar.min.js"></script>
-    <script src="../assets/js/moment.js"></script>
-    <script src="../plugins/daterangepicker/daterangepicker.js"></script>
+<!-- jQuery  -->
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/metismenu.min.js"></script>
+<script src="../assets/js/waves.js"></script>
+<script src="../assets/js/feather.min.js"></script>
+<script src="../assets/js/simplebar.min.js"></script>
+<script src="../assets/js/moment.js"></script>
+<script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
-    <!-- App js -->
-    <script src="../assets/js/app.js"></script>
+<!-- App js -->
+<script src="../assets/js/app.js"></script>
 
 </body>
 

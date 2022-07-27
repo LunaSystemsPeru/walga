@@ -470,4 +470,9 @@ class Contrato
         return $this->conectar->get_Cursor($sql);
     }
 
+    public function eliminar () {
+        $sql = "delete from contratos where id = '$this->id'";
+        $this->conectar->ejecutar_idu($sql);
+    }
+
 }
