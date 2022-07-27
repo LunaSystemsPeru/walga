@@ -172,6 +172,7 @@
                             <span><i data-feather="grid" class="align-self-center hori-menu-icon"></i>Servicios</span>
                         </a>
                         <ul class="submenu">
+                            <li><a href="lista-gastos.php"><i class="ti ti-minus"></i>Gastos</a></li>
                             <li><a href="lista-contratos.php"><i class="ti ti-minus"></i>Contratos</a></li>
                             <li><a href="lista-clientes.php"><i class="ti ti-minus"></i>Clientes</a></li>
                             <li><a href="apps-contact-list.html"><i class="ti ti-minus"></i>Deuda por Cobrar</a></li>

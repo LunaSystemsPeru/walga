@@ -72,7 +72,6 @@ $totalhoras = $dateInterval->format('%H horas %i minutos') . PHP_EOL;
                                     <li class="breadcrumb-item active">Contrato</li>
                                 </ol>
                             </div><!--end col-->
-
                         </div><!--end row-->
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -129,12 +128,12 @@ $totalhoras = $dateInterval->format('%H horas %i minutos') . PHP_EOL;
                                     <ul class="list-inline mb-0 align-self-center">
                                         <li class="list-item d-inline-block">
                                             <button class="ms-2" data-toggle="modal"
-                                                    data-target="#exampleModalSignup">
+                                                    data-target="#modalModificar">
                                                 <i class="mdi mdi-pencil-outline text-muted font-18"></i>
                                             </button>
                                         </li>
                                         <li class="list-item d-inline-block">
-                                            <button onclick="eliminarServicio('<?php echo $Contrato->getId() ?>')">
+                                            <button onclick="eliminarServicio('<?php echo $Contrato->getId() ?>')" class="ms-2">
                                                 <i class="mdi mdi-trash-can-outline text-muted font-18"></i>
                                             </button>
                                         </li>
@@ -205,6 +204,49 @@ $totalhoras = $dateInterval->format('%H horas %i minutos') . PHP_EOL;
         </div><!-- container -->
     </div>
     <!-- end page content -->
+
+    <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Modificar Detalle del Servicio</h6>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div><!--end modal-header-->
+                <form class="form-horizontal auth-form my-4" action="../controller/modifica-contrato.php" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Descripcion</label>
+                            <div class="input-group">
+                                <textarea class="form-control" name="input_servicio"><?php echo $Contrato->getServicio()?></textarea>
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Origen</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="input_origen" value="<?php echo $Contrato->getOrigen()?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Destino</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="input_destino" value="<?php echo $Contrato->getDestino()?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Monto Aprobado</label>
+                            <div class="input-group">
+                                <input type="number" step="0.1" class="form-control" name="input_monto" value="<?php echo $Contrato->getMontocontrato()?>">
+                            </div>
+                        </div>
+                    </div><!--end auth-page-->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-soft-primary btn-sm">Modificar</button>
+                        <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    </div><!--end modal-footer-->
+                </form><!--end form-->
+            </div><!--end modal-body-->
+        </div><!--end modal-content-->
+    </div><!--end modal-dialog-->
 </div>
 <!-- end page-wrapper -->
 <?php

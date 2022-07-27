@@ -205,4 +205,21 @@ class VehiculoGasto
                 where fecha = '$this->fecha' and vehiculo_id = '$this->vehiculoid'";
         return $this->conectar->get_Cursor($sql);
     }
+
+    public function verGastos($inicio, $fin)
+    {
+        $sql = "select vg.fecha, 0 as ingreso, vg.monto, pv.descripcion as descripcion, v.placa
+                from vehiculos_gastos as vg 
+                inner join vehiculos as v on v.id = vg.vehiculo_id
+                inner join parametros_valores as pv on pv.id = vg.gasto_id
+                where vg.fecha BETWEEN '$inicio' and '$fin'
+                union all 
+                select cp.fecha_pago as fecha, cp.monto as ingreso, 0 as monto, c.servicio as descripcion, v.placa
+                from contratos_pagos as cp 
+                inner join  contratos as c on c.id = cp.contrato_id
+                inner join vehiculos as v on v.id =  c.vehiculo_id
+                where cp.fecha_pago BETWEEN '$inicio' and '$fin'
+                order by fecha asc";
+        return $this->conectar->get_Cursor($sql);
+    }
 }
