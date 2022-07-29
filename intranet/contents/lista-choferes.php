@@ -61,42 +61,42 @@ require '../../models/Chofer.php';
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="card">
-                    </div><!--end card-header-->
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead class="thead-light">
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Datos</th>
-                                    <th>Brevete</th>
-                                    <th>Cat. Brevete</th>
-                                    <th>Fec. Renovacion</th>
-                                    <th>Estado</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Luis Oyanguren</td>
-                                    <td>Abc1234</td>
-                                    <td>AII</td>
-                                    <td>2022</td>
-                                    <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
-                                </tr>
-                                </tbody>
-                            </table><!--end /table-->
-                        </div><!--end /tableresponsive-->
-                    </div><!--end card-body-->
-                </div><!--end card-->
-            </div> <!-- end col -->
-        </div> <!-- end row -->
-    </div><!--end row-->
-</div><!-- container -->
-</div>
-<!-- end page content -->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Datos</th>
+                                        <th>Brevete</th>
+                                        <th>Cat. Brevete</th>
+                                        <th>Fec. Renovacion</th>
+                                        <th>Estado</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Luis Oyanguren</td>
+                                        <td>Abc1234</td>
+                                        <td>AII</td>
+                                        <td>2022</td>
+                                        <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /tableresponsive-->
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+        </div><!-- container -->
+    </div>
+    <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
 <?php

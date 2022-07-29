@@ -1,10 +1,11 @@
 <?php
 include "../fixed/cargarSesion.php";
 require '../../models/ParametroValor.php';
+require '../../models/Cliente.php';
 
 $Valor = new ParametroValor();
-
-
+$Cliente = new Cliente();
+$Cliente->setEmpresaId($_SESSION['empresa_id']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,8 +59,18 @@ $Valor = new ParametroValor();
                         </div>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">buscar Cliente</label>
-                        <input type="text" name="input-cliente" id="input-cliente" placeholder="Buscar Cliente" value="" class="form__input required" aria-label="Buscar emisor" aria-describedby="button-addon1"/>
+                        <label class="form__label">seleccionar Cliente</label>
+                        <div class="form__select">
+                            <select name="input-cliente" id="input-cliente" class="required" onchange="seleccionarCliente()">
+                                <?php
+                                $array_clientes = $Cliente->verFilas();
+                                foreach ($array_clientes as $fila) {
+                                    echo ' <option value="' . $fila['id'] . '">' . $fila['datos'] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <!--<input type="text" name="input-cliente" id="input-cliente" placeholder="Buscar Cliente" value="" class="form__input required" aria-label="Buscar emisor" aria-describedby="button-addon1"/>-->
                         <button class="button button--small button--secondary" type="button" id="href-cliente" onclick="agregarCliente()">Agregar Nuevo Cliente</button>
                         <input type="hidden" name="input-id-cliente" id="input-id-cliente">
                     </div>
@@ -139,17 +150,22 @@ $Valor = new ParametroValor();
             }
         });
 
+        function seleccionarCliente () {
+            var idcliente = $("#input-cliente").val();
+            $("#input-id-cliente").val(idcliente)
+        }
+
         function esclienteExpress() {
             var tienecliente = $("#select-tiene-cliente").val()
             if (tienecliente == 1) {
-                $("#input-cliente").prop("readonly", true);
+                $("#input-cliente").prop("disabled", true);
                 $("#href-cliente").prop("disabled", true);
-                $("#input-cliente").val("CLIENTE NO IDENTIFICADO")
+                $("#input-cliente").val(0)
                 $("#input-id-cliente").val(0)
                 $("#text-servicio").focus();
             } else {
                 $("#href-cliente").prop("disabled", false);
-                $("#input-cliente").prop("readonly", false);
+                $("#input-cliente").prop("disabled", false);
                 $("#input-id-cliente").val("")
                 $("#input-cliente").focus();
             }
