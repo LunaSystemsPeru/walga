@@ -56,10 +56,10 @@ if ($Contrato->getId()){
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Registrar Vehiculo</h4>
+                                <h4 class="page-title">Contrato</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Flota</a></li>
-                                    <li class="breadcrumb-item active">Vehiculos</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Servicios</a></li>
+                                    <li class="breadcrumb-item active">Detalle</li>
                                 </ol>
                             </div><!--end col-->
 

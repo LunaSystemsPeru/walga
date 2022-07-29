@@ -60,7 +60,7 @@ $Vehiculo->setEmpresaId($_SESSION['empresa_id']);
             <!-- end page title end breadcrumb -->
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <form method="post" action="../controller/registra-documentos-vehiculo.php">
+                    <form method="post" action="../controller/registra-documentos-vehiculo.php" enctype="multipart/form-data">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
@@ -70,7 +70,7 @@ $Vehiculo->setEmpresaId($_SESSION['empresa_id']);
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="input_datos_emisor"
                                                        placeholder="buscar por Razon Social" maxlength="200">
-                                                <button class="btn btn-secondary" type="button"><i class="fas fa-plus"></i> Agregar Empresa Emisora</button>
+                                                <a href="lista-entidades.php" target="_blank" class="btn btn-secondary" type="button"><i class="fas fa-plus"></i> Agregar Empresa Emisora</a>
                                             </div>
                                             <input type="hidden" id="input_emisor_id" name="input_emisor_id">
                                         </div>

@@ -186,6 +186,7 @@ class Recordatorio
                         '$this->emisorid',
                         '$this->nombrearchivo', 
                         '$this->empresaid')";
+        echo $sql;
         $this->conectar->ejecutar_idu($sql);
     }
 
