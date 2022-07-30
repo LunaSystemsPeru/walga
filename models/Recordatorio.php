@@ -192,7 +192,17 @@ class Recordatorio
 
     public function verFilas()
     {
-        $sql = "select vd.id, vd.documento, vd.estado, vd.fec_vencimiento, vd.fec_emision, e.razonsocial, TIMESTAMPDIFF(day, current_date(), vd.fec_vencimiento) as diasfaltantes
+        $sql = "select vd.id, vd.documento, vd.estado, vd.fec_vencimiento, vd.fec_emision, e.razonsocial, TIMESTAMPDIFF(day, current_date(), vd.fec_vencimiento) as diasfaltantes, vd.archivo
+                from recordatorios_documentos as vd
+                inner join entidades e on vd.emisor_id = e.id
+                where vd.estado = 1 and vd.empresa_id = '$this->empresaid'
+                order by fec_vencimiento desc";
+        return $this->conectar->get_Cursor($sql);
+    }
+
+    public function verxVencer()
+    {
+        $sql = "select vd.id, vd.documento, vd.estado, vd.fec_vencimiento, vd.fec_emision, e.razonsocial, TIMESTAMPDIFF(day, current_date(), vd.fec_vencimiento) as diasfaltantes, vd.archivo
                 from recordatorios_documentos as vd
                 inner join entidades e on vd.emisor_id = e.id
                 where vd.estado = 1 and vd.empresa_id = '$this->empresaid' and fec_vencimiento < date_add(current_date(), interval 40 day)

@@ -7,6 +7,7 @@ $Documento->setNombre(filter_input(INPUT_POST, 'input_documento'));
 $Documento->setFecEmision(filter_input(INPUT_POST, 'input_emision'));
 $Documento->setFecVencimiento(filter_input(INPUT_POST, 'input_vencimiento'));
 $Documento->setEmisorid(filter_input(INPUT_POST, 'input_emisor_id'));
+$Documento->setEmpresaid($_SESSION['empresa_id']);
 
 if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
     // get details of the uploaded file

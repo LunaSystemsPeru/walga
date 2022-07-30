@@ -100,8 +100,8 @@ $Recordatorio->setEmpresaid($_SESSION['empresa_id']);
                                         </td>
                                         <td><?php echo $fila['razonsocial'] ?></td>
                                         <td>
-                                            <button class="btn btn-info btn-sm"><i class="ti ti-file"></i></button>
-                                            <button class="btn btn-success btn-sm"><i class="ti ti-reddit"></i></button>
+                                            <a href="../../public/uploaded_files/<?php echo $fila['archivo'] ?>" target="_blank" class="btn btn-info btn-sm"><i class="ti ti-file"></i></a>
+                                            <button class="btn btn-success btn-sm"><i class="ti ti-pencil"></i></button>
                                             <button class="btn btn-danger btn-sm"><i class="ti ti-trash"></i></button>
                                         </td>
                                     </tr>

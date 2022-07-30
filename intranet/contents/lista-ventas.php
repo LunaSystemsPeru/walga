@@ -7,6 +7,17 @@ $Venta = new Venta();
 $Util = new Util();
 
 $Venta->setEmpresaid($_SESSION['empresa_id']);
+
+$fechainicio = filter_input(INPUT_GET, 'fecha_inicio');
+$fechafin = filter_input(INPUT_GET, 'fecha_final');
+if ($fechainicio) {
+    $array_ventas = $Venta->verVentasEntreFechas($fechainicio, $fechafin);
+} else {
+    $array_ventas = $Venta->verVentasdelMes();
+}
+
+$fecha_actual = date("Y-m-d");
+$fecha_minima = date("Y-m-d", strtotime($fecha_actual . "- 6 days"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,6 +76,10 @@ $Venta->setEmpresaid($_SESSION['empresa_id']);
                                     Agregar Nota DEB/CRE
                                 </a>
 
+                                <button class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#exampleModalSignup">
+                                    <i data-feather="search" class="align-self-center icon-xs"></i> buscar x Fechas
+                                </button>
+
                             </div><!--end col-->
                         </div><!--end row-->
                     </div><!--end page-title-box-->
@@ -72,84 +87,121 @@ $Venta->setEmpresaid($_SESSION['empresa_id']);
             </div><!--end row-->
             <!-- end page title end breadcrumb -->
             <div class="row justify-content-center">
-
                 <div class="col-lg-12">
                     <div class="card">
-                    </div><!--end card-header-->
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead class="thead-light">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Fecha</th>
-                                    <th>Nro Documento</th>
-                                    <th>Cliente</th>
-                                    <th>Monto</th>
-                                    <th>Estado Doc</th>
-                                    <th>Enviado SUNAT</th>
-                                    <th>PDF</th>
-                                    <th>XML</th>
-                                    <th>Emitido por</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                $array_ventas = $Venta->verVentasdelMes();
-                                foreach ($array_ventas as $fila) {
-                                    $label_estado = '<span class="badge badge-boxed  badge-outline-success">Activo</span>';
-                                    if ($fila['estado'] == 2) {
-                                        $label_estado = '<span class="badge badge-boxed  badge-outline-danger">Anulado</span>';
-                                    }
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Fecha</th>
+                                        <th>Nro Documento</th>
+                                        <th>Cliente</th>
+                                        <th>Monto</th>
+                                        <th>Estado Doc</th>
+                                        <th>Enviado SUNAT</th>
+                                        <th>PDF</th>
+                                        <th>XML</th>
+                                        <th>Emitido por</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    foreach ($array_ventas as $fila) {
+                                        $fechafactura = $fila['fecha'];
 
-                                    $label_enviado = '<span class="badge badge-boxed  badge-outline-success">SI</span>';
-                                    if ($fila['enviado_sunat'] == 0) {
-                                        if ($fila['comprobante_id'] == 4) {
-                                            $label_enviado = '<span class="badge badge-boxed  badge-outline-danger">NO</span> ' .
-                                                '<button class="btn btn-sm btn-success"><i class="fa fa-paper-plane" title="Enviar Documento"></i></button>';
+                                        $a = strtotime($fecha_minima);
+                                        $b = strtotime($fechafactura);
+
+                                        $label_estado = '<span class="badge badge-boxed  badge-outline-success">Activo</span>';
+                                        if ($fila['estado'] == 2) {
+                                            $label_estado = '<span class="badge badge-boxed  badge-outline-danger">Anulado</span>';
                                         }
 
-                                        if ($fila['comprobante_id'] == 3) {
-                                            $label_enviado = '<span class="badge badge-boxed  badge-outline-danger">NO</span>';
+                                        $label_enviado = '<span class="badge badge-boxed  badge-outline-success">SI</span>';
+                                        if ($fila['enviado_sunat'] == 0) {
+                                            if ($fila['comprobante_id'] == 4) {
+                                                $label_enviado = '<span class="badge badge-boxed  badge-outline-danger">NO</span> ' .
+                                                    '<button class="btn btn-sm btn-success"><i class="fa fa-paper-plane" title="Enviar Documento"></i></button>';
+                                            }
+
+                                            if ($fila['comprobante_id'] == 3) {
+                                                $label_enviado = '<span class="badge badge-boxed  badge-outline-danger">NO</span>';
+                                            }
                                         }
+                                        ?>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td><?php echo $Util->fecha_mysql_web($fila['fecha']) ?></td>
+                                            <td><?php echo $fila['valor1'] . " | " . $fila['serie'] . "-" . $Util->zerofill($fila['numero'], 5) ?></td>
+                                            <td><?php echo $fila['documento'] . " | " . $fila['razonsocial'] ?></td>
+                                            <td><?php echo number_format($fila['total'], 2) ?></td>
+                                            <td><?php echo $label_estado ?></td>
+                                            <td><?php echo $label_enviado ?></td>
+                                            <td><a href="<?php echo '../../reports/comprobante_venta_a4.php?id=' . $fila['id'] ?>" target="_blank" class="btn btn-info btn-sm"><i class="fa fa-file-pdf"></i></a></td>
+                                            <td><a href="<?php echo '../../public/xml/' . $fila['nombre_documento'] . '.xml' ?>" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-archive"></i></a></td>
+                                            <td><?php echo $fila['username'] ?></td>
+                                            <td>
+                                                <button class="btn btn-info btn-sm" title="Enviar comprobante por correo"><i class="ti ti-email"></i></button>
+                                                <?php
+                                                //si esta dentro de los 4 dias anular
+                                                if ($b >= $a) {
+                                                    ?>
+                                                    <button class="btn btn-danger btn-sm" title="Dar de baja el comprobante"><i class="ti ti-trash"></i></button>
+                                                    <?php
+                                                } else {
+                                                    //sino emitir nota de credito
+                                                }
+                                                ?>
+
+                                            </td>
+                                        </tr>
+                                        <?php
                                     }
                                     ?>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td><?php echo $Util->fecha_mysql_web($fila['fecha']) ?></td>
-                                        <td><?php echo $fila['valor1'] . " | " . $fila['serie'] . "-" . $Util->zerofill($fila['numero'], 5) ?></td>
-                                        <td><?php echo $fila['documento'] . " | " . $fila['razonsocial'] ?></td>
-                                        <td><?php echo number_format($fila['total'], 2) ?></td>
-                                        <td><?php echo $label_estado ?></td>
-                                        <td><?php echo $label_enviado ?></td>
-                                        <td><a href="" class="btn btn-info btn-sm"><i class="fa fa-file-pdf"></i></a></td>
-                                        <td><a href="" class="btn btn-danger btn-sm"><i class="fa fa-file-archive"></i></a></td>
-                                        <td><?php echo $fila['username'] ?></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="ti ti-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                }
-                                ?>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /tableresponsive-->
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+        </div><!-- container -->
+    </div>
+    <!-- end page content -->
 
-
-                                </tbody>
-                            </table><!--end /table-->
-                        </div><!--end /tableresponsive-->
-                    </div><!--end card-body-->
-                </div><!--end card-->
-            </div> <!-- end col -->
-        </div> <!-- end row -->
-
-    </div><!--end row-->
-
-
-</div><!-- container -->
-</div>
-<!-- end page content -->
+    <div class="modal fade" id="exampleModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Buscar Servicios entre Fechas</h6>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div><!--end modal-header-->
+                <form class="form-horizontal auth-form my-4" method="get">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Fecha Inicio</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="fecha-inicio" name="fecha_inicio">
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Fecha Final</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="fecha-final" name="fecha_final">
+                            </div>
+                        </div><!--end form-group-->
+                    </div><!--end auth-page-->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-soft-primary btn-sm">Buscar</button>
+                        <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                    </div><!--end modal-footer-->
+                </form><!--end form-->
+            </div><!--end modal-body-->
+        </div><!--end modal-content-->
+    </div><!--end modal-dialog-->
 </div>
 <!-- end page-wrapper -->
 <?php

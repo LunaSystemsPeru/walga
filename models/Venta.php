@@ -16,6 +16,7 @@ class Venta
     private $enviadosunat;
     private $entidadid;
     private $detraccionid;
+    private $formapagoid;
     private $conectar;
 
     /**
@@ -234,6 +235,22 @@ class Venta
         $this->detraccionid = $detraccionid;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFormapagoid()
+    {
+        return $this->formapagoid;
+    }
+
+    /**
+     * @param mixed $formapagoid
+     */
+    public function setFormapagoid($formapagoid): void
+    {
+        $this->formapagoid = $formapagoid;
+    }
+
     public function obtenerId()
     {
         $sql = "select ifnull(max(id)+1, 1) as codigo 
@@ -248,10 +265,10 @@ class Venta
         where id = '$this->id'";
         $resultado = $this->conectar->get_Row($sql);
         if ($resultado) {
-            $this->fecha = $resultado['datos'];
-            $this->comprobanteid = $resultado['celular'];
-            $this->serie = $resultado['email'];
-            $this->numero = $resultado['entidad_id'];
+            $this->fecha = $resultado['fecha'];
+            $this->comprobanteid = $resultado['comprobante_id'];
+            $this->serie = $resultado['serie'];
+            $this->numero = $resultado['numero'];
             $this->empresaid = $resultado['empresa_id'];
             $this->usuarioid = $resultado['usuario_id'];
             $this->igv = $resultado['igv'];
@@ -282,17 +299,31 @@ class Venta
                         '0',
                         '$this->entidadid',
                         '$this->detraccionid')";
-        $this->conectar->ejecutar_idu($sql);
+        //echo $sql;
+        return $this->conectar->ejecutar_idu($sql);
     }
 
     function verVentasdelMes()
     {
-        $sql = "select v.fecha, v.id, v.comprobante_id, pv.valor1, v.serie, v.numero, e.razonsocial, e.documento, v.total, v.estado, v.enviado_sunat, u.username 
+        $sql = "select v.fecha, v.id, v.comprobante_id, pv.valor1, v.serie, v.numero, e.razonsocial, e.documento, v.total, v.estado, v.enviado_sunat, u.username, vs.nombre_documento 
                 from ventas as v 
                 inner join entidades e on v.entidad_id = e.id 
                 inner join parametros_valores pv on v.comprobante_id = pv.id 
-                inner join usuarios u on v.usuario_id = u.tipousuario_id   
+                inner join usuarios u on v.usuario_id = u.tipousuario_id  
+                inner join ventas_sunat vs on v.id = vs.venta_id
                 where year(v.fecha) = year(current_date()) and month(v.fecha) = month(current_date()) and v.empresa_id = '$this->empresaid'";
+        return $this->conectar->get_Cursor($sql);
+    }
+
+    function verVentasEntreFechas($inicio, $fin)
+    {
+        $sql = "select v.fecha, v.id, v.comprobante_id, pv.valor1, v.serie, v.numero, e.razonsocial, e.documento, v.total, v.estado, v.enviado_sunat, u.username, vs.nombre_documento 
+                from ventas as v 
+                inner join entidades e on v.entidad_id = e.id 
+                inner join parametros_valores pv on v.comprobante_id = pv.id 
+                inner join usuarios u on v.usuario_id = u.tipousuario_id  
+                inner join ventas_sunat vs on v.id = vs.venta_id
+                where v.fecha between '$inicio' and '$fin' and v.empresa_id = '$this->empresaid'";
         return $this->conectar->get_Cursor($sql);
     }
 }

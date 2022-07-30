@@ -27,7 +27,12 @@ $Venta->setEntidadid(filter_input(INPUT_POST, 'inputClienteId'));
 $Venta->setDetraccionid(filter_input(INPUT_POST, 'inputDetraccion'));
 
 $Venta->obtenerId();
-$Venta->insertar();
+$venta_registrada = $Venta->insertar();
+
+if (!$venta_registrada) {
+    echo json_encode(["id" => 0, "respuesta" => false]);
+    exit();
+}
 
 $VentaContrato->setContratoid(filter_input(INPUT_POST, 'inputContrato'));
 $VentaContrato->setVentaid($Venta->getId());
@@ -47,4 +52,29 @@ foreach ($array_servicios as $fila) {
     $VentaServicio->insertar();
 }
 
+$url = $_SERVER['REQUEST_SCHEME']  . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+$rutabase = dirname(dirname(dirname($url))) . DIRECTORY_SEPARATOR;
+$respuestaCurl = "";
+if ($Venta->getComprobanteid() == 3 || $Venta->getComprobanteid() == 4) {
+    $nombreXML = "factura";
+    if ($Venta->getComprobanteid() == 3) {
+        $nombreXML = "boleta";
+    }
+    //echo $rutabase . "composer/generateXML/" . $nombreXML . ".php?id=" . $Venta->getId();
+    $ch = curl_init($rutabase . "composer/generateXML/" . $nombreXML . ".php?id=" . $Venta->getId());
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    $result = curl_exec($ch);
+    $errorcurl = "";
+
+    if ($result === false) {
+        $erroremail = 'Curl error: ' . curl_error($ch);
+        echo json_encode(["id" => $Venta->getId(), "respuesta" =>$erroremail]);
+    } else {
+        $respuestaCurl = $result;
+        echo json_encode(["id" => $Venta->getId(), "respuesta" =>$respuestaCurl]);
+    }
+    curl_close($ch);
+
+
+}
 

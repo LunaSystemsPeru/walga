@@ -1,2 +1,4 @@
 *.rar
 ./idea
+/public/uploaded_files/*.pdf
+/facturacion/composer/vendor/

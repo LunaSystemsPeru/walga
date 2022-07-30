@@ -110,7 +110,7 @@ class ComprobanteSunat
         $sql = "select * 
         from comprobantes_empresas 
         where comprobante_id = '$this->comprobanteid' and empresa_id = '$this->empresaid'";
-        echo $sql;
+        //echo $sql;
         $resultado = $this->conectar->get_Row($sql);
         if ($resultado) {
             $this->id = $resultado['id'];

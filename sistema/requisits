@@ -1,0 +1,25 @@
+falta definir forma de pago al emitir facturas
+falta modal que indique cuantas en cuantas cuotas se emitira la factura y fecha de vencimiento
+falta hacer el resumen de boletas
+falta el formulario para emitir nota de credito y debito
+falta el formulario para generar guas de remision
+falta modal para enviar comprobante por correo (desde correo de gmail) se enviara pdf y xml
+falta anular factura por baja o por nota de credito
+falta generar excel para registro de ventas, en walga y efacturacion para poder importar en el minicontador
+si al enviar factura hubo error de aceptacion la factura se debe anular y mostrar mensaje
+falta mostrar deudas x cliente y registrar pagos a cuenta o totales por cliente en efectivo o deposito a cuenta
+falta modificar parametros
+falta modificar cliente
+falta modificar entidades (clientes)
+falta modificar vehiculos
+falta opcion renovar documento, modificar, eliminar
+falta agregar usuario, modificar, eliminar
+falta definir documentos sunat (nota db/cr boleta, nota db/cr factura, guias de remision)
+falta actualizar datos de empresa
+--- mostrar en dashboard ---
+servicios realizados al mes
+comparacion de servicios por vehiculos, por tipo de trabajo
+ingresos mensuales
+total x cobrar
+documentos por vencer
+servicios del dia

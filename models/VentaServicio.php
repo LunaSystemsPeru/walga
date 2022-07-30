@@ -115,4 +115,12 @@ class VentaServicio
                         '$this->precio')";
         $this->conectar->ejecutar_idu($sql);
     }
+
+    public function verFilas () {
+        $sql = "select vs.id, vs.descripcion, vs.precio_venta, vs.venta_id, pv.valor1 as unidad, pv.valor2 
+                from ventas_servicios as vs 
+                inner join parametros_valores pv on vs.unidad_id = pv.id
+                where venta_id = '$this->ventaid'";
+        return $this->conectar->get_Cursor($sql);
+    }
 }
