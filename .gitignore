@@ -1,4 +1,6 @@
 *.rar
-./idea
+.idea/
 /public/uploaded_files/*.pdf
-/facturacion/composer/vendor/
+/public/cdr/*.zip
+/public/xml/*.xml
+/composer/vendor/
