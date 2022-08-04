@@ -60,64 +60,37 @@ if ($Contrato->getId()) {
         <h2 class="page__title">Cierre de Contrato</h2>
         <div class="fieldset">
             <div class="form">
-                <form id="Form" method="post" action="../controller/acepta-contrato.php">
+                <form id="FormFinalizar" method="post" action="../controller/finaliza-contrato.php">
                     <div class="form__row">
                         <label class="form__label">fecha</label>
-                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo $Contrato->getFecha() ?>" class="form__input"/>
-                        <input type="hidden" name="input-id-contrato" value="<?php echo $Contrato->getId() ?>">
+                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo $Contrato->getFecha() ?>" class="form__input" readonly/>
+                        <input type="hidden" name="input-id-contrato" value="<?php echo $Contrato->getId()?>">
                     </div>
                     <div class="form__row">
                         <label class="form__label">Cliente</label>
                         <input type="text" name="input-cliente" placeholder="Buscar Cliente" value="<?php echo $Cliente->getDatos() ?>" class="form__input " readonly/>
                         <input type="hidden" value="<?php echo $Entidad->getNrodocumento() . " | " . $Entidad->getRazonsocial() ?>" id="input-datos-facturacion">
                     </div>
-                    <?php
-                    $disabled = "";
-                    if ($Contrato->getClienteid() == 0) {
-                        $disabled = 'disabled';
-                    } else {
-                        $disabled = "";
-                    }
-                    ?>
-                    <div class="form__row">
-                        <label class="form__label">Desea Comprobante?</label>
-                        <div class="form__select">
-                            <select name="select-comprobante" id="select-comprobante" class="required" onchange="preguntarComprobante()" <?php echo $disabled ?>>
-                                <option value="0">No</option>
-                                <option value="4">Factura</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">Aumentar IGV?</label>
-                        <div class="form__select">
-                            <select name="select-incluido" id="select-incluido" onchange="incluyeIGV()" <?php echo $disabled ?> >
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">RUC a facturar</label>
-                        <input type="text" name="input-datos-factura" id="input-datos-factura" placeholder="" value="" class="form__input required" readonly/>
-                    </div>
                     <div class="form__row">
                         <label class="form__label">Servicio</label>
-                        <textarea name="txt_servicio" class="form__textarea"><?php echo strtoupper($Valor->getDescripcion() . " | " . $Contrato->getServicio() . " - desde: " . $Contrato->getOrigen() . " hasta: " . $Contrato->getDestino()) ?></textarea>
+                        <textarea name="txt_servicio" disabled class="form__textarea"><?php echo strtoupper($Valor->getDescripcion() . " | " . $Contrato->getServicio() . " - desde: " . $Contrato->getOrigen() . " hasta: " . $Contrato->getDestino()) ?></textarea>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">Monto Pactado</label>
-                        <input type="text" name="input-monto" id="input-monto" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input " readonly/>
+                        <label class="form__label">Adelanto</label>
+                        <input type="number" name="input-pago" value="<?php echo $Contrato->getMontopagado() ?>" class="form__input required text-right" readonly/>
                     </div>
                     <hr>
                     <div class="form__row">
-                        <label class="form__label">Adelanto</label>
-                        <input type="number" name="input-pago" placeholder="ingrese monto adelanto sino 0" value="" class="form__input required" required/>
+                        <label class="form__label">Hora Fin</label>
+                        <input type="time" name="input-hora" placeholder="00:00" value="" class="form__input required" required/>
                     </div>
-
                     <div class="form__row">
-                        <label class="form__label">Hora Inicio</label>
-                        <input type="time" name="input-hora" placeholder="0.00" value="" class="form__input required" required/>
+                        <label class="form__label">Modificar Monto Pactado</label>
+                        <input type="text" name="input-monto" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input text-right required" required/>
+                    </div>
+                    <div class="form__row">
+                        <label class="form__label">Pago Final</label>
+                        <input type="number" name="input-pago-final" placeholder="ingrese pago restante sino 0" value="" class="form__input text-right required" required/>
                     </div>
                     <div class="form__row mt-40">
                         <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
@@ -147,28 +120,20 @@ if ($Contrato->getId()) {
 <script src="../vendor/swiper/swiper.min.js"></script>
 <script src="../assets/js/jquery.custom.js"></script>
 <script>
-    function preguntarComprobante() {
-        var idopcion = $("#select-comprobante").val();
-        var nrodocumento = $("#input-datos-facturacion").val();
-        if (idopcion == "4") {
-            $("#input-datos-factura").val(nrodocumento);
-            $("#select-incluido").prop("disabled", false);
-        } else {
-            $("#input-datos-factura").val("");
-            $("#select-incluido").prop("disabled", true);
-            $("#select-incluido").val(0)
-        }
+function preguntarComprobante () {
+    var idopcion = $("#select-comprobante").val();
+    var nrodocumento = $("#input-datos-facturacion").val();
+    if (idopcion == "4") {
+        $("#input-datos-factura").val(nrodocumento);
+    } else {
+        $("#input-datos-factura").val("");
     }
+}
 
-    function incluyeIGV() {
-        var monto = <?php echo $Contrato->getMontocontrato()?>;
-        var selectcincluye = $("#select-incluido").val()
-        if (selectcincluye == 0) {
-            $("#input-monto").val(monto.toFixed(2));
-        } else {
-            $("#input-monto").val((monto * 1.18).toFixed(2));
-        }
-    }
+function enviar () {
+    alert("enviado")
+    $("#submit").prop("disabled", true);
+}
 </script>
 </body>
 </html>

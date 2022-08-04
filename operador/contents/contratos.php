@@ -62,9 +62,12 @@ $Contrato->setVehiculoid($_SESSION['vehiculo_id']);
             <div class="cards cards--11">
                 <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
                     <div class="card__details">
-                        <h4 class="card__title"><?php echo strtoupper($fila['servicio']) ?> <p class="card__text"><?php echo $fila['origen'] . " - " . $fila['destino'] ?></p></h4>
-                        <p class="card__text"><i></i> Cliente: <?php echo $fila['datos'] ?></p>
-                        <p class="card__text">Programado para <?php echo $fila['fecha'] . " | " . $fila['hora_inicio'] ?></p>
+                        <p class="card__text"><img src="../assets/images/icons/red/home.svg" width="12px" alt="" title=""/> Origen: <?php echo $fila['origen'] ?></p>
+                        <p class="card__text text-right">Hasta: <?php echo $fila['destino'] ?> <img src="../assets/images/icons/red/arrow-right.svg" width="12px" alt="" title=""/> </p>
+                        <p class="card__text"><img src="../assets/images/icons/red/user.svg" width="12px" alt="" title=""/> Cliente: <?php echo $fila['datos'] ?></p>
+
+                        <h4 class="card__title"><?php echo strtoupper($fila['servicio']) ?></h4>
+                        <p class="card__text"><img src="../assets/images/icons/red/card.svg" width="12px" alt="" title=""/>  Fecha: <?php echo $fila['fecha'] . " | " . $fila['hora_inicio'] ?></p>
                         <div class="caption__content">
                             <a class="caption__category" ><?php echo $label_estado ?></a>
                         </div>

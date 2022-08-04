@@ -57,46 +57,35 @@ if ($Contrato->getId()) {
 
     <!-- PAGE CONTENT -->
     <div class="page__content page__content--with-header">
-        <h2 class="page__title">Cierre de Contrato</h2>
-        <div class="fieldset">
-            <div class="form">
-                <form id="Form" method="post" action="../controller/finaliza-contrato.php">
-                    <div class="form__row">
-                        <label class="form__label">fecha</label>
-                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo $Contrato->getFecha() ?>" class="form__input" readonly/>
-                        <input type="hidden" name="input-id-contrato" value="<?php echo $Contrato->getId()?>">
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">Cliente</label>
-                        <input type="text" name="input-cliente" placeholder="Buscar Cliente" value="<?php echo $Cliente->getDatos() ?>" class="form__input " readonly/>
-                        <input type="hidden" value="<?php echo $Entidad->getNrodocumento() . " | " . $Entidad->getRazonsocial() ?>" id="input-datos-facturacion">
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">Servicio</label>
-                        <textarea name="txt_servicio" disabled class="form__textarea"><?php echo strtoupper($Valor->getDescripcion() . " | " . $Contrato->getServicio() . " - desde: " . $Contrato->getOrigen() . " hasta: " . $Contrato->getDestino()) ?></textarea>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">Monto Pactado</label>
-                        <input type="text" name="Username" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input text-right required" readonly/>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">Adelanto</label>
-                        <input type="number" name="input-pago" value="<?php echo $Contrato->getMontopagado() ?>" class="form__input required text-right" readonly/>
-                    </div>
-                    <hr>
+        <h2 class="page__title">Cierre de Contrato - Servicio</h2>
+        <div class="form">
+            <p class="form__label"> Fecha: <?php echo $Contrato->getFecha() ?></p>
+            <p class="form__label"> Servicio: <?php echo strtoupper($Valor->getDescripcion() . " | " . $Contrato->getServicio() . " - desde: " . $Contrato->getOrigen() . " hasta: " . $Contrato->getDestino()) ?></p>
+
+            <form id="FormFinalizar" method="post" action="../controller/finaliza-contrato.php">
                     <div class="form__row">
                         <label class="form__label">Hora Fin</label>
                         <input type="time" name="input-hora" placeholder="00:00" value="" class="form__input required" required/>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">Pago Final</label>
-                        <input type="number" name="input-pago-final" placeholder="ingrese pago restante sino 0" value="" class="form__input text-right required" required/>
+                        <label class="form__label">Monto Pactado</label>
+                        <input type="text" name="input-monto" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input text-right required" required/>
                     </div>
-                    <div class="form__row mt-40">
-                        <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
+                <div class="form__row">
+                    <label class="form__label">Pago Final</label>
+                    <input type="number" name="input-pago-final" placeholder="ingrese pago restante sino 0" value="" class="form__input text-right required" required/>
+                </div>
+                <div class="form__row">
+                    <div class="switch">
+                        <label>Desea Factura?:</label>
+                        <input type="checkbox" hidden="hidden" id="enable">
+                        <label class="switch__label" for="enable"></label>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="form__row mt-40">
+                    <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -120,15 +109,20 @@ if ($Contrato->getId()) {
 <script src="../vendor/swiper/swiper.min.js"></script>
 <script src="../assets/js/jquery.custom.js"></script>
 <script>
-function preguntarComprobante () {
-    var idopcion = $("#select-comprobante").val();
-    var nrodocumento = $("#input-datos-facturacion").val();
-    if (idopcion == "4") {
-        $("#input-datos-factura").val(nrodocumento);
-    } else {
-        $("#input-datos-factura").val("");
+    function preguntarComprobante() {
+        var idopcion = $("#select-comprobante").val();
+        var nrodocumento = $("#input-datos-facturacion").val();
+        if (idopcion == "4") {
+            $("#input-datos-factura").val(nrodocumento);
+        } else {
+            $("#input-datos-factura").val("");
+        }
     }
-}
+
+    function enviar() {
+        alert("enviado")
+        $("#submit").prop("disabled", true);
+    }
 </script>
 </body>
 </html>

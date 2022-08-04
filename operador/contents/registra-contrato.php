@@ -27,9 +27,7 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
 <!-- Right panel -->
 <div id="panel-right"></div>
 
-
 <div class="page page--main" data-page="main">
-
     <!-- HEADER -->
     <header class="header header--page header--fixed">
         <div class="header__inner">
@@ -37,7 +35,6 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
             <div class="header__logo header__logo--text"><a href="#">Walga<strong>Transportes</strong></a></div>
         </div>
     </header>
-
 
     <!-- PAGE CONTENT -->
     <div class="page__content page__content--with-header">
@@ -50,29 +47,8 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
                         <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo date("Y-m-d") ?>" class="form__input required"/>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">es Cliente Express?</label>
-                        <div class="form__select">
-                            <select name="select-tiene-cliente" id="select-tiene-cliente" class="required" onchange="esclienteExpress()">
-                                <option value="0">NO</option>
-                                <option value="1">SI</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">seleccionar Cliente</label>
-                        <div class="form__select">
-                            <select name="input-cliente" id="input-cliente" class="required" onchange="seleccionarCliente()">
-                                <?php
-                                $array_clientes = $Cliente->verFilas();
-                                foreach ($array_clientes as $fila) {
-                                    echo ' <option value="' . $fila['id'] . '">' . $fila['datos'] . '</option>';
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <!--<input type="text" name="input-cliente" id="input-cliente" placeholder="Buscar Cliente" value="" class="form__input required" aria-label="Buscar emisor" aria-describedby="button-addon1"/>-->
-                        <button class="button button--small button--secondary" type="button" id="href-cliente" onclick="agregarCliente()">Agregar Nuevo Cliente</button>
-                        <input type="hidden" name="input-id-cliente" id="input-id-cliente">
+                        <label class="form__label">Servicio</label>
+                        <textarea class="form__textarea" id="text-servicio" name="input-servicio"></textarea>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Tipo Servicio</label>
@@ -89,91 +65,89 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
                         </div>
                     </div>
                     <div class="form__row">
-                        <label class="form__label">Servicio</label>
-                        <textarea class="form__textarea" id="text-servicio" name="input-servicio"></textarea>
-                    </div>
-                    <div class="form__row">
                         <label class="form__label">Origen</label>
                         <input type="text" name="input-origen" placeholder="Ref Origen" value="" class="form__input required" required/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Destino</label>
                         <input type="text" name="input-destino" placeholder="Ref Punto Llegada" value="" class="form__input required" required/>
+                        <input type="hidden" name="input-id-cliente" value="0">
+                        <input type="hidden" name="input-monto" value="0">
                     </div>
                     <div class="form__row">
-                        <label class="form__label">monto Pactado</label>
-                        <input type="number" name="input-monto" placeholder="0.00" value="" class="form__input required" required/>
+                        <label class="form__label">Hora Inicio</label>
+                        <input type="time" name="input-hora" placeholder="0.00" value="" class="form__input required" required/>
                     </div>
-
                     <div class="form__row mt-40">
-                        <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="ir al paso 2"/>
+                        <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
                     </div>
                 </form>
             </div>
         </div>
-
-
     </div>
-    <!-- PAGE END -->
 
-    <!-- Bottom navigation -->
-    <!--<div id="bottom-toolbar" class="bottom-toolbar"></div>-->
 
-    <!-- Social Icons Popup -->
-    <div id="popup-social"></div>
+</div>
+<!-- PAGE END -->
 
-    <!-- Alert -->
-    <div id="popup-alert"></div>
+<!-- Bottom navigation -->
+<!--<div id="bottom-toolbar" class="bottom-toolbar"></div>-->
 
-    <!-- Notifications -->
-    <div id="popup-notifications"></div>
+<!-- Social Icons Popup -->
+<div id="popup-social"></div>
 
-    <script src="../vendor/jquery/jquery-3.5.1.min.js"></script>
-    <script src="../vendor/jquery/jquery.validate.min.js"></script>
-    <script src="../vendor/swiper/swiper.min.js"></script>
-    <script src="../assets/js/jquery.custom.js"></script>
+<!-- Alert -->
+<div id="popup-alert"></div>
 
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
-            integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
-            crossorigin="anonymous"></script>
+<!-- Notifications -->
+<div id="popup-notifications"></div>
 
-    <script>
-        //buscar clientes
-        $("#input-cliente").autocomplete({
-            source: "../../inputAjax/obtenerJsonClientes.php",
-            minLength: 3,
-            select: function (event, ui) {
-                event.preventDefault();
-                $("#input-cliente").val(ui.item.datos);
-                $("#input-id-cliente").val(ui.item.id);
-                $("#text-servicio").focus();
-            }
-        });
+<script src="../vendor/jquery/jquery-3.5.1.min.js"></script>
+<script src="../vendor/jquery/jquery.validate.min.js"></script>
+<script src="../vendor/swiper/swiper.min.js"></script>
+<script src="../assets/js/jquery.custom.js"></script>
 
-        function seleccionarCliente () {
-            var idcliente = $("#input-cliente").val();
-            $("#input-id-cliente").val(idcliente)
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+        integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
+        crossorigin="anonymous"></script>
+
+<script>
+    //buscar clientes
+    $("#input-cliente").autocomplete({
+        source: "../../inputAjax/obtenerJsonClientes.php",
+        minLength: 3,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#input-cliente").val(ui.item.datos);
+            $("#input-id-cliente").val(ui.item.id);
+            $("#text-servicio").focus();
         }
+    });
 
-        function esclienteExpress() {
-            var tienecliente = $("#select-tiene-cliente").val()
-            if (tienecliente == 1) {
-                $("#input-cliente").prop("disabled", true);
-                $("#href-cliente").prop("disabled", true);
-                $("#input-cliente").val(0)
-                $("#input-id-cliente").val(0)
-                $("#text-servicio").focus();
-            } else {
-                $("#href-cliente").prop("disabled", false);
-                $("#input-cliente").prop("disabled", false);
-                $("#input-id-cliente").val("")
-                $("#input-cliente").focus();
-            }
-        }
+    function seleccionarCliente() {
+        var idcliente = $("#input-cliente").val();
+        $("#input-id-cliente").val(idcliente)
+    }
 
-        function agregarCliente() {
-            window.location.href = "registra-cliente.php";
+    function esclienteExpress() {
+        var tienecliente = $("#select-tiene-cliente").val()
+        if (tienecliente == 1) {
+            $("#input-cliente").prop("disabled", true);
+            $("#href-cliente").prop("disabled", true);
+            $("#input-cliente").val(0)
+            $("#input-id-cliente").val(0)
+            $("#text-servicio").focus();
+        } else {
+            $("#href-cliente").prop("disabled", false);
+            $("#input-cliente").prop("disabled", false);
+            $("#input-id-cliente").val("")
+            $("#input-cliente").focus();
         }
-    </script>
+    }
+
+    function agregarCliente() {
+        window.location.href = "registra-cliente.php";
+    }
+</script>
 </body>
 </html>

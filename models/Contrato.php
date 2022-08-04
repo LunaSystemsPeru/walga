@@ -408,11 +408,11 @@ class Contrato
                         '$this->origen',
                         '$this->destino',
                         '$this->servicio',
-                        '0',
+                        '$this->estado',
                         '$this->horasservicio',
                         '$this->montocontrato',
                         '0',
-                        '00:00',
+                        '$this->horainicio',
                         '00:00', 
                         '0')";
         $this->conectar->ejecutar_idu($sql);
