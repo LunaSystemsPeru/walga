@@ -49,7 +49,7 @@ $Recordatorio->setEmpresaid($_SESSION['empresa_id']);
         <h4>Lista de Documentos por Vencer</h4>
         <div class="cards cards--11">
             <?php
-            $array_vencimientos = $Recordatorio->verFilas();
+            $array_vencimientos = $Recordatorio->verxVencer();
             foreach ($array_vencimientos as $fila) {
                 ?>
                 <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
@@ -78,7 +78,7 @@ $Recordatorio->setEmpresaid($_SESSION['empresa_id']);
                             <?php
                         } ?>
                     </div>
-                    <div class="card__more"><a target="_blank" href="https://wa.me/+51<?php echo $fila['celular'] ?>?text=Hola, te escribo de WALGA Inversiones EIRL " ><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
+                    <div class="card__more"><a target="_blank" href="#" ><img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a></div>
                 </div>
             <?php
             }

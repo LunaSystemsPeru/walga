@@ -87,10 +87,12 @@ $Recordatorio->setEmpresaid($_SESSION['empresa_id']);
                                 <tbody>
                                 <?php
                                 $array_recordatorios = $Recordatorio->verFilas();
+                                $item = 0;
                                 foreach ($array_recordatorios as $fila) {
+                                    $item++;
                                  ?>
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row"><?php echo $item?></th>
                                         <td class="text-center"><?php echo $fila['diasfaltantes'] ?></td>
                                         <td class="text-center"><?php echo $Util->fecha_mysql_web($fila['fec_vencimiento']) ?></td>
                                         <td><?php echo $fila['documento'] ?></td>

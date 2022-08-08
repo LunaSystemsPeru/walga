@@ -429,6 +429,7 @@ class Contrato
                     servicio = '$this->servicio',
                     origen = '$this->origen',
                     destino = '$this->destino',
+                    cliente_id = '$this->clienteid',
                     incluye_igv = '$this->incluyeigv'
                 where id = '$this->id'";
         //echo $sql;

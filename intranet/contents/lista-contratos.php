@@ -1,9 +1,10 @@
 <?php
+/*
 error_reporting(-1);
 error_reporting(0);
 error_reporting(E_ALL);
 ini_set('error_reporting', E_ALL);
-
+*/
 include '../fixed/cargarSession.php';
 require '../../models/Contrato.php';
 
@@ -108,10 +109,10 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                         $iestado = $fila['estado_contrato'];
                                         $label_estado = "";
                                         $monto = $fila['monto'];
-                                        $deuda = $fila['monto'] - $fila['monto_pagado'];
                                         if ($fila['incluye_igv'] == 1) {
-                                            $monto = $fila['monto'] * 1.18;
+                                          //  $monto = $fila['monto'] * 1.18;
                                         }
+                                        $deuda = $monto - $fila['monto_pagado'];
                                         if ($iestado == 0) {
                                             $label_estado = '<span class="badge badge-boxed  badge-outline-warning">Programado</span>';
                                         }

@@ -171,6 +171,19 @@ class Cliente
         $this->conectar->ejecutar_idu($sql);
     }
 
+    public function modificar()
+    {
+        $sql = "update clientes set 
+                datos = '$this->datos',
+                celular =    '$this->celular', 
+                email = '$this->email',
+                entidad_id= '$this->entidad_id',
+                referencia = '$this->referencia'
+                where id = '$this->id'";
+        $this->conectar->ejecutar_idu($sql);
+    }
+
+
     public function actualizar()
     {
         $sql = "update clientes
@@ -188,9 +201,18 @@ class Cliente
         $sql = "select c.id, c.datos, c.email, c.celular, e.documento 
                 from clientes as c 
                 inner join entidades as e on e.id = c.entidad_id
-                where empresa_id = '$this->empresa_id'
+                where empresa_id = '$this->empresa_id' and c.id!=0 
                 order by datos asc";
         return $this->conectar->get_Cursor($sql);
+    }
+
+    public function obtenerEntidad()
+    {
+        $sql = "select * 
+                from clientes as c 
+                inner join entidades e on c.entidad_id = e.id
+                where c.id = '$this->id'";
+        return $this->conectar->get_json_row($sql);
     }
 
     public function buscarClientes($term)
@@ -201,7 +223,8 @@ class Cliente
         return $this->conectar->get_Cursor($sql);
     }
 
-    public function ultimos50Clientes () {
+    public function ultimos50Clientes()
+    {
         $sql = "select c.cliente_id, c2.datos, c2.celular, c2.email 
         from contratos as c 
         inner join clientes c2 on c.cliente_id = c2.id

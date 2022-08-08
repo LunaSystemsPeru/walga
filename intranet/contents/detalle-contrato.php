@@ -25,6 +25,10 @@ $fechaDos = new DateTime($Contrato->getHoratermino());
 
 $dateInterval = $fechaUno->diff($fechaDos);
 $totalhoras = $dateInterval->format('%H horas %i minutos') . PHP_EOL;
+
+if ($Contrato->getIncluyeigv() == 1) {
+  //  $Contrato->setMontocontrato($Contrato->getMontocontrato() * 1.18);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

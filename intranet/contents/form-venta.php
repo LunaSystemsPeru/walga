@@ -234,7 +234,7 @@ if ($contratoid) {
                                         <div class="mb-3">
                                             <label class="form-label" for="select-forma-pago">Forma de Pago</label>
                                             <div class="input-group">
-                                                <select class="form-control" id="select-forma-pago" >
+                                                <select class="form-control" id="select-forma-pago">
                                                     <option value="1">CONTADO</option>
                                                     <option value="2">CREDITO</option>
                                                 </select>
@@ -250,37 +250,95 @@ if ($contratoid) {
                                                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                                 </div><!--end modal-header-->
                                                 <div class="modal-body">
-                                                    <form class="form-horizontal auth-form my-4" >
-                                                        <div class="auth-page">
-                                                            <div class="auth-card">
-                                                                <div class="">
-                                                                    <div class="px-3">
-                                                                        <div class="form-group">
-                                                                            <label for="serie">Fecha</label>
-                                                                            <div class="input-group mb-3">
-                                                                                <input type="date" class="form-control" id="input-date" value="<?php echo date("Y-m-d") ?>">
-                                                                            </div>
-                                                                        </div><!--end form-group-->
-                                                                        <div class="form-group">
-                                                                            <label for="numero">Monto</label>
-                                                                            <div class="input-group mb-3">
-                                                                                <input type="number" class="form-control" name="input-descripcion" placeholder="0">
-                                                                            </div>
-                                                                        </div><!--end form-group-->
-                                                                        <div>
-
+                                                    <form class="form-horizontal auth-form my-4">
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-6">
+                                                                <label for="serie">Fecha Vencimiento</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input type="date" class="form-control text-center" id="input-date" value="<?php echo date("Y-m-d") ?>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label for="numero">Monto Cuota</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input type="number" class="form-control text-right" name="input-descripcion" placeholder="0">
+                                                                </div>
+                                                            </div>
+                                                        </div><!--end form-group-->
+                                                    </form><!--end form-->
+                                                    <div>
+                                                        <table class="table mb-0 table-centered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Item</th>
+                                                                <th>Fecha</th>
+                                                                <th>Monto</th>
+                                                                <th class="text-right">Action</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td class="text-center">23/07/2022</td>
+                                                                <td class="text-right">800.00</td>
+                                                                <td class="text-right">
+                                                                    <div class="dropdown d-inline-block">
+                                                                        <a class="dropdown-toggle arrow-none" id="dLabel11" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                                                            <i class="las la-ellipsis-v font-20 text-muted"></i>
+                                                                        </a>
+                                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel11">
+                                                                            <a class="dropdown-item" href="#">Creat Project</a>
+                                                                            <a class="dropdown-item" href="#">Open Project</a>
+                                                                            <a class="dropdown-item" href="#">Tasks Details</a>
                                                                         </div>
-                                                                    </div><!--end /div-->
-                                                                </div><!--end card-body-->
-                                                            </div><!--end card-->
-                                                        </div><!--end auth-page-->
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-soft-primary btn-sm">Guardar</button>
-                                                            <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                                                        </div><!--end modal-footer-->
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><img src="assets/images/widgets/project2.jpg" alt="" class="rounded-circle thumb-xs me-1">
+                                                                    ZZ Diamond
+                                                                </td>
+                                                                <td>2</td>
+                                                                <td>$180</td>
+                                                                <td>$400</td>
+                                                                <td class="text-right">
+                                                                    <div class="dropdown d-inline-block">
+                                                                        <a class="dropdown-toggle arrow-none" id="dLabel11" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                                                            <i class="las la-ellipsis-v font-20 text-muted"></i>
+                                                                        </a>
+                                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel11">
+                                                                            <a class="dropdown-item" href="#">Creat Project</a>
+                                                                            <a class="dropdown-item" href="#">Open Project</a>
+                                                                            <a class="dropdown-item" href="#">Tasks Details</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            </tbody>
+                                                        </table><!--end /table-->
+                                                    </div>
+                                                    <form class="form-horizontal auth-form my-4">
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-6">
+                                                                <label for="serie">Total Credito</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input type="text" class="form-control text-right" id="input-total-credito" value=".00" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label for="numero">Acumulado Cuotas</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input type="text" class="form-control text-right" id="input-acumulado-credito" value=".00" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div><!--end form-group-->
                                                     </form><!--end form-->
                                                 </div><!--end modal-body-->
-
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-soft-primary btn-sm">Guardar</button>
+                                                    <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                                                </div><!--end modal-footer-->
                                             </div><!--end modal-content-->
                                         </div><!--end modal-dialog-->
                                     </div><!--end modal-->

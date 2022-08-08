@@ -63,27 +63,46 @@ if ($Contrato->getId()) {
             <p class="form__label"> Servicio: <?php echo strtoupper($Valor->getDescripcion() . " | " . $Contrato->getServicio() . " - desde: " . $Contrato->getOrigen() . " hasta: " . $Contrato->getDestino()) ?></p>
 
             <form id="FormFinalizar" method="post" action="../controller/finaliza-contrato.php">
-                    <div class="form__row">
-                        <label class="form__label">Hora Fin</label>
-                        <input type="time" name="input-hora" placeholder="00:00" value="" class="form__input required" required/>
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label">Monto Pactado</label>
-                        <input type="text" name="input-monto" value="<?php echo $Contrato->getMontocontrato() ?>" class="form__input text-right required" required/>
-                    </div>
                 <div class="form__row">
-                    <label class="form__label">Pago Final</label>
-                    <input type="number" name="input-pago-final" placeholder="ingrese pago restante sino 0" value="" class="form__input text-right required" required/>
+                    <label class="form__label">Hora Fin</label>
+                    <input type="time" name="input-hora" placeholder="00:00" value="" class="form__input required" required/>
+                </div>
+                <div class="form__row">
+                    <label class="form__label">Monto Pactado</label>
+                    <input type="number" step="1" name="input-monto" id="input-monto" value="<?php echo ($Contrato->getMontocontrato() > 0 ? $Contrato->getMontocontrato() : "") ?>" class="form__input text-right required" required/>
                 </div>
                 <div class="form__row">
                     <div class="switch">
                         <label>Desea Factura?:</label>
-                        <input type="checkbox" hidden="hidden" id="enable">
-                        <label class="switch__label" for="enable"></label>
+                        <input type="checkbox" hidden="hidden" id="activa-factura" onchange="preguntarComprobante()">
+                        <label class="switch__label" for="activa-factura"></label>
                     </div>
                 </div>
+                <div class="form__row">
+                    <div class="switch">
+                        <label>Aumentar IGV?:</label>
+                        <input type="checkbox" hidden="hidden" id="aumenta-monto" onchange="aumentarIGV()" disabled>
+                        <label class="switch__label" for="aumenta-monto"></label>
+                    </div>
+                </div>
+                <h3 id="monto-factura"> Monto a Facturar: S/ <?php echo $Contrato->getMontocontrato() ?></h3>
+                <hr>
+                <div class="form__row">
+                    <div class="switch">
+                        <label>Pago Completo?:</label>
+                        <input type="checkbox" hidden="hidden" id="pago-completo" onchange="especificarPago()">
+                        <label class="switch__label" for="pago-completo"></label>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <label class="form__label">Pago Final</label>
+                    <input type="number" step="0.1" name="input-pago-final" id="input-pago-final" placeholder="ingrese pago restante sino 0" value="" class="form__input text-right required" required/>
+                </div>
                 <div class="form__row mt-40">
-                    <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
+                    <input type="hidden" name="input-masigv" value="0" id="input-masigv" >
+                    <input type="hidden" name="input-quierefactura" value="0" id="input-quierefactura" >
+                    <input type="hidden" name="input-id-contrato" value="<?php echo $Contrato->getId()?>" >
+                    <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Finalizar"/>
                 </div>
             </form>
         </div>
@@ -109,13 +128,53 @@ if ($Contrato->getId()) {
 <script src="../vendor/swiper/swiper.min.js"></script>
 <script src="../assets/js/jquery.custom.js"></script>
 <script>
+
     function preguntarComprobante() {
-        var idopcion = $("#select-comprobante").val();
-        var nrodocumento = $("#input-datos-facturacion").val();
-        if (idopcion == "4") {
-            $("#input-datos-factura").val(nrodocumento);
+        var checkfactura = document.getElementById("activa-factura").checked;
+        if (checkfactura) {
+            $("#aumenta-monto").prop("disabled", false)
+            $("#submit").prop("value", "Escribir RUC");
+            $("#input-quierefactura").val(1)
         } else {
-            $("#input-datos-factura").val("");
+            $("#aumenta-monto").prop("disabled", true)
+            $("#submit").prop("value", "Finalizar");
+            $("#input-quierefactura").val(0)
+        }
+        $("#aumenta-monto").prop("checked", false);
+        aumentarIGV();
+    }
+
+    function aumentarIGV() {
+        var checkigv = document.getElementById("aumenta-monto").checked;
+        var montocontrato = document.getElementById("input-monto").value;
+        var igv = montocontrato * 1.18;
+        if (checkigv) {
+            $("#monto-factura").html("Monto a Facturar: S/ " + igv.toFixed(2))
+            $("#input-masigv").val(1)
+        } else {
+            $("#monto-factura").html("Monto a Facturar: S/ " + parseFloat(montocontrato).toFixed(2))
+            $("#input-masigv").val(0)
+        }
+    }
+
+    function especificarPago () {
+        var opcionpago = document.getElementById("pago-completo").checked;
+        var montocontrato = document.getElementById("input-monto").value;
+        var montofinal = 0;
+        var checkigv = document.getElementById("aumenta-monto").checked;
+        if (checkigv) {
+            montofinal = montocontrato * 1.18;
+        } else {
+            montofinal = montocontrato;
+        }
+        montofinal = parseFloat(montofinal).toFixed(2)
+        if (opcionpago) {
+            //llenar auto
+            $("#input-pago-final").val(montofinal)
+        } else {
+            //colocar fous en inut y limpiar
+            $("#input-pago-final").val("")
+            $("#input-pago-final").focus()
         }
     }
 
