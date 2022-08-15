@@ -457,7 +457,7 @@ class Contrato
                 inner join parametros_valores pv on c.comprobante_id = pv.id
                 inner join parametros_valores as pv2 on c.tiposervicio_id = pv2.id
                 inner join vehiculos v on c.vehiculo_id = v.id
-                where c.fecha = '$this->fecha' or c.estado_comprobante = 0 or c.estado_contrato != 2
+                where c.fecha = '$this->fecha' or (c.estado_comprobante = 0 and c.comprobante_id= 4) 
                 order by c.fecha asc";
         return $this->conectar->get_Cursor($sql);
     }

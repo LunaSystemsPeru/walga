@@ -1,12 +1,20 @@
 <?php
 include_once '../fixed/cargarSession.php';
 require '../../models/VehiculoGasto.php';
+require '../../models/Vehiculo.php';
+
+$Vehiculo = new Vehiculo();
 $Gasto = new VehiculoGasto();
+
+$Vehiculo->setEmpresaid($_SESSION['empresa_id']);
+
 $inicio = date("Y-m-d");
 $fin = date("Y-m-d");
+$placa = '';
 if (filter_input(INPUT_GET, 'fecha_inicio')) {
     $inicio = filter_input(INPUT_GET, 'fecha_inicio');
     $fin = filter_input(INPUT_GET, 'fecha_final');
+    $placa = filter_input(INPUT_GET, 'placa');
 }
 ?>
 <!DOCTYPE html>
@@ -86,7 +94,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $arrayGastos = $Gasto->verGastos($inicio, $fin);
+                                    $arrayGastos = $Gasto->verGastos($inicio, $fin, $placa);
                                     $item = 1;
                                     $saldo = 0;
                                     $ingresos = 0;
@@ -142,15 +150,28 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                 <form class="form-horizontal auth-form my-4" action="lista-gastos.php" method="get">
                     <div class="modal-body">
                         <div class="form-group">
+                            <label class="form-label" for="input-documento">Vehiculo</label>
+                            <div class="input-group">
+                                <select class="form-control" name="placa">
+                                    <?php
+                                    $aplacas = $Vehiculo->verFilas();
+                                    foreach ($aplacas as $fila) {
+                                        echo "<option value='".$fila['placa']."'>".$fila['placa']."</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
                             <label class="form-label" for="input-documento">Fecha Inicio</label>
                             <div class="input-group">
-                                <input type="date" class="form-control" id="fecha-inicio" name="fecha_inicio" required>
+                                <input type="date" class="form-control" id="fecha-inicio" name="fecha_inicio" value="<?php echo date("Y-m-d") ?>" required>
                             </div>
                         </div><!--end form-group-->
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Fecha Final</label>
                             <div class="input-group">
-                                <input type="date" class="form-control" id="fecha-final" name="fecha_final" required>
+                                <input type="date" class="form-control" id="fecha-final" name="fecha_final" value="<?php echo date("Y-m-d") ?>" required>
                             </div>
                         </div><!--end form-group-->
                     </div><!--end auth-page-->
