@@ -403,7 +403,7 @@ class Contrato
                         '$this->vehiculoid',
                         '11',
                         '$this->empresaid',
-                        '0',
+                        '1',
                         '$this->tiposervicioid',
                         '$this->origen',
                         '$this->destino',
