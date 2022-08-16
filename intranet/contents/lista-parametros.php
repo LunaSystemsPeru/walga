@@ -1,4 +1,5 @@
 <?php
+require_once '../fixed/cargarSession.php';
 require '../../models/Parametro.php';
 require '../../models/ParametroValor.php';
 $Parametro = new Parametro();
@@ -185,7 +186,7 @@ $Parametro->obtenerDatos();
                                         <td><?php echo $filavalor['valor1'] ?></td>
                                         <td><?php echo $filavalor['valor2'] ?></td>
                                         <td>
-                                            <button class="btn btn-info btn-sm"><i class="ti ti-pencil"></i></button>
+                                            <a href="<?php echo $filavalor['id']?>" class="btn btn-info btn-sm"><i class="ti ti-pencil"></i></a>
                                         </td>
                                     </tr>
                                     <?php

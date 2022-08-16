@@ -5,11 +5,13 @@ require '../../models/Venta.php';
 require '../../models/ComprobanteSunat.php';
 require '../../models/VentaContrato.php';
 require '../../models/VentaServicio.php';
+require '../../models/VentaCuota.php';
 
 $Comprobante = new ComprobanteSunat();
 $Venta = new Venta();
 $VentaContrato = new VentaContrato();
 $VentaServicio = new VentaServicio();
+$VentaCuota = new VentaCuota();
 
 $Comprobante->setComprobanteid(filter_input(INPUT_POST, 'inputTido'));
 $Comprobante->setEmpresaid($_SESSION['empresa_id']);
@@ -50,6 +52,18 @@ foreach ($array_servicios as $fila) {
     $VentaServicio->setPrecio($fila->precio);
     $VentaServicio->obtenerId();
     $VentaServicio->insertar();
+}
+
+$VentaCuota->setVentaid($Venta->getId());
+
+$array_cuotas = json_decode(filter_input(INPUT_POST, 'arrayCuotas'),false);
+if ($array_cuotas) {
+    foreach ($array_cuotas as $fila) {
+        $VentaCuota->setFechaVencimiento($fila->fecha);
+        $VentaCuota->setMonto($fila->cuota);
+        $VentaCuota->obtenerId();
+        $VentaCuota->insertar();
+    }
 }
 
 $url = $_SERVER['REQUEST_SCHEME']  . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];

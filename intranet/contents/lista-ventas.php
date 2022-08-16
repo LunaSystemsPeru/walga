@@ -140,7 +140,7 @@ $fecha_minima = date("Y-m-d", strtotime($fecha_actual . "- 6 days"));
                                             <td><?php echo number_format($fila['total'], 2) ?></td>
                                             <td><?php echo $label_estado ?></td>
                                             <td><?php echo $label_enviado ?></td>
-                                            <td><a href="<?php echo '../../reports/comprobante_venta_a4.php?id=' . $fila['id'] ?>" target="_blank" class="btn btn-info btn-sm"><i class="fa fa-file-pdf"></i></a></td>
+                                            <td><a href="<?php echo 'reporte-documento-venta.php?id=' . $fila['id'] ?>" class="btn btn-info btn-sm"><i class="fa fa-file-pdf"></i></a></td>
                                             <td><a href="<?php echo '../../public/xml/' . $fila['nombre_documento'] . '.xml' ?>" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-archive"></i></a></td>
                                             <td><?php echo $fila['username'] ?></td>
                                             <td>

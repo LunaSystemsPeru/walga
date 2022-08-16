@@ -205,7 +205,7 @@ class Recordatorio
         $sql = "select count(*) as cuenta 
                 from recordatorios_documentos as vd
                 where vd.estado = 1 and vd.empresa_id = '$this->empresaid' 
-                    and fec_vencimiento < date_add(current_date(), interval 20 day)";
+                    and fec_vencimiento > date_sub(current_date(), interval 20 day)";
         return $this->conectar->get_valor_query($sql, "cuenta");
 }
 

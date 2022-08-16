@@ -1,4 +1,5 @@
 <?php
+require_once '../fixed/cargarSession.php';
 require '../../models/Contrato.php';
 require '../../models/Cliente.php';
 require '../../models/Entidad.php';

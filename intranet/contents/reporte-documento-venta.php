@@ -1,6 +1,17 @@
 <?php
 require_once '../fixed/cargarSession.php';
-require '../../models/Chofer.php';
+require '../../models/Venta.php';
+require '../../models/VentaSunat.php';
+
+$Venta = new Venta();
+$Hash = new VentaSunat();
+
+$Venta->setId(filter_input(INPUT_GET, 'id'));
+if (!$Venta->getId()) {
+    //header("Location: lista-ventas.php");
+}
+$Hash->setVentaid($Venta->getId());
+$Hash->obtenerDatos();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,62 +53,47 @@ require '../../models/Chofer.php';
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Lista de Choferes</h4>
+                                <h4 class="page-title">Visualizar PDF</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Flota</a></li>
-                                    <li class="breadcrumb-item active">Choferes</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Facturacion</a></li>
+                                    <li class="breadcrumb-item active">Visualizar</li>
                                 </ol>
-                            </div><!--end col-->
-                            <div class="col-auto align-self-center">
-                                <a href="form-choferes.php" class="btn btn-sm btn-soft-primary">
-                                    <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                    Agregar Choferes
-                                </a>
                             </div><!--end col-->
                         </div><!--end row-->
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div><!--end row-->
             <!-- end page title end breadcrumb -->
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
+            <div class="row ">
+                <div class="col-9">
+                    <div class="card">
+                        <div class="card-header bg-success">
+                            <h6 class="text-white">Comprobante generado correctamente</h6>
+                        </div>
+                        <div class="card-body">
+                            <embed src="../../reports/comprobante_venta_a4.php?id=<?php echo $Venta->getId() ?>" class="col-12 h-100 min-vh-100" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th>Item</th>
-                                        <th>Datos</th>
-                                        <th>Brevete</th>
-                                        <th>Cat. Brevete</th>
-                                        <th>Fec. Renovacion</th>
-                                        <th>Estado</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Luis Oyanguren</td>
-                                        <td>Abc1234</td>
-                                        <td>AII</td>
-                                        <td>2022</td>
-                                        <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table><!--end /table-->
-                            </div><!--end /tableresponsive-->
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div> <!-- end col -->
+                            <p>Hash Generado: <?php echo $Hash->getHash()?></p>
+                            <p>Nombre XML: <?php echo $Hash->getNombre()?></p>
+                            <p>Enviado a SUNAT: <label class="badge badge-warning">NO</label></p>
+                            <a href="../../public/xml/<?php echo $Hash->getNombre() ?>.xml" class="btn btn-info"><i class="ti ti-zip"></i> Descargar XML</a>
+                        </div>
+                        <div class="card-body">
+                            <a href="lista-ventas.php" class="btn btn-primary"><i class="ti ti-arrow-left"></i> Regresar</a>
+                        </div>
+                    </div>
+
+                </div>
             </div> <!-- end row -->
         </div><!-- container -->
     </div>
     <!-- end page content -->
+
 </div>
 <!-- end page-wrapper -->
 <?php
@@ -115,14 +111,27 @@ include('../fixed/footer.php');
 <script src="../assets/js/moment.js"></script>
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
-<script src="../plugins/apex-charts/apexcharts.min.js"></script>
-<script src="../assets/pages/jquery.analytics_dashboard.init.js"></script>
 
 <!-- App js -->
 <script src="../assets/js/app.js"></script>
+<script>
+    function eliminarServicio(id) {
+        if (confirm('Esta seguro de eliminar este servicio?')) {
+            window.location.href = '../controller/elimina-servicio.php?contratoid=' + id;
+        } else {
+            alert("Cancelado")
+        }
+    }
+
+    function eliminarPago(id) {
+        if (confirm('Esta seguro de eliminar este pago?')) {
+            window.location.href = '../controller/elimina-pago-contrato.php?pagoid=' + id;
+        } else {
+            alert("Cancelado")
+        }
+    }
+</script>
 
 </body>
-
-
 <!-- Mirrored from mannatthemes.com/dastone/default/horizontal-index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 May 2021 20:35:01 GMT -->
 </html>

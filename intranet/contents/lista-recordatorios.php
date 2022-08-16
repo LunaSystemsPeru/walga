@@ -81,7 +81,7 @@ $Recordatorio->setEmpresaid($_SESSION['empresa_id']);
                                     <th>F. Emision</th>
                                     <th>Estado</th>
                                     <th>Emisor</th>
-                                    <th></th>
+                                    <th width="10%"></th>
                                 </tr>
                                 </thead>
                                 <tbody>

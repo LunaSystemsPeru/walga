@@ -1,3 +1,16 @@
+<?php
+require_once '../../models/Recordatorio.php';
+require_once '../../tools/Util.php';
+$Recordar = new Recordatorio;
+$Tools = new Util();
+
+$Recordar->setEmpresaid($_SESSION['empresa_id']);
+$array_vencimientos = $Recordar->verxVencer();
+$contaritems = 0;
+foreach ($array_vencimientos as $fila) {
+    $contaritems++;
+}
+?>
 <div class="topbar">
     <!-- LOGO -->
     <div class="brand">
@@ -42,27 +55,33 @@
                 <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="false" aria-expanded="false">
                     <i data-feather="bell" class="align-self-center topbar-icon"></i>
-                    <span class="badge badge-danger badge-pill noti-icon-badge">2</span>
+                    <span class="badge badge-danger badge-pill noti-icon-badge"><?php echo $contaritems ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg pt-0">
 
                     <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
-                        Notificationess <span class="badge badge-primary badge-pill">2</span>
+                        Vencimientos <span class="badge badge-primary badge-pill"><?php echo $contaritems ?></span>
                     </h6>
                     <div class="notification-menu" data-simplebar>
-                        <!-- item-->
-                        <a href="#" class="dropdown-item py-3">
-                            <small class="float-right text-muted pl-2">2 min ago</small>
-                            <div class="media">
-                                <div class="avatar-md bg-soft-primary">
-                                    <i data-feather="shopping-cart" class="align-self-center icon-xs"></i>
-                                </div>
-                                <div class="media-body align-self-center ml-2 text-truncate">
-                                    <h6 class="my-0 font-weight-normal text-dark">Your order is placed</h6>
-                                    <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
-                                </div><!--end media-body-->
-                            </div><!--end media-->
-                        </a><!--end-item-->
+                        <?php
+                        foreach ($array_vencimientos as $fila) {
+                            ?>
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-right text-muted pl-2"><?php echo $fila['diasfaltantes'] ?> dias </small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i data-feather="alert-triangle" class="align-self-center icon-xs"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ml-2 text-truncate">
+                                        <h6 class="my-0 font-weight-normal text-dark"><?php echo $fila['documento'] ?></h6>
+                                        <small class="text-muted mb-0">Vence el <?php echo $Tools->fecha_mysql_web($fila['fec_vencimiento']) ?></small>
+                                    </div><!--end media-body-->
+                                </div><!--end media-->
+                            </a><!--end-item-->
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </li>

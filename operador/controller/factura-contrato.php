@@ -8,7 +8,7 @@ $Contrato = new Contrato();
 $Cliente = new Cliente();
 $Entidad = new Entidad();
 
-$Contrato->setId(filter_input(INPUT_POST, 'idcontrato'));
+$Contrato->setId(filter_input(INPUT_POST, 'input-id-contrato'));
 $Contrato->obtenerDatos();
 
 $Entidad->setNrodocumento(filter_input(INPUT_POST, 'input-ruc'));

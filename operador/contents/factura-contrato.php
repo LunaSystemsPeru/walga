@@ -19,7 +19,7 @@ if ($Contrato->getId()) {
 }
 
 if ($Contrato->getIncluyeigv() == 1) {
-    $Contrato->setMontocontrato($Contrato->getMontocontrato() * 1.18);
+    //$Contrato->setMontocontrato($Contrato->getMontocontrato() * 1.18);
 }
 ?>
 

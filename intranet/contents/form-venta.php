@@ -22,7 +22,7 @@ if ($contratoid) {
     $concepto = $Parametro->getDescripcion() . " PARA " . $Contrato->getServicio() . " DESDE " . $Contrato->getOrigen() . " HASTA " . $Contrato->getDestino();
     $monto = $Contrato->getMontocontrato();
     if ($Contrato->getIncluyeigv() == 1) {
-        $monto = $Contrato->getMontocontrato() * 1.18;
+        //    $monto = $Contrato->getMontocontrato() * 1.18;
     }
     $Cliente->setId($Contrato->getClienteid());
     $Cliente->obtenerDatos();
@@ -234,11 +234,16 @@ if ($contratoid) {
                                         <div class="mb-3">
                                             <label class="form-label" for="select-forma-pago">Forma de Pago</label>
                                             <div class="input-group">
-                                                <select class="form-control" id="select-forma-pago">
-                                                    <option value="1">CONTADO</option>
-                                                    <option value="2">CREDITO</option>
+                                                <select class="form-control" id="select-forma-pago" onchange="validarCredito()">
+                                                    <?php
+                                                    $Parametro->setParametroId(9);
+                                                    $arrayFormaPago = $Parametro->verFilas();
+                                                    foreach ($arrayFormaPago as $item) {
+                                                        echo '<option value="' . $item['id'] . '">' . $item['descripcion'] . '</option>';
+                                                    }
+                                                    ?>
                                                 </select>
-                                                <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#exampleModalSignup">Agregar Cuotas</button>
+                                                <button class="btn btn-info" type="button" id="button-credito" onclick="abrirModalCredito()" disabled>Agregar Cuotas</button>
                                             </div>
                                         </div>
                                     </div>
@@ -252,19 +257,23 @@ if ($contratoid) {
                                                 <div class="modal-body">
                                                     <form class="form-horizontal auth-form my-4">
                                                         <div class="form-group row">
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-5">
                                                                 <label for="serie">Fecha Vencimiento</label>
                                                                 <div class="input-group mb-3">
-                                                                    <input type="date" class="form-control text-center" id="input-date" value="<?php echo date("Y-m-d") ?>">
+                                                                    <input type="date" class="form-control text-center" id="input-fecha-cuota" value="<?php echo date("Y-m-d") ?>">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-5">
                                                                 <label for="numero">Monto Cuota</label>
                                                                 <div class="input-group mb-3">
-                                                                    <input type="number" class="form-control text-right" name="input-descripcion" placeholder="0">
+                                                                    <input type="number" class="form-control text-right" id="input-monto-cuota" placeholder="0">
                                                                 </div>
                                                             </div>
+                                                            <div class="col-lg-2">
+                                                                <button class="btn btn-success btn-sm mt-3" type="button" onclick="agregarCuotas()"><i class="ti ti-plus"></i> Add</button>
+                                                            </div>
                                                         </div><!--end form-group-->
+
                                                     </form><!--end form-->
                                                     <div>
                                                         <table class="table mb-0 table-centered">
@@ -276,72 +285,49 @@ if ($contratoid) {
                                                                 <th class="text-right">Action</th>
                                                             </tr>
                                                             </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td class="text-center">23/07/2022</td>
-                                                                <td class="text-right">800.00</td>
-                                                                <td class="text-right">
-                                                                    <div class="dropdown d-inline-block">
-                                                                        <a class="dropdown-toggle arrow-none" id="dLabel11" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                                                            <i class="las la-ellipsis-v font-20 text-muted"></i>
-                                                                        </a>
-                                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel11">
-                                                                            <a class="dropdown-item" href="#">Creat Project</a>
-                                                                            <a class="dropdown-item" href="#">Open Project</a>
-                                                                            <a class="dropdown-item" href="#">Tasks Details</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><img src="assets/images/widgets/project2.jpg" alt="" class="rounded-circle thumb-xs me-1">
-                                                                    ZZ Diamond
-                                                                </td>
-                                                                <td>2</td>
-                                                                <td>$180</td>
-                                                                <td>$400</td>
-                                                                <td class="text-right">
-                                                                    <div class="dropdown d-inline-block">
-                                                                        <a class="dropdown-toggle arrow-none" id="dLabel11" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                                                            <i class="las la-ellipsis-v font-20 text-muted"></i>
-                                                                        </a>
-                                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel11">
-                                                                            <a class="dropdown-item" href="#">Creat Project</a>
-                                                                            <a class="dropdown-item" href="#">Open Project</a>
-                                                                            <a class="dropdown-item" href="#">Tasks Details</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-
+                                                            <tbody id="contenido-cuotas">
                                                             </tbody>
                                                         </table><!--end /table-->
                                                     </div>
                                                     <form class="form-horizontal auth-form my-4">
                                                         <div class="form-group row">
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-4">
                                                                 <label for="serie">Total Credito</label>
                                                                 <div class="input-group mb-3">
                                                                     <input type="text" class="form-control text-right" id="input-total-credito" value=".00" readonly>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-4">
                                                                 <label for="numero">Acumulado Cuotas</label>
                                                                 <div class="input-group mb-3">
                                                                     <input type="text" class="form-control text-right" id="input-acumulado-credito" value=".00" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <label for="numero">Pendiente Cuotas</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input type="text" class="form-control text-right" id="input-pendiente-credito" value=".00" readonly>
                                                                 </div>
                                                             </div>
                                                         </div><!--end form-group-->
                                                     </form><!--end form-->
                                                 </div><!--end modal-body-->
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-soft-primary btn-sm">Guardar</button>
-                                                    <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
                                                 </div><!--end modal-footer-->
                                             </div><!--end modal-content-->
                                         </div><!--end modal-dialog-->
                                     </div><!--end modal-->
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 align-content-center">
+                                        <div class="media mb-auto">
+                                            <div class="media-body ">
+                                                <p class="col-form-label mb-0">Total a cobrar </p>
+                                                <h6 class="font-24" id="input-total-venta">.00</h6>
+                                            </div><!--end media body-->
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div><!--end card-body-->
@@ -385,6 +371,9 @@ include('../fixed/footer.php');
 <script>
     var arrayservicios = new Array();
     var totalventa = 0;
+    var arrayCuotas = new Array();
+    var totalcuotas = 0;
+    var totalCredito = 0;
 
     //buscar clientes
     $("#input_datos_cliente").autocomplete({
@@ -416,11 +405,11 @@ include('../fixed/footer.php');
 
     //añadir servicio a un array
     function agregarServicio() {
-        var item = (arrayservicios.length + 1);
-        var descripcion = $("#input-descripcion").val();
-        var preciototal = $("#input-precio-total").val();
-        var unidadid = $("#select-unidad").val();
-        var unidad_nombre = $("#select-unidad").find('option:selected').text();
+        let item = (arrayservicios.length + 1);
+        let descripcion = $("#input-descripcion").val();
+        let preciototal = $("#input-precio-total").val();
+        let unidadid = $("#select-unidad").val();
+        let unidad_nombre = $("#select-unidad").find('option:selected').text();
 
         if (descripcion.length < 10) {
             alert("Falta descripcion del servicio")
@@ -452,6 +441,7 @@ include('../fixed/footer.php');
 
     function mostrarItems() {
         $("#contenido-detalle").html("");
+        totalventa = 0
         var items = 1;
         for (var i = 0; i < arrayservicios.length; i++) {
             var totalitem = parseFloat(arrayservicios[i].precio);
@@ -471,6 +461,7 @@ include('../fixed/footer.php');
             items++;
         }
 
+        $("#input-total-venta").html(totalventa.toFixed(2))
     }
 
     function limpiarCampos() {
@@ -481,12 +472,35 @@ include('../fixed/footer.php');
     }
 
     function validarDocumentoComprobante() {
-        //SI ES RUC EL NRO DE DOCUMENTO NO DEBE SER DE 8 DIGITOS SOLO 11;
-        var comprobanteid = $("#select-comprobante").val()
-        var nrodocumento = $("#input_documento_cliente").val()
-        if (nrodocumento.length != 11) {
-            alert("Para emitir una factura debe ser un RUC")
+        let comprobanteid = $("#select-comprobante").val()
+        var clienteid = $("#hidden-idcliente").val();
+        let clientedocumento = $("#input_documento_cliente").val()
+        if (totalventa == 0) {
+            alert("Debe ingresar al menos un servicio, monto debe ser mayor a 0")
             return false
+        }
+
+        if (comprobanteid == 4) {
+            //si factura cliente debe ser diferente a 0 o digitos debe ser 11
+            if (clienteid == 0) {
+                alert("Debe seleccionar un cliente, si no esta registrado escriba el numero de documento (DNI o RUC) y luego clic en buscar Datos")
+                return false
+            }
+
+            if (clientedocumento.length != 11) {
+                alert("Para emitir una factura cliente debe ser una empresa")
+                return false
+            }
+        }
+
+        if (comprobanteid == 3) {
+            if (totalventa > 700) {
+                if (clientedocumento.length <8) {
+                    alert("Cliente debe ser documentado ")
+                    return false
+                }
+            }
+            //si boleta es menor a 700 puede ser 0 sino debe ser dni
         }
     }
 
@@ -496,7 +510,7 @@ include('../fixed/footer.php');
         alert("Cargando Datos...\n espere un momento por favor");
         var arraypost = {nrodocumento: nrodocumento};
         $.post("../controller/registra-entidad.php", arraypost, function (data) {
-            console.log(data);
+            //console.log(data);
             var jsonresultado = JSON.parse(data);
             if (jsonresultado.success == "error") {
                 alert("Error en el dni o ruc");
@@ -512,18 +526,90 @@ include('../fixed/footer.php');
             });
     }
 
+    function obtenerPorcentajeDetraccion(id) {
+        let porcentaje = 0
+        $.ajax({
+            url: '../../inputAjax/obtenerDetraccion.php?id=' + id,
+            headers: {"Accept": "application/json"},
+            async: false,
+            dataType: 'json',
+            success: function (json) {
+                //console.log(json)
+                porcentaje = parseFloat(json.porcentaje)
+            }
+        });
+        return porcentaje
+    }
+
+    function validarCredito() {
+        let idcredito = $("#select-forma-pago").val();
+        if (idcredito == 21) {
+            //bloquear boton
+            $("#button-credito").prop("disabled", true)
+        } else {
+            //habilitar boton
+            $("#button-credito").prop("disabled", false)
+        }
+    }
+
+    function abrirModalCredito() {
+        let iddetraccion = $("#select-detraccion").val()
+        let porcentaje = obtenerPorcentajeDetraccion(iddetraccion)
+        totalCredito = totalventa - ((porcentaje / 100) * totalventa);
+        $("#input-total-credito").val(totalCredito.toFixed(2))
+        $("#exampleModalSignup").modal("toggle")
+    }
+
+    function agregarCuotas() {
+        var ifecha = $("#input-fecha-cuota")
+        var icuota = $("#input-monto-cuota")
+        var idtem = arrayCuotas.length
+
+        if (icuota.val() < 1) {
+            alert("Debes ingresar monto mayor a 0 y menor o igual a " + totalCredito)
+            return false
+        }
+        let sumaCredito = totalcuotas + parseFloat(icuota.val())
+        //console.log(sumaCredito)
+        if (sumaCredito > totalCredito) {
+            alert("Revisar Monto no debe ser mayor a " + totalCredito)
+            return false
+        }
+        arrayCuotas.push({"item": idtem, "fecha": ifecha.val(), "cuota": icuota.val()})
+        icuota.val("")
+        mostrarCuotas()
+    }
+
+    function obtenermontoCredito() {
+
+    }
+
+    function mostrarCuotas() {
+        var items = 1;
+        $("#contenido-cuotas").html("")
+        totalcuotas = 0
+
+        for (var i = 0; i < arrayCuotas.length; i++) {
+            var cuotaitem = parseFloat(arrayCuotas[i].cuota);
+            totalcuotas = totalcuotas + cuotaitem;
+
+            $("#contenido-cuotas").append('<tr>' +
+                '<td>' + items + '</td>' +
+                '<td class="text-center">' + arrayCuotas[i].fecha + '</td>' +
+                '<td class="text-right">' + cuotaitem + '</td>' +
+                '<td class="text-right">' +
+                '<button type="button" class="btn btn-warning btn-sm"><i class="ti ti-trash"></i></button>' +
+                '</td>' +
+                '</tr>');
+
+            items++;
+        }
+        let pendientecredito = totalCredito - totalcuotas
+        $("#input-pendiente-credito").val(pendientecredito.toFixed(2))
+        $("#input-acumulado-credito").val(totalcuotas.toFixed(2))
+    }
+
     function finalizarVenta() {
-        var clienteid = $("#hidden-idcliente").val();
-        if (totalventa == 0) {
-            alert("Debe ingresar al menos un servicio, monto debe ser mayor a 0")
-            return false
-        }
-
-        if (clienteid == 0) {
-            alert("Debe seleccionar un cliente, si no esta registrado escriba el numero de documento (DNI o RUC) y luego clic en buscar Datos")
-            return false
-        }
-
         validarDocumentoComprobante()
 
         $("#btn-grabar").prop("disabled", true);
@@ -536,24 +622,23 @@ include('../fixed/footer.php');
             inputContrato: $("#hidden-idcontrato").val(),
             inputMonto: totalventa,
             inputDetraccion: $("#select-detraccion").val(),
-            arrayServicios: JSON.stringify(arrayservicios)
+            arrayServicios: JSON.stringify(arrayservicios),
+            arrayCuotas: JSON.stringify(arrayCuotas)
         };
 
-        console.log(arraypost)
+       // console.log(arraypost)
 
 
         $.post("../controller/registra-venta.php", arraypost, function (data) {
-            alert(data);
-            /* var jsonresultado = JSON.parse(data);
+            // alert(data);
+            var jsonresultado = JSON.parse(data);
             //si todo correcto enviar a imprimir ticket
             if (jsonresultado.id > 0) {
-                alert("venta Registrada, por favor imprima el ticket");
-                location.href = "reporte-pdf-documento-venta.php?ventaid=" + jsonresultado.id;
+                alert("venta Registrada");
+                location.href = "reporte-documento-venta.php?ventaid=" + jsonresultado.id;
             } else {
                 alert("error al registrar venta" + data)
             }
-
-             */
         });
     }
 
