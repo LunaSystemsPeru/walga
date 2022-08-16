@@ -2639,12 +2639,12 @@ dt {
 }
 
 .modal-content .modal-header, .modal-content .modal-footer {
-    border-color: #eaf0f9;
-    background-color: #eaf0f9
+    border-color: #1c2d41;
+    background-color: #1c2d41
 }
 
 .modal-content .modal-header .modal-title, .modal-content .modal-footer .modal-title {
-    color: #1d2c48;
+    color: #fff;
     align-self: center;
     margin-top: 0
 }

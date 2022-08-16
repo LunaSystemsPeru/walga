@@ -15,6 +15,9 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
     $inicio = filter_input(INPUT_GET, 'fecha_inicio');
     $fin = filter_input(INPUT_GET, 'fecha_final');
     $placa = filter_input(INPUT_GET, 'placa');
+    $Gasto->setVehiculoid(filter_input(INPUT_GET, 'placa'));
+    $Vehiculo->setId($Gasto->getVehiculoid());
+    $Vehiculo->obtenerDatos();
 }
 ?>
 <!DOCTYPE html>
@@ -94,7 +97,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $arrayGastos = $Gasto->verGastos($inicio, $fin, $placa);
+                                    $arrayGastos = $Gasto->verGastos($inicio, $fin);
                                     $item = 1;
                                     $saldo = 0;
                                     $ingresos = 0;
@@ -103,14 +106,20 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                         $saldo = $saldo + $fila['ingreso'] - $fila['monto'];
                                         $ingresos = $ingresos + $fila['ingreso'];
                                         $egresos = $egresos - $fila['monto'];
+                                        $valoringreso = $fila['ingreso'];
+                                        $valoregreso = $fila['monto'];
+                                        if ($valoregreso< 0) {
+                                            $valoringreso = $valoregreso * -1;
+                                            $valoregreso = 0;
+                                        }
                                         ?>
                                         <tr>
                                             <th scope="row"><?php echo $item ?></th>
                                             <td><?php echo $fila['fecha'] ?></td>
                                             <td><?php echo $fila['placa'] ?></td>
                                             <td><?php echo $fila['descripcion'] ?></td>
-                                            <td class="text-right"><?php echo ($fila['ingreso'] > 0 ? number_format($fila['ingreso'], 2) : "") ?></td>
-                                            <td class="text-right"><?php echo ($fila['monto'] > 0 ? number_format($fila['monto'], 2) : "") ?></td>
+                                            <td class="text-right"><?php echo($valoringreso != 0 ? number_format($valoringreso, 2) : "") ?></td>
+                                            <td class="text-right"><?php echo($valoregreso != 0 ? number_format($valoregreso, 2) : "") ?></td>
                                             <td class="text-right"><?php echo number_format($saldo, 2) ?></td>
                                             <td>
                                                 <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
@@ -123,7 +132,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td scope="row" colspan="4" class="text-right">Total </td>
+                                        <td scope="row" colspan="4" class="text-right">Total</td>
                                         <td class="text-right"><?php echo number_format($ingresos, 2) ?></td>
                                         <td class="text-right"><?php echo number_format($egresos, 2) ?></td>
                                         <td class="text-right"></td>
@@ -134,6 +143,30 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                             </div><!--end /tableresponsive-->
                         </div><!--end card-body-->
                     </div><!--end card-->
+                    <div class="card">
+                        <div class="card-footer">
+                            <div class="button-items">
+                                <?php
+                                if ($placa && $placa != "0") {
+                                    ?>
+                                    <button data-toggle="modal" data-target="#cuadrarDinero" class="btn btn-sm btn-soft-primary">
+                                        <i data-feather="dollar-sign" class=" mr-2"></i>
+                                        Cuadrar Dinero
+                                    </button>
+                                    <?php
+                                }
+                                if ($placa == "0") {
+                                    ?>
+                                    <button data-toggle="modal" data-target="#agregargasto" class="btn btn-sm btn-soft-success">
+                                        <i data-feather="save" class=" mr-2"></i>
+                                        Agregar Gasto
+                                    </button>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
                 </div> <!-- end col -->
             </div> <!-- end row -->
         </div><!-- container -->
@@ -147,7 +180,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                     <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Buscar Gastos entre Fechas</h6>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div><!--end modal-header-->
-                <form class="form-horizontal auth-form my-4" action="lista-gastos.php" method="get">
+                <form class="form-horizontal auth-form" action="lista-gastos.php" method="get">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Vehiculo</label>
@@ -156,7 +189,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     <?php
                                     $aplacas = $Vehiculo->verFilas();
                                     foreach ($aplacas as $fila) {
-                                        echo "<option value='".$fila['placa']."'>".$fila['placa']."</option>";
+                                        echo "<option value='" . $fila['id'] . "'>" . $fila['placa'] . "</option>";
                                     }
                                     ?>
                                 </select>
@@ -176,8 +209,83 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                         </div><!--end form-group-->
                     </div><!--end auth-page-->
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-soft-primary btn-sm">Buscar</button>
-                        <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-soft-primary btn-sm"><i class="fa fa-search "></i> Buscar</button>
+                        <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+                    </div><!--end modal-footer-->
+                </form><!--end form-->
+            </div><!--end modal-body-->
+        </div><!--end modal-content-->
+    </div><!--end modal-dialog-->
+
+    <div class="modal fade" id="cuadrarDinero" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Cerrar Caja</h6>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div><!--end modal-header-->
+                <form class="form-horizontal auth-form" action="../controller/cerrarcaja.php" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Vehiculo</label>
+                            <div class="input-group">
+                                <input type="text" value="<?php echo $Vehiculo->getPlaca() ?>" class="form-control">
+                                <input value="<?php echo $Gasto->getVehiculoid()?>" type="hidden" name="input-vehiculo">
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Fecha</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="fecha-cierre" name="fecha-cierre" value="<?php echo date("Y-m-d") ?>" required>
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Monto</label>
+                            <div class="input-group">
+                                <input type="number" step="0.1" class="form-control" id="monto-cierre" name="monto-cierre" value="" required>
+                            </div>
+                        </div><!--end form-group-->
+                    </div><!--end auth-page-->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-soft-primary btn-sm"><i class="fa fa-save "></i> Grabar</button>
+                        <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+                    </div><!--end modal-footer-->
+                </form><!--end form-->
+            </div><!--end modal-body-->
+        </div><!--end modal-content-->
+    </div><!--end modal-dialog-->
+
+    <div class="modal fade" id="agregargasto" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title m-0" id="exampleModalDefaultLogin">nuevo Gasto</h6>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div><!--end modal-header-->
+                <form class="form-horizontal auth-form" action="../controller/registra-gasto.php" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Fecha</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="fecha-cierre" name="fecha-cierre" value="<?php echo date("Y-m-d") ?>" required>
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Motivo</label>
+                            <div class="input-group">
+                                <select></select>
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Monto</label>
+                            <div class="input-group">
+                                <input type="number" step="0.1" class="form-control" id="monto-cierre" name="monto-cierre" value="" required>
+                            </div>
+                        </div><!--end form-group-->
+                    </div><!--end auth-page-->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-soft-primary btn-sm"><i class="fa fa-save "></i> Grabar</button>
+                        <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cancelar</button>
                     </div><!--end modal-footer-->
                 </form><!--end form-->
             </div><!--end modal-body-->

@@ -196,7 +196,7 @@ $fecha_minima = date("Y-m-d", strtotime($fecha_actual . "- 6 days"));
                     </div><!--end auth-page-->
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-soft-primary btn-sm">Buscar</button>
-                        <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cancelar</button>
                     </div><!--end modal-footer-->
                 </form><!--end form-->
             </div><!--end modal-body-->

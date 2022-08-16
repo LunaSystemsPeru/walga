@@ -109,7 +109,7 @@ $Valor->setParametroId(1);
                                                 </div><!--end auth-page-->
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-soft-primary btn-sm">Guardar</button>
-                                                    <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                                                    <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cerrar</button>
                                                 </div><!--end modal-footer-->
                                         </form><!--end form-->
                                     </div><!--end modal-body-->
