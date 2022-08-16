@@ -90,7 +90,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     <thead class="thead-light">
                                     <tr>
                                         <th>#</th>
-                                        <th>Fecha</th>
+                                        <th width="10%">Fecha</th>
                                         <th>Vehiculo</th>
                                         <th>Servicio</th>
                                         <th>Cliente</th>
@@ -179,7 +179,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Fecha Final</label>
                             <div class="input-group">
-                                <input type="date" class="form-control" id="fecha-final" name="fecha_final">
+                                <input type="date" class="form-control" id="fecha-final" name="fecha_final" value="<?php echo date("Y-m-d")?>">
                             </div>
                         </div><!--end form-group-->
                     </div><!--end auth-page-->

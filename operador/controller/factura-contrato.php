@@ -36,6 +36,7 @@ if ($Cliente->getId() > 0) {
 }
 
 $Contrato->setClienteid($Cliente->getId());
+$Contrato->setEstadocomprobante(0);
 $Contrato->modificar();
 
 
