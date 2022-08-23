@@ -255,7 +255,7 @@ if ($contratoid) {
                                                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                                 </div><!--end modal-header-->
                                                 <div class="modal-body">
-                                                    <form class="form-horizontal auth-form my-4">
+                                                    <form class="form-horizontal auth-form">
                                                         <div class="form-group row">
                                                             <div class="col-lg-5">
                                                                 <label for="serie">Fecha Vencimiento</label>
@@ -289,7 +289,7 @@ if ($contratoid) {
                                                             </tbody>
                                                         </table><!--end /table-->
                                                     </div>
-                                                    <form class="form-horizontal auth-form my-4">
+                                                    <form class="form-horizontal auth-form">
                                                         <div class="form-group row">
                                                             <div class="col-lg-4">
                                                                 <label for="serie">Total Credito</label>

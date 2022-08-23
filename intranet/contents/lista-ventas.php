@@ -179,7 +179,7 @@ $fecha_minima = date("Y-m-d", strtotime($fecha_actual . "- 6 days"));
                     <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Buscar Servicios entre Fechas</h6>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div><!--end modal-header-->
-                <form class="form-horizontal auth-form my-4" method="get">
+                <form class="form-horizontal auth-form" method="get">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Fecha Inicio</label>

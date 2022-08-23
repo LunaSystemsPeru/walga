@@ -74,7 +74,7 @@ $Valor->setParametroId(1);
                                             <button type="button" class="btn-close" data-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div><!--end modal-header-->
-                                        <form class="form-horizontal auth-form my-4" action="../controller/registra-comprobante-sunat.php" method="post">
+                                        <form class="form-horizontal auth-form" action="../controller/registra-comprobante-sunat.php" method="post">
                                             <div class="modal-body">
                                                 <div class="auth-page">
                                                     <div class="auth-card">

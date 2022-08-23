@@ -432,7 +432,6 @@ class Contrato
                     cliente_id = '$this->clienteid',
                     incluye_igv = '$this->incluyeigv'
                 where id = '$this->id'";
-        //echo $sql;
         $this->conectar->ejecutar_idu($sql);
     }
 
