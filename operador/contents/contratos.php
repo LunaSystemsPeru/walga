@@ -49,11 +49,14 @@ $Contrato->setVehiculoid($_SESSION['vehiculo_id']);
         foreach ($array_contratos as $fila) {
             $iestado = $fila['estado_contrato'];
             $label_estado = "";
+            $url = "";
             if ($iestado == 0) {
                 $label_estado = "Programado";
+                $url = 'acepta-contrato.php?id='.$fila['id'];
             }
             if ($iestado == 1) {
                 $label_estado = "en  Proceso";
+                $url = 'finaliza-contrato.php?id='.$fila['id'];
             }
             if ($iestado == 2) {
                 $label_estado = "Finalizado";
@@ -62,27 +65,23 @@ $Contrato->setVehiculoid($_SESSION['vehiculo_id']);
             <div class="cards cards--11">
                 <div class="card card--style-inline card--style-inline-bg card--style-round-corners">
                     <div class="card__details">
+
                         <p class="card__text"><img src="../assets/images/icons/red/home.svg" width="12px" alt="" title=""/> Origen: <?php echo $fila['origen'] ?></p>
                         <p class="card__text text-right">Hasta: <?php echo $fila['destino'] ?> <img src="../assets/images/icons/red/arrow-right.svg" width="12px" alt="" title=""/> </p>
                         <p class="card__text"><img src="../assets/images/icons/red/user.svg" width="12px" alt="" title=""/> Cliente: <?php echo $fila['datos'] ?></p>
-
+                        <a href="<?php echo $url ?>" >
                         <h4 class="card__title"><?php echo strtoupper($fila['servicio']) ?></h4>
+                        </a>
                         <p class="card__text"><img src="../assets/images/icons/red/card.svg" width="12px" alt="" title=""/>  Fecha: <?php echo $fila['fecha'] . " | " . $fila['hora_inicio'] ?></p>
                         <div class="caption__content">
                             <a class="caption__category" ><?php echo $label_estado ?></a>
                         </div>
+
                     </div>
-                    <?php
-                    $url = "";
-                    if ($iestado == 0) {
-                        $url = 'acepta-contrato.php?id='.$fila['id'];
-                    } else {
-                        $url = 'finaliza-contrato.php?id='.$fila['id'];
-                    }
-                    ?>
                     <div class="card__more">
                         <a href="<?php echo $url ?>">
-                            <img src="../assets/images/icons/blue/more.svg" alt="" title=""/></a>
+                            <img src="../assets/images/icons/blue/more.svg" alt="" title=""/>
+                        </a>
                     </div>
                 </div>
             </div>

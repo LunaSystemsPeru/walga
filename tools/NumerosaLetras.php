@@ -70,8 +70,8 @@ class NumerosaLetras
     /**
      * Evalua si el número contiene separadores o decimales
      * formatea y ejecuta la función conversora
-     * @param $number número a convertir
-     * @param $miMoneda clave de la moneda
+     * @param $number float número a convertir
+     * @param $miMoneda null clave de la moneda
      * @return string completo
      */
     public function to_word($number, $miMoneda = null)
