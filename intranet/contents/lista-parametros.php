@@ -71,7 +71,7 @@ $Parametro->obtenerDatos();
                                                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                             </div><!--end modal-header-->
                                             <div class="modal-body">
-                                                <form class="form-horizontal auth-form my-4" method="post" action="../controller/registra-parametro-valor.php">
+                                                <form class="form-horizontal auth-form" method="post" action="../controller/registra-parametro-valor.php">
                                                     <div class="auth-page">
                                                         <div class="auth-card">
                                                             <div class="">

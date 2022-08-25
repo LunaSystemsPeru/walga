@@ -3,13 +3,14 @@ include_once '../fixed/cargarSession.php';
 require '../../models/VehiculoGasto.php';
 
 $Gasto = new VehiculoGasto();
-
+$placa = filter_input(INPUT_POST, 'input-placa');
 $Gasto->setVehiculoid(filter_input(INPUT_POST, 'input-vehiculo'));
 $Gasto->setUsuarioid($_SESSION['usuario_id']);
-$Gasto->setGastoid(21);
+$Gasto->setGastoid(25);
 $Gasto->setMonto(filter_input(INPUT_POST, 'monto-cierre'));
 $Gasto->setFecha(filter_input(INPUT_POST, 'fecha-cierre'));
 $Gasto->setOrometro(0);
+$Gasto->setObservacion(filter_input(INPUT_POST, 'input-observacion') . " - " . $placa   );
 
 $Gasto->obtenerId();
 echo $Gasto->insertar();
@@ -21,3 +22,5 @@ $Gasto->setOrometro(0);
 
 $Gasto->obtenerId();
 echo $Gasto->insertar();
+
+header("Location: ../contents/lista-gastos.php?placa=" . $Gasto->getVehiculoid() . "&fecha_inicio=" . $Gasto->getFecha() . "&fecha_final=" . $Gasto->getFecha());

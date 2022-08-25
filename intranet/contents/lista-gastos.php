@@ -2,23 +2,25 @@
 include_once '../fixed/cargarSession.php';
 require '../../models/VehiculoGasto.php';
 require '../../models/Vehiculo.php';
+require '../../models/ParametroValor.php';
 
 $Vehiculo = new Vehiculo();
 $Gasto = new VehiculoGasto();
+$TipoGasto = new ParametroValor();
 
 $Vehiculo->setEmpresaid($_SESSION['empresa_id']);
 
 $inicio = date("Y-m-d");
 $fin = date("Y-m-d");
 $placa = '';
-if (filter_input(INPUT_GET, 'fecha_inicio')) {
-    $inicio = filter_input(INPUT_GET, 'fecha_inicio');
-    $fin = filter_input(INPUT_GET, 'fecha_final');
-    $placa = filter_input(INPUT_GET, 'placa');
-    $Gasto->setVehiculoid(filter_input(INPUT_GET, 'placa'));
-    $Vehiculo->setId($Gasto->getVehiculoid());
-    $Vehiculo->obtenerDatos();
-}
+$inicio = filter_input(INPUT_GET, 'fecha_inicio');
+$fin = filter_input(INPUT_GET, 'fecha_final');
+$placa = filter_input(INPUT_GET, 'placa');
+$Gasto->setVehiculoid($placa);
+$Vehiculo->setId($Gasto->getVehiculoid());
+$Vehiculo->obtenerDatos();
+
+$TipoGasto->setParametroId(8);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +80,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
             </div><!--end row-->
             <!-- end page title end breadcrumb -->
             <div class="row justify-content-center">
-                <div class="col-lg-10">
+                <div class="col-lg-9">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
@@ -88,7 +90,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                         <th>#</th>
                                         <th>Fecha</th>
                                         <th>Vehiculo</th>
-                                        <th>Descripcion</th>
+                                        <th width="45%">Descripcion</th>
                                         <th>Ingreso Efectivo</th>
                                         <th>Gasto Efectivo</th>
                                         <th>Saldo</th>
@@ -108,7 +110,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                         $egresos = $egresos - $fila['monto'];
                                         $valoringreso = $fila['ingreso'];
                                         $valoregreso = $fila['monto'];
-                                        if ($valoregreso< 0) {
+                                        if ($valoregreso < 0) {
                                             $valoringreso = $valoregreso * -1;
                                             $valoregreso = 0;
                                         }
@@ -147,7 +149,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                         <div class="card-footer">
                             <div class="button-items">
                                 <?php
-                                if ($placa && $placa != "0") {
+                                if ($placa && $placa != 0) {
                                     ?>
                                     <button data-toggle="modal" data-target="#cuadrarDinero" class="btn btn-sm btn-soft-primary">
                                         <i data-feather="dollar-sign" class=" mr-2"></i>
@@ -155,7 +157,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     </button>
                                     <?php
                                 }
-                                if ($placa == "0") {
+                                if ($placa == 0) {
                                     ?>
                                     <button data-toggle="modal" data-target="#agregargasto" class="btn btn-sm btn-soft-success">
                                         <i data-feather="save" class=" mr-2"></i>
@@ -168,6 +170,44 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                         </div>
                     </div>
                 </div> <!-- end col -->
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Fecha</th>
+                                        <th>Monto</th>
+                                        <th>Observaciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $arrayGastos = $Gasto->verAjusteCaja();
+                                    $item = 1;
+                                    $saldo = 0;
+                                    $ingresos = 0;
+                                    $egresos = 0;
+                                    foreach ($arrayGastos as $fila) {
+                                        ?>
+                                        <tr>
+                                            <th scope="row"><?php echo $item ?></th>
+                                            <td><?php echo $fila['fecha'] ?></td>
+                                            <td><?php echo number_format($fila['monto'], 2) ?></td>
+                                            <td><?php echo $fila['observaciones'] ?></td>
+                                        </tr>
+                                        <?php
+                                        $item++;
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table><!--end /table-->
+                            </div><!--end /tableresponsive-->
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div>
             </div> <!-- end row -->
         </div><!-- container -->
     </div>
@@ -229,8 +269,8 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Vehiculo</label>
                             <div class="input-group">
-                                <input type="text" value="<?php echo $Vehiculo->getPlaca() ?>" class="form-control">
-                                <input value="<?php echo $Gasto->getVehiculoid()?>" type="hidden" name="input-vehiculo">
+                                <input type="text" value="<?php echo $Vehiculo->getPlaca() ?>" class="form-control" name="input-placa">
+                                <input value="<?php echo $Gasto->getVehiculoid() ?>" type="hidden" name="input-vehiculo">
                             </div>
                         </div><!--end form-group-->
                         <div class="form-group">
@@ -245,6 +285,12 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                 <input type="number" step="0.1" class="form-control" id="monto-cierre" name="monto-cierre" value="" required>
                             </div>
                         </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label"> Observaciones</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="input-observacion" name="input-observacion" value="" required>
+                            </div>
+                        </div>
                     </div><!--end auth-page-->
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-soft-primary btn-sm"><i class="fa fa-save "></i> Grabar</button>
@@ -267,19 +313,34 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Fecha</label>
                             <div class="input-group">
-                                <input type="date" class="form-control" id="fecha-cierre" name="fecha-cierre" value="<?php echo date("Y-m-d") ?>" required>
+                                <input type="date" class="form-control" id="fecha-gasto" name="fecha-gasto" value="<?php echo date("Y-m-d") ?>" required>
                             </div>
                         </div><!--end form-group-->
                         <div class="form-group">
-                            <label class="form-label" for="input-documento">Motivo</label>
+                            <label class="form-label" for="input-tipo-gasto">Motivo</label>
                             <div class="input-group">
-                                <select></select>
+                                <select class="form-control" name="input-tipo-gasto" id="input-tipo-gasto">
+                                    <?php
+                                    $array_tipo_gasto = $TipoGasto->verFilas();
+                                    foreach ($array_tipo_gasto as $fila) {
+                                        echo '<option value="'.$fila["id"].'">'.$fila["descripcion"].'</option>';
+                                    }
+                                    ?>
+
+                                </select>
                             </div>
                         </div><!--end form-group-->
                         <div class="form-group">
-                            <label class="form-label" for="input-documento">Monto</label>
+                            <label class="form-label" for="monto-gasto">Monto</label>
                             <div class="input-group">
-                                <input type="number" step="0.1" class="form-control" id="monto-cierre" name="monto-cierre" value="" required>
+                                <input type="number" step="0.1" class="form-control" id="monto-gasto" name="monto-gasto" value="" required>
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Observaciones - Detalle</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="input-observacion" name="input-observacion" value="" required>
+                                <input type="hidden" name="input-vehiculo" value="<?php echo $Vehiculo->getId()?>">
                             </div>
                         </div><!--end form-group-->
                     </div><!--end auth-page-->

@@ -10,6 +10,7 @@ class VehiculoGasto
     private $monto;
     private $orometro;
     private $gastoid;
+    private $observacion;
     private $conectar;
 
     /**
@@ -18,6 +19,7 @@ class VehiculoGasto
     public function __construct()
     {
         $this->conectar = Conectar::getInstancia();
+        $this->observacion = "";
     }
 
     /**
@@ -132,6 +134,22 @@ class VehiculoGasto
         $this->gastoid = $gastoid;
     }
 
+    /**
+     * @return string
+     */
+    public function getObservacion(): string
+    {
+        return $this->observacion;
+    }
+
+    /**
+     * @param string $observacion
+     */
+    public function setObservacion(string $observacion): void
+    {
+        $this->observacion = $observacion;
+    }
+
     public function obtenerId()
     {
         $sql = "select ifnull(max(id)+1, 1) as codigo 
@@ -152,6 +170,7 @@ class VehiculoGasto
             $this->orometro = $resultado['orometro'];
             $this->usuarioid = $resultado['usuario_id'];
             $this->gastoid = $resultado['gasto_id'];
+            $this->observacion = $resultado['observaciones'];
             return true;
         } else {
             return false;
@@ -167,7 +186,8 @@ class VehiculoGasto
                         '$this->monto',
                         '$this->orometro',
                         '$this->usuarioid', 
-                        '$this->gastoid')";
+                        '$this->gastoid',
+                        '$this->observacion')";
         $this->conectar->ejecutar_idu($sql);
     }
 
@@ -189,10 +209,19 @@ class VehiculoGasto
 
     public function verGastosOperadores()
     {
-        $sql = "select pv.id, pv.descripcion, pv.valor1, ifnull(vg.monto,0) as monto, vg.orometro
+        $sql = "select pv.id, pv.descripcion, pv.valor1, ifnull(vg.monto,0) as monto, vg.orometro, vg.observaciones
                 from parametros_valores as pv
                          left join vehiculos_gastos vg on pv.id = vg.gasto_id and  vg.fecha = '$this->fecha' and vg.vehiculo_id = '$this->vehiculoid'
                 where pv.parametro_id = 8";
+        return $this->conectar->get_Cursor($sql);
+    }
+
+    public function verAjusteCaja()
+    {
+        $sql = "select vg.fecha, vg.observaciones, vg.monto 
+        from vehiculos_gastos as vg 
+        where vg.vehiculo_id = '$this->vehiculoid' and vg.gasto_id = 25 and vg.fecha > date_sub(current_date(), interval 8 day) 
+        order by vg.fecha asc";
         return $this->conectar->get_Cursor($sql);
     }
 
@@ -206,18 +235,19 @@ class VehiculoGasto
 
     public function verGastos($inicio, $fin)
     {
-        $sql = "select vg.fecha, 0 as ingreso, vg.monto, pv.descripcion as descripcion, v.placa
-                from vehiculos_gastos as vg 
-                inner join vehiculos as v on v.id = vg.vehiculo_id
-                inner join parametros_valores as pv on pv.id = vg.gasto_id
-                where vg.fecha BETWEEN '$inicio' and '$fin' and vg.vehiculo_id = '$this->vehiculoid'
-                union all 
-                select cp.fecha_pago as fecha, cp.monto as ingreso, 0 as monto, c.servicio as descripcion, v.placa
+        $sql = "select cp.fecha_pago as fecha, cp.monto as ingreso, 0 as monto, c.servicio as descripcion, v.placa
                 from contratos_pagos as cp 
                 inner join  contratos as c on c.id = cp.contrato_id
                 inner join vehiculos as v on v.id =  c.vehiculo_id
                 where cp.fecha_pago BETWEEN '$inicio' and '$fin' and v.id = '$this->vehiculoid'
-                order by fecha asc";
+                union all
+                select vg.fecha, 0 as ingreso, vg.monto, concat(pv.descripcion, ' ', ifnull(vg.observaciones, '')) as descripcion, v.placa
+                from vehiculos_gastos as vg 
+                inner join vehiculos as v on v.id = vg.vehiculo_id
+                inner join parametros_valores as pv on pv.id = vg.gasto_id
+                where vg.fecha BETWEEN '$inicio' and '$fin' and vg.vehiculo_id = '$this->vehiculoid'
+                order by fecha asc, ingreso desc";
+
         return $this->conectar->get_Cursor($sql);
     }
 }

@@ -5,7 +5,7 @@
                 <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Modificar Detalle del Servicio</h6>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div><!--end modal-header-->
-            <form class="form-horizontal auth-form my-4" action="lista-contratos.php" method="get">
+            <form class="form-horizontal auth-form" action="lista-contratos.php" method="get">
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label" for="input-documento">Descripcion</label>

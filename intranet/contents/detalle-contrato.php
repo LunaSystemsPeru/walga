@@ -4,12 +4,14 @@ require '../../models/Contrato.php';
 require '../../models/Cliente.php';
 require '../../models/Entidad.php';
 require '../../models/ContratoPago.php';
+require '../../models/ParametroValor.php';
 require '../../tools/Util.php';
 
 $Contrato = new Contrato();
 $Cliente = new Cliente();
 $Entidad = new Entidad();
 $Pago = new ContratoPago();
+$Parametros = new ParametroValor();
 
 $Util = new Util();
 
@@ -191,6 +193,9 @@ if ($Contrato->getIncluyeigv() == 1) {
                                 </table><!--end /table-->
                             </div><!--end /tableresponsive-->
                         </div><!--end card-body-->
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-dollar-sign"></i> Pago x Transferencia</button>
+                        </div>
                     </div><!--end card-->
                 </div>
                 <div class="col-lg-4">
@@ -217,7 +222,7 @@ if ($Contrato->getIncluyeigv() == 1) {
                     <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Modificar Detalle del Servicio</h6>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div><!--end modal-header-->
-                <form class="form-horizontal auth-form my-4" action="../controller/modifica-contrato.php" method="post">
+                <form class="form-horizontal auth-form" action="../controller/modifica-contrato.php" method="post">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Descripcion</label>
@@ -247,6 +252,58 @@ if ($Contrato->getIncluyeigv() == 1) {
                     </div><!--end auth-page-->
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-soft-primary btn-sm">Modificar</button>
+                        <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+                    </div><!--end modal-footer-->
+                </form><!--end form-->
+            </div><!--end modal-body-->
+        </div><!--end modal-content-->
+    </div><!--end modal-dialog-->
+
+    <div class="modal fade" id="agregarpago" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Registrar Pago</h6>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div><!--end modal-header-->
+                <form class="form-horizontal auth-form" action="../controller/registra-gasto.php" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Fecha</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="fecha-gasto" name="fecha-gasto" value="<?php echo date("Y-m-d") ?>" required>
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-tipo-gasto">Forma de Pago</label>
+                            <div class="input-group">
+                                <select class="form-control" name="input-tipo-gasto" id="input-tipo-gasto">
+                                    <?php
+                                    $array_tipo_gasto = $TipoGasto->verFilas();
+                                    foreach ($array_tipo_gasto as $fila) {
+                                        echo '<option value="'.$fila["id"].'">'.$fila["descripcion"].'</option>';
+                                    }
+                                    ?>
+
+                                </select>
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="monto-gasto">Monto</label>
+                            <div class="input-group">
+                                <input type="number" step="0.1" class="form-control" id="monto-gasto" name="monto-gasto" value="" required>
+                            </div>
+                        </div><!--end form-group-->
+                        <div class="form-group">
+                            <label class="form-label" for="input-documento">Observaciones - Detalle</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="input-observacion" name="input-observacion" value="" required>
+                                <input type="hidden" name="input-vehiculo" value="<?php echo $Vehiculo->getId()?>">
+                            </div>
+                        </div><!--end form-group-->
+                    </div><!--end auth-page-->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-soft-primary btn-sm"><i class="fa fa-save "></i> Grabar</button>
                         <button type="button" class="btn btn-soft-secondary btn-sm" data-dismiss="modal">Cancelar</button>
                     </div><!--end modal-footer-->
                 </form><!--end form-->

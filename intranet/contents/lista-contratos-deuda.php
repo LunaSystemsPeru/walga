@@ -9,21 +9,11 @@ include '../fixed/cargarSession.php';
 require '../../models/Contrato.php';
 
 $Contrato = new Contrato();
-$Contrato->setFecha(date("Y-m-d"));
-
-$array_contratos = array();
-if (filter_input(INPUT_GET, 'fecha_inicio')) {
-    $fechainicio = filter_input(INPUT_GET, 'fecha_inicio');
-    $fechafin = filter_input(INPUT_GET, 'fecha_final');
-    $array_contratos = $Contrato->verContratosxFecha($fechainicio, $fechafin);
-} else {
-    $array_contratos = $Contrato->verContratosdelDia();
-}
-
+$array_contratos = $Contrato->verContratosxCobrar();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 
 <!-- Mirrored from mannatthemes.com/dastone/default/horizontal-index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 May 2021 20:34:16 GMT -->
@@ -68,14 +58,6 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     <li class="breadcrumb-item active">Contratos</li>
                                 </ol>
                             </div><!--end col-->
-                            <div class="col-auto align-self-center">
-                                <button class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#exampleModalSignup">
-                                    <i data-feather="search" class="align-self-center icon-xs"></i> buscar x Fechas
-                                </button>
-                                <!--<a href="form-contrato.php" class="btn btn-sm btn-outline-primary">
-                                    <i data-feather="plus" class="align-self-center icon-xs"></i> Agregar Nuevo Contrato
-                                </a>-->
-                            </div><!--end col-->
                         </div><!--end row-->
                     </div><!--end page-title-box-->
                 </div><!--end col-->
@@ -105,16 +87,14 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     <tbody>
                                     <?php
                                     $item = 1;
-                                    $montofinal = 0;
-                                    $deudatotal = 0;
-                                    $deuda = 0;
                                     foreach ($array_contratos as $fila) {
                                         $iestado = $fila['estado_contrato'];
                                         $label_estado = "";
                                         $monto = $fila['monto'];
+                                        if ($fila['incluye_igv'] == 1) {
+                                            //  $monto = $fila['monto'] * 1.18;
+                                        }
                                         $deuda = $monto - $fila['monto_pagado'];
-                                        $montofinal = $montofinal + $monto;
-                                        $deudatotal = $deudatotal + $deuda;
                                         if ($iestado == 0) {
                                             $label_estado = '<span class="badge badge-boxed  badge-outline-warning">Programado</span>';
                                         }
@@ -122,11 +102,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                             $label_estado = '<span class="badge badge-boxed  badge-outline-info">en Proceso</span>';
                                         }
                                         if ($iestado == 2) {
-                                            if ($deuda > 0) {
-                                                $label_estado = '<span class="badge badge-boxed  badge-outline-success">x Cobrar</span>';
-                                            } else {
-                                                $label_estado = '<span class="badge badge-boxed  badge-outline-dark">Finalizado</span>';
-                                            }
+                                            $label_estado = '<span class="badge badge-boxed  badge-outline-dark">Finalizado</span>';
                                         }
                                         $botoncomprobante = '<i data-feather="check"></i>';
                                         if ($fila['comprobante_id'] == 11) {
@@ -146,7 +122,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                             <td class="text-center"><span class="badge badge-boxed  badge-outline-success"><?php echo ucwords(strtolower($fila['comprobante'])) ?></span></td>
                                             <td class="text-center"><?php echo $botoncomprobante ?></td>
                                             <td class="text-right"><?php echo number_format($monto, 2) ?></td>
-                                            <td class="text-right"><?php echo number_format($deuda,2) ?></td>
+                                            <td class="text-right"><?php echo number_format($deuda) ?></td>
                                             <td class="text-center"><?php echo $label_estado ?></td>
                                             <td class="text-center">
                                                 <a href="detalle-contrato.php?id=<?php echo $fila['id'] ?>" class="btn btn-info btn-sm"><i class="ti ti-eye"></i></a>
@@ -157,15 +133,6 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     }
                                     ?>
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <td colspan="7">Total</td>
-                                        <td class="text-right"><?php echo number_format($montofinal, 2)?></td>
-                                        <td class="text-right"><?php echo number_format($deudatotal, 2)?></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    </tfoot>
                                 </table><!--end /table-->
                             </div><!--end /tableresponsive-->
                         </div><!--end card-body-->
@@ -194,7 +161,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Fecha Final</label>
                             <div class="input-group">
-                                <input type="date" class="form-control" id="fecha-final" name="fecha_final" value="<?php echo date("Y-m-d")?>">
+                                <input type="date" class="form-control" id="fecha-final" name="fecha_final" value="<?php echo date("Y-m-d") ?>">
                             </div>
                         </div><!--end form-group-->
                     </div><!--end auth-page-->
