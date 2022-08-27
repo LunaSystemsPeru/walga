@@ -14,12 +14,14 @@ $orometro = $_POST['input-orometro'];
 $ids = $_POST['input-id'];
 $contar = count($gastos);
 for ($i = 0; $i < $contar; $i++) {
-    echo $gastos[$i], "\n";
-    $Gasto->setGastoid($ids[$i]);
-    $Gasto->setMonto($gastos[$i]);
-    $Gasto->setOrometro($orometro[$i]);
-    $Gasto->obtenerId();
-    $Gasto->insertar();
+    //echo $gastos[$i], "\n";
+    if ($gastos[$i] > 0) {
+        $Gasto->setGastoid($ids[$i]);
+        $Gasto->setMonto($gastos[$i]);
+        $Gasto->setOrometro($orometro[$i]);
+        $Gasto->obtenerId();
+        $Gasto->insertar();
+    }
 }
 
 header("Location: ../contents/gastos-vehiculos.php");

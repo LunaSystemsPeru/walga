@@ -30,7 +30,7 @@ $dateInterval = $fechaUno->diff($fechaDos);
 $totalhoras = $dateInterval->format('%H horas %i minutos') . PHP_EOL;
 
 if ($Contrato->getIncluyeigv() == 1) {
-  //  $Contrato->setMontocontrato($Contrato->getMontocontrato() * 1.18);
+    //  $Contrato->setMontocontrato($Contrato->getMontocontrato() * 1.18);
 }
 ?>
 <!DOCTYPE html>
@@ -172,13 +172,15 @@ if ($Contrato->getIncluyeigv() == 1) {
                                     <?php
                                     $arrayPagos = $Pago->verFilas();
                                     $item = 1;
+                                    $totalpagado = 0;
                                     foreach ($arrayPagos as $fila) {
+                                        $totalpagado = $totalpagado + $fila['monto'];
                                         ?>
                                         <tr>
                                             <th scope="row"><?php echo $item ?></th>
                                             <td><?php echo $Util->fecha_mysql_web($fila['fecha_pago']) ?></td>
-                                            <td><?php echo number_format($fila['monto']) ?></td>
-                                            <td>EFECTIVO</td>
+                                            <td class="text-right"><?php echo number_format($fila['monto'], 2) ?></td>
+                                            <td><?php echo $fila['tipopago'] ?></td>
                                             <td>
                                                 <button onclick="eliminarPago('<?php echo $fila['id'] ?>')" class="btn btn-warning btn-sm"><i class="ti ti-trash"></i>
                                                 </button>
@@ -194,7 +196,16 @@ if ($Contrato->getIncluyeigv() == 1) {
                             </div><!--end /tableresponsive-->
                         </div><!--end card-body-->
                         <div class="card-footer">
-                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-dollar-sign"></i> Pago x Transferencia</button>
+                            <?php
+                            if ($Contrato->getMontocontrato() - $totalpagado > 0) {
+                                ?>
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                        data-target="#agregarpago">><i class="fa fa-dollar-sign"></i> Pago x Transferencia
+                                </button>
+                                <?php
+                            }
+                            ?>
+
                         </div>
                     </div><!--end card-->
                 </div>
@@ -215,7 +226,7 @@ if ($Contrato->getIncluyeigv() == 1) {
     </div>
     <!-- end page content -->
 
-    <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+    <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="modalModificar" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -227,27 +238,27 @@ if ($Contrato->getIncluyeigv() == 1) {
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Descripcion</label>
                             <div class="input-group">
-                                <textarea class="form-control" name="input_servicio"><?php echo $Contrato->getServicio()?></textarea>
+                                <textarea class="form-control" name="input_servicio"><?php echo $Contrato->getServicio() ?></textarea>
                             </div>
                         </div><!--end form-group-->
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Origen</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="input_origen" value="<?php echo $Contrato->getOrigen()?>">
+                                <input type="text" class="form-control" name="input_origen" value="<?php echo $Contrato->getOrigen() ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Destino</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="input_destino" value="<?php echo $Contrato->getDestino()?>">
+                                <input type="text" class="form-control" name="input_destino" value="<?php echo $Contrato->getDestino() ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="input-documento">Monto Aprobado</label>
                             <div class="input-group">
-                                <input type="number" step="0.1" class="form-control" name="input_monto" value="<?php echo $Contrato->getMontocontrato()?>">
+                                <input type="number" step="0.1" class="form-control" name="input_monto" value="<?php echo $Contrato->getMontocontrato() ?>">
                             </div>
-                            <input type="hidden" name="hidden_id" value="<?php echo $Contrato->getId()?>">
+                            <input type="hidden" name="hidden_id" value="<?php echo $Contrato->getId() ?>">
                         </div>
                     </div><!--end auth-page-->
                     <div class="modal-footer">
@@ -259,29 +270,31 @@ if ($Contrato->getIncluyeigv() == 1) {
         </div><!--end modal-content-->
     </div><!--end modal-dialog-->
 
-    <div class="modal fade" id="agregarpago" tabindex="-1" role="dialog" aria-labelledby="exampleModalDefaultSignup" aria-hidden="true">
+    <div class="modal fade" id="agregarpago" tabindex="-1" role="dialog" aria-labelledby="agregarpago" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h6 class="modal-title m-0" id="exampleModalDefaultLogin">Registrar Pago</h6>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div><!--end modal-header-->
-                <form class="form-horizontal auth-form" action="../controller/registra-gasto.php" method="post">
+                <form class="form-horizontal auth-form" action="../controller/registra-pago.php" method="post">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="form-label" for="input-documento">Fecha</label>
+                            <label class="form-label" for="input-fecha">Fecha</label>
                             <div class="input-group">
-                                <input type="date" class="form-control" id="fecha-gasto" name="fecha-gasto" value="<?php echo date("Y-m-d") ?>" required>
+                                <input type="date" class="form-control" id="input-fecha" name="input-fecha" value="<?php echo date("Y-m-d") ?>" required>
+                                <input type="hidden" value="<?php echo $Contrato->getId() ?>" name="hidden-contrato-id">
                             </div>
                         </div><!--end form-group-->
                         <div class="form-group">
-                            <label class="form-label" for="input-tipo-gasto">Forma de Pago</label>
+                            <label class="form-label" for="input-tipo-pago">Forma de Pago</label>
                             <div class="input-group">
-                                <select class="form-control" name="input-tipo-gasto" id="input-tipo-gasto">
+                                <select class="form-control" name="input-tipo-pago" id="input-tipo-pago">
                                     <?php
-                                    $array_tipo_gasto = $TipoGasto->verFilas();
-                                    foreach ($array_tipo_gasto as $fila) {
-                                        echo '<option value="'.$fila["id"].'">'.$fila["descripcion"].'</option>';
+                                    $Parametros->setParametroId(10);
+                                    $array_pago = $Parametros->verFilas();
+                                    foreach ($array_pago as $fila) {
+                                        echo '<option value="' . $fila["id"] . '">' . $fila["descripcion"] . '</option>';
                                     }
                                     ?>
 
@@ -289,16 +302,9 @@ if ($Contrato->getIncluyeigv() == 1) {
                             </div>
                         </div><!--end form-group-->
                         <div class="form-group">
-                            <label class="form-label" for="monto-gasto">Monto</label>
+                            <label class="form-label" for="input-monto">Monto</label>
                             <div class="input-group">
-                                <input type="number" step="0.1" class="form-control" id="monto-gasto" name="monto-gasto" value="" required>
-                            </div>
-                        </div><!--end form-group-->
-                        <div class="form-group">
-                            <label class="form-label" for="input-documento">Observaciones - Detalle</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="input-observacion" name="input-observacion" value="" required>
-                                <input type="hidden" name="input-vehiculo" value="<?php echo $Vehiculo->getId()?>">
+                                <input type="number" step="0.1" class="form-control" id="input-monto" name="input-monto" value="" required>
                             </div>
                         </div><!--end form-group-->
                     </div><!--end auth-page-->

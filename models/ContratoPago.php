@@ -8,6 +8,7 @@ class ContratoPago
     private $monto;
     private $clientepagoid;
     private $contratoid;
+    private $tipopagoid;
     private $conectar;
 
     /**
@@ -16,6 +17,7 @@ class ContratoPago
     public function __construct()
     {
         $this->conectar = Conectar::getInstancia();
+        $this->tipopagoid = 23;
     }
 
     /**
@@ -98,6 +100,22 @@ class ContratoPago
         $this->contratoid = $contratoid;
     }
 
+    /**
+     * @return int
+     */
+    public function getTipopagoid(): int
+    {
+        return $this->tipopagoid;
+    }
+
+    /**
+     * @param int $tipopagoid
+     */
+    public function setTipopagoid(int $tipopagoid): void
+    {
+        $this->tipopagoid = $tipopagoid;
+    }
+
     public function obtenerId()
     {
         $sql = "select ifnull(max(id)+1, 1) as codigo 
@@ -117,6 +135,7 @@ class ContratoPago
             $this->monto = $resultado['monto'];
             $this->clientepagoid = $resultado['pago_id'];
             $this->contratoid = $resultado['contrato_id'];
+            $this->tipopagoid = $resultado['tipopago_id'];
             return true;
         } else {
             return false;
@@ -130,7 +149,8 @@ class ContratoPago
                         '$this->fecha',
                         '$this->monto', 
                         '$this->clientepagoid',
-                        '$this->contratoid')";
+                        '$this->contratoid', 
+                        '$this->tipopagoid')";
         $this->conectar->ejecutar_idu($sql);
     }
 
@@ -150,8 +170,9 @@ class ContratoPago
 
     public function verFilas()
     {
-        $sql = "select * 
+        $sql = "select cp.monto, cp.fecha_pago, cp.pago_id, cp.contrato_id, cp.id, pv.descripcion as tipopago 
                 from contratos_pagos as cp 
+                inner join parametros_valores as pv on pv.id = cp.tipopago_id
                 where cp.contrato_id = '$this->contratoid'";
         return $this->conectar->get_Cursor($sql);
     }

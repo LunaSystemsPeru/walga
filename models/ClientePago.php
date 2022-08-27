@@ -8,6 +8,7 @@ class ClientePago
     private $clienteid;
     private $usuarioid;
     private $monto;
+    private $tipopagoid;
     private $conectar;
 
     /**
@@ -16,6 +17,7 @@ class ClientePago
     public function __construct()
     {
         $this->conectar = Conectar::getInstancia();
+        $this->tipopagoid = 23;
     }
 
     /**
@@ -98,6 +100,22 @@ class ClientePago
         $this->monto = $monto;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTipopagoid()
+    {
+        return $this->tipopagoid;
+    }
+
+    /**
+     * @param mixed $tipopagoid
+     */
+    public function setTipopagoid($tipopagoid): void
+    {
+        $this->tipopagoid = $tipopagoid;
+    }
+
     public function obtenerId()
     {
         $sql = "select ifnull(max(id)+1, 1) as codigo 
@@ -117,6 +135,7 @@ class ClientePago
             $this->monto = $resultado['monto'];
             $this->clienteid = $resultado['cliente_id'];
             $this->usuarioid = $resultado['usuario_id'];
+            $this->tipopagoid = $resultado['tipopago_id'];
             return true;
         } else {
             return false;
@@ -130,7 +149,8 @@ class ClientePago
                         '$this->fechapago',
                         '$this->monto', 
                         '$this->clienteid',
-                        '$this->usuarioid')";
+                        '$this->usuarioid',
+                        '$this->tipopagoid')";
         $this->conectar->ejecutar_idu($sql);
     }
 

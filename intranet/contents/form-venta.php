@@ -630,7 +630,7 @@ include('../fixed/footer.php');
 
 
         $.post("../controller/registra-venta.php", arraypost, function (data) {
-            // alert(data);
+             alert(data);
             var jsonresultado = JSON.parse(data);
             //si todo correcto enviar a imprimir ticket
             if (jsonresultado.id > 0) {

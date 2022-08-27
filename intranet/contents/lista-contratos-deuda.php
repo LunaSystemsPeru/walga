@@ -87,6 +87,9 @@ $array_contratos = $Contrato->verContratosxCobrar();
                                     <tbody>
                                     <?php
                                     $item = 1;
+
+                                    $montofinal = 0;
+                                    $deudatotal = 0;
                                     foreach ($array_contratos as $fila) {
                                         $iestado = $fila['estado_contrato'];
                                         $label_estado = "";
@@ -102,7 +105,11 @@ $array_contratos = $Contrato->verContratosxCobrar();
                                             $label_estado = '<span class="badge badge-boxed  badge-outline-info">en Proceso</span>';
                                         }
                                         if ($iestado == 2) {
-                                            $label_estado = '<span class="badge badge-boxed  badge-outline-dark">Finalizado</span>';
+                                            if ($deuda > 0) {
+                                                $label_estado = '<span class="badge badge-boxed  badge-outline-success">x Cobrar</span>';
+                                            } else {
+                                                $label_estado = '<span class="badge badge-boxed  badge-outline-dark">Finalizado</span>';
+                                            }
                                         }
                                         $botoncomprobante = '<i data-feather="check"></i>';
                                         if ($fila['comprobante_id'] == 11) {
@@ -112,6 +119,8 @@ $array_contratos = $Contrato->verContratosxCobrar();
                                                 $botoncomprobante = '<a href="form-venta.php?contratoid=' . $fila['id'] . '" type="button" class="btn btn-info btn-sm"><i class="ti ti-plus"></i></a>';
                                             }
                                         }
+                                        $montofinal = $montofinal + $monto;
+                                        $deudatotal = $deudatotal + $deuda;
                                         ?>
                                         <tr>
                                             <th scope="row"><?php echo $item ?></th>
@@ -122,7 +131,7 @@ $array_contratos = $Contrato->verContratosxCobrar();
                                             <td class="text-center"><span class="badge badge-boxed  badge-outline-success"><?php echo ucwords(strtolower($fila['comprobante'])) ?></span></td>
                                             <td class="text-center"><?php echo $botoncomprobante ?></td>
                                             <td class="text-right"><?php echo number_format($monto, 2) ?></td>
-                                            <td class="text-right"><?php echo number_format($deuda) ?></td>
+                                            <td class="text-right"><?php echo number_format($deuda,2) ?></td>
                                             <td class="text-center"><?php echo $label_estado ?></td>
                                             <td class="text-center">
                                                 <a href="detalle-contrato.php?id=<?php echo $fila['id'] ?>" class="btn btn-info btn-sm"><i class="ti ti-eye"></i></a>
@@ -133,6 +142,15 @@ $array_contratos = $Contrato->verContratosxCobrar();
                                     }
                                     ?>
                                     </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="7">Total</td>
+                                        <td class="text-right"><?php echo number_format($montofinal, 2)?></td>
+                                        <td class="text-right"><?php echo number_format($deudatotal, 2)?></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </tfoot>
                                 </table><!--end /table-->
                             </div><!--end /tableresponsive-->
                         </div><!--end card-body-->

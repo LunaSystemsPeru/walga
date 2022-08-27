@@ -6,7 +6,7 @@ require '../../models/VentaSunat.php';
 $Venta = new Venta();
 $Hash = new VentaSunat();
 
-$Venta->setId(filter_input(INPUT_GET, 'id'));
+$Venta->setId(filter_input(INPUT_GET, 'ventaid'));
 if (!$Venta->getId()) {
     //header("Location: lista-ventas.php");
 }
@@ -81,7 +81,7 @@ $Hash->obtenerDatos();
                             <p>Hash Generado: <?php echo $Hash->getHash()?></p>
                             <p>Nombre XML: <?php echo $Hash->getNombre()?></p>
                             <p>Enviado a SUNAT: <label class="badge badge-warning">NO</label></p>
-                            <a href="../../public/xml/<?php echo $Hash->getNombre() ?>.xml" class="btn btn-info"><i class="ti ti-zip"></i> Descargar XML</a>
+                            <a target="_blank" href="../../public/xml/<?php echo $Hash->getNombre() ?>.xml" class="btn btn-info"><i class="ti ti-zip"></i> Descargar XML</a>
                         </div>
                         <div class="card-body">
                             <a href="lista-ventas.php" class="btn btn-primary"><i class="ti ti-arrow-left"></i> Regresar</a>

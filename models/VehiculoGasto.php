@@ -239,14 +239,14 @@ class VehiculoGasto
                 from contratos_pagos as cp 
                 inner join  contratos as c on c.id = cp.contrato_id
                 inner join vehiculos as v on v.id =  c.vehiculo_id
-                where cp.fecha_pago BETWEEN '$inicio' and '$fin' and v.id = '$this->vehiculoid'
+                where cp.fecha_pago BETWEEN '$inicio' and '$fin' and v.id = '$this->vehiculoid' and cp.tipopago_id = 23
                 union all
                 select vg.fecha, 0 as ingreso, vg.monto, concat(pv.descripcion, ' ', ifnull(vg.observaciones, '')) as descripcion, v.placa
                 from vehiculos_gastos as vg 
                 inner join vehiculos as v on v.id = vg.vehiculo_id
                 inner join parametros_valores as pv on pv.id = vg.gasto_id
                 where vg.fecha BETWEEN '$inicio' and '$fin' and vg.vehiculo_id = '$this->vehiculoid'
-                order by fecha asc, ingreso desc";
+                order by fecha asc, ingreso desc, monto asc";
 
         return $this->conectar->get_Cursor($sql);
     }
