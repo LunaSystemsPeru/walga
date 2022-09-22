@@ -1,4 +1,5 @@
 <?php
+require '../fixed/cargarSesion.php';
 require '../../models/Contrato.php';
 require '../../models/Cliente.php';
 require '../../models/Entidad.php';
@@ -174,7 +175,7 @@ if ($Contrato->getId()) {
             $("#input-pago-final").val(montofinal)
         } else {
             //colocar fous en inut y limpiar
-            $("#input-pago-final").val("")
+            $("#input-pago-final").val(0)
             $("#input-pago-final").focus()
         }
         console.log(montofinal)
