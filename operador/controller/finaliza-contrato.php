@@ -11,7 +11,6 @@ $ContratoPago = new ContratoPago();
 
 $Contrato->setId(filter_input(INPUT_POST, 'input-id-contrato'));
 $Contrato->obtenerDatos();
-
 $Contrato->setHoratermino(filter_input(INPUT_POST, 'input-hora'));
 $montobase = filter_input(INPUT_POST, 'input-monto');
 $pagoefectivo = filter_input(INPUT_POST, 'input-pago-final');
@@ -28,6 +27,8 @@ if ($quierefactura == 1) {
         $Contrato->setIncluyeigv(0);
         $montofinal = $montobase;
     }
+} else {
+    $montofinal = $montobase;
 }
 
 $Contrato->setMontocontrato($montofinal);

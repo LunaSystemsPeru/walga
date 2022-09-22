@@ -62,7 +62,7 @@ if ($Contrato->getId()) {
             <p class="form__label"> Fecha: <?php echo $Contrato->getFecha() ?></p>
             <p class="form__label"> Servicio: <?php echo strtoupper($Valor->getDescripcion() . " | " . $Contrato->getServicio() . " - desde: " . $Contrato->getOrigen() . " hasta: " . $Contrato->getDestino()) ?></p>
 
-            <form id="FormFinalizar" method="post" action="../controller/finaliza-contrato.php">
+            <form id="FormFinalizar" name="FormFinalizar" method="post" action="../controller/finaliza-contrato.php">
                 <div class="form__row">
                     <label class="form__label">Hora Fin</label>
                     <input type="time" name="input-hora" placeholder="00:00" value="" class="form__input required" required/>
@@ -102,7 +102,8 @@ if ($Contrato->getId()) {
                     <input type="hidden" name="input-masigv" value="0" id="input-masigv" >
                     <input type="hidden" name="input-quierefactura" value="0" id="input-quierefactura" >
                     <input type="hidden" name="input-id-contrato" value="<?php echo $Contrato->getId()?>" >
-                    <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Finalizar"/>
+                    <input type="button" name="submit" class="form__submit button button--main button--full" id="submit" onclick="enviar()" value="Finalizar"/>
+                    <input type="submit" id="submit-form" value="Submit Form" style="display: none;"/>
                 </div>
             </form>
         </div>
@@ -176,11 +177,15 @@ if ($Contrato->getId()) {
             $("#input-pago-final").val("")
             $("#input-pago-final").focus()
         }
+        console.log(montofinal)
     }
 
     function enviar() {
-        alert("enviado")
-        $("#submit").prop("disabled", true);
+        //alert("enviado")
+        especificarPago();
+        document.getElementById("submit-form").click();
+        //$("#FormFinalizar").submit();
+        //$("#submit").prop("disabled", true);
     }
 </script>
 </body>
