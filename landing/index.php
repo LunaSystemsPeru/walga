@@ -56,7 +56,7 @@
 
 <!-- Main Header / Header Style Three -->
 <header class="ft1-main-header ft3-header-style-three">
-<?php include 'fixed/menu.php' ?>
+    <?php include 'fixed/menu.php' ?>
 </header>
 <!-- End Main Header -->
 
@@ -644,8 +644,6 @@
             </div>
 
 
-
-
         </div>
     </div>
 </section>
@@ -902,7 +900,7 @@
 
                                 <!-- Email Box -->
                                 <div class="email-box">
-                                    <form >
+                                    <form>
                                         <div class="form-group">
                                             <input type="email" name="search-field" value="" placeholder="Ingresa tu correo" required>
                                             <button type="submit"><span class="icon far fa-paper-plane"></span></button>

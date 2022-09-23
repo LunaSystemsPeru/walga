@@ -25,12 +25,12 @@ Last change:    00/00/00
 				this.MobileMenu();
 				this.scrollTop();
 				this.MainSlider();
-				this.searchPopUp();
+				//this.searchPopUp();
 				this.counterUp();
-				this.PopUp();
-				this.CarouselSliderJs();
+				//this.PopUp();
+				//this.CarouselSliderJs();
 				this.CircleProgress();
-				this.countDown();
+				//this.countDown();
 				this.HoverParallax();
 				this.MilesRange();
 
