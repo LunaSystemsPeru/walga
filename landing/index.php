@@ -172,7 +172,7 @@
                                     <div class="pattern-layer"></div>
                                     <div class="image-box">
                                         <div class="image">
-                                            <img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/imgs/cargalocal.png" alt=""/>
+                                            <img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/imgs/cargalocal.jpg" alt=""/>
                                             <div class="overlay-box">
                                                 <div class="overlay-inner">
                                                     <div class="content">
@@ -280,7 +280,7 @@
             <div class="image-column col-lg-4 col-md-12 col-sm-12">
                 <div class="inner-column">
                     <div class="image">
-                        <img src="assets/imgs/foto1.png" alt=""/>
+                        <img src="assets/imgs/foto1.jpg" alt=""/>
                         <div class="client-box">
                             <span class="icon flaticon-team"></span>
                             <div class="count-outer count-box">
@@ -566,7 +566,7 @@
             <div class="ft2-team-block-two">
                 <div class="inner-box">
                     <div class="image">
-                        <img src="assets/imgs/clientes/image1815.png" alt=""/>
+                        <img src="assets/imgs/clientes/image1815.jpg" alt=""/>
                         <!-- Overlay Box -->
 
                     </div>
@@ -576,7 +576,7 @@
             <div class="ft2-team-block-two">
                 <div class="inner-box">
                     <div class="image">
-                        <img src="assets/imgs/clientes/image1819.png" alt=""/>
+                        <img src="assets/imgs/clientes/image1819.jpg" alt=""/>
                         <!-- Overlay Box -->
 
                     </div>
@@ -586,7 +586,7 @@
             <div class="ft2-team-block-two">
                 <div class="inner-box">
                     <div class="image">
-                        <img src="assets/imgs/clientes/rect1746.png" alt=""/>
+                        <img src="assets/imgs/clientes/rect1746.jpg" alt=""/>
                         <!-- Overlay Box -->
 
                     </div>
@@ -596,7 +596,7 @@
             <div class="ft2-team-block-two">
                 <div class="inner-box">
                     <div class="image">
-                        <img src="assets/imgs/clientes/image1823.png" alt=""/>
+                        <img src="assets/imgs/clientes/image1823.jpg" alt=""/>
                         <!-- Overlay Box -->
 
                     </div>
@@ -606,7 +606,7 @@
             <div class="ft2-team-block-two">
                 <div class="inner-box">
                     <div class="image">
-                        <img src="assets/imgs/clientes/image1829.png" alt=""/>
+                        <img src="assets/imgs/clientes/image1829.jpg" alt=""/>
                         <!-- Overlay Box -->
 
                     </div>
@@ -616,7 +616,7 @@
             <div class="ft2-team-block-two">
                 <div class="inner-box">
                     <div class="image">
-                        <img src="assets/imgs/clientes/image1833.png" alt=""/>
+                        <img src="assets/imgs/clientes/image1833.jpg" alt=""/>
                         <!-- Overlay Box -->
 
                     </div>
@@ -626,7 +626,7 @@
             <div class="ft2-team-block-two">
                 <div class="inner-box">
                     <div class="image">
-                        <img src="assets/imgs/clientes/rect1835.png" alt=""/>
+                        <img src="assets/imgs/clientes/rect1835.jpg" alt=""/>
                         <!-- Overlay Box -->
 
                     </div>
@@ -636,7 +636,7 @@
             <div class="ft2-team-block-two">
                 <div class="inner-box">
                     <div class="image">
-                        <img src="assets/imgs/clientes/rect1838.png" alt=""/>
+                        <img src="assets/imgs/clientes/rect1838.jpg" alt=""/>
                         <!-- Overlay Box -->
 
                     </div>
