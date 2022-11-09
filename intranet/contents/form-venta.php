@@ -28,7 +28,7 @@ if ($contratoid) {
     $Cliente->obtenerDatos();
     $Entidad->setId($Cliente->getEntidadId());
     $Entidad->obtenerDatos();
-    $clienteid = $Cliente->getId();
+    $clienteid = $Cliente->getEntidadId();
 } else {
     $contratoid = 0;
 }
