@@ -47,16 +47,31 @@ $Gasto->setVehiculoid($_SESSION['vehiculo_id']);
         <div class="fieldset">
             <div class="form">
                 <form id="Form" method="post" action="../controller/registrar-gastos.php">
-                    <input type="hidden" name="input-fecha" value="<?php echo $fecha?>">
+                    <input type="hidden" name="input-fecha" value="<?php echo $fecha ?>">
                     <?php
                     $arraygastos = $Gasto->verGastosOperadores();
-                    foreach ($arraygastos as $fila) {
+                    foreach ($arraygastos
+
+                             as $fila) {
                         if ($fila['valor1'] == 'O') {
                             ?>
                             <div class="form__row">
                                 <label class="form__label"><?php echo $fila['descripcion'] ?></label>
                                 <input type="number" step="0.1" name="input-gasto[]" placeholder="Gasto" value="<?php echo $fila['monto'] ?>" class="form__input form__input--12" required/>
-                                <input type="number" step="0.1" name="input-orometro[]" placeholder="Orometro/ Kilometraje" value="<?php echo $fila['orometro'] ?>" class="form__input form__input--12" required/>
+                                <input type="number" step="0.1" name="input-orometro[]" placeholder="Orometro/ Kilometraje" value="<?php echo $fila['orometro'] ?>" class="form__input form__input--12"/>
+                                <input type="hidden" name="input-id[]" value="<?php echo $fila['id'] ?>"/>
+                                <input type="hidden" name="input-descripcion[]" value=""/>
+                            </div>
+                            <?php
+                        } else if ($fila['valor1'] == 'D') {
+                            ?>
+                            <div class="form__row">
+                                <label class="form__label">Monto de <?php echo $fila['descripcion'] ?></label>
+                                <input type="number" step="0.1" name="input-gasto[]" placeholder="Gasto" value="<?php echo $fila['monto'] ?>" class="form__input form__input--4" required/>
+                            </div>
+                            <div class="form__row">
+                                <label class="form__label">Detalle de <?php echo $fila['descripcion'] ?> </label>
+                                <input type="text" name="input-descripcion[]" placeholder="Descripcion" value="<?php echo $fila['observaciones'] ?>" class="form__input form__input--8" required/>
                                 <input type="hidden" name="input-id[]" value="<?php echo $fila['id'] ?>"/>
                             </div>
                             <?php
@@ -67,6 +82,7 @@ $Gasto->setVehiculoid($_SESSION['vehiculo_id']);
                                 <input type="number" step="0.1" name="input-gasto[]" placeholder="Gasto" value="<?php echo $fila['monto'] ?>" class="form__input" required/>
                                 <input type="hidden" name="input-orometro[]" value="0">
                                 <input type="hidden" name="input-id[]" value="<?php echo $fila['id'] ?>"/>
+                                <input type="hidden" name="input-descripcion[]" value=""/>
                             </div>
                             <?php
                         }
@@ -76,7 +92,7 @@ $Gasto->setVehiculoid($_SESSION['vehiculo_id']);
                         <input type="submit" name="submit" class="form__submit button button--main button--full" id="submit" value="Guardar"/>
                     </div>
                     <div class="form__row mt-40">
-                        <a href="gastos-vehiculos.php" class="form__submit button button--secondary button--full" > Regresar </a>
+                        <a href="gastos-vehiculos.php" class="form__submit button button--secondary button--full"> Regresar </a>
                     </div>
                 </form>
             </div>

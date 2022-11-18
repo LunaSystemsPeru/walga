@@ -212,7 +212,7 @@ class VehiculoGasto
         $sql = "select pv.id, pv.descripcion, pv.valor1, ifnull(vg.monto,0) as monto, vg.orometro, vg.observaciones
                 from parametros_valores as pv
                          left join vehiculos_gastos vg on pv.id = vg.gasto_id and  vg.fecha = '$this->fecha' and vg.vehiculo_id = '$this->vehiculoid'
-                where pv.parametro_id = 8";
+                where pv.parametro_id = 8 and valor2 = 'O'";
         return $this->conectar->get_Cursor($sql);
     }
 
