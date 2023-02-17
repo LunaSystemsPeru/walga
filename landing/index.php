@@ -650,7 +650,7 @@
 <!-- End Team Section Two -->
 
 <!-- Testimonial Section Three -->
-<section class="ft3-testimonial-section-three" style="background-image:url(assets/images/background/7.jpg)">
+<section class="ft3-testimonial-section-three" style="background-image:url(assets/images/background/7.webp)">
     <div class="auto-container">
         <div class="single-item-carousel owl-carousel owl-theme">
 
