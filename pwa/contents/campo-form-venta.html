@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<!-- Mirrored from emobile.orinostudio.com/preview/component-listview.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Apr 2021 21:26:57 GMT -->
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+          name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="default" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+
+    <meta content="#ff3f3f" name="theme-color">
+    <title>Walga Inversiones EIRL</title>
+    <meta content="eMobile - Multipurpose HTML5 Template" name="description">
+    <meta content="bootstrap 4, mobile template, 404, chat, about, cordova, phonegap, mobile, html, ecommerce, shopping, store, delivery, wallet, banking, education, jobs, careers, distance learning"
+          name="keywords"/>
+
+    <!-- favicon -->
+    <link href="../assets/img/favicon/32.png" rel="icon" sizes="32x32" type="image/png">
+    <link href="../assets/img/favicon/favicon192.png" rel="apple-touch-icon">
+
+    <!-- CSS Libraries-->
+    <!-- bootstrap v4.6.0 -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 
+        theiconof v3.0
+        https://www.theiconof.com/search
+     -->
+    <link href="../assets/css/icons.css" rel="stylesheet">
+
+    <link href="../assets/css/tracking.css" rel="stylesheet">
+    <!-- Swiper 6.4.11 -->
+    <link href="../assets/css/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Owl Carousel v2.3.4 -->
+    <link href="../assets/css/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    <!-- normalize.css v8.0.1 -->
+    <link href="../assets/css/normalize.css" rel="stylesheet">
+
+    <!-- manifest meta -->
+    <link href="../_manifest.json" rel="manifest"/>
+</head>
+
+<body class="bg-snow">
+<!-- Start em_loading -->
+<section class="em_loading" id="loaderPage">
+    <div class="spinner_flash"></div>
+</section>
+<!-- End. em_loading -->
+<div id="wrapper">
+    <div id="content">
+        <!-- Start main_haeder -->
+        <header class="main_haeder header-sticky multi_item">
+            <div class="em_side_right">
+                <a class="btn btn__back rounded-circle bg-snow" href="campo-view-ventas.html">
+                    <i class="tio-chevron_left"></i>
+                </a>
+            </div>
+            <div class="title_page">
+                <h1 class="page_name">
+                    Nuevo Comprobante
+                </h1>
+            </div>
+            <div class="em_side_right">
+                <!-- Can you add something here
+                <button class="btn btn__back rounded-circle bg-snow">
+                    <i class="tio-save"></i>
+                </button>
+                -->
+            </div>
+        </header>
+        <!-- End.main_haeder -->
+
+        <section class="padding-t-60 padding-l-10 padding-r-10 components_page ">
+            <!-- Start title -->
+            <div class="emTitle_co padding-t-10">
+                <p class="size-12 color-text m-0">Datos del Comprobante</p>
+            </div>
+            <!-- End. title -->
+
+            <!-- Start emShipping__address -->
+            <div class="emShipping__address padding-l-10 padding-r-10 bg-white">
+                <div class="item__address">
+                    <p class="address_txt">24/01/2024</p>
+                    <p class="address_txt">BC01</p>
+                    <div class="d-flex align-items-center">
+                        <span class="label_default margin-r-10 padding-10">Boleta Electronica</span>
+                        <button class="btn btn__editAddress" data-target="#mdl_comprobante" data-toggle="modal" type="button">
+                            <i class="tio-edit color-secondary"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- End. emShipping__address -->
+
+            <!-- Start title -->
+            <div class="emTitle_co padding-t-10">
+                <p class="size-12 color-text m-0">Cliente</p>
+            </div>
+            <!-- End. title -->
+
+            <!-- Start emShipping__address -->
+            <div class="emShipping__address padding-10 bg-white">
+                <div class="item__address">
+                    <div class="txt">
+                        <p class="address_txt size-12">Nro Documento</p>
+                        <p class="fw-bold size-14">00000000</p>
+                    </div>
+                    <div class="txt">
+                        <p class="address_txt size-12">Datos</p>
+                        <p class=" fw-bold size-14">SIN CLIENTE</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn__editAddress" data-target="#mdlform-cliente" data-toggle="modal" type="button">
+                            <i class="tio-arrow_right_circle color-clarity"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- End. emShipping__address -->
+        </section>
+
+        <section class="em_masonry__layout bg-snow em_list_layout widthFull emPage__wishlist padding-t-10 padding-b-10">
+            <div class="emTitle_co padding-t-10 padding-l-10">
+                <p class="size-12 color-text m-0">Servicios / Items</p>
+            </div>
+            <div id="lista-items">
+
+            </div>
+            <!-- item -->
+        </section>
+        <!-- End. itemProduct__list -->
+
+        <!-- Start emPage__basket -->
+        <section class="emPage__basket padding-20 align-bottom">
+            <div class="detailsTotally">
+                <ul>
+                    <li class="mb-0">
+                        <span class="size-16 text_total">Total</span>
+                        <span class="number_total size-16" id="item-total-venta">S/ 0.00</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- End. emPage__basket -->
+
+        <!-- Start footer__buttons -->
+        <section class="pt_simpleDetails mt-0 padding-0 padding-t-10">
+            <div class="">
+                <div class="em_footerinner">
+                    <div class="emfo_button __withIcon">
+                        <button class="btn btn_addCart" data-target="#mdlform-item" data-toggle="modal" type="button">
+                            <div class="ico icon_current">
+                                <i class="tio-add"></i>
+                            </div>
+                            <span class="textCart color-secondary d-inline-block">Agregar Item</span>
+                        </button>
+                        <button class="btn btn__icon bg-primary color-white min-w-175 text-left justify-content-between" onclick="finalizarVenta()" type="button">
+                            Finalizar
+                            <div class="icon">
+                                <i class="tio-save"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="area__inside fixed bottom-0 w-100 bg-white">
+                <a class="btn btn__icon btn_default_lg bg-primary color-white text-left justify-content-between"
+                   href="page-payment-method.html">
+                    Guardar Comprobante
+                    <div class="icon">
+                        <i class="tio-save"></i>
+                    </div>
+                </a>
+            </div>
+            -->
+        </section>
+        <!-- End. footer__buttons -->
+
+
+    </div>
+
+    <!--     zona de modales-->
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal defaultModal modalCentered change__address fade"
+         id="mdl_comprobante" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 padding-l-20 padding-r-20 justify-content-center">
+                    <div class="itemProduct_sm">
+                        <h1 class="size-18 weight-600 color-secondary m-0">Tipo de Comprobante</h1>
+                    </div>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <i class="tio-clear"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav__listAddress itemSingle" id="lista-comprobantes">
+                        <li class="item selected" id="1" onclick="getID(this)">
+                            <div class="personal__info">
+                                <h2 class="size-15 color-secondary weight-400">Boleta</h2>
+                            </div>
+                            <div class="areaRight">
+                                <span class="label_default margin-r-20">Default</span>
+                                <span class="circle_check"></span>
+                            </div>
+                        </li>
+                        <li class="item" id="2" onclick="getID(this)">
+                            <div class="personal__info">
+                                <h2 class="size-15 color-secondary weight-400">Factura</h2>
+                            </div>
+                            <div class="areaRight">
+                                <span class="circle_check"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn_default_lg" onclick="validarComprobante()" type="button">Guardar seleccion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel"
+         class="modal transition-bottom screenFull defaultModal mdlladd__rate fade" id="mdlform-cliente" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable height-full">
+            <div class="modal-content rounded-0">
+                <div class="modal-header padding-l-20 padding-r-20 justify-content-center">
+                    <div class="itemProduct_sm">
+                        <h1 class="size-18 weight-600 color-secondary m-0">Registrar cliente</h1>
+                    </div>
+                    <div class="absolute right-0 padding-r-20">
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <i class="tio-clear"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="emPage__Stand bg-white padding-t-10">
+                        <div class="embody__notification">
+                            <div class="itemSwitch">
+                                <label for="toggleOne">
+                                    <h2>Sin Cliente</h2>
+                                </label>
+                                <div class="em_toggle">
+                                    <button aria-pressed="false" autocomplete="off" class="btn btn-toggle toggle_md" data-toggle="button" id="toggleOne" type="button">
+                                        <div class="handle"></div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="padding-t-20">
+                        <div class="em__signTypeOne">
+                            <div class="em__body px-0">
+                                <form action="#">
+                                    <div class="form-group with_icon">
+                                        <label>Nro de DNI / RUC</label>
+                                        <div class="input_group">
+                                            <input class="form-control" id="input-cliente-documento" maxlength="11" minlength="8" placeholder="DNI O RUC" required
+                                                   type="number">
+                                            <div class="icon">
+                                                <i class="tio-user"></i>
+                                            </div>
+                                            <button class="btn  " type="button">
+                                                <i class="tio-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group with_icon mb-2">
+                                        <label>Datos del Cliente</label>
+                                        <div class="input_group">
+                                            <textarea class="form-control" id="input-cliente-datos" placeholder="Apellidos y Nombres o Razon Social" rows="2"></textarea>
+                                            <div class="icon">
+                                                <i class="tio-user"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group with_icon mb-2">
+                                        <label>Direccion</label>
+                                        <div class="input_group">
+                                            <textarea class="form-control" id="input-cliente-direccion" placeholder="Direccion, solo para facturas" rows="5"></textarea>
+                                            <div class="icon">
+                                                <i class="tio-home"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer pt-3">
+                    <button class="btn w-100 bg-primary m-0 color-white h-55 d-flex align-items-center rounded-8 justify-content-center" onclick="validarCliente()"
+                            type="button">
+                        Guardar Cliente
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal bttom_show defaultModal mdll_removeStand fade"
+         id="mdllRemoveStand" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="content__remove">
+                        <div class="media">
+                            <div class="icon">
+                                <svg data-name="Iconly/Bulk/Delete" height="24"
+                                     id="Iconly_Bulk_Delete" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="Delete" transform="translate(3 2)">
+                                        <path d="M15.289.792c0,.068-.533,6.809-.837,9.646a2.918,2.918,0,0,1-3,2.827c-1.293.029-2.56.039-3.806.039-1.323,0-2.616-.01-3.872-.039A2.917,2.917,0,0,1,.847,10.438C.534,7.591.011.86,0,.792A.794.794,0,0,1,.192.234.71.71,0,0,1,.715,0H14.585a.73.73,0,0,1,.523.234.748.748,0,0,1,.181.558" data-name="Fill 1"
+                                              fill="#200e32"
+                                              id="Fill_1" opacity="0.4" transform="translate(1.354 6.696)"/>
+                                        <path d="M18,3.977a.722.722,0,0,0-.713-.733H14.371A1.281,1.281,0,0,1,13.13,2.227L12.967,1.5a1.985,1.985,0,0,0-1.9-1.5H6.936A1.988,1.988,0,0,0,5.023,1.546l-.153.682A1.283,1.283,0,0,1,3.63,3.244H.714A.722.722,0,0,0,0,3.977v.38a.729.729,0,0,0,.714.733H17.287A.729.729,0,0,0,18,4.357Z" data-name="Fill 4"
+                                              fill="#200e32"
+                                              id="Fill_4" transform="translate(0 0)"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="media-body">
+                                <div class="txt">
+                                    <h2>Eliminar item?</h2>
+                                    <p>Estas seguro de eliminar este item?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn__cancel mr-1 size-15 color-text min-w-100 h-40 d-flex align-items-center rounded-8 justify-content-center" data-dismiss="modal"
+                            type="button">Cancel
+                    </button>
+                    <a class="btn bg-primary min-w-100 m-0 size-15 color-white h-40 d-flex align-items-center rounded-8 justify-content-center"
+                       href="#">
+                        Eliminar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel"
+         class="modal transition-bottom screenFull defaultModal mdlladd__rate fade" id="mdlform-item" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable height-full">
+            <div class="modal-content rounded-0">
+                <div class="modal-header padding-l-20 padding-r-20 justify-content-center">
+                    <div class="itemProduct_sm">
+                        <h1 class="size-18 weight-600 color-secondary m-0">Agregar Servicio</h1>
+                    </div>
+                    <div class="absolute right-0 padding-r-20">
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <i class="tio-clear"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="padding-t-20">
+                        <div class="em__signTypeOne">
+                            <div class="em__body px-0">
+                                <form action="#">
+                                    <div class="form-group with_icon mb-2">
+                                        <label>Descripcion del Servicio</label>
+                                        <div class="input_group">
+                                            <textarea class="form-control" id="input-descripcion-servicio" placeholder="Escribe aqui" rows="5"></textarea>
+                                            <div class="icon">
+                                                <i class="tio-home"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group with_icon">
+                                        <label>Precio Total</label>
+                                        <div class="input_group">
+                                            <input class="form-control" id="input-precio-servicio" maxlength="11" placeholder="0.00" required
+                                                   step="0.1" type="number" value="">
+                                            <div class="icon">
+                                                <i class="tio-money"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer pt-3">
+                    <button class="btn w-100 bg-primary m-0 color-white h-55 d-flex align-items-center rounded-8 justify-content-center"
+                            onclick="addServicio()" type="button">
+                        Agrega Servicio - Item
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jquery -->
+<script src="../assets/js/jquery-3.6.0.js"></script>
+<!-- popper.min.js 1.16.1 -->
+<script src="../assets/js/popper.min.js"></script>
+<!-- bootstrap.js v4.6.0 -->
+<script src="../assets/js/bootstrap.min.js"></script>
+
+<!-- Owl Carousel v2.3.4 -->
+<script src="../assets/js/vendor/owl.carousel.min.js"></script>
+<!-- Swiper 6.4.11 -->
+<script src="../assets/js/vendor/swiper-bundle.min.js"></script>
+<!-- sharer 0.4.0 -->
+<script src="../assets/js/vendor/sharer.js"></script>
+<!-- short-and-sweet v1.0.2 - Accessible character counter for input elements -->
+<script src="../assets/js/vendor/short-and-sweet.min.js"></script>
+<!-- jquery knob -->
+<script src="../assets/js/vendor/jquery.knob.min.js"></script>
+<!-- main.js -->
+<script defer src="../assets/js/main.js"></script>
+<!-- PWA app service registration and works js -->
+<script src="../assets/js/pwa-services.js"></script>
+<script>
+    function getID(a) {
+        tipo_comprobante = a.id;
+        tipo_comprobante = parseInt(tipo_comprobante)
+    }
+
+    function validarComprobante() {
+        $("#mdl_comprobante").modal('toggle')
+    }
+</script>
+<script>
+    let cliente_documento_default = '00000000'
+    let cliente_datos_defaul = 'SIN CLIENTE'
+    let cliente_documento_global
+    let cliente_datos_global
+    let tipo_comprobante = 1
+
+    function validarCliente() {
+        let cliente_documento = document.getElementById('input-cliente-documento').value
+        let cliente_datos = document.getElementById('input-cliente-datos').value
+        let cliente_direccion = document.getElementById('input-cliente-direccion').value
+        let cliente_vacio = document.getElementById('toggleOne').getAttribute('aria-pressed')
+
+        if (cliente_datos.length < 14) {
+            alert("Datos del Cliente no puede ser vacio")
+            return false
+        }
+
+        if (tipo_comprobante === 2) {
+            if (cliente_vacio === "true") {
+                alert("Cliente debe tener datos para una factura")
+                return false
+            }
+
+            if (cliente_documento.length !== 11) {
+                alert("Documento del Cliente debe ser un Numero de RUC")
+                return false
+            }
+        }
+
+        if (!cliente_vacio) {
+            cliente_documento = cliente_documento_default
+            cliente_datos = cliente_datos_defaul
+        }
+
+        cliente_datos_global = cliente_datos
+        cliente_documento_global = cliente_documento
+        /*
+                $.post('', {"documento": cliente_documento}, function (data) {
+                    console.log(data)
+                })
+        */
+        $("#mdlform-cliente").modal('toggle')
+    }
+</script>
+<script>
+    let arrayItemsServicios = []
+
+    function addServicio() {
+        let descripcion = document.getElementById('input-descripcion-servicio').value
+        let precio = document.getElementById('input-precio-servicio').value
+        let arrayItem = {"item_descripcion": descripcion.toUpperCase(), "item_precio": precio}
+
+        arrayItemsServicios.push(arrayItem)
+
+        clearFormItem()
+        $('#mdlform-item').modal('toggle')
+        mostrarItems()
+    }
+
+    function clearFormItem() {
+        document.getElementById('input-descripcion-servicio').value = ''
+        document.getElementById('input-precio-servicio').value = ''
+    }
+
+    function mostrarItems() {
+        let idlista = $("#lista-items")
+        idlista.html("");
+        var totalventa = 0
+        for (var i = 0; i < arrayItemsServicios.length; i++) {
+            var itemprecio = parseFloat(arrayItemsServicios[i].item_precio)
+            var itemdescripcion = arrayItemsServicios[i].item_descripcion
+            totalventa += itemprecio
+
+            let tr = '<div class="item em_item_product item_list">' +
+                '<div class="title_product">' +
+                '<button class="btn rounded-8 btn__removeProduct" onclick="preguntaEliminarItem(' + i + ')" type="button">' +
+                '<i class="tio-clear"></i>' +
+                '</button>' +
+                '<h3>' + itemdescripcion + '</h3>' +
+                '<p class="item_price">S/ ' + itemprecio.toFixed(2) + '</p>' +
+                '</div>' +
+                '</div>';
+            idlista.append(tr)
+        }
+
+        document.getElementById('item-total-venta').innerHTML = "S/ " + parseFloat(totalventa).toFixed(2)
+    }
+
+    function preguntaEliminarItem(itemid) {
+        removeItem(itemid)
+    }
+
+    function removeItem(itemid) {
+        $("#mdllRemoveStand").modal('toggle')
+        mostrarItems()
+    }
+</script>
+<script>
+    function finalizarVenta() {
+        let contaritems = arrayItemsServicios.length
+        if (contaritems === 0) {
+            alert("Debe ingresar servicios")
+            return false
+        }
+
+        let form_parms = {
+            "comprobante_id": tipo_comprobante,
+            "cliente_documento": cliente_documento_global,
+            "cliente_datos": cliente_datos_global,
+            "items_json": JSON.stringify(arrayItemsServicios)
+        }
+    }
+</script>
+</body>
+
+
+<!-- Mirrored from emobile.orinostudio.com/preview/component-listview.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Apr 2021 21:27:00 GMT -->
+</html>
