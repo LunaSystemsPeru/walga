@@ -44,7 +44,7 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
                 <form id="Form" method="post" action="../controller/registra-contrato.php">
                     <div class="form__row">
                         <label class="form__label">fecha</label>
-                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo date("Y-m-d") ?>" class="form__input required"/>
+                        <input type="date" name="input-fecha" placeholder="Buscar Cliente" value="<?php echo date("Y-m-d") ?>" max="<?php echo date("Y-m-d") ?>" min="<?php echo date("Y-m-d") ?>" class="form__input required"/>
                     </div>
                     <div class="form__row">
                         <label class="form__label">Servicio</label>

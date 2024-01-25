@@ -1,0 +1,175 @@
+[25-Oct-2022 09:25:12 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[25-Oct-2022 09:26:41 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[02-Nov-2022 08:49:06 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[02-Nov-2022 08:49:49 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[02-Nov-2022 08:50:31 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[02-Nov-2022 17:31:41 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[03-Nov-2022 09:42:45 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[03-Nov-2022 14:55:30 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[04-Nov-2022 11:06:11 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[04-Nov-2022 15:28:34 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[04-Nov-2022 17:30:04 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[04-Nov-2022 17:33:26 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[04-Nov-2022 17:40:31 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[04-Nov-2022 17:40:59 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[05-Nov-2022 14:43:24 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[05-Nov-2022 14:56:28 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[05-Nov-2022 14:56:47 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_parametros_valores` FOREIGN KEY (`comprobante_id`) REFERENCES `parametros_valores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[07-Nov-2022 16:18:40 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[07-Nov-2022 16:37:40 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[07-Nov-2022 17:49:41 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[08-Nov-2022 17:03:54 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[09-Nov-2022 09:29:43 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[09-Nov-2022 09:49:56 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[09-Nov-2022 13:54:34 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206
+[09-Nov-2022 14:03:32 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`goempres_walga`.`ventas`, CONSTRAINT `fk_ventas_entidades` FOREIGN KEY (`entidad_id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:206
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(206): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(303): conectar->ejecutar_idu()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/controller/registra-venta.php(32): Venta->insertar()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 206

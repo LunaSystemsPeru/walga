@@ -5,7 +5,7 @@ $Entidad = new Entidad();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-ES">
 
 
 <!-- Mirrored from mannatthemes.com/dastone/default/horizontal-index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 May 2021 20:34:16 GMT -->

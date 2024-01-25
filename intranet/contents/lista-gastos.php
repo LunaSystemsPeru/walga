@@ -1,29 +1,38 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 include_once '../fixed/cargarSession.php';
 require '../../models/VehiculoGasto.php';
-require '../../models/Vehiculo.php';
+require '../../models/Usuario.php';
 require '../../models/ParametroValor.php';
+require '../../models/Contrato.php';
 
-$Vehiculo = new Vehiculo();
+
+$Usuario = new Usuario();
 $Gasto = new VehiculoGasto();
 $TipoGasto = new ParametroValor();
+$Contrato = new Contrato();
 
-$Vehiculo->setEmpresaid($_SESSION['empresa_id']);
+$Usuario->setEmpresaId($_SESSION['empresa_id']);
 
 $inicio = date("Y-m-d");
 $fin = date("Y-m-d");
-$placa = '';
+
 $inicio = filter_input(INPUT_GET, 'fecha_inicio');
 $fin = filter_input(INPUT_GET, 'fecha_final');
-$placa = filter_input(INPUT_GET, 'placa');
-$Gasto->setVehiculoid($placa);
-$Vehiculo->setId($Gasto->getVehiculoid());
-$Vehiculo->obtenerDatos();
+$usuarioid = filter_input(INPUT_GET, 'usuarioid');
+$Gasto->setUsuarioid($usuarioid);
+$Usuario->setId($usuarioid);
+$Usuario->obtenerDatos();
 
 $TipoGasto->setParametroId(8);
+
+$Contrato->setUsuarioid($usuarioid);
+$lista_horas = $Contrato->verHorasVehiculoxFecha($inicio, $fin);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-ES">
 
 
 <!-- Mirrored from mannatthemes.com/dastone/default/horizontal-index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 May 2021 20:34:16 GMT -->
@@ -69,7 +78,7 @@ $TipoGasto->setParametroId(8);
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
-                                <button data-toggle="modal" data-target="#buscarFechas" class="btn btn-sm btn-soft-primary">
+                                <button class="btn btn-sm btn-soft-primary" onclick="abrirBusqueda()">
                                     <i data-feather="search" class="fas fa-plus mr-2"></i>
                                     Buscar Fechas
                                 </button>
@@ -88,7 +97,8 @@ $TipoGasto->setParametroId(8);
                                     <thead class="thead-light">
                                     <tr>
                                         <th>#</th>
-                                        <th>Fecha</th>
+                                        <th width="10%">Fecha</th>
+                                        <th>Usuario</th>
                                         <th>Vehiculo</th>
                                         <th width="45%">Descripcion</th>
                                         <th>Ingreso Efectivo</th>
@@ -118,6 +128,7 @@ $TipoGasto->setParametroId(8);
                                         <tr>
                                             <th scope="row"><?php echo $item ?></th>
                                             <td><?php echo $fila['fecha'] ?></td>
+                                            <td><?php echo $fila['username'] ?></td>
                                             <td><?php echo $fila['placa'] ?></td>
                                             <td><?php echo $fila['descripcion'] ?></td>
                                             <td class="text-right"><?php echo($valoringreso != 0 ? number_format($valoringreso, 2) : "") ?></td>
@@ -134,7 +145,7 @@ $TipoGasto->setParametroId(8);
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td scope="row" colspan="4" class="text-right">Total</td>
+                                        <td scope="row" colspan="5" class="text-right">Total</td>
                                         <td class="text-right"><?php echo number_format($ingresos, 2) ?></td>
                                         <td class="text-right"><?php echo number_format($egresos, 2) ?></td>
                                         <td class="text-right"></td>
@@ -149,7 +160,7 @@ $TipoGasto->setParametroId(8);
                         <div class="card-footer">
                             <div class="button-items">
                                 <?php
-                                if ($placa && $placa != 0) {
+                                if ($usuarioid && $usuarioid != 0) {
                                     ?>
                                     <button data-toggle="modal" data-target="#cuadrarDinero" class="btn btn-sm btn-soft-primary">
                                         <i data-feather="dollar-sign" class=" mr-2"></i>
@@ -157,7 +168,7 @@ $TipoGasto->setParametroId(8);
                                     </button>
                                     <?php
                                 }
-                                if ($placa == 0) {
+                                if ($usuarioid == 0) {
                                     ?>
                                     <button data-toggle="modal" data-target="#agregargasto" class="btn btn-sm btn-soft-success">
                                         <i data-feather="save" class=" mr-2"></i>
@@ -207,7 +218,50 @@ $TipoGasto->setParametroId(8);
                             </div><!--end /tableresponsive-->
                         </div><!--end card-body-->
                     </div><!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Fecha</th>
+                                        <th>Vehiculo</th>
+                                        <th>Total Horas</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $item = 1;
+                                    $total = 0;
+                                    foreach ($lista_horas as $fila) {
+                                        $h = $fila['HORAS'];
+                                        $parts = explode(":", $h);
+                                        $total += $parts[2] + $parts[1] * 60 + $parts[0] * 3600;
+                                        ?>
+                                        <tr>
+                                            <th scope="row"><?php echo $item ?></th>
+                                            <td><?php echo $fila['fecha'] ?></td>
+                                            <td><?php echo $fila['placa'] ?></td>
+                                            <td><?php echo $fila['HORAS'] ?></td>
+                                        </tr>
+                                        <?php
+                                        $item++;
+                                    }
+                                    ?>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th scope="row" colspan="3">total</td>
+                                        <td><?php echo gmdate("H:i:s", $total); ?></td>
+                                    </tr>
+                                    </tfoot>
+                                </table><!--end /table-->
+                            </div><!--end /tableresponsive-->
+                        </div><!--end card-body-->
+                    </div><!--end card-->
                 </div>
+
             </div> <!-- end row -->
         </div><!-- container -->
     </div>
@@ -223,13 +277,13 @@ $TipoGasto->setParametroId(8);
                 <form class="form-horizontal auth-form" action="lista-gastos.php" method="get">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="form-label" for="input-documento">Vehiculo</label>
+                            <label class="form-label" for="input-documento">Usuario</label>
                             <div class="input-group">
-                                <select class="form-control" name="placa">
+                                <select class="form-control" name="usuarioid">
                                     <?php
-                                    $aplacas = $Vehiculo->verFilas();
-                                    foreach ($aplacas as $fila) {
-                                        echo "<option value='" . $fila['id'] . "'>" . $fila['placa'] . "</option>";
+                                    $ausuarios = $Usuario->verFilas();
+                                    foreach ($ausuarios as $fila) {
+                                        echo "<option value='" . $fila['id'] . "'>" . $fila['username'] . "</option>";
                                     }
                                     ?>
                                 </select>
@@ -267,10 +321,10 @@ $TipoGasto->setParametroId(8);
                 <form class="form-horizontal auth-form" action="../controller/cerrarcaja.php" method="post">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="form-label" for="input-documento">Vehiculo</label>
+                            <label class="form-label" for="input-documento">Usuario que entrega dinero</label>
                             <div class="input-group">
-                                <input type="text" value="<?php echo $Vehiculo->getPlaca() ?>" class="form-control" name="input-placa">
-                                <input value="<?php echo $Gasto->getVehiculoid() ?>" type="hidden" name="input-vehiculo">
+                                <input type="text" value="<?php echo $Usuario->getUsername() ?>" class="form-control" name="input-placa" readonly>
+                                <input value="<?php echo $Gasto->getUsuarioid() ?>" type="hidden" name="input-usuario">
                             </div>
                         </div><!--end form-group-->
                         <div class="form-group">
@@ -323,7 +377,7 @@ $TipoGasto->setParametroId(8);
                                     <?php
                                     $array_tipo_gasto = $TipoGasto->verFilas();
                                     foreach ($array_tipo_gasto as $fila) {
-                                        echo '<option value="'.$fila["id"].'">'.$fila["descripcion"].'</option>';
+                                        echo '<option value="' . $fila["id"] . '">' . $fila["descripcion"] . '</option>';
                                     }
                                     ?>
 
@@ -340,7 +394,7 @@ $TipoGasto->setParametroId(8);
                             <label class="form-label" for="input-documento">Observaciones - Detalle</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="input-observacion" name="input-observacion" value="" required>
-                                <input type="hidden" name="input-vehiculo" value="<?php echo $Vehiculo->getId()?>">
+                                <!--<input type="hidden" name="input-vehiculo" value="<?php echo "idcarr" ?>">-->
                             </div>
                         </div><!--end form-group-->
                     </div><!--end auth-page-->
@@ -375,6 +429,10 @@ include('../fixed/footer.php');
 <script>
     function abrirModal() {
         $("#bd-example-modal-xl").modal("toggle");
+    }
+
+    function abrirBusqueda() {
+        $("#buscarFechas").modal("toggle");
     }
 </script>
 

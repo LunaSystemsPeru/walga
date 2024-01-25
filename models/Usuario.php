@@ -216,4 +216,10 @@ class Usuario
                 where id = $this->id";
         $this->conectar->ejecutar_idu($sql);
     }
+
+    public function verFilas()
+    {
+        $sql = "select * from usuarios where empresa_id = '$this->empresa_id'";
+        return $this->conectar->get_Cursor($sql);
+    }
 }

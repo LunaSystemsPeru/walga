@@ -1,0 +1,292 @@
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  str_pad(): Passing null to parameter #1 ($string) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php on line 74
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  str_pad(): Passing null to parameter #1 ($string) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php on line 74
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1214
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1214
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1214
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1214
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1214
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1214
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1214
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1214
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 665
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Deprecated:  date_create_from_format(): Passing null to parameter #2 ($datetime) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php on line 39
+[25-Aug-2022 13:01:58 America/Los_Angeles] PHP Fatal error:  Uncaught TypeError: date_format(): Argument #1 ($object) must be of type DateTimeInterface, bool given in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php:40
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/Util.php(40): date_format()
+#1 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(222): Util->fecha_tabla()
+#2 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php on line 40
+[25-Aug-2022 13:04:49 America/Los_Angeles] PHP Deprecated:  str_pad(): Passing null to parameter #1 ($string) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php on line 74
+[25-Aug-2022 13:04:49 America/Los_Angeles] PHP Deprecated:  str_pad(): Passing null to parameter #1 ($string) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php on line 74
+[25-Aug-2022 13:04:49 America/Los_Angeles] PHP Deprecated:  str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 641
+[25-Aug-2022 13:04:49 America/Los_Angeles] PHP Deprecated:  date_create_from_format(): Passing null to parameter #2 ($datetime) of type string is deprecated in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php on line 39
+[25-Aug-2022 13:04:49 America/Los_Angeles] PHP Fatal error:  Uncaught TypeError: date_format(): Argument #1 ($object) must be of type DateTimeInterface, bool given in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php:40
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/Util.php(40): date_format()
+#1 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(222): Util->fecha_tabla()
+#2 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/Util.php on line 40
+[27-Sep-2022 07:05:15 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[27-Sep-2022 07:05:15 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[27-Sep-2022 15:39:53 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[27-Sep-2022 15:39:53 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[27-Sep-2022 15:40:12 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[27-Sep-2022 15:40:12 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[01-Oct-2022 09:59:07 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[01-Oct-2022 09:59:07 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[03-Oct-2022 15:45:46 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[03-Oct-2022 15:45:46 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[04-Oct-2022 08:52:31 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[04-Oct-2022 08:52:31 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[05-Oct-2022 10:03:26 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[05-Oct-2022 10:03:26 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[05-Oct-2022 10:06:11 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[05-Oct-2022 10:06:11 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[05-Oct-2022 13:14:09 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[05-Oct-2022 13:14:09 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[07-Oct-2022 07:37:55 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[07-Oct-2022 07:37:55 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[07-Oct-2022 08:44:37 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[07-Oct-2022 08:44:37 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[07-Oct-2022 15:47:29 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[07-Oct-2022 15:47:29 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[12-Oct-2022 15:54:19 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[12-Oct-2022 15:54:19 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[12-Oct-2022 15:54:39 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[12-Oct-2022 15:54:39 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[13-Oct-2022 11:53:34 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[13-Oct-2022 11:53:34 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[14-Oct-2022 09:29:01 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[14-Oct-2022 09:29:01 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[15-Oct-2022 08:19:55 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[15-Oct-2022 08:19:55 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[17-Oct-2022 11:17:22 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[17-Oct-2022 11:17:22 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[17-Oct-2022 15:12:58 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[17-Oct-2022 15:12:58 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[18-Oct-2022 10:42:28 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[18-Oct-2022 10:42:28 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[18-Oct-2022 15:23:15 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[18-Oct-2022 15:23:15 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[20-Oct-2022 10:51:08 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[20-Oct-2022 10:51:08 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[20-Oct-2022 11:49:04 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[20-Oct-2022 11:49:04 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[20-Oct-2022 11:49:24 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[20-Oct-2022 11:49:24 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[24-Oct-2022 07:35:45 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[24-Oct-2022 07:35:45 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[25-Oct-2022 07:28:24 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[25-Oct-2022 07:28:24 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[02-Nov-2022 06:50:18 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[02-Nov-2022 06:50:18 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[07-Nov-2022 13:37:10 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[07-Nov-2022 13:37:10 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[09-Nov-2022 06:46:08 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[09-Nov-2022 06:46:08 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[16-Nov-2022 07:35:48 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[16-Nov-2022 07:35:48 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[17-Nov-2022 06:30:19 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[17-Nov-2022 06:30:19 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[18-Nov-2022 07:22:24 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[18-Nov-2022 07:22:24 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265
+[19-Nov-2022 07:06:57 America/Los_Angeles] PHP Warning:  fopen(../tools/generateQR/temp/.png): Failed to open stream: No such file or directory in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 1185
+[19-Nov-2022 07:06:57 America/Los_Angeles] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../tools/generateQR/temp/.png in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php:265
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(1187): FPDF->Error()
+#1 /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php(833): FPDF->_parsepng()
+#2 /home/goempres/public_html/lsp/clientes/walga/reports/comprobante_venta_a4.php(309): FPDF->Image()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/tools/fpdf/fpdf.php on line 265

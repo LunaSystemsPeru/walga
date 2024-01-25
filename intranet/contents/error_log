@@ -1,0 +1,201 @@
+[21-Jul-2022 15:58:41 America/Lima] PHP Fatal error:  Uncaught Error: Class "Contrato" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php on line 9
+[21-Jul-2022 15:59:00 America/Lima] PHP Fatal error:  Uncaught Error: Class "Contrato" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php on line 9
+[21-Jul-2022 15:59:34 America/Lima] PHP Fatal error:  Uncaught Error: Class "Contrato" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php on line 9
+[21-Jul-2022 15:59:46 America/Lima] PHP Fatal error:  Uncaught Error: Class "Contrato" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php on line 9
+[21-Jul-2022 16:00:30 America/Lima] PHP Fatal error:  Uncaught Error: Class "Contrato" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php on line 9
+[21-Jul-2022 16:02:51 America/Lima] PHP Fatal error:  Uncaught Error: Class "Contrato" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos.php on line 17
+[23-Aug-2022 15:35:24 America/Lima] PHP Fatal error:  Uncaught Error: Class "Recordatorio" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php:4
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/main.php(33): require()
+#1 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 4
+[23-Aug-2022 15:37:15 America/Lima] PHP Fatal error:  Uncaught Error: Class "Recordatorio" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php:4
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/main.php(33): require()
+#1 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 4
+[23-Aug-2022 15:38:35 America/Lima] PHP Fatal error:  Uncaught Error: Class "Recordatorio" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php:4
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/main.php(33): require()
+#1 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 4
+[23-Aug-2022 15:38:39 America/Lima] PHP Fatal error:  Uncaught Error: Class "Recordatorio" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php:4
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/main.php(33): require()
+#1 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 4
+[23-Aug-2022 15:38:51 America/Lima] PHP Fatal error:  Uncaught Error: Class "Recordatorio" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php:4
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/main.php(33): require()
+#1 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 4
+[23-Aug-2022 15:38:52 America/Lima] PHP Fatal error:  Uncaught Error: Class "Recordatorio" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php:4
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/main.php(33): require()
+#1 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 4
+[23-Aug-2022 15:38:54 America/Lima] PHP Fatal error:  Uncaught Error: Class "Recordatorio" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php:4
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/main.php(33): require()
+#1 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 4
+[23-Aug-2022 15:40:07 America/Lima] PHP Fatal error:  Uncaught Error: Class "Recordatorio" not found in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php:4
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/main.php(35): require()
+#1 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 4
+[23-Aug-2022 13:51:38 America/Los_Angeles] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'goempres_walga.ventas_sunat' doesn't exist in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:113
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(113): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/Venta.php(315): conectar->get_Cursor()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-ventas.php(16): Venta->verVentasdelMes()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 113
+[25-Aug-2022 12:10:19 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 12:10:19 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 14:10:21 America/Lima] PHP Fatal error:  Uncaught Error: Call to undefined method Contrato::verContratosxCobrar() in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos-deuda.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-contratos-deuda.php on line 12
+[25-Aug-2022 12:22:57 America/Los_Angeles] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'union all
+                select vg.fecha, 0 as ingreso, vg.monto, concat(pv....' at line 7 in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:113
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(113): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/VehiculoGasto.php(241): conectar->get_Cursor()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-gastos.php(102): VehiculoGasto->verGastos()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 113
+[25-Aug-2022 12:23:03 America/Los_Angeles] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'union all
+                select vg.fecha, 0 as ingreso, vg.monto, concat(pv....' at line 7 in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php:113
+Stack trace:
+#0 /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php(113): mysqli->query()
+#1 /home/goempres/public_html/lsp/clientes/walga/models/VehiculoGasto.php(241): conectar->get_Cursor()
+#2 /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-gastos.php(102): VehiculoGasto->verGastos()
+#3 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/models/Conectar.php on line 113
+[25-Aug-2022 12:23:29 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 12:23:29 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 12:30:00 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 12:30:00 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:33:44 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:33:44 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:34:01 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:34:01 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:34:36 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:34:36 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:34:42 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:34:42 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:35:56 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:35:56 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:43:50 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:43:50 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:44:45 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:44:45 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:47:13 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:47:13 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:47:41 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 13:47:41 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 14:00:38 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 14:00:38 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 14:27:05 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 14:27:05 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 14:55:29 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 14:55:29 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 15:03:16 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 15:03:16 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 15:28:29 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 15:28:29 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 15:28:45 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[25-Aug-2022 15:28:45 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[26-Aug-2022 09:45:52 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[26-Aug-2022 09:45:52 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[26-Aug-2022 09:47:55 America/Los_Angeles] PHP Warning:  Undefined variable $TipoGasto in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[26-Aug-2022 09:47:55 America/Los_Angeles] PHP Fatal error:  Uncaught Error: Call to a member function verFilas() on null in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php:280
+Stack trace:
+#0 {main}
+  thrown in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/detalle-contrato.php on line 280
+[01-Sep-2022 15:36:50 America/Los_Angeles] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 7
+[03-Sep-2022 14:24:34 America/Los_Angeles] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 7
+[03-Sep-2022 14:27:01 America/Los_Angeles] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 7
+[05-Sep-2022 18:18:48 America/Lima] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-gastos.php on line 11
+[05-Sep-2022 16:18:48 America/Los_Angeles] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 7
+[28-Sep-2022 11:52:58 America/Los_Angeles] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 7
+[06-Oct-2022 22:39:51 America/Lima] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/contents/lista-gastos.php on line 11
+[06-Oct-2022 20:39:51 America/Los_Angeles] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 7
+[30-Oct-2022 18:50:37 America/Los_Angeles] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 7
+[02-Nov-2022 15:30:13 America/Los_Angeles] PHP Warning:  Undefined array key "empresa_id" in /home/goempres/public_html/lsp/clientes/walga/intranet/fixed/top-bar.php on line 7

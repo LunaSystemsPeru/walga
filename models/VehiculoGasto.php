@@ -235,17 +235,20 @@ class VehiculoGasto
 
     public function verGastos($inicio, $fin)
     {
-        $sql = "select cp.fecha_pago as fecha, cp.monto as ingreso, 0 as monto, c.servicio as descripcion, v.placa
+        $sql = "select cp.fecha_pago as fecha, cp.monto as ingreso, 0 as monto, c.servicio as descripcion, u.username, v.placa 
                 from contratos_pagos as cp 
+                inner join clientes_pagos p on cp.pago_id = p.id
+                inner join usuarios as u on u.id = p.usuario_id
                 inner join  contratos as c on c.id = cp.contrato_id
-                inner join vehiculos as v on v.id =  c.vehiculo_id
-                where cp.fecha_pago BETWEEN '$inicio' and '$fin' and v.id = '$this->vehiculoid' and cp.tipopago_id = 23
+                inner join vehiculos v on c.vehiculo_id = v.id 
+                where cp.fecha_pago BETWEEN '$inicio' and '$fin' and p.usuario_id = '$this->usuarioid' and cp.tipopago_id = 23
                 union all
-                select vg.fecha, 0 as ingreso, vg.monto, concat(pv.descripcion, ' ', ifnull(vg.observaciones, '')) as descripcion, v.placa
+                select vg.fecha, 0 as ingreso, vg.monto, concat(pv.descripcion, ' ', ifnull(vg.observaciones, '')) as descripcion, u.username, v.placa
                 from vehiculos_gastos as vg 
-                inner join vehiculos as v on v.id = vg.vehiculo_id
+                inner join usuarios as u on u.id = vg.usuario_id
+                inner join vehiculos v on v.id = vg.vehiculo_id 
                 inner join parametros_valores as pv on pv.id = vg.gasto_id
-                where vg.fecha BETWEEN '$inicio' and '$fin' and vg.vehiculo_id = '$this->vehiculoid'
+                where vg.fecha BETWEEN '$inicio' and '$fin' and vg.usuario_id = '$this->usuarioid'
                 order by fecha asc, ingreso desc, monto asc";
 
         return $this->conectar->get_Cursor($sql);

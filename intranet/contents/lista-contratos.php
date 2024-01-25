@@ -23,7 +23,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-ES">
 
 
 <!-- Mirrored from mannatthemes.com/dastone/default/horizontal-index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 May 2021 20:34:16 GMT -->
@@ -91,6 +91,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                     <tr>
                                         <th>#</th>
                                         <th width="10%">Fecha</th>
+                                        <th>Usuario</th>
                                         <th>Vehiculo</th>
                                         <th>Servicio</th>
                                         <th>Cliente</th>
@@ -140,6 +141,7 @@ if (filter_input(INPUT_GET, 'fecha_inicio')) {
                                         <tr>
                                             <th scope="row"><?php echo $item ?></th>
                                             <td class="text-center"><?php echo $fila['fecha'] ?></td>
+                                            <td class="text-center"><?php echo $fila['username'] ?></td>
                                             <td class="text-center"><?php echo $fila['placa'] ?></td>
                                             <td><?php echo strtoupper($fila['tiposervicio'] . " | O. " . $fila['origen'] . " - D. " . $fila['destino'] . " | " . $fila['servicio']) ?></td>
                                             <td><?php echo $fila['datos'] ?></td>

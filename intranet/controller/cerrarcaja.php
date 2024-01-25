@@ -4,8 +4,8 @@ require '../../models/VehiculoGasto.php';
 
 $Gasto = new VehiculoGasto();
 $placa = filter_input(INPUT_POST, 'input-placa');
-$Gasto->setVehiculoid(filter_input(INPUT_POST, 'input-vehiculo'));
-$Gasto->setUsuarioid($_SESSION['usuario_id']);
+$Gasto->setVehiculoid(0);
+$Gasto->setUsuarioid(filter_input(INPUT_POST, 'input-usuario'));
 $Gasto->setGastoid(25);
 $Gasto->setMonto(filter_input(INPUT_POST, 'monto-cierre'));
 $Gasto->setFecha(filter_input(INPUT_POST, 'fecha-cierre'));
@@ -19,6 +19,7 @@ echo "<br>";
 $Gasto->setVehiculoid(0);
 $Gasto->setMonto(filter_input(INPUT_POST, 'monto-cierre') * -1);
 $Gasto->setOrometro(0);
+$Gasto->setUsuarioid($_SESSION['usuario_id']);
 
 $Gasto->obtenerId();
 echo $Gasto->insertar();

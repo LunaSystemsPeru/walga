@@ -418,7 +418,8 @@ class Contrato
         $this->conectar->ejecutar_idu($sql);
     }
 
-    public function modificar () {
+    public function modificar()
+    {
         $sql = "update contratos 
                 set comprobante_id = '$this->comprobanteid',
                     estado_comprobante = '$this->estadocomprobante', 
@@ -436,7 +437,8 @@ class Contrato
         $this->conectar->ejecutar_idu($sql);
     }
 
-    public function verContratosActivos() {
+    public function verContratosActivos()
+    {
         $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, 
                 pv.descripcion as comprobante, pv2.descripcion as tiposervicio, v.placa, c.comprobante_id, c.estado_comprobante
                 from contratos as c 
@@ -449,20 +451,23 @@ class Contrato
         return $this->conectar->get_Cursor($sql);
     }
 
-    public function verContratosdelDia() {
-        $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, c.incluye_igv,  
+    public function verContratosdelDia()
+    {
+        $sql = "select c.servicio, c.origen, c.destino, u.username, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, c.incluye_igv,  
                 pv.descripcion as comprobante, pv2.descripcion as tiposervicio, v.placa, c.comprobante_id, c.estado_comprobante
                 from contratos as c 
                 inner join clientes c2 on c.cliente_id = c2.id
                 inner join parametros_valores pv on c.comprobante_id = pv.id
                 inner join parametros_valores as pv2 on c.tiposervicio_id = pv2.id
                 inner join vehiculos v on c.vehiculo_id = v.id
+                inner join usuarios u on c.usuario_id = u.id
                 where c.fecha = '$this->fecha' or (c.estado_comprobante = 0 and c.comprobante_id= 4) 
                 order by c.fecha asc";
         return $this->conectar->get_Cursor($sql);
     }
 
-    public function verContratosxCobrar() {
+    public function verContratosxCobrar()
+    {
         $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, c.incluye_igv,  
                 pv.descripcion as comprobante, pv2.descripcion as tiposervicio, v.placa, c.comprobante_id, c.estado_comprobante
                 from contratos as c 
@@ -475,22 +480,36 @@ class Contrato
         return $this->conectar->get_Cursor($sql);
     }
 
-    public function verContratosxFecha($inicio, $fin) {
-        $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, c.incluye_igv,  
+    public function verContratosxFecha($inicio, $fin)
+    {
+        $sql = "select c.servicio, c.origen, c.destino, u.username ,c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, c.incluye_igv,  
                 pv.descripcion as comprobante, pv2.descripcion as tiposervicio, v.placa, c.comprobante_id, c.estado_comprobante
                 from contratos as c 
                 inner join clientes c2 on c.cliente_id = c2.id
                 inner join parametros_valores pv on c.comprobante_id = pv.id
                 inner join parametros_valores as pv2 on c.tiposervicio_id = pv2.id
                 inner join vehiculos v on c.vehiculo_id = v.id
+                inner join usuarios u on c.usuario_id = u.id
                 where c.fecha between '$inicio' and '$fin' 
                 order by c.id asc";
         return $this->conectar->get_Cursor($sql);
     }
 
-    public function eliminar () {
+    public function eliminar()
+    {
         $sql = "delete from contratos where id = '$this->id'";
         $this->conectar->ejecutar_idu($sql);
+    }
+
+    public function verHorasVehiculoxFecha($fechainicio, $fechafin)
+    {
+        $sql = "select c.fecha,  c.vehiculo_id, v.placa, 
+                SEC_TO_TIME(sum(TIMESTAMPDIFF(SECOND, concat(fecha, ' ',hora_inicio,':00'), concat(fecha, ' ',hora_termino, ':00')))) HORAS 
+                FROM contratos as c
+                inner join vehiculos as v on v.id = c.vehiculo_id
+                where c.fecha BETWEEN '$fechainicio' and '$fechafin' and c.usuario_id = '$this->usuarioid'
+                GROUP by c.fecha, c.vehiculo_id";
+        return $this->conectar->get_Cursor($sql);
     }
 
 }

@@ -1,11 +1,5 @@
-<?php
-include_once '../fixed/cargarSession.php';
-require '../../models/Cliente.php';
-$Cliente = new Cliente();
-$Cliente->setEmpresaId($_SESSION['empresa_id']);
-?>
 <!DOCTYPE html>
-<html lang="es-ES">
+<html lang="en">
 
 
 <!-- Mirrored from mannatthemes.com/dastone/default/horizontal-index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 21 May 2021 20:34:16 GMT -->
@@ -32,7 +26,7 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
 <body data-layout="horizontal" class="">
 
 <!-- Top Bar Start -->
-<?php require '../fixed/top-bar.php' ?>
+<?php require '../fixed/tob-bar.php' ?>
 <!-- Top Bar End -->
 <div class="page-wrapper">
     <!-- Page Content-->
@@ -44,16 +38,17 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
                     <div class="page-title-box">
                         <div class="row">
                             <div class="col">
-                                <h4 class="page-title">Lista de Clientes</h4>
+                                <h4 class="page-title">Lista Documentos de Vehiculos</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Servicios</a></li>
-                                    <li class="breadcrumb-item active">Clientes</li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Flota</a></li>
+                                    <li class="breadcrumb-item active">Documentos de Vehiculos</li>
                                 </ol>
                             </div><!--end col-->
                             <div class="col-auto align-self-center">
-                                <a href="form-clientes.php" class="btn btn-sm btn-soft-primary">
+
+                                <a href="form-documentosvehiculos.php" class="btn btn-sm btn-soft-primary">
                                     <i data-feather="plus" class="fas fa-plus mr-2"></i>
-                                    Agregar Clientes
+                                    Agregar Documento de Vehiculo
                                 </a>
                             </div><!--end col-->
                         </div><!--end row-->
@@ -62,6 +57,7 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
             </div><!--end row-->
             <!-- end page title end breadcrumb -->
             <div class="row justify-content-center">
+
                 <div class="col-lg-12">
                     <div class="card">
                     </div><!--end card-header-->
@@ -70,35 +66,30 @@ $Cliente->setEmpresaId($_SESSION['empresa_id']);
                             <table class="table mb-0">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th>#</th>
-                                    <th>Datos</th>
-                                    <th>Celular</th>
-                                    <th>Email</th>
-                                    <th>Entidad</th>
+                                    <th>Item</th>
+                                    <th>Placa </th>
+                                    <th>Marca</th>
+                                    <th>Modelo</th>
+                                    <th>Nombre Documento</th>
+                                    <th>F. Vencimiento</th>
+                                    <th>Estado</th>
+                                    <th>Emisor</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                $array_clientes = $Cliente->verFilas();
-                                $item = 1;
-                                foreach ($array_clientes as $fila) {
-                                    ?>
-                                    <tr>
-                                        <th scope="row"><?php echo $item ?></th>
-                                        <td><?php echo $fila['datos'] ?></td>
-                                        <td><?php echo $fila['celular'] ?></td>
-                                        <td><?php echo $fila['email'] ?></td>
-                                        <td><?php echo $fila['documento'] ?></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>MHL123</td>
+                                    <td>TOYOTA</td>
+                                    <td>C-HR</td>
+                                    <td>Boleta</td>
+                                    <td>25/08/2022</td>
+                                    <td><span class="badge badge-boxed  badge-outline-success">Activo</span></td>
+                                    <td>Emisor</td>
+                                    <td><button class="btn btn-info btn-sm"><i class="ti ti-eye"></i></button></td>
+                                </tr>
 
-                                    <?php
-                                    $item++;
-                                }
-                                ?>
                                 </tbody>
                             </table><!--end /table-->
                         </div><!--end /tableresponsive-->
@@ -130,14 +121,11 @@ include('../fixed/footer.php');
 <script src="../assets/js/moment.js"></script>
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 
+<script src="../plugins/apex-charts/apexcharts.min.js"></script>
+<script src="../assets/pages/jquery.analytics_dashboard.init.js"></script>
+
 <!-- App js -->
 <script src="../assets/js/app.js"></script>
-
-<script>
-    function abrirModal() {
-        $("#bd-example-modal-xl").modal("toggle");
-    }
-</script>
 
 </body>
 
