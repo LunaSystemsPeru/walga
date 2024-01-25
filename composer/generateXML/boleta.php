@@ -1,12 +1,12 @@
 <?php
 
 use Greenter\Model\Client\Client;
-use Greenter\Model\Company\Company;
 use Greenter\Model\Company\Address;
+use Greenter\Model\Company\Company;
 use Greenter\Model\Sale\FormaPagos\FormaPagoContado;
 use Greenter\Model\Sale\Invoice;
-use Greenter\Model\Sale\SaleDetail;
 use Greenter\Model\Sale\Legend;
+use Greenter\Model\Sale\SaleDetail;
 
 require __DIR__ . '/../vendor/autoload.php';
 require '../src/Config.php';
@@ -15,14 +15,13 @@ require '../../models/Venta.php';
 require '../../models/VentaServicio.php';
 require '../../models/Entidad.php';
 require '../../models/Empresa.php';
-require '../../models/VentaSunat.php';
 require '../../tools/NumerosaLetras.php';
 
-require '../../tools/generateQR/class/GenerarQr.php';
+require '../functions/Comprobante_Sunat.php';
 
 $NumeroLetras = new NumerosaLetras();
 
-$ventaid = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$ventaid = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 $Venta = new Venta();
 $Venta->setId($ventaid);
@@ -42,13 +41,6 @@ $VentaServicio->setVentaid($Venta->getId());
 $Cliente = new Entidad();
 $Cliente->setId($Venta->getEntidadid());
 $Cliente->obtenerDatos();
-
-$Config = new Config();
-$Config->setRuc($Empresa->getRuc());
-$Config->setUsersol($Empresa->getUsersunat());
-$Config->setClavesol($Empresa->getPasssunat());
-
-$see = $Config->getSee();
 
 // Cliente
 $client = (new Client())
@@ -85,7 +77,7 @@ foreach ($arrayServicios as $item) {
         ->setCodProducto($item['id'])
         ->setUnidad($item['unidad']) // Unidad - Catalog. 03
         ->setCantidad(1)
-        ->setDescripcion(utf8_encode($item['descripcion']));
+        ->setDescripcion(htmlentities($item['descripcion']));
 
     $itemSinIGV = $item['precio_venta'] / 1.18;
     $itemProducto
@@ -139,34 +131,10 @@ $totalGeneral = number_format($totalGeneral, 2);
 
 $nombre_archivo = $invoice->getName();
 $tipoDoc = 1;
-//generar qr
-$qr = $Empresa->getRuc() . "|" . "03" . "|" . $Venta->getSerie() . "|" . $Venta->getNumero() . "|" . $igv . "|" . $totalGeneral . "|" . $Venta->getFecha() . "|" . $tipoDoc . "|" . $Cliente->getNrodocumento();
-$generarQR = new generarQr();
-$generarQR->setTexto_qr($qr);
-$generarQR->setNombre_archivo($nombre_archivo);
-$generarQR->generar_qr();
 
 //boletas no se envian xml a sunat
-//$result = $see->send($invoice);
-$see->getXmlSigned($invoice);
+$ComprobanteSunatCPE = new Comprobante_Sunat();
+$ComprobanteSunatCPE->setConfig($Empresa);
+$json_response = $ComprobanteSunatCPE->envioSunat(false, $invoice, $Venta->getId());
 
-// Guardar XML firmado digitalmente.
-file_put_contents("../../public/xml/" . $invoice->getName() . '.xml',
-    $see->getFactory()->getLastXml());
-
-
-$aceptadosunat = true;
-$indiceaceptado = 1;
-$observaciones = "";
-$code = "";
-
-$SunatVenta->setCodigoSunat($code);
-$SunatVenta->setEstado($indiceaceptado);
-$SunatVenta->setNombre($invoice->getName());
-$SunatVenta->setRespuesta($observaciones);
-$SunatVenta->setHash($Config->getHash($invoice));
-$SunatVenta->insertar();
-
-if (!$aceptadosunat) {
-    return json_encode(["aceptado" => $aceptadosunat, "observaciones" => $observaciones, "nombreDocumento" => $invoice->getName(), "codigoSunat" => $code]);
-}
+echo $json_response;

@@ -3,13 +3,15 @@ require '../../models/Venta.php';
 require '../../models/VentaServicio.php';
 require '../../models/Entidad.php';
 require '../../models/ComprobanteSunat.php';
+require '../../models/DocumentoEnvio.php';
 
 $Venta = new Venta();
 $accion = filter_input(INPUT_GET, 'accion');
 
 if ($accion == 'listar') {
     $fecha = filter_input(INPUT_POST, 'fecha');
-    $Venta->setSerie("C03");
+    $fecha = date('Y-m-d');
+    $Venta->setSerie("LS3");
     $lista_ventas = $Venta->verVentasxSerieEntreFechas($fecha, $fecha);
     echo $lista_ventas;
 }
@@ -51,10 +53,27 @@ if ($accion == 'registrar') {
     $VentaServicio->setVentaid($Venta->getId());
     $lista_servicios = json_decode(filter_input(INPUT_POST, 'venta_items'));
     foreach ($lista_servicios as $item) {
-        $VentaServicio->setDescripcion($item['item_descripcion']);
-        $VentaServicio->setPrecio($item['item_precio']);
+        $VentaServicio->setDescripcion($item->item_descripcion);
+        $VentaServicio->setPrecio($item->item_precio);
         $VentaServicio->setUnidadid(12);
         $VentaServicio->obtenerId();
         $VentaServicio->insertar();
     }
+
+    $DocumentoEnvioCurl = new DocumentoEnvio();
+    echo $DocumentoEnvioCurl->enviarSunat($Venta->getComprobanteid(), $Venta->getId(), '');
+}
+
+if ($accion == 'detalle') {
+    $Venta->setId(filter_input(INPUT_POST, 'id'));
+    $json_venta = $Venta->getJsonDataVenta();
+
+    $VentaServicio = new VentaServicio();
+    $VentaServicio->setVentaid($Venta->getId());
+    $lista_servicios = $VentaServicio->verFilas(1);
+
+    $array_detalle = json_decode($json_venta, true);
+    $array_detalle["items"] = json_decode($lista_servicios);
+
+    echo json_encode($array_detalle);
 }

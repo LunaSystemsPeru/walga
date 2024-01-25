@@ -85,8 +85,8 @@
             <!-- Start emShipping__address -->
             <div class="emShipping__address padding-l-10 padding-r-10 bg-white">
                 <div class="item__address">
-                    <p class="address_txt" id="p_fecha_actual">24/01/2024</p>
-                    <p class="address_txt" id="p_serie_cp">BC03</p>
+                    <p class="address_txt" id="p_fecha_actual">25/01/2024</p>
+                    <p class="address_txt" id="p_serie_cp">BLS3</p>
                     <div class="d-flex align-items-center">
                         <span class="label_default margin-r-10 padding-10" id="p_nombre_comprobante">Boleta Electronica</span>
                         <button class="btn btn__editAddress" data-target="#mdl_comprobante" data-toggle="modal" type="button">
@@ -267,7 +267,7 @@
                                             <div class="icon">
                                                 <i class="tio-user"></i>
                                             </div>
-                                            <button class="btn  " type="button" onclick="obtenerDatosCliente()">
+                                            <button class="btn  " onclick="obtenerDatosCliente()" type="button">
                                                 <i class="tio-search"></i>
                                             </button>
                                         </div>
@@ -436,7 +436,7 @@
     let cliente_datos_global
     let cliente_direccion_global
     let tipo_comprobante = 3
-    let serie_comprobante = 'BC03'
+    let serie_comprobante = 'BLS3'
     let fecha_comprobante
     let total_comprobante = 0
 
@@ -458,11 +458,11 @@
         let seriecp = 'BC03'
         if (tipo_comprobante === 3) {
             namecp = "Boleta Electronica"
-            seriecp = 'BC03'
+            seriecp = 'BLS3'
         }
         if (tipo_comprobante === 4) {
             namecp = "Factura Electronica"
-            seriecp = 'FC03'
+            seriecp = 'FLS3'
         }
         serie_comprobante = seriecp
 
@@ -587,15 +587,24 @@
             "cliente_documento": cliente_documento_global,
             "cliente_datos": cliente_datos_global,
             "cliente_direccion": cliente_direccion_global,
-            "venta_fecha" : fecha_comprobante,
-            "venta_usuario" : id_usuario,
-            "venta_empresa" : id_empresa,
-            "venta_total" : total_comprobante,
+            "venta_fecha": fecha_comprobante,
+            "venta_usuario": id_usuario,
+            "venta_empresa": id_empresa,
+            "venta_total": total_comprobante,
             "venta_items": JSON.stringify(arrayItemsServicios)
         }
 
         $.post('../controller/dao_ventas.php?accion=registrar', form_parms, function (data) {
-            alert(data)
+            try {
+                let jsondata = JSON.parse(data)
+                if (jsondata.aceptado) {
+                    sessionStorage.setItem('id_venta', data.id)
+                    location.href = 'campo-view-venta-detalle.html'
+                }
+            } catch (e) {
+                console.log(e)
+            }
+
         })
     }
 </script>

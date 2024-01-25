@@ -116,11 +116,18 @@ class VentaServicio
         $this->conectar->ejecutar_idu($sql);
     }
 
-    public function verFilas () {
+    public function verFilas($tipo = 0)
+    {
         $sql = "select vs.id, vs.descripcion, vs.precio_venta, vs.venta_id, pv.valor1 as unidad, pv.valor2 
                 from ventas_servicios as vs 
                 inner join parametros_valores pv on vs.unidad_id = pv.id
                 where venta_id = '$this->ventaid'";
-        return $this->conectar->get_Cursor($sql);
+        if ($tipo == 0) {
+            return $this->conectar->get_Cursor($sql);
+        }
+        if ($tipo == 1) {
+            return $this->conectar->get_json_rows($sql);
+        }
+
     }
 }

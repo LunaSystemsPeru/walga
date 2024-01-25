@@ -1,0 +1,64 @@
+[25-Jan-2024 12:28:51 America/Lima] PHP Fatal error:  Uncaught Error: Class "BaconQrCode\Renderer\ImageRenderer" not found in C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php:7
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php on line 7
+[25-Jan-2024 12:29:06 America/Lima] PHP Fatal error:  Uncaught BaconQrCode\Exception\RuntimeException: You need to install the imagick extension to use this back end in C:\xampp\htdocs\clientes\walga\composer\vendor\bacon\bacon-qr-code\src\Renderer\Image\ImagickImageBackEnd.php:64
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php(11): BaconQrCode\Renderer\Image\ImagickImageBackEnd->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\vendor\bacon\bacon-qr-code\src\Renderer\Image\ImagickImageBackEnd.php on line 64
+[25-Jan-2024 12:38:59 America/Lima] PHP Fatal error:  Uncaught Error: Class "Endroid\QrCode\Writer\PngWriter" not found in C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php:12
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php on line 12
+[25-Jan-2024 12:39:46 America/Lima] PHP Fatal error:  Uncaught Exception: Could not read logo image data from path "C:\xampp\htdocs\clientes\walga\composer\functions/assets/symfony.png": file_get_contents(C:\xampp\htdocs\clientes\walga\composer\functions/assets/symfony.png): Failed to open stream: No such file or directory in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php:28
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(131): Endroid\QrCode\ImageData\LogoImageData::createForLogo(Object(Endroid\QrCode\Logo\Logo))
+#1 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(119): Endroid\QrCode\Writer\AbstractGdWriter->addLogo(Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Writer\Result\GdResult))
+#2 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\PngWriter.php(25): Endroid\QrCode\Writer\AbstractGdWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label), Array)
+#3 C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php(36): Endroid\QrCode\Writer\PngWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label))
+#4 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php on line 28
+[25-Jan-2024 12:40:02 America/Lima] PHP Fatal error:  Uncaught Exception: Could not read logo image data from path "C:\xampp\htdocs\clientes\walga\composer\functions/symfony.png": file_get_contents(C:\xampp\htdocs\clientes\walga\composer\functions/symfony.png): Failed to open stream: No such file or directory in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php:28
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(131): Endroid\QrCode\ImageData\LogoImageData::createForLogo(Object(Endroid\QrCode\Logo\Logo))
+#1 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(119): Endroid\QrCode\Writer\AbstractGdWriter->addLogo(Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Writer\Result\GdResult))
+#2 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\PngWriter.php(25): Endroid\QrCode\Writer\AbstractGdWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label), Array)
+#3 C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php(36): Endroid\QrCode\Writer\PngWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label))
+#4 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php on line 28
+[25-Jan-2024 12:40:16 America/Lima] PHP Fatal error:  Uncaught Exception: Could not read logo image data from path "C:\xampp\htdocs\clientes\walga\composer\functions/test/symfony.png": file_get_contents(C:\xampp\htdocs\clientes\walga\composer\functions/test/symfony.png): Failed to open stream: No such file or directory in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php:28
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(131): Endroid\QrCode\ImageData\LogoImageData::createForLogo(Object(Endroid\QrCode\Logo\Logo))
+#1 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(119): Endroid\QrCode\Writer\AbstractGdWriter->addLogo(Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Writer\Result\GdResult))
+#2 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\PngWriter.php(25): Endroid\QrCode\Writer\AbstractGdWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label), Array)
+#3 C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php(36): Endroid\QrCode\Writer\PngWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label))
+#4 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php on line 28
+[25-Jan-2024 12:40:43 America/Lima] PHP Fatal error:  Uncaught Exception: Could not read logo image data from path "C:\xampp\htdocs\clientes\walga\composer\functions/test/symfony.png": file_get_contents(C:\xampp\htdocs\clientes\walga\composer\functions/test/symfony.png): Failed to open stream: No such file or directory in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php:28
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(131): Endroid\QrCode\ImageData\LogoImageData::createForLogo(Object(Endroid\QrCode\Logo\Logo))
+#1 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(119): Endroid\QrCode\Writer\AbstractGdWriter->addLogo(Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Writer\Result\GdResult))
+#2 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\PngWriter.php(25): Endroid\QrCode\Writer\AbstractGdWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label), Array)
+#3 C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php(37): Endroid\QrCode\Writer\PngWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label))
+#4 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php on line 28
+[25-Jan-2024 12:41:08 America/Lima] PHP Fatal error:  Uncaught Endroid\QrCode\Exception\ValidationException: Please install "khanamiryan/qrcode-detector-decoder" or disable image validation in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Exception\ValidationException.php:16
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(203): Endroid\QrCode\Exception\ValidationException::createForMissingPackage('khanamiryan/qrc...')
+#1 C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php(30): Endroid\QrCode\Writer\AbstractGdWriter->validateResult(Object(Endroid\QrCode\Writer\Result\PngResult), 'Life is too sho...')
+#2 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Exception\ValidationException.php on line 16
+[25-Jan-2024 12:43:14 America/Lima] PHP Fatal error:  Uncaught Error: Class "Builder" not found in C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php on line 18
+[25-Jan-2024 12:43:30 America/Lima] PHP Fatal error:  Uncaught Exception: Could not read logo image data from path "C:\xampp\htdocs\clientes\walga\composer\functions/test/symfony.png": file_get_contents(C:\xampp\htdocs\clientes\walga\composer\functions/test/symfony.png): Failed to open stream: No such file or directory in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php:28
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(131): Endroid\QrCode\ImageData\LogoImageData::createForLogo(Object(Endroid\QrCode\Logo\Logo))
+#1 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\AbstractGdWriter.php(119): Endroid\QrCode\Writer\AbstractGdWriter->addLogo(Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Writer\Result\GdResult))
+#2 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Writer\PngWriter.php(25): Endroid\QrCode\Writer\AbstractGdWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label), Array)
+#3 C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\Builder\Builder.php(235): Endroid\QrCode\Writer\PngWriter->write(Object(Endroid\QrCode\QrCode), Object(Endroid\QrCode\Logo\Logo), Object(Endroid\QrCode\Label\Label), Array)
+#4 C:\xampp\htdocs\clientes\walga\composer\functions\testQr.php(32): Endroid\QrCode\Builder\Builder->build()
+#5 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\vendor\endroid\qr-code\src\ImageData\LogoImageData.php on line 28

@@ -338,4 +338,14 @@ class Venta
                 order by v.fecha desc, v.numero desc ";
         return $this->conectar->get_json_rows($sql);
     }
+
+    public function getJsonDataVenta()
+    {
+        $sql = "select v.id, v.fecha, pv.valor1 as doc_abreviado, pv.descripcion as doc_nombre, v.serie, v.numero, e.documento, e.razonsocial, e.direccion, v.estado, v.total
+                from ventas as v
+                inner join entidades e on v.entidad_id = e.id
+                inner join parametros_valores pv on v.comprobante_id = pv.id
+                where v.id = '$this->id'";
+        return $this->conectar->get_json_row($sql);
+    }
 }

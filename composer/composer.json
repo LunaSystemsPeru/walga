@@ -2,6 +2,8 @@
     "require": {
         "greenter/greenter": "^4.3",
         "phpmailer/phpmailer": "^6.6",
-      "ext-curl": "*"
+      "ext-curl": "*",
+        "endroid/qr-code": "^5.0",
+        "khanamiryan/qrcode-detector-decoder": "^2.0"
     }
 }

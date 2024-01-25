@@ -1,0 +1,67 @@
+[25-Jan-2024 13:15:27 America/Lima] PHP Deprecated:  Optional parameter $enviar declared before required parameter $invoice is implicitly treated as a required parameter in C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php on line 24
+[25-Jan-2024 13:15:27 America/Lima] PHP Fatal error:  Cannot declare class VentaSunat, because the name is already in use in C:\xampp\htdocs\clientes\walga\models\VentaSunat.php on line 4
+[25-Jan-2024 13:16:05 America/Lima] PHP Fatal error:  Cannot declare class VentaSunat, because the name is already in use in C:\xampp\htdocs\clientes\walga\models\VentaSunat.php on line 4
+[25-Jan-2024 13:16:33 America/Lima] PHP Deprecated:  Function utf8_encode() is deprecated in C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php on line 81
+[25-Jan-2024 13:16:33 America/Lima] PHP Fatal error:  Uncaught Error: Class "Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelQuartile" not found in C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php:59
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php(46): generateQR->getQrImage('20605459707|03|...')
+#1 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(137): generateQR->getImage(Object(Greenter\Model\Sale\Invoice))
+#2 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php on line 59
+[25-Jan-2024 13:16:44 America/Lima] PHP Fatal error:  Uncaught Error: Class "Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelQuartile" not found in C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php:59
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php(46): generateQR->getQrImage('20605459707|03|...')
+#1 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(137): generateQR->getImage(Object(Greenter\Model\Sale\Invoice))
+#2 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php on line 59
+[25-Jan-2024 13:17:24 America/Lima] PHP Parse error:  syntax error, unexpected token "\", expecting ")" in C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php on line 59
+[25-Jan-2024 13:17:29 America/Lima] PHP Fatal error:  Uncaught Error: Class "Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelQuartile" not found in C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php:59
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php(46): generateQR->getQrImage('20605459707|03|...')
+#1 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(137): generateQR->getImage(Object(Greenter\Model\Sale\Invoice))
+#2 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php on line 59
+[25-Jan-2024 13:19:48 America/Lima] PHP Fatal error:  Uncaught Error: Class "ErrorCorrectionLevel" not found in C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php:59
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php(46): generateQR->getQrImage('20605459707|03|...')
+#1 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(137): generateQR->getImage(Object(Greenter\Model\Sale\Invoice))
+#2 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\functions\generateQR.php on line 59
+[25-Jan-2024 13:20:51 America/Lima] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in C:\xampp\htdocs\clientes\walga\composer\vendor\greenter\greenter\packages\lite\src\Greenter\Factory\XmlBuilderResolver.php on line 42
+[25-Jan-2024 13:21:25 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '0' for key 'PRIMARY' in C:\xampp\htdocs\clientes\walga\models\Conectar.php:206
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\models\Conectar.php(206): mysqli->query('insert into ven...')
+#1 C:\xampp\htdocs\clientes\walga\models\VentaSunat.php(145): conectar->ejecutar_idu('insert into ven...')
+#2 C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php(41): VentaSunat->insertar()
+#3 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(143): Comprobante_Sunat->envioSunat(false, Object(Greenter\Model\Sale\Invoice))
+#4 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\models\Conectar.php on line 206
+[25-Jan-2024 13:24:20 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '206' for key 'PRIMARY' in C:\xampp\htdocs\clientes\walga\models\Conectar.php:206
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\models\Conectar.php(206): mysqli->query('insert into ven...')
+#1 C:\xampp\htdocs\clientes\walga\models\VentaSunat.php(146): conectar->ejecutar_idu('insert into ven...')
+#2 C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php(43): VentaSunat->insertar()
+#3 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(143): Comprobante_Sunat->envioSunat(false, Object(Greenter\Model\Sale\Invoice), '206')
+#4 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\models\Conectar.php on line 206
+[25-Jan-2024 13:24:31 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '206' for key 'PRIMARY' in C:\xampp\htdocs\clientes\walga\models\Conectar.php:206
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\models\Conectar.php(206): mysqli->query('insert into ven...')
+#1 C:\xampp\htdocs\clientes\walga\models\VentaSunat.php(146): conectar->ejecutar_idu('insert into ven...')
+#2 C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php(43): VentaSunat->insertar()
+#3 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(143): Comprobante_Sunat->envioSunat(false, Object(Greenter\Model\Sale\Invoice), '206')
+#4 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\models\Conectar.php on line 206
+[25-Jan-2024 13:26:28 America/Lima] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '206' for key 'PRIMARY' in C:\xampp\htdocs\clientes\walga\models\Conectar.php:206
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\models\Conectar.php(206): mysqli->query('insert into ven...')
+#1 C:\xampp\htdocs\clientes\walga\models\VentaSunat.php(145): conectar->ejecutar_idu('insert into ven...')
+#2 C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php(46): VentaSunat->insertar()
+#3 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(139): Comprobante_Sunat->envioSunat(false, Object(Greenter\Model\Sale\Invoice), '206')
+#4 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\models\Conectar.php on line 206
+[25-Jan-2024 13:27:22 America/Lima] PHP Fatal error:  Uncaught Error: Class "generateQR" not found in C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php:26
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(138): Comprobante_Sunat->envioSunat(false, Object(Greenter\Model\Sale\Invoice), '206')
+#1 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php on line 26
