@@ -335,7 +335,7 @@ class Venta
                 inner join parametros_valores pv on v.comprobante_id = pv.id 
                 inner join usuarios u on v.usuario_id = u.id
                 where v.fecha between '$inicio' and '$fin' and v.serie Like '%$this->serie%'
-                order by v.fecha ";
+                order by v.fecha desc, v.numero desc ";
         return $this->conectar->get_json_rows($sql);
     }
 }

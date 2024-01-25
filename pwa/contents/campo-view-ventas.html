@@ -248,7 +248,7 @@
 
 <script>
     function loadVentas() {
-        let fecha = '2023-12-20';
+        let fecha = '2024-01-25';
         let cardid = $('#card-items-venta');
         $.post('../controller/dao_ventas.php?accion=listar', {"fecha": fecha}, function (data) {
             cardid.html("")

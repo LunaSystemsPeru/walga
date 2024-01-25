@@ -366,7 +366,7 @@
                     <div class="padding-t-20">
                         <div class="em__signTypeOne">
                             <div class="em__body px-0">
-                                <form action="#">
+                                <form action="" id="form-add-servicio">
                                     <div class="form-group with_icon mb-2">
                                         <label>Descripcion del Servicio</label>
                                         <div class="input_group">
@@ -595,7 +595,7 @@
         }
 
         $.post('../controller/dao_ventas.php?accion=registrar', form_parms, function (data) {
-            console.log(data)
+            alert(data)
         })
     }
 </script>

@@ -10,7 +10,7 @@ $accion = filter_input(INPUT_GET, 'accion');
 if ($accion == 'listar') {
     $fecha = filter_input(INPUT_POST, 'fecha');
     $Venta->setSerie("C03");
-    $lista_ventas = $Venta->verVentasxSerieEntreFechas('2023-12-01', '2023-12-31');
+    $lista_ventas = $Venta->verVentasxSerieEntreFechas($fecha, $fecha);
     echo $lista_ventas;
 }
 
