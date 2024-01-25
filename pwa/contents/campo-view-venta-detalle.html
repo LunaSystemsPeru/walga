@@ -67,7 +67,7 @@
             </div>
             <div class="em_side_right">
                 <!-- Can you add something here.. -->
-                <button class="btn btn__back rounded-circle bg-snow">
+                <button class="btn btn__back rounded-circle bg-snow" onclick="verPDF()">
                     <i class="tio-download"></i>
                 </button>
             </div>
@@ -190,6 +190,12 @@
 <script src="../assets/js/pwa-services.js"></script>
 
 <script>
+
+    function verPDF () {
+        let id_venta = sessionStorage.getItem('id_venta')
+        location.href = '../../reports/comprobante_venta_ticket.php?id_venta=' + id_venta;
+    }
+
     function cargarVenta() {
         let id_venta = sessionStorage.getItem('id_venta')
         $.post('../controller/dao_ventas.php?accion=detalle', {"id": id_venta}, function (data) {

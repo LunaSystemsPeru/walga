@@ -19,6 +19,10 @@ if ($accion == 'listar') {
 if ($accion == 'registrar') {
     $Entidad = new Entidad();
     $Entidad->setNrodocumento(filter_input(INPUT_POST, 'cliente_documento'));
+    if ($Entidad->getNrodocumento() == 0) {
+        $Entidad->setNrodocumento('0');
+        $Entidad->setRazonsocial("CLIENTE NO IDENTIFICADO");
+    }
     $Entidad->validarDocumento();
 
     if ($Entidad->getId() == 0) {

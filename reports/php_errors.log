@@ -1,0 +1,13 @@
+[25-Jan-2024 15:28:27 America/Lima] PHP Deprecated:  Function utf8_decode() is deprecated in C:\xampp\htdocs\clientes\walga\reports\comprobante_venta_ticket.php on line 85
+[25-Jan-2024 15:28:27 America/Lima] PHP Deprecated:  Function utf8_decode() is deprecated in C:\xampp\htdocs\clientes\walga\reports\comprobante_venta_ticket.php on line 86
+[25-Jan-2024 15:28:27 America/Lima] PHP Deprecated:  Function utf8_decode() is deprecated in C:\xampp\htdocs\clientes\walga\reports\comprobante_venta_ticket.php on line 88
+[25-Jan-2024 15:28:27 America/Lima] PHP Deprecated:  Function utf8_decode() is deprecated in C:\xampp\htdocs\clientes\walga\reports\comprobante_venta_ticket.php on line 95
+[25-Jan-2024 15:28:27 America/Lima] PHP Deprecated:  Function utf8_decode() is deprecated in C:\xampp\htdocs\clientes\walga\reports\comprobante_venta_ticket.php on line 108
+[25-Jan-2024 15:28:27 America/Lima] PHP Deprecated:  Function utf8_decode() is deprecated in C:\xampp\htdocs\clientes\walga\reports\comprobante_venta_ticket.php on line 125
+[25-Jan-2024 15:28:27 America/Lima] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\xampp\htdocs\clientes\walga\reports\comprobante_venta_ticket.php:85) in C:\xampp\htdocs\clientes\walga\tools\fpdf\fpdf.php:265
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\tools\fpdf\fpdf.php(992): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\clientes\walga\tools\fpdf\fpdf.php(941): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\clientes\walga\reports\comprobante_venta_ticket.php(130): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\tools\fpdf\fpdf.php on line 265
