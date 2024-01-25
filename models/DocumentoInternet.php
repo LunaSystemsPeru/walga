@@ -47,50 +47,33 @@ class DocumentoInternet
 
     public function validar()
     {
-        $direccion = "http://lunasystemsperu.com/apis/apidni.php?dni=";
-
         //si es ruc
         if ($this->tipo_documento == 1) {
-            $direccion = "https://lunasystemsperu.com/apis/apiruc.php?ruc=" . $this->nro_documento;
+            $direccion = "https://goempresarial.com/apis/peru-consult-api/public/api/v1/ruc/" . $this->nro_documento . "?token=abcxyz";
         }
 
         //si es dni
         if ($this->tipo_documento == 2) {
-            $direccion = "https://lunasystemsperu.com/apis/apidni.php?dni=" . $this->nro_documento;
+            $direccion = "https://goempresarial.com/apis/peru-consult-api/public/api/v1/dni/" . $this->nro_documento . "?token=abcxyz";
         }
 
-/*
-        $json = file_get_contents($direccion, FALSE);
-        // Check for errors
-        if ($json === FALSE) {
-            die('Error');
-        }
-*/
-
-//create a new cURL resource
+        //create a new cURL resource
         $ch = curl_init($direccion);
 
-//setup request to send json via POST
+        //setup request to send json via POST
         $data = array(
             'username' => 'codexworld',
             'password' => '123456'
         );
         $payload = json_encode(array("user" => $data));
 
-//attach encoded JSON string to the POST fields
-       // curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-
-//set the content type to application/json
+        //set the content type to application/json
         curl_setopt($ch, CURLOPT_HEADER, 0);
-        //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
-//return response instead of outputting
+        //return response instead of outputting
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-//execute the POST request
+        //execute the POST request
         $result = curl_exec($ch);
-
-//close cURL resource
+        //close cURL resource
         curl_close($ch);
         return $result;
     }

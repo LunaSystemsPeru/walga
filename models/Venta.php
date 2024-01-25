@@ -317,7 +317,7 @@ class Venta
 
     function verVentasEntreFechas($inicio, $fin)
     {
-        $sql = "select v.fecha, v.id, v.comprobante_id, pv.valor1, v.serie, v.numero, e.razonsocial, e.documento, v.total, v.estado, v.enviado_sunat, u.username, vs.nombre_documento 
+        $sql = "select v.fecha, v.id, v.comprobante_id, pv.valor1 as docsunat_abreviado, v.serie, v.numero, e.razonsocial, e.documento, v.total, v.estado, v.enviado_sunat, u.username, vs.nombre_documento 
                 from ventas as v 
                 inner join entidades e on v.entidad_id = e.id 
                 inner join parametros_valores pv on v.comprobante_id = pv.id 
@@ -325,5 +325,17 @@ class Venta
                 inner join ventas_sunat vs on v.id = vs.venta_id
                 where v.fecha between '$inicio' and '$fin' and v.empresa_id = '$this->empresaid'";
         return $this->conectar->get_Cursor($sql);
+    }
+
+    function verVentasxSerieEntreFechas($inicio, $fin)
+    {
+        $sql = "select v.fecha, v.id, v.comprobante_id, pv.valor1 as docsunat_abreviado, v.serie, v.numero, e.razonsocial, e.documento, v.total, v.estado, u.username 
+                from ventas as v 
+                inner join entidades e on v.entidad_id = e.id 
+                inner join parametros_valores pv on v.comprobante_id = pv.id 
+                inner join usuarios u on v.usuario_id = u.id
+                where v.fecha between '$inicio' and '$fin' and v.serie Like '%$this->serie%'
+                order by v.fecha ";
+        return $this->conectar->get_json_rows($sql);
     }
 }

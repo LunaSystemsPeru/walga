@@ -31,7 +31,7 @@ if (strlen($CInternet->getNroDocumento()) == 11) {
     } else {
         $resultado["success"] = "nuevo";
         $resultado["documento"] = $CInternet->getNroDocumento();
-        $resultado["datos"] = $respuesta["nombre"];
+        $resultado["datos"] = $respuesta["apellidoPaterno"] . " " . $respuesta["apellidoMaterno"] . " " . $respuesta["nombres"];
         $resultado["direccion"] = "-";
     }
 } else {

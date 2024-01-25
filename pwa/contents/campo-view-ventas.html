@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 
-
 <!-- Mirrored from emobile.orinostudio.com/preview/component-listview.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Apr 2021 21:26:57 GMT -->
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
@@ -45,7 +44,7 @@
     <link href="../_manifest.json" rel="manifest"/>
 </head>
 
-<body class="bg-snow">
+<body class="bg-snow" onload="loadVentas()">
 <!-- Start em_loading -->
 <section class="em_loading" id="loaderPage">
     <div class="spinner_flash"></div>
@@ -83,21 +82,8 @@
             </div>
             End. title -->
 
-            <div class="emBk__bills">
-                <div class="item">
-                    <a href="campo-view-venta-detalle.html">
-                    <div class="embody_w">
-                        <div class="details_w">
-                            <h3>BOLETA BC01-0001</h3>
-                            <span>23/01/2024</span>
-                            <span>CLIENTE NO IDENTIFICADO</span>
-                        </div>
-                        <div class="price">
-                            <p>S/ 35.00</p>
-                        </div>
-                    </div>
-                    </a>
-                </div>
+            <div class="emBk__bills" id="card-items-venta">
+
             </div>
 
         </section>
@@ -140,7 +126,7 @@
                 </a>
             </div>
             <div class="item_link">
-                <a class="btn btn_navLink" href="transportes-view-servicios.html">
+                <a class="btn btn_navLink" href="campo-view-ventas.html">
                     <div class="icon_current">
                         <i class="tio tio-chart_bar_4"></i>
                     </div>
@@ -158,7 +144,7 @@
                 </a>
             </div>
             <div class="item_link">
-                <a class="btn btn_navLink" href="transportes-view-gastos.html">
+                <a class="btn btn_navLink" href="campo-view-gastos.html">
                     <div class="icon_current">
                         <svg data-name="Iconly/Two-tone/Chat" height="24"
                              id="Iconly_Two-tone_Chat" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -259,6 +245,44 @@
 <script defer src="../assets/js/main.js"></script>
 <!-- PWA app service registration and works js -->
 <script src="../assets/js/pwa-services.js"></script>
+
+<script>
+    function loadVentas() {
+        let fecha = '2023-12-20';
+        let cardid = $('#card-items-venta');
+        $.post('../controller/dao_ventas.php?accion=listar', {"fecha": fecha}, function (data) {
+            cardid.html("")
+            try {
+                let jsondata = JSON.parse(data)
+                for (item of jsondata) {
+                    let label_estado = '<label class="label-sm bg-danger text-white m-1">Anulado</label>'
+                    if (item.estado == 1) {
+                        label_estado = ''
+                    }
+                    let documento_venta = item.docsunat_abreviado + " | " + item.serie + " - " + item.numero
+                    let tr = '<div class="item">' +
+                        '<a href="campo-view-venta-detalle.html">' +
+                        '<div class="embody_w">' +
+                        '<div class="details_w">' +
+                        '<h3>' + documento_venta + '</h3>' +
+                        '<span>' + item.fecha + '</span>' +
+                        '<span>' + item.razonsocial + '</span>' +
+                        '<span>' + label_estado + '</span>' +
+                        '</div>' +
+                        '<div class="price">' +
+                        '<p>S/ ' + parseFloat(item.total).toFixed(2) + '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>' +
+                        '</div>';
+                    cardid.append(tr)
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        })
+    }
+</script>
 </body>
 
 

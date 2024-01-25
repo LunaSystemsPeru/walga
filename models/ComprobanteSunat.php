@@ -122,6 +122,16 @@ class ComprobanteSunat
         }
     }
 
+    public function obtenerNro()
+    {
+        $sql = "select ifnull(numero, 0) as numero 
+                from comprobantes_empresas as ce 
+                where ce.serie = '$this->serie' and comprobante_id = '$this->comprobanteid' and empresa_id = '$this->empresaid'";
+        //echo $sql;
+        $this->numero = $this->conectar->get_valor_query($sql, "numero");
+
+    }
+
     public function insertar()
     {
         $sql = "insert into comprobantes_empresas
@@ -142,7 +152,8 @@ class ComprobanteSunat
         $this->conectar->ejecutar_idu($sql);
     }
 
-    public function verFilas () {
+    public function verFilas()
+    {
         $sql = "select ce.id, ce.comprobante_id, ce.serie, ce.numero, pv.descripcion, pv.valor1, pv.valor2 
                 from comprobantes_empresas as ce 
                     inner join parametros_valores pv on ce.comprobante_id = pv.id

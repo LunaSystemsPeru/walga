@@ -45,7 +45,7 @@
     <link href="../_manifest.json" rel="manifest"/>
 </head>
 
-<body class="bg-snow">
+<body class="bg-snow" onload="getFechaActual()">
 <!-- Start em_loading -->
 <section class="em_loading" id="loaderPage">
     <div class="spinner_flash"></div>
@@ -85,10 +85,10 @@
             <!-- Start emShipping__address -->
             <div class="emShipping__address padding-l-10 padding-r-10 bg-white">
                 <div class="item__address">
-                    <p class="address_txt">24/01/2024</p>
-                    <p class="address_txt">BC01</p>
+                    <p class="address_txt" id="p_fecha_actual">24/01/2024</p>
+                    <p class="address_txt" id="p_serie_cp">BC03</p>
                     <div class="d-flex align-items-center">
-                        <span class="label_default margin-r-10 padding-10">Boleta Electronica</span>
+                        <span class="label_default margin-r-10 padding-10" id="p_nombre_comprobante">Boleta Electronica</span>
                         <button class="btn btn__editAddress" data-target="#mdl_comprobante" data-toggle="modal" type="button">
                             <i class="tio-edit color-secondary"></i>
                         </button>
@@ -108,11 +108,11 @@
                 <div class="item__address">
                     <div class="txt">
                         <p class="address_txt size-12">Nro Documento</p>
-                        <p class="fw-bold size-14">00000000</p>
+                        <p class="fw-bold size-14" id="p_documento_cliente_label">00000000</p>
                     </div>
                     <div class="txt">
                         <p class="address_txt size-12">Datos</p>
-                        <p class=" fw-bold size-14">SIN CLIENTE</p>
+                        <p class=" fw-bold size-14" id="p_datos_cliente_label">SIN CLIENTE</p>
                     </div>
                     <div class="d-flex align-items-center">
                         <button class="btn btn__editAddress" data-target="#mdlform-cliente" data-toggle="modal" type="button">
@@ -200,7 +200,7 @@
                 </div>
                 <div class="modal-body">
                     <ul class="nav__listAddress itemSingle" id="lista-comprobantes">
-                        <li class="item selected" id="1" onclick="getID(this)">
+                        <li class="item selected" id="3" onclick="getID(this)">
                             <div class="personal__info">
                                 <h2 class="size-15 color-secondary weight-400">Boleta</h2>
                             </div>
@@ -209,7 +209,7 @@
                                 <span class="circle_check"></span>
                             </div>
                         </li>
-                        <li class="item" id="2" onclick="getID(this)">
+                        <li class="item" id="4" onclick="getID(this)">
                             <div class="personal__info">
                                 <h2 class="size-15 color-secondary weight-400">Factura</h2>
                             </div>
@@ -267,7 +267,7 @@
                                             <div class="icon">
                                                 <i class="tio-user"></i>
                                             </div>
-                                            <button class="btn  " type="button">
+                                            <button class="btn  " type="button" onclick="obtenerDatosCliente()">
                                                 <i class="tio-search"></i>
                                             </button>
                                         </div>
@@ -419,39 +419,71 @@
 <script src="../assets/js/vendor/short-and-sweet.min.js"></script>
 <!-- jquery knob -->
 <script src="../assets/js/vendor/jquery.knob.min.js"></script>
+
+<script src="../assets/js/moment.js"></script>
 <!-- main.js -->
 <script defer src="../assets/js/main.js"></script>
 <!-- PWA app service registration and works js -->
 <script src="../assets/js/pwa-services.js"></script>
 <script>
+    //variables globales
+    let id_usuario = sessionStorage.getItem('id_usuario')
+    let id_empresa = sessionStorage.getItem('id_empresa')
+    let arrayItemsServicios = []
+    let cliente_documento_default = '00000000'
+    let cliente_datos_defaul = 'SIN CLIENTE'
+    let cliente_documento_global
+    let cliente_datos_global
+    let cliente_direccion_global
+    let tipo_comprobante = 3
+    let serie_comprobante = 'BC03'
+    let fecha_comprobante
+    let total_comprobante = 0
+
+</script>
+<script>
+
+    function getFechaActual() {
+        moment().locale('es')
+        document.getElementById('p_fecha_actual').html = moment().format('L')
+    }
+
     function getID(a) {
         tipo_comprobante = a.id;
         tipo_comprobante = parseInt(tipo_comprobante)
     }
 
     function validarComprobante() {
+        let namecp = "Boleta Electronica"
+        let seriecp = 'BC03'
+        if (tipo_comprobante === 3) {
+            namecp = "Boleta Electronica"
+            seriecp = 'BC03'
+        }
+        if (tipo_comprobante === 4) {
+            namecp = "Factura Electronica"
+            seriecp = 'FC03'
+        }
+        serie_comprobante = seriecp
+
+        document.getElementById('p_nombre_comprobante').innerHTML = namecp
+        document.getElementById('p_serie_cp').innerHTML = seriecp
         $("#mdl_comprobante").modal('toggle')
     }
 </script>
 <script>
-    let cliente_documento_default = '00000000'
-    let cliente_datos_defaul = 'SIN CLIENTE'
-    let cliente_documento_global
-    let cliente_datos_global
-    let tipo_comprobante = 1
-
     function validarCliente() {
         let cliente_documento = document.getElementById('input-cliente-documento').value
         let cliente_datos = document.getElementById('input-cliente-datos').value
         let cliente_direccion = document.getElementById('input-cliente-direccion').value
         let cliente_vacio = document.getElementById('toggleOne').getAttribute('aria-pressed')
 
-        if (cliente_datos.length < 14) {
+        if (cliente_datos.length < 14 && cliente_vacio === "false") {
             alert("Datos del Cliente no puede ser vacio")
             return false
         }
 
-        if (tipo_comprobante === 2) {
+        if (tipo_comprobante === 4) {
             if (cliente_vacio === "true") {
                 alert("Cliente debe tener datos para una factura")
                 return false
@@ -470,17 +502,27 @@
 
         cliente_datos_global = cliente_datos
         cliente_documento_global = cliente_documento
-        /*
-                $.post('', {"documento": cliente_documento}, function (data) {
-                    console.log(data)
-                })
-        */
+
+        document.getElementById('p_datos_cliente_label').innerHTML = cliente_datos_global
+        document.getElementById('p_documento_cliente_label').innerHTML = cliente_documento_global
         $("#mdlform-cliente").modal('toggle')
+    }
+
+    function obtenerDatosCliente() {
+        let arraypost = {
+            "nrodocumento": document.getElementById('input-cliente-documento').value
+        }
+        $.post("../../inputAjax/obtenerDatosInternet.php", arraypost, function (data) {
+            console.log(data)
+            var jsonresultado = JSON.parse(data);
+            $("#input-cliente-datos").val(jsonresultado.datos)
+            $("#input-cliente-direccion").val(jsonresultado.direccion)
+            $("#input-cliente-datos").focus();
+            cliente_direccion_global = jsonresultado.direccion
+        });
     }
 </script>
 <script>
-    let arrayItemsServicios = []
-
     function addServicio() {
         let descripcion = document.getElementById('input-descripcion-servicio').value
         let precio = document.getElementById('input-precio-servicio').value
@@ -518,7 +560,7 @@
                 '</div>';
             idlista.append(tr)
         }
-
+        total_comprobante = totalventa
         document.getElementById('item-total-venta').innerHTML = "S/ " + parseFloat(totalventa).toFixed(2)
     }
 
@@ -541,10 +583,20 @@
 
         let form_parms = {
             "comprobante_id": tipo_comprobante,
+            "comprobante_serie": serie_comprobante,
             "cliente_documento": cliente_documento_global,
             "cliente_datos": cliente_datos_global,
-            "items_json": JSON.stringify(arrayItemsServicios)
+            "cliente_direccion": cliente_direccion_global,
+            "venta_fecha" : fecha_comprobante,
+            "venta_usuario" : id_usuario,
+            "venta_empresa" : id_empresa,
+            "venta_total" : total_comprobante,
+            "venta_items": JSON.stringify(arrayItemsServicios)
         }
+
+        $.post('../controller/dao_ventas.php?accion=registrar', form_parms, function (data) {
+            console.log(data)
+        })
     }
 </script>
 </body>

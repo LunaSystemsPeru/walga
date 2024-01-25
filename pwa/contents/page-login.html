@@ -69,8 +69,8 @@
                 <h1>Bienvenido!</h1>
                 <p>Walga Inversiones EIRL</p>
             </div>
-            <div class="em__body">
-                <form action="#">
+            <form action="" id="loginForm">
+                <div class="em__body">
                     <div class="form-group with_icon">
                         <label>Usuario</label>
                         <div class="input_group">
@@ -90,7 +90,6 @@
                                               transform="translate(0 0)"/>
                                     </g>
                                 </svg>
-
                             </div>
                         </div>
                     </div>
@@ -123,17 +122,16 @@
                                     </g>
                                 </svg>
                             </div>
-                            <button class="btn hide_show icon_password" type="button" >
+                            <button class="btn hide_show icon_password" type="button">
                                 <i class="tio-hidden_outlined"></i>
                             </button>
                         </div>
                     </div>
-
-                </form>
-            </div>
-            <div class="em__footer">
-                <button onclick="login()" class="btn bg-primary color-white margin-b-10 justify-content-center" >Verificar Usuario</button>
-            </div>
+                </div>
+                <div class="em__footer">
+                    <button type="submit" class="btn bg-primary color-white margin-b-10 justify-content-center">Verificar Usuario</button>
+                </div>
+            </form>
         </section>
 
 
@@ -164,38 +162,46 @@
 <script src="../assets/js/pwa-services.js"></script>
 
 <script>
-    function login() {
+    let loginForm = document.getElementById("loginForm");
+
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
         let usuario = "admin"
         let password = "contra"
 
         let inputusuario = document.getElementById('input-usuario').value
         let inputpassword = document.getElementById('input-password').value
 
-        if (!inputusuario) {
-            document.getElementById('input-usuario').classList.add("is-invalid");
-            return
-        }
-
-        if (!inputpassword) {
-            document.getElementById('input-password').classList.add("is-invalid");
-            return
-        }
-
         document.getElementById('input-usuario').classList.remove("is-invalid");
         document.getElementById('input-password').classList.remove("is-invalid");
 
-        if (inputusuario !== usuario) {
-            console.log("usuario incorrecto")
-            return
+        let form_params = {
+            "login_username": inputusuario,
+            "login_pass": inputpassword
         }
 
-        if (inputpassword !== password) {
-            console.log("contraseña incorrecta")
-            return
-        }
+        $.post('../controller/login.php', form_params, function (data) {
+            console.log(data)
+            try {
+                let jsondata = JSON.parse(data)
 
-        location.href = 'page-welcome.html'
-    }
+                if (jsondata.success === false) {
+                    alert(jsondata.mensaje)
+                    return false
+                }
+
+                sessionStorage.setItem('id_usuario', jsondata.id_usuario)
+                sessionStorage.setItem('id_empresa', jsondata.id_empresa)
+
+                location.href = 'page-welcome.html'
+            } catch (e) {
+                console.log(e)
+            }
+        })
+
+
+    })
 </script>
 </body>
 
