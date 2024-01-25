@@ -82,6 +82,9 @@ $altura_linea = 4;
 $pdf->SetFont('Arial', '', 9);
 $pdf->SetTextColor(00, 00, 0);
 $pdf->Cell(64, $altura_linea, "*** " . htmlentities("COMPLEJO DEPORTIVO LEO SOCCER") . " ***", 0, 1, 'C');
+$pdf->Image('../public/images/logo_leosoccer.png', $pdf->GetX()+12, $pdf->GetY(), 40, 40);
+$pdf->Ln(42);
+
 $pdf->MultiCell(64, $altura_linea, htmlentities($Empresa->getRuc() . " | " . $Empresa->getRazonSocial()), 0, 'C');
 $pdf->Cell(64, $altura_linea, "Cel/Tel: +51 949 490 436", 0, 1, 'C');
 $pdf->MultiCell(64, $altura_linea, htmlentities('OTR.PARCELA 3 MZA. B LOTE. 03 Z.I. SECTOR LOS ALAMOS - ANCASH - SANTA - NUEVO CHIMBOTE'), 0, 'C');
