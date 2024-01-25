@@ -1,13 +1,13 @@
 {
   "name": "Walga Inversiones EIRL",
   "short_name": "Walga Inversiones APP",
-  "start_url": "http://localhost/pwa/walga/index.html",
+  "start_url": "https://walgainversiones.com/pwa/index.html",
   "display": "standalone",
     "categories": ["multipurpose ", "ecommerce", "shopping", "blog", "delivery", "store", "wallet", "banking", "education", "distance learning", "jobs", "careers"],
     "background_color": "#ffffff",
     "theme_color": "#ff3f3f",
     "orientation": "portrait",
-    "description": "eMobile - Multipurpose HTML5 Template",
+    "description": "Walga Inversiones APP",
     "icons": [
       {
         "src": "assets/img/favicon/favicon72.png",

@@ -477,6 +477,7 @@
         let cliente_datos = document.getElementById('input-cliente-datos').value
         let cliente_direccion = document.getElementById('input-cliente-direccion').value
         let cliente_vacio = document.getElementById('toggleOne').getAttribute('aria-pressed')
+        //console.log("cliente vacio " +  cliente_vacio)
 
         if (cliente_datos.length < 14 && cliente_vacio === "false") {
             alert("Datos del Cliente no puede ser vacio")
@@ -495,7 +496,8 @@
             }
         }
 
-        if (!cliente_vacio) {
+        console.log(cliente_vacio)
+        if (cliente_vacio === "true") {
             cliente_documento = cliente_documento_default
             cliente_datos = cliente_datos_defaul
         }
@@ -597,9 +599,11 @@
         $.post('../controller/dao_ventas.php?accion=registrar', form_parms, function (data) {
             try {
                 let jsondata = JSON.parse(data)
-                if (jsondata.aceptado) {
-                    sessionStorage.setItem('id_venta', data.id)
+                if (jsondata.aceptado === true) {
+                    sessionStorage.setItem('id_venta', jsondata.id)
                     location.href = 'campo-view-venta-detalle.html'
+                } else {
+                    alert(data)
                 }
             } catch (e) {
                 console.log(e)

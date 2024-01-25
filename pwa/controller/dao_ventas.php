@@ -3,6 +3,7 @@ require '../../models/Venta.php';
 require '../../models/VentaServicio.php';
 require '../../models/Entidad.php';
 require '../../models/ComprobanteSunat.php';
+require '../../models/VentaSunat.php';
 require '../../models/DocumentoEnvio.php';
 
 $Venta = new Venta();
@@ -23,6 +24,7 @@ if ($accion == 'registrar') {
         $Entidad->setNrodocumento('0');
         $Entidad->setRazonsocial("CLIENTE NO IDENTIFICADO");
     }
+
     $Entidad->validarDocumento();
 
     if ($Entidad->getId() == 0) {
@@ -76,8 +78,14 @@ if ($accion == 'detalle') {
     $VentaServicio->setVentaid($Venta->getId());
     $lista_servicios = $VentaServicio->verFilas(1);
 
+    $VentaSunat= new VentaSunat();
+    $VentaSunat->setVentaid($Venta->getId());
+    $VentaSunat->obtenerDatos();
+
     $array_detalle = json_decode($json_venta, true);
     $array_detalle["items"] = json_decode($lista_servicios);
+    $array_detalle["qr_name"] = $VentaSunat->getNombre();
+    $array_detalle["qr_hash"] = $VentaSunat->getHash();
 
     echo json_encode($array_detalle);
 }

@@ -130,7 +130,7 @@
                         </div>
                         <div class="detailsTotaly">
                             <div class="signature">
-                                <img alt="" src="assets/img/signature.png">
+                                <img alt="" src="assets/img/signature.png" id="qr_imagen_destino" width="150px">
                             </div>
                             <div class="txtDetails">
                                 <h3 id="p_total_venta">S/ 0.00</h3>
@@ -194,11 +194,13 @@
     function verPDF () {
         let id_venta = sessionStorage.getItem('id_venta')
         location.href = '../../reports/comprobante_venta_ticket.php?id_venta=' + id_venta;
+        //alert(id_venta)
     }
 
     function cargarVenta() {
         let id_venta = sessionStorage.getItem('id_venta')
         $.post('../controller/dao_ventas.php?accion=detalle', {"id": id_venta}, function (data) {
+            //alert(data)
             try {
                 let jsondata = JSON.parse(data)
                 console.log(jsondata)
@@ -218,20 +220,29 @@
                     table_body.append(tr)
                 }
 
+
+
                 document.getElementById('p_page_descripcion').innerHTML = jsondata.doc_nombre + " " + jsondata.serie + " - " + PadLeft(jsondata.numero, 4)
                 document.getElementById('p_serie_numero').innerHTML = jsondata.serie + " - " + PadLeft(jsondata.numero, 4)
                 document.getElementById('p_total_venta').innerHTML = "S/ " + parseFloat(totalventa).toFixed(2)
 
                 document.getElementById('p_venta_fecha_top').innerHTML = jsondata.fecha
-                document.getElementById('p_fecha_venta').innerHTML = jsondata.fecha
+                document.getElementById('p_fecha_venta').innerHTML = jsondata.qr_hash
 
                 document.getElementById('p_cliente_documento').innerHTML = jsondata.documento
                 document.getElementById('p_cliente_datos').innerHTML = jsondata.razonsocial
                 document.getElementById('p_cliente_direccion').innerHTML = jsondata.direccion
+                let empresa = jsondata.qr_name.substr(0, 11)
+                document.getElementById('qr_imagen_destino').setAttribute('src', '../../public/qr/' + empresa + '/' + jsondata.qr_name + '.png')
             } catch (e) {
                 console.log(e)
             }
         })
+    }
+
+    function PadLeft(value, length) {
+        return (value.toString().length < length) ? PadLeft("0" + value, length) :
+            value;
     }
 </script>
 </body>

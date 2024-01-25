@@ -1,6 +1,8 @@
 *.rar
+*.png
 .idea/
 /public/uploaded_files/*.pdf
 /public/cdr/*.zip
 /public/xml/*.xml
 /composer/vendor/
+/public/qr/20605459707/

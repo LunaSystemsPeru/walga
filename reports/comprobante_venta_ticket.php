@@ -81,10 +81,10 @@ $altura_linea = 4;
 
 $pdf->SetFont('Arial', '', 9);
 $pdf->SetTextColor(00, 00, 0);
-$pdf->Cell(64, $altura_linea, "*** " . htmlentities($Empresa->getRazonsocial()) . " ***", 0, 1, 'C');
+$pdf->Cell(64, $altura_linea, "*** " . htmlentities("COMPLEJO DEPORTIVO LEO SOCCER") . " ***", 0, 1, 'C');
 $pdf->MultiCell(64, $altura_linea, htmlentities($Empresa->getRuc() . " | " . $Empresa->getRazonSocial()), 0, 'C');
 $pdf->Cell(64, $altura_linea, "Cel/Tel: +51 949 490 436", 0, 1, 'C');
-$pdf->MultiCell(64, $altura_linea, htmlentities($Empresa->getDirfiscal()), 0, 'C');
+$pdf->MultiCell(64, $altura_linea, htmlentities('OTR.PARCELA 3 MZA. B LOTE. 03 Z.I. SECTOR LOS ALAMOS - ANCASH - SANTA - NUEVO CHIMBOTE'), 0, 'C');
 $pdf->Ln();
 
 $pdf->Cell(64, $altura_linea, $Parametro->getDescripcion() . " ELECTRONICA ", 0, 1, 'C');
@@ -104,7 +104,7 @@ foreach ($a_productos as $value) {
     $pdf->Cell(10, $altura_linea, number_format($value['precio_venta'], 2), 0, 1, 'R');
     $pdf->SetX(8);
     $pdf->SetY($y);
-    $pdf->MultiCell(49, $altura_linea, number_format(1, 0) . " | " . htmlentities($value['descripcion']), 0, 'J');
+    $pdf->MultiCell(49, $altura_linea, number_format(1, 0) . " | " . html_entity_decode($value['descripcion']), 0, 'J');
 }
 
 $pdf->Ln(2);
@@ -124,7 +124,7 @@ $pdf->Ln(10);
 $pdf->Cell(64, $altura_linea, $c_numeros_letras->to_word($Venta->getTotal(), $ncorto), 0, 1, 'J');
 
 $pdf->Ln(2);
-$pdf->MultiCell(64, $altura_linea, "Representacion Impresa de la " . $Parametro->getDescripcion() . " ELECTRONICA, esta puede ser consultada en efacturacion.lunasystemsperu.com.", 0, 'J');
-$pdf->Cell(64, $altura_linea, "Gracias por su compra", 0, 1, 'J');
+$pdf->MultiCell(64, $altura_linea, "Representacion Impresa de la " . $Parametro->getDescripcion() . " ELECTRONICA, esta puede ser consultada en https://walgainversiones.com", 0, 'J');
+$pdf->Cell(64, $altura_linea, "Gracias por su visita", 0, 1, 'J');
 $nombre_archivo = $VentaSunat->getNombre() . ".pdf";
-$pdf->Output($nombre_archivo, "D");
+$pdf->Output($nombre_archivo, "I");

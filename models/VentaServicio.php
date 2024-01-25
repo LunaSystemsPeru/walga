@@ -63,7 +63,7 @@ class VentaServicio
      */
     public function setDescripcion($descripcion)
     {
-        $this->descripcion = $descripcion;
+        $this->descripcion = htmlentities($descripcion);
     }
 
     /**
