@@ -12,7 +12,7 @@ $accion = filter_input(INPUT_GET, 'accion');
 
 if ($accion == 'listar') {
     $fecha = filter_input(INPUT_POST, 'fecha');
-    $fecha = date('Y-m-d');
+    //$fecha = date('Y-m-d');
     $Venta->setSerie("LS3");
     $lista_ventas = $Venta->verVentasxSerieEntreFechas($fecha, $fecha);
     echo $lista_ventas;

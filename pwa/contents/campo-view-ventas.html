@@ -44,7 +44,7 @@
     <link href="../_manifest.json" rel="manifest"/>
 </head>
 
-<body class="bg-snow" onload="loadVentas()">
+<body class="bg-snow" onload="initPage()">
 <!-- Start em_loading -->
 <section class="em_loading" id="loaderPage">
     <div class="spinner_flash"></div>
@@ -62,13 +62,13 @@
                 -->
             </div>
             <div class="title_page">
-                <h1 class="page_name">
+                <h1 class="page_name" id="page-name">
                     Comprobantes de Venta
                 </h1>
             </div>
             <div class="em_side_right">
                 <!-- Can you add something here.. -->
-                <button class="btn btn__back rounded-circle bg-snow">
+                <button class="btn btn__back rounded-circle bg-snow" data-target="#mdllContent" data-toggle="modal">
                     <i class="tio-search"></i>
                 </button>
             </div>
@@ -216,12 +216,46 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="txt__tile">Mis Datos</div>
+                    <div class="txt__tile">Datos</div>
                 </a>
             </div>
         </div>
     </footer>
     <!-- End. em_main_footer -->
+
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal transition-bottom screenFull defaultModal mdlladd__rate fade"
+         id="mdllContent" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-0 padding-l-20 padding-r-20 justify-content-center">
+                    <div class="itemProduct_sm">
+                        <h1 class="size-18 weight-600 color-secondary m-0">Escoger Fecha</h1>
+                    </div>
+                    <div class="absolute right-0 padding-r-20">
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <i class="tio-clear"></i>
+                        </button>
+                    </div>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <div class="input_group">
+                                <input class="form-control" id="input-fecha-buscar" required type="date">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn w-100 bg-primary m-0 color-white h-52 d-flex align-items-center rounded-8 justify-content-center" onclick="buscarxFecha()" type="button">
+                            Buscar!
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- jquery -->
@@ -247,16 +281,43 @@
 <script src="../assets/js/pwa-services.js"></script>
 
 <script>
-    function loadVentas() {
-        let fecha = '2024-01-25';
+    function getFechaActual() {
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        return year + "-" + month + "-" + day;
+    }
+
+    function initPage() {
+        let fecha = getFechaActual()
+        document.getElementById('input-fecha-buscar').setAttribute('max', fecha)
+        document.getElementById('input-fecha-buscar').value = fecha
+        loadVentas(fecha)
+        console.log(fecha)
+    }
+
+    function loadVentas(fecha) {
+        document.getElementById('page-name').innerHTML = 'Cargando info ..'
+
         let cardid = $('#card-items-venta');
+        cardid.html("")
+
         $.post('../controller/dao_ventas.php?accion=listar', {"fecha": fecha}, function (data) {
-            cardid.html("")
             try {
                 let jsondata = JSON.parse(data)
+                let nroitems = 0
                 for (let item of jsondata) {
-                    let label_estado = '<label class="label-sm bg-danger text-white m-1">Anulado</label>'
+                    nroitems++
+                    let total_item = 0
+                    let label_estado = '<span class="rounded-4 bg-danger text-white">Anulado</span>'
                     if (item.estado == 1) {
+                        total_item = item.total
                         label_estado = ''
                     }
                     let documento_venta = item.docsunat_abreviado + " | " + item.serie + " - " + item.numero
@@ -264,13 +325,27 @@
                         '<a rel="nofollow" onclick="setLocation(' + item.id + ')">' +
                         '<div class="embody_w">' +
                         '<div class="details_w">' +
-                        '<h3>' + documento_venta + '</h3>' +
+                        '<h3>' + documento_venta + '  ' + label_estado + ' </h3>' +
                         '<span>' + item.fecha + '</span>' +
                         '<span>' + item.razonsocial + '</span>' +
-                        '<span>' + label_estado + '</span>' +
                         '</div>' +
                         '<div class="price">' +
-                        '<p>S/ ' + parseFloat(item.total).toFixed(2) + '</p>' +
+                        '<p>S/ ' + parseFloat(total_item).toFixed(2) + '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>' +
+                        '</div>';
+                    cardid.append(tr)
+                }
+
+                document.getElementById('page-name').innerText = "Comprobantes de Venta"
+
+                if (nroitems === 0) {
+                    let tr = '<div class="item">' +
+                        '<a rel="nofollow" >' +
+                        '<div class="embody_w">' +
+                        '<div class="details_w">' +
+                        '<h3>NO HAY VENTAS EN ESTA FECHA</h3>' +
                         '</div>' +
                         '</div>' +
                         '</a>' +
@@ -286,6 +361,12 @@
     function setLocation(idventa) {
         sessionStorage.setItem('id_venta', idventa)
         location.href = 'campo-view-venta-detalle.html'
+    }
+
+    function buscarxFecha() {
+        let fecha = document.getElementById('input-fecha-buscar').value
+        $('#mdllContent').modal('toggle')
+        loadVentas(fecha)
     }
 </script>
 </body>

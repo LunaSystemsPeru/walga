@@ -22,7 +22,7 @@ class Comprobante_Sunat
     }
 
 
-    public function envioSunat($enviar, $invoice, $idventa)
+    public function envioSunat($enviar, $invoice, $idventa): string
     {
         $QrGenerator = new generateQR();
         $QrGenerator->getImage($invoice);

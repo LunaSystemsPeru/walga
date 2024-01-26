@@ -9,14 +9,14 @@ use Greenter\Model\Sale\SaleDetail;
 use Greenter\Model\Sale\Legend;
 
 require __DIR__ . '/../vendor/autoload.php';
-require '../src/Config.php';
 
 require '../../models/Venta.php';
 require '../../models/VentaServicio.php';
 require '../../models/Entidad.php';
 require '../../models/Empresa.php';
-require '../../models/VentaSunat.php';
 require '../../tools/NumerosaLetras.php';
+
+require '../functions/Comprobante_Sunat.php';
 
 require '../../tools/generateQR/class/GenerarQr.php';
 
@@ -28,10 +28,6 @@ $Venta = new Venta();
 $Venta->setId($ventaid);
 $Venta->obtenerDatos();
 
-$SunatVenta = new VentaSunat();
-$SunatVenta->setVentaid($Venta->getId());
-$SunatVenta->setFecha(date("Y-m-d"));
-
 $Empresa = new Empresa();
 $Empresa->setId($Venta->getEmpresaid());
 $Empresa->obtenerDatos();
@@ -42,13 +38,6 @@ $VentaServicio->setVentaid($Venta->getId());
 $Cliente = new Entidad();
 $Cliente->setId($Venta->getEntidadid());
 $Cliente->obtenerDatos();
-
-$Config = new Config();
-$Config->setRuc($Empresa->getRuc());
-$Config->setUsersol($Empresa->getUsersunat());
-$Config->setClavesol($Empresa->getPasssunat());
-
-$see = $Config->getSee();
 
 // Cliente
 $client = (new Client())
@@ -139,72 +128,9 @@ $totalGeneral = number_format($totalGeneral, 2);
 
 $nombre_archivo = $invoice->getName();
 $tipoDoc = 6;
-//generar qr
-$qr = $Empresa->getRuc() . "|" . "01" . "|" . $Venta->getSerie() . "|" . $Venta->getNumero() . "|" . $igv . "|" . $totalGeneral . "|" . $Venta->getFecha() . "|" . $tipoDoc . "|" . $Cliente->getNrodocumento();
-$generarQR = new generarQr();
-$generarQR->setTexto_qr($qr);
-$generarQR->setNombre_archivo($nombre_archivo);
-$generarQR->generar_qr();
 
-$result = $see->send($invoice);
+$ComprobanteSunatCPE = new Comprobante_Sunat();
+$ComprobanteSunatCPE->setConfig($Empresa);
+$json_response = $ComprobanteSunatCPE->envioSunat(true, $invoice, $Venta->getId());
 
-// Guardar XML firmado digitalmente.
-file_put_contents("../../public/xml/" . $invoice->getName() . '.xml',
-    $see->getFactory()->getLastXml());
-
-$aceptadosunat = true;
-$indiceaceptado = 1;
-$observaciones = "";
-$code = "";
-
-// Verificamos que la conexión con SUNAT fue exitosa.
-if (!$result->isSuccess()) {
-    $indiceaceptado = 3;
-    // Mostrar error al conectarse a SUNAT.
-    $observaciones = 'Codigo Error: ' . $result->getError()->getCode();
-    $aceptadosunat = false;
-    //echo 'Codigo Error: '.$result->getError()->getCode();
-    //echo 'Mensaje Error: '.$result->getError()->getMessage();
-    exit();
-}
-
-// Guardamos el CDR
-file_put_contents("../../public/cdr/" . 'R-' . $invoice->getName() . '.zip', $result->getCdrZip());
-
-$cdr = $result->getCdrResponse();
-
-$code = (int)$cdr->getCode();
-
-if ($code === 0) {
-    // echo 'ESTADO: ACEPTADA'.PHP_EOL;
-    if (count($cdr->getNotes()) > 0) {
-        // echo 'OBSERVACIONES:'.PHP_EOL;
-        // Corregir estas observaciones en siguientes emisiones.
-        // var_dump($cdr->getNotes());
-        $observaciones = $cdr->getNotes();
-        $indiceaceptado = 2;
-    }
-} else if ($code >= 2000 && $code <= 3999) {
-    // echo 'ESTADO: RECHAZADA'.PHP_EOL;
-    $aceptadosunat = false;
-    $indiceaceptado = 4;
-} else {
-    /* Esto no debería darse, pero si ocurre, es un CDR inválido que debería tratarse como un error-excepción. */
-    /*code: 0100 a 1999 */
-    $aceptadosunat = false;
-    $indiceaceptado = 4;
-    // echo 'Excepción';
-}
-
-//echo $cdr->getDescription().PHP_EOL;
-
-$SunatVenta->setCodigoSunat($code);
-$SunatVenta->setEstado($indiceaceptado);
-$SunatVenta->setNombre($invoice->getName());
-$SunatVenta->setRespuesta($observaciones);
-$SunatVenta->setHash($Config->getHash($invoice));
-$SunatVenta->insertar();
-
-if (!$aceptadosunat) {
-    return json_encode(["aceptado" => $aceptadosunat, "observaciones" => $observaciones, "nombreDocumento" => $invoice->getName(), "codigoSunat" => $code]);
-}
+echo $json_response;

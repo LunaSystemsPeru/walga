@@ -243,11 +243,29 @@ class Vehiculo
         $this->conectar->ejecutar_idu($sql);
     }
 
-    public function verFilas()
+    public function verFilas($json = false)
     {
         $sql = "select * from vehiculos 
                 where estado = 1 and empresa_id = '$this->empresa_id'
                 order by placa asc";
-        return $this->conectar->get_Cursor($sql);
+        if ($json) {
+            return $this->conectar->get_json_rows($sql);
+        } else {
+            return $this->conectar->get_Cursor($sql);
+        }
+
+    }
+
+    public function verPlacasTrabajo($json = false)
+    {
+        $sql = "select * from vehiculos 
+                where estado = 1 and placa != 'SINPLA' and empresa_id = '$this->empresa_id'
+                order by marca asc";
+        if ($json) {
+            return $this->conectar->get_json_rows($sql);
+        } else {
+            return $this->conectar->get_Cursor($sql);
+        }
+
     }
 }

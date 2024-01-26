@@ -67,7 +67,7 @@
             </div>
             <div class="em_side_right">
                 <!-- Can you add something here.. -->
-                <button class="btn btn__back rounded-circle bg-snow" onclick="verPDF()">
+                <button class="btn btn__back rounded-circle bg-snow" onclick="verPDF()" id="btn_download_pdf" disabled>
                     <i class="tio-download"></i>
                 </button>
             </div>
@@ -75,6 +75,8 @@
         <!-- End.main_haeder -->
 
         <section class="emPage__invoiceDetails">
+            <div class="emhead" id="emhead_estado">
+            </div>
             <div class="emhead__invoice">
                 <div class="brand__id">
                     <div class="brand">
@@ -104,7 +106,7 @@
             <div class="embody__invoice">
                 <div class="about__sent">
                     <div class="billed__to">
-                        <h2>Cliente:  <span id="p_cliente_documento"></span></h2>
+                        <h2>Cliente: <span id="p_cliente_documento"></span></h2>
                         <p class="username" id="p_cliente_datos">Cliente Generico</p>
                         <p id="p_cliente_direccion">
                             sincorreo@gmail.com
@@ -130,7 +132,7 @@
                         </div>
                         <div class="detailsTotaly">
                             <div class="signature">
-                                <img alt="" src="assets/img/signature.png" id="qr_imagen_destino" width="150px">
+                                <img alt="" id="qr_imagen_destino" src="assets/img/signature.png" width="150px">
                             </div>
                             <div class="txtDetails">
                                 <h3 id="p_total_venta">S/ 0.00</h3>
@@ -140,29 +142,63 @@
                     </div>
                 </div>
             </div>
-            <!--
+
             <div class="emfooter__invoice">
-                <h1 class="title">Transactions Details</h1>
-                <div class="emBox__paymentDetails">
-                    <ul>
-                        <li>
-                            <span>Payment Method</span>
-                            <span>Credit Card</span>
-                        </li>
-                        <li>
-                            <span>Transactions ID</span>
-                            <span>f97qomdl647</span>
-                        </li>
-                        <li>
-                            <span>Amount Total</span>
-                            <span class="weight-600">$142.00</span>
-                        </li>
-                    </ul>
-                </div>
+                <button class="btn bg-warning text-white fw-bold m-1" data-target="#mdllRemoveStand" data-toggle="modal" id="btn_anular_cpe" disabled>
+                    <i class="tio-download"></i> Anular CPE
+                </button>
+                <button class="btn btn__back rounded-circle bg-snow m-2 m-lg-2" onclick="verXML()" id="btn_download_xml" disabled>
+                    <i class="tio-download"></i> XML
+                </button>
+                <button class="btn btn__back rounded-circle bg-snow m-2" onclick="verCDR()" id="btn_download_cdr" disabled>
+                    <i class="tio-download"></i> CDR
+                </button>
             </div>
-            -->
         </section>
 
+    </div>
+
+
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal bttom_show defaultModal mdll_removeStand fade"
+         id="mdllRemoveStand" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="content__remove">
+                        <div class="media">
+                            <div class="icon">
+                                <svg data-name="Iconly/Bulk/Delete" height="24"
+                                     id="Iconly_Bulk_Delete" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="Delete" transform="translate(3 2)">
+                                        <path d="M15.289.792c0,.068-.533,6.809-.837,9.646a2.918,2.918,0,0,1-3,2.827c-1.293.029-2.56.039-3.806.039-1.323,0-2.616-.01-3.872-.039A2.917,2.917,0,0,1,.847,10.438C.534,7.591.011.86,0,.792A.794.794,0,0,1,.192.234.71.71,0,0,1,.715,0H14.585a.73.73,0,0,1,.523.234.748.748,0,0,1,.181.558" data-name="Fill 1"
+                                              fill="#200e32"
+                                              id="Fill_1" opacity="0.4" transform="translate(1.354 6.696)"/>
+                                        <path d="M18,3.977a.722.722,0,0,0-.713-.733H14.371A1.281,1.281,0,0,1,13.13,2.227L12.967,1.5a1.985,1.985,0,0,0-1.9-1.5H6.936A1.988,1.988,0,0,0,5.023,1.546l-.153.682A1.283,1.283,0,0,1,3.63,3.244H.714A.722.722,0,0,0,0,3.977v.38a.729.729,0,0,0,.714.733H17.287A.729.729,0,0,0,18,4.357Z" data-name="Fill 4"
+                                              fill="#200e32"
+                                              id="Fill_4" transform="translate(0 0)"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="media-body">
+                                <div class="txt">
+                                    <h2>Anular Venta?</h2>
+                                    <p>Estas seguro de anular esta Venta?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn__cancel mr-1 size-15 color-text min-w-100 h-40 d-flex align-items-center rounded-8 justify-content-center" data-dismiss="modal"
+                            type="button">Cancel
+                    </button>
+                    <button class="btn bg-primary min-w-100 m-0 size-15 color-white h-40 d-flex align-items-center rounded-8 justify-content-center" onclick="anularVenta()" type="button">
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -190,20 +226,20 @@
 <script src="../assets/js/pwa-services.js"></script>
 
 <script>
+    let id_venta = sessionStorage.getItem('id_venta')
 
-    function verPDF () {
-        let id_venta = sessionStorage.getItem('id_venta')
+    function verPDF() {
         location.href = '../../reports/comprobante_venta_ticket.php?id_venta=' + id_venta;
         //alert(id_venta)
     }
 
     function cargarVenta() {
-        let id_venta = sessionStorage.getItem('id_venta')
         $.post('../controller/dao_ventas.php?accion=detalle', {"id": id_venta}, function (data) {
             //alert(data)
             try {
                 let jsondata = JSON.parse(data)
                 console.log(jsondata)
+
                 let jsonitems = jsondata.items;
                 let table_body = $('#tabla-detalle')
                 table_body.html('')
@@ -220,7 +256,12 @@
                     table_body.append(tr)
                 }
 
-
+                let estado = parseInt(jsondata.estado)
+                if (estado === 2) {
+                    document.getElementById('emhead_estado').outerHTML = '<label class="rounded-4 bg-danger fw-bold text-white w-100 text-center">Anulado</label>'
+                } else {
+                    enabledButtons()
+                }
 
                 document.getElementById('p_page_descripcion').innerHTML = jsondata.doc_nombre + " " + jsondata.serie + " - " + PadLeft(jsondata.numero, 4)
                 document.getElementById('p_serie_numero').innerHTML = jsondata.serie + " - " + PadLeft(jsondata.numero, 4)
@@ -232,8 +273,10 @@
                 document.getElementById('p_cliente_documento').innerHTML = jsondata.documento
                 document.getElementById('p_cliente_datos').innerHTML = jsondata.razonsocial
                 document.getElementById('p_cliente_direccion').innerHTML = jsondata.direccion
+
                 let empresa = jsondata.qr_name.substr(0, 11)
-                document.getElementById('qr_imagen_destino').setAttribute('src', '../../public/qr/' + empresa + '/' + jsondata.qr_name + '.png')
+                let url_qr_png = '../../public/qr/' + empresa + '/' + jsondata.qr_name + '.png'
+                document.getElementById('qr_imagen_destino').setAttribute('src', url_qr_png)
             } catch (e) {
                 console.log(e)
             }
@@ -243,6 +286,31 @@
     function PadLeft(value, length) {
         return (value.toString().length < length) ? PadLeft("0" + value, length) :
             value;
+    }
+
+    function anularVenta() {
+        $.post('../controller/dao_ventas.php?accion=anular', {"id": id_venta}, function (data) {
+            if (data === '') {
+                location.href = 'campo-view-ventas.html'
+            } else {
+                alert(data)
+            }
+        })
+    }
+
+    function verXML() {
+
+    }
+
+    function verCDR() {
+
+    }
+
+    function enabledButtons () {
+        document.getElementById('btn_anular_cpe').setAttribute('disabled', 'false')
+        document.getElementById('btn_download_cdr').setAttribute('disabled', 'false')
+        document.getElementById('btn_download_xml').setAttribute('disabled', 'false')
+        document.getElementById('btn_download_pdf').setAttribute('disabled', 'false')
     }
 </script>
 </body>
