@@ -303,6 +303,18 @@ class Venta
         return $this->conectar->ejecutar_idu($sql);
     }
 
+    function updateEstado()
+    {
+        $sql = "update ventas set estado = '$this->estado' where id = '$this->id'";
+        $this->conectar->ejecutar_idu($sql);
+    }
+
+    function updateEnviadoSunat()
+    {
+        $sql = "update ventas set enviado_sunat = '$this->enviadosunat' where id = '$this->id'";
+        $this->conectar->ejecutar_idu($sql);
+    }
+
     function verVentasdelMes()
     {
         $sql = "select v.fecha, v.id, v.comprobante_id, pv.valor1, v.serie, v.numero, e.razonsocial, e.documento, v.total, v.estado, v.enviado_sunat, u.username, vs.nombre_documento 

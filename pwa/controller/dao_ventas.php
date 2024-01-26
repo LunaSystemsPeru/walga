@@ -5,6 +5,7 @@ require '../../models/Entidad.php';
 require '../../models/ComprobanteSunat.php';
 require '../../models/VentaSunat.php';
 require '../../models/DocumentoEnvio.php';
+require '../../models/VentaAnulada.php';
 
 $Venta = new Venta();
 $accion = filter_input(INPUT_GET, 'accion');
@@ -78,7 +79,7 @@ if ($accion == 'detalle') {
     $VentaServicio->setVentaid($Venta->getId());
     $lista_servicios = $VentaServicio->verFilas(1);
 
-    $VentaSunat= new VentaSunat();
+    $VentaSunat = new VentaSunat();
     $VentaSunat->setVentaid($Venta->getId());
     $VentaSunat->obtenerDatos();
 
@@ -88,4 +89,18 @@ if ($accion == 'detalle') {
     $array_detalle["qr_hash"] = $VentaSunat->getHash();
 
     echo json_encode($array_detalle);
+}
+
+if ($accion == 'anular') {
+    $Venta->setId(filter_input(INPUT_POST, 'id'));
+
+    $VentaAnulada = new VentaAnulada();
+    $VentaAnulada->setVentaId($Venta->getId());
+    $VentaAnulada->setFechaAnulacion(date('Y-m-d'));
+    $VentaAnulada->setMotivo("-");
+    $VentaAnulada->insertar();
+
+    //update estado venta
+    $Venta->setEstado(2);
+    $Venta->updateEstado();
 }

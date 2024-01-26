@@ -15,8 +15,8 @@ class conectar
     private $_link;
     //private $_host = "localhost";
     private $_host = "localhost";
-    private $_user = "goempres_root";
-    private $_pass = "k;6?6,m{7ePs";
+    private $_user = "goempres_user_walga";
+    private $_pass = "G*g#H3iYustR";
     // Almacenar una unica instancia
     private $_db = "goempres_walga";
 
