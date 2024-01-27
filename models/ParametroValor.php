@@ -142,11 +142,15 @@ class ParametroValor
         $this->conectar->ejecutar_idu($sql);
     }
 
-    public function verFilas()
+    public function verFilas($isJson = false)
     {
         $sql = "select * from parametros_valores
                 where parametro_id = '$this->parametro_id'
                 order by descripcion asc";
-        return $this->conectar->get_Cursor($sql);
+        if ($isJson) {
+            return $this->conectar->get_json_rows($sql);
+        } else {
+            return $this->conectar->get_Cursor($sql);
+        }
     }
 }

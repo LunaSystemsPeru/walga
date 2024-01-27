@@ -45,7 +45,7 @@
     <link href="../_manifest.json" rel="manifest"/>
 </head>
 
-<body class="bg-snow">
+<body class="bg-snow" onload="initPage()">
 <!-- Start em_loading -->
 <section class="em_loading" id="loaderPage">
     <div class="spinner_flash"></div>
@@ -69,7 +69,7 @@
             </div>
             <div class="em_side_right">
                 <!-- Can you add something here.. -->
-                <button class="btn btn__back rounded-circle bg-snow">
+                <button class="btn btn__back rounded-circle bg-snow" data-target="#mdlBusqueda" data-toggle="modal">
                     <i class="tio-search"></i>
                 </button>
             </div>
@@ -84,7 +84,7 @@
             End. title -->
 
             <div class="emCoureses__grid course__list bg-white">
-                <div class="em_bodyCarousel padding-t-20">
+                <div class="em_bodyCarousel padding-t-20" id="card-items-contratos">
 
                     <!-- em_itemCourse_grid -->
                     <div class="em_itemCourse_grid list">
@@ -243,8 +243,8 @@
                 </a>
             </div>
             <div class="item_link">
-                <a class="btn btn_navLink" href="transporte-form-servicio.html">
-                    <button class="btn btnCircle" type="button">
+                <a class="btn btn_navLink">
+                    <button class="btn btnCircle" type="button" data-target="#mdllContent-border" data-toggle="modal">
                         <i class="tio-add"></i>
                     </button>
                 </a>
@@ -345,7 +345,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="em__pkLink">
-                        <ul class="nav__list mb-0">
+                        <ul class="nav__list mb-0" id="ul_lista_servicios">
                             <li>
                                 <a href="#" class="item-link">
                                     <div class="group">
@@ -359,23 +359,23 @@
                                                           transform="translate(0.75 0.762)" fill="none"
                                                           stroke="#200e32" stroke-linecap="round"
                                                           stroke-linejoin="round" stroke-miterlimit="10"
-                                                          stroke-width="1.5" />
+                                                          stroke-width="1.5"/>
                                                     <path id="Stroke_3" data-name="Stroke 3"
                                                           d="M0,0V2.909A2.574,2.574,0,0,0,2.568,5.484c1.317,0,2.664,0,2.755,0"
                                                           transform="translate(10.974 0.75)" fill="none"
                                                           stroke="#200e32" stroke-linecap="round"
                                                           stroke-linejoin="round" stroke-miterlimit="10"
-                                                          stroke-width="1.5" />
+                                                          stroke-width="1.5"/>
                                                     <path id="Stroke_5" data-name="Stroke 5" d="M5.4.5H0"
                                                           transform="translate(5.387 13.058)" fill="none"
                                                           stroke="#200e32" stroke-linecap="round"
                                                           stroke-linejoin="round" stroke-miterlimit="10"
-                                                          stroke-width="1.5" opacity="0.4" />
+                                                          stroke-width="1.5" opacity="0.4"/>
                                                     <path id="Stroke_7" data-name="Stroke 7" d="M3.356.5H0"
                                                           transform="translate(5.386 8.106)" fill="none"
                                                           stroke="#200e32" stroke-linecap="round"
                                                           stroke-linejoin="round" stroke-miterlimit="10"
-                                                          stroke-width="1.5" opacity="0.4" />
+                                                          stroke-width="1.5" opacity="0.4"/>
                                                 </g>
                                             </svg>
                                         </div>
@@ -399,18 +399,18 @@
                                                           transform="translate(5.245 8.293)" fill="none"
                                                           stroke="#200e32" stroke-linecap="round"
                                                           stroke-linejoin="round" stroke-miterlimit="10"
-                                                          stroke-width="1.5" opacity="0.4" />
+                                                          stroke-width="1.5" opacity="0.4"/>
                                                     <circle id="Ellipse_741" cx="1.922" cy="1.922" r="1.922"
                                                             transform="translate(16.073 0.778)" fill="none"
                                                             stroke="#200e32" stroke-linecap="round"
                                                             stroke-linejoin="round" stroke-miterlimit="10"
-                                                            stroke-width="1.5" />
+                                                            stroke-width="1.5"/>
                                                     <path id="Path"
                                                           d="M12.146,0H4.879C1.867,0,0,2.133,0,5.144v8.082c0,3.011,1.831,5.135,4.879,5.135h8.6c3.011,0,4.879-2.124,4.879-5.135V6.188"
                                                           transform="translate(0.778 1.62)" fill="none"
                                                           stroke="#200e32" stroke-linecap="round"
                                                           stroke-linejoin="round" stroke-miterlimit="10"
-                                                          stroke-width="1.5" />
+                                                          stroke-width="1.5"/>
                                                 </g>
                                             </svg>
 
@@ -439,19 +439,19 @@
                                                               transform="translate(0.75 0.762)" fill="none"
                                                               stroke="#200e32" stroke-linecap="round"
                                                               stroke-linejoin="round" stroke-miterlimit="10"
-                                                              stroke-width="1.5" />
+                                                              stroke-width="1.5"/>
                                                         <path id="Stroke_3" data-name="Stroke 3"
                                                               d="M0,0V2.909A2.574,2.574,0,0,0,2.568,5.484c1.317,0,2.664,0,2.755,0"
                                                               transform="translate(10.974 0.75)" fill="none"
                                                               stroke="#200e32" stroke-linecap="round"
                                                               stroke-linejoin="round" stroke-miterlimit="10"
-                                                              stroke-width="1.5" />
+                                                              stroke-width="1.5"/>
                                                         <path id="Combined_Shape" data-name="Combined Shape"
                                                               d="M1.733,1.733,0,3.466,1.733,1.733,0,0,1.733,1.733,3.466,0,1.733,1.733,3.466,3.466Z"
                                                               transform="translate(8.343 8.464) rotate(45)"
                                                               fill="none" stroke="#200e32" stroke-linecap="round"
                                                               stroke-linejoin="round" stroke-miterlimit="10"
-                                                              stroke-width="1.5" opacity="0.4" />
+                                                              stroke-width="1.5" opacity="0.4"/>
                                                     </g>
                                                 </g>
                                             </svg>
@@ -476,18 +476,18 @@
                                                           transform="translate(2.134 7.468)" fill="none"
                                                           stroke="#200e32" stroke-linecap="round"
                                                           stroke-linejoin="round" stroke-miterlimit="10"
-                                                          stroke-width="1.5" opacity="0.4" />
+                                                          stroke-width="1.5" opacity="0.4"/>
                                                     <path id="Stroke_3" data-name="Stroke 3" d="M16.958.5H0"
                                                           transform="translate(0.75 3.74)" fill="none"
                                                           stroke="#200e32" stroke-linecap="round"
                                                           stroke-linejoin="round" stroke-miterlimit="10"
-                                                          stroke-width="1.5" />
+                                                          stroke-width="1.5"/>
                                                     <path id="Stroke_5" data-name="Stroke 5"
                                                           d="M10.423,3.489A1.648,1.648,0,0,1,8.808,2.165L8.565.949A1.28,1.28,0,0,0,7.328,0H3.1A1.28,1.28,0,0,0,1.858.949L1.615,2.165A1.648,1.648,0,0,1,0,3.489"
                                                           transform="translate(4.018 0.751)" fill="none"
                                                           stroke="#200e32" stroke-linecap="round"
                                                           stroke-linejoin="round" stroke-miterlimit="10"
-                                                          stroke-width="1.5" />
+                                                          stroke-width="1.5"/>
                                                 </g>
                                             </svg>
                                         </div>
@@ -501,6 +501,40 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal transition-bottom screenFull defaultModal mdlladd__rate fade"
+         id="mdlBusqueda" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-0 padding-l-20 padding-r-20 justify-content-center">
+                    <div class="itemProduct_sm">
+                        <h1 class="size-18 weight-600 color-secondary m-0">Escoger Fecha</h1>
+                    </div>
+                    <div class="absolute right-0 padding-r-20">
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <i class="tio-clear"></i>
+                        </button>
+                    </div>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <div class="input_group">
+                                <input class="form-control" id="input-fecha-buscar" required type="date">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn w-100 bg-primary m-0 color-white h-52 d-flex align-items-center rounded-8 justify-content-center" onclick="buscarxFecha()" type="button">
+                            Buscar!
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -527,6 +561,145 @@
 <script defer src="../assets/js/main.js"></script>
 <!-- PWA app service registration and works js -->
 <script src="../assets/js/pwa-services.js"></script>
+
+<script>
+    let vehiculo_id = sessionStorage.getItem('id_vehiculo')
+
+    function getFechaActual() {
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        return year + "-" + month + "-" + day;
+    }
+
+    function initPage() {
+        let fecha = getFechaActual()
+        document.getElementById('input-fecha-buscar').setAttribute('max', fecha)
+        document.getElementById('input-fecha-buscar').value = fecha
+        verContratosFecha(fecha)
+        getTipoServicios()
+    }
+
+    function verContratosFecha(fechabusqueda) {
+        let cardid = $('#card-items-contratos');
+        cardid.html("")
+        $.post('../controller/dao_contratos.php?accion=listar', {"fecha": fechabusqueda, "vehiculo_id": vehiculo_id}, function (data) {
+            console.log(data)
+            try {
+                let jsondata = JSON.parse(data)
+                let nroitems = 0
+                for (let item of jsondata) {
+                    if (item.origen === null) {
+                        continue;
+                    }
+                    let tiposervicio_id = parseInt(item.tiposervicio_id)
+                    let texto_origen_destino = item.origen
+                    let descripcion_servicio = item.servicio
+                    let horas_servicio = item.hora_inicio + " - en Proceso"
+                    let estado_servicio = parseInt(item.estado_contrato)
+                    let comprobante_id = parseInt(item.comprobante_id)
+                    let icono_servicio = '<div class="icon_play bg-success">' +
+                        '<i class="tio-time"></i>' +
+                        '</div>'
+                    if (comprobante_id !== 11) {
+                        descripcion_servicio = descripcion_servicio + " (" + item.comprobante + ")"
+                    }
+                    if (tiposervicio_id === 8 || tiposervicio_id === 9) {
+                        texto_origen_destino = item.origen + " - " + item.destino
+                    }
+                    if (estado_servicio === 2) {
+                        horas_servicio = item.hora_inicio + " - " + item.hora_termino + " (" + item.horas_servicio.substr(0, 5) + ")"
+                        icono_servicio = '<div class="icon_play bg-secondary">' +
+                            '<i class="tio-checkmark_circle_outlined"></i>' +
+                            '</div>'
+                    }
+                    nroitems++
+                    let tr = '<div class="em_itemCourse_grid list">' +
+                        '<a href="page-chapters-learning.html" class="card">' +
+                        '<div class="row no-gutters">' +
+                        '<div class="col-12 my-auto">' +
+                        '<div class="card-body">' +
+                        icono_servicio +
+                        '<div class="head_card">' +
+                        '<span>' + item.fecha + '</span>' +
+                        '<span>' + horas_servicio + '</span>' +
+                        '</div>' +
+                        '<h5 class="card-title">' + item.tiposervicio + '</h5>' +
+                        '<p class="card-text">' + descripcion_servicio + '</p>' +
+                        '<div class="card_footer">' +
+                        '<div class="card_user">' +
+                        '<i class="tio-location_search"></i>' +
+                        '<span>' + texto_origen_destino + '</span>' +
+                        '</div>' +
+                        '<div class="amount_co size-14 weight-600 color-secondary">' +
+                        '<span class="color-text">S/</span> ' + parseFloat(item.monto).toFixed(2) +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>' +
+                        '</div>'
+                    cardid.append(tr)
+                }
+
+                if (nroitems === 0) {
+                    let tr = '<div class="item">' +
+                        '<a rel="nofollow" >' +
+                        '<div class="embody_w">' +
+                        '<div class="details_w">' +
+                        '<h3>NO HAY VENTAS EN ESTA FECHA</h3>' +
+                        '</div>' +
+                        '</div>' +
+                        '</a>' +
+                        '</div>';
+                    cardid.append(tr)
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        })
+    }
+
+    function getTipoServicios() {
+        let ullistaservicios = $('#ul_lista_servicios')
+        ullistaservicios.html('')
+        $.post('../controller/dao_parametros_valores.php?accion=listar', {"parametro_id": 2}, function (data) {
+            try {
+                let jsondata = JSON.parse(data)
+                let nroitems = 0
+                for (let item of jsondata) {
+                    let tr = '<li>' +
+                        '<a href="transportes-form-servicio-inicio.html" class="item-link">' +
+                        '<div class="group">' +
+                        '<span class="path__name">' + item.descripcion + ' </span>' +
+                        '</div>' +
+                        '<div class="group">' +
+                        '<span class="short__name"></span>' +
+                        '<i class="tio-chevron_right -arrwo"></i>' +
+                        '</div>' +
+                        '</a>' +
+                        '</li>'
+                    ullistaservicios.append(tr)
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        })
+    }
+
+    function buscarxFecha() {
+        let fecha = document.getElementById('input-fecha-buscar').value
+        $('#mdlBusqueda').modal('toggle')
+        verContratosFecha(fecha)
+    }
+</script>
 </body>
 
 

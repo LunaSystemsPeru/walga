@@ -61,10 +61,9 @@
             <div class="cover_image">
                 <img alt="" src="../assets/img/carros-15001000.png">
                 <div class="em_dataAccount absolute bottom-0 w-100 padding-l-20 padding-r-20 margin-b-20">
-                    <button class="btn bg-green h-55 mb-4 w-100 rounded-8 size-16 d-flex align-items-center justify-content-center color-white hover:color-white" onclick="getVehiculos()"
-                            type="button">
+                    <a href="transportes-view-vehiculos.html" class="btn bg-green h-55 mb-4 w-100 rounded-8 size-16 d-flex align-items-center justify-content-center color-white hover:color-white" >
                         Transporte e Izaje
-                    </button>
+                    </a>
 
                     <a class="btn bg-white h-55 w-100 rounded-8 size-16 d-flex align-items-center justify-content-center color-secondary"
                        href="campo-view-ventas.html">
@@ -130,46 +129,6 @@
 <!-- PWA app service registration and works js -->
 <script src="../assets/js/pwa-services.js"></script>
 
-<script>
-    let id_usuario = sessionStorage.getItem('id_usuario')
-    let id_empresa = sessionStorage.getItem('id_empresa')
-
-    function seleccionarVehiculo(origen) {
-        location.href = "transportes-view-servicios.html";
-    }
-
-    function getVehiculos() {
-        $('#mdl_vehiculos').modal('toggle')
-        let ullista = $('#ul_lista_vehiculos')
-        //ullista.html("Cargando Vehiculos")
-
-        $.post('../controller/dao_vehiculo.php?accion=listar', {"id_empresa": id_empresa}, function (data) {
-            console.log(data)
-            //ullista.html("")
-            try {
-                let jsondata = JSON.parse(data)
-                jsondata.forEach(function (valor, indice) {
-                    let placa = valor['placa']
-                    let marca = valor['marca'] + " | " + valor['modelo']
-
-                    let ulli = '<li class="item" id="">' +
-                        '<div class="personal__info">' +
-                        '<h2 class="size-15 color-secondary weight-400">' + marca + '</h2>' +
-                        '<span class="size-14 color-secondary weight-500">' + placa + '</span>' +
-                        '</div>' +
-                        '<div class="areaRight">' +
-                        '<span class="circle_check"></span>' +
-                        '</div>' +
-                        '</li>'
-
-                   ullista.append(ulli)
-                })
-            } catch (e) {
-                console.log(e)
-            }
-        })
-    }
-</script>
 </body>
 
 

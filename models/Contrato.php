@@ -437,18 +437,24 @@ class Contrato
         $this->conectar->ejecutar_idu($sql);
     }
 
-    public function verContratosActivos()
+    public function verContratosActivos($isJson = false)
     {
-        $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.monto, c.monto_pagado, 
-                pv.descripcion as comprobante, pv2.descripcion as tiposervicio, v.placa, c.comprobante_id, c.estado_comprobante
+        $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.hora_termino, 
+                SEC_TO_TIME(TIMESTAMPDIFF(SECOND, concat(c.fecha, ' ',c.hora_inicio,':00'), concat(c.fecha, ' ',c.hora_termino, ':00'))) as horas_servicio,
+                c.monto, c.monto_pagado, 
+                pv.descripcion as comprobante, c.tiposervicio_id, pv2.descripcion as tiposervicio, v.placa, c.comprobante_id, c.estado_comprobante 
                 from contratos as c 
                 inner join clientes c2 on c.cliente_id = c2.id
                 inner join parametros_valores pv on c.comprobante_id = pv.id
                 inner join parametros_valores as pv2 on c.tiposervicio_id = pv2.id
                 inner join vehiculos v on c.vehiculo_id = v.id
-                where c.estado_contrato = 0 or (c.estado_contrato = 1 and c.vehiculo_id = '$this->vehiculoid')
+                where c.estado_contrato = 0 or (c.vehiculo_id = '$this->vehiculoid' and c.fecha = '$this->fecha')
                 order by c.fecha asc";
-        return $this->conectar->get_Cursor($sql);
+        if ($isJson == false) {
+            return $this->conectar->get_Cursor($sql);
+        } else {
+            return $this->conectar->get_json_rows($sql);
+        }
     }
 
     public function verContratosdelDia()
