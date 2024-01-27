@@ -439,6 +439,9 @@ class Contrato
 
     public function verContratosActivos($isJson = false)
     {
+        if (!$this->fecha) {
+            $this->fecha = date('Y-m-d');
+        }
         $sql = "select c.servicio, c.origen, c.destino, c2.datos, c.id, c.estado_contrato, c.fecha, c.hora_inicio, c.hora_termino, 
                 SEC_TO_TIME(TIMESTAMPDIFF(SECOND, concat(c.fecha, ' ',c.hora_inicio,':00'), concat(c.fecha, ' ',c.hora_termino, ':00'))) as horas_servicio,
                 c.monto, c.monto_pagado, 
