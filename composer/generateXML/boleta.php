@@ -1,25 +1,16 @@
 <?php
 
-use Greenter\Model\Client\Client;
-use Greenter\Model\Company\Address;
-use Greenter\Model\Company\Company;
 use Greenter\Model\Sale\FormaPagos\FormaPagoContado;
 use Greenter\Model\Sale\Invoice;
-use Greenter\Model\Sale\Legend;
 use Greenter\Model\Sale\SaleDetail;
 
 require __DIR__ . '/../vendor/autoload.php';
-require '../src/Config.php';
 
 require '../../models/Venta.php';
 require '../../models/VentaServicio.php';
 require '../../models/Entidad.php';
-require '../../models/Empresa.php';
-require '../../tools/NumerosaLetras.php';
 
 require '../functions/Comprobante_Sunat.php';
-
-$NumeroLetras = new NumerosaLetras();
 
 $ventaid = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 
@@ -27,42 +18,10 @@ $Venta = new Venta();
 $Venta->setId($ventaid);
 $Venta->obtenerDatos();
 
-$SunatVenta = new VentaSunat();
-$SunatVenta->setVentaid($Venta->getId());
-$SunatVenta->setFecha(date("Y-m-d"));
-
-$Empresa = new Empresa();
-$Empresa->setId($Venta->getEmpresaid());
-$Empresa->obtenerDatos();
+$ComprobanteSunatCPE = new Comprobante_Sunat($Venta);
 
 $VentaServicio = new VentaServicio();
 $VentaServicio->setVentaid($Venta->getId());
-
-$Cliente = new Entidad();
-$Cliente->setId($Venta->getEntidadid());
-$Cliente->obtenerDatos();
-
-// Cliente
-$client = (new Client())
-    ->setTipoDoc('6')
-    ->setNumDoc($Cliente->getNrodocumento())
-    ->setRznSocial($Cliente->getRazonsocial());
-
-// Emisor
-$address = (new Address())
-    ->setUbigueo($Empresa->getUbigeo())
-    ->setDepartamento($Empresa->getDepartamento())
-    ->setProvincia($Empresa->getProvincia())
-    ->setDistrito($Empresa->getDistrito())
-    ->setUrbanizacion('-')
-    ->setDireccion($Empresa->getDirfiscal())
-    ->setCodLocal($Empresa->getCodsunat()); // Codigo de establecimiento asignado por SUNAT, 0000 por defecto.
-
-$company = (new Company())
-    ->setRuc($Empresa->getRuc())
-    ->setRazonSocial($Empresa->getRazonsocial())
-    ->setNombreComercial($Empresa->getRazonsocial())
-    ->setAddress($address);
 
 //lista de productos
 $arrayServicios = $VentaServicio->verFilas();
@@ -109,8 +68,8 @@ $invoice = (new Invoice())
     ->setFechaEmision(\DateTime::createFromFormat('Y-m-d', $Venta->getFecha())) // Zona horaria: Lima
     ->setFormaPago(new FormaPagoContado()) // FormaPago: Contado
     ->setTipoMoneda('PEN') // Sol - Catalog. 02
-    ->setCompany($company)
-    ->setClient($client)
+    ->setCompany($ComprobanteSunatCPE->getCompany())
+    ->setClient($ComprobanteSunatCPE->getClient())
     ->setMtoOperGravadas($totalBaseIGV)
     ->setMtoOperExoneradas($totalBase)
     ->setMtoIGV(number_format($totalBaseIGV * 0.18, 2))
@@ -119,22 +78,10 @@ $invoice = (new Invoice())
     ->setSubTotal($totalGeneral)
     ->setMtoImpVenta($totalGeneral);
 
-$legend = (new Legend())
-    ->setCode('1000') // Monto en letras - Catalog. 52
-    ->setValue($NumeroLetras->to_word($totalGeneral, "PEN"));
-
 $invoice->setDetails($arrayItems)
-    ->setLegends([$legend]);
-
-$igv = number_format($totalBaseIGV * 0.18, 2);
-$totalGeneral = number_format($totalGeneral, 2);
-
-$nombre_archivo = $invoice->getName();
-$tipoDoc = 1;
+    ->setLegends([$ComprobanteSunatCPE->getLegend($totalGeneral)]);
 
 //boletas no se envian xml a sunat
-$ComprobanteSunatCPE = new Comprobante_Sunat();
-$ComprobanteSunatCPE->setConfig($Empresa);
-$json_response = $ComprobanteSunatCPE->envioSunat(false, $invoice, $Venta->getId());
+$json_response = $ComprobanteSunatCPE->envioSunat(false, $invoice);
 
 echo $json_response;

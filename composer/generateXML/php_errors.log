@@ -65,3 +65,19 @@ Stack trace:
 #0 C:\xampp\htdocs\clientes\walga\composer\generateXML\boleta.php(138): Comprobante_Sunat->envioSunat(false, Object(Greenter\Model\Sale\Invoice), '206')
 #1 {main}
   thrown in C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php on line 26
+[29-Jan-2024 18:05:08 America/Lima] PHP Fatal error:  Uncaught Error: Class "Config" not found in C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php:42
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php(37): Comprobante_Sunat->setConfig()
+#1 C:\xampp\htdocs\clientes\walga\composer\generateXML\factura.php(20): Comprobante_Sunat->__construct(Object(Venta))
+#2 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php on line 42
+[29-Jan-2024 18:05:52 America/Lima] PHP Warning:  file_get_contents(C:\xampp\htdocs\clientes\walga\composer\src/c.pem): Failed to open stream: No such file or directory in C:\xampp\htdocs\clientes\walga\composer\src\Config.php on line 47
+[29-Jan-2024 18:05:52 America/Lima] PHP Fatal error:  Uncaught TypeError: Greenter\See::setClaveSOL(): Argument #1 ($ruc) must be of type string, null given, called in C:\xampp\htdocs\clientes\walga\composer\src\Config.php on line 49 and defined in C:\xampp\htdocs\clientes\walga\composer\vendor\greenter\greenter\packages\lite\src\Greenter\See.php:115
+Stack trace:
+#0 C:\xampp\htdocs\clientes\walga\composer\src\Config.php(49): Greenter\See->setClaveSOL(NULL, NULL, NULL)
+#1 C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php(48): Config->getSee()
+#2 C:\xampp\htdocs\clientes\walga\composer\functions\Comprobante_Sunat.php(38): Comprobante_Sunat->setConfig()
+#3 C:\xampp\htdocs\clientes\walga\composer\generateXML\factura.php(20): Comprobante_Sunat->__construct(Object(Venta))
+#4 {main}
+  thrown in C:\xampp\htdocs\clientes\walga\composer\vendor\greenter\greenter\packages\lite\src\Greenter\See.php on line 115
+[29-Jan-2024 18:06:46 America/Lima] PHP Deprecated:  Function utf8_encode() is deprecated in C:\xampp\htdocs\clientes\walga\composer\generateXML\factura.php on line 39

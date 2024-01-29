@@ -260,6 +260,7 @@
                 if (estado === 2) {
                     document.getElementById('emhead_estado').outerHTML = '<label class="rounded-4 bg-danger fw-bold text-white w-100 text-center">Anulado</label>'
                 } else {
+                    console.log("activando botones")
                     enabledButtons()
                 }
 
@@ -307,10 +308,10 @@
     }
 
     function enabledButtons () {
-        document.getElementById('btn_anular_cpe').setAttribute('disabled', 'false')
-        document.getElementById('btn_download_cdr').setAttribute('disabled', 'false')
-        document.getElementById('btn_download_xml').setAttribute('disabled', 'false')
-        document.getElementById('btn_download_pdf').setAttribute('disabled', 'false')
+        document.getElementById('btn_anular_cpe').removeAttribute('disabled')
+        document.getElementById('btn_download_cdr').removeAttribute('disabled')
+        document.getElementById('btn_download_xml').removeAttribute('disabled')
+        document.getElementById('btn_download_pdf').removeAttribute('disabled')
     }
 </script>
 </body>
