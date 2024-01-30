@@ -11,50 +11,25 @@ use Greenter\Model\Summary\SummaryPerception;
 use Greenter\Ws\Services\SunatEndpoints;
 
 require __DIR__ . '/../vendor/autoload.php';
-require '../src/Config.php';
 
-require '../../models/Empresa.php';
-require '../../models/SunatResumen.php';
 require '../../models/Venta.php';
-require '../../models/VentaNota.php';
+require '../../models/ResumenDiario.php';
 
 require '../../tools/Util.php';
 
+require '../functions/SunatCPE.php';
+
 $Util = new Util();
 
-$Empresa = new Empresa();
-$Empresa->setIdempresa(filter_input(INPUT_GET, 'empresaid'));
-$Empresa->obtenerDatos();
-
-$Config = new Config();
-$Config->setRuc($Empresa->getRuc());
-$Config->setUsersol($Empresa->getUsersol());
-$Config->setClavesol($Empresa->getClavesol());
-
-$see = $Config->getSee();
-
-$Resumen = new SunatResumen();
-
-// Emisor
-$address = (new Address())
-    ->setUbigueo($Empresa->getUbigeo())
-    ->setDepartamento($Empresa->getDepartamento())
-    ->setProvincia($Empresa->getProvincia())
-    ->setDistrito($Empresa->getDistrito())
-    ->setUrbanizacion('-')
-    ->setDireccion($Empresa->getDireccion())
-    ->setCodLocal('0000'); // Codigo de establecimiento asignado por SUNAT, 0000 por defecto.
-
-$company = (new Company())
-    ->setRuc($Empresa->getRuc())
-    ->setRazonSocial($Empresa->getRazon())
-    ->setNombreComercial($Empresa->getRazon())
-    ->setAddress($address);
+$Resumen = new ResumenDiario();
 
 $Venta = new Venta();
 $Venta->setFecha(filter_input(INPUT_GET, 'fecha'));
-$fecha = $Venta->getFecha();
-$arrayBoletas = $Venta->verBoletasActivas('B', $Empresa->getIdempresa());
+$Venta->setEmpresaid(filter_input(INPUT_GET, 'empresa_id'));
+
+$ComprobanteSUNAT = new _SunatCPE($Venta);
+
+$arrayBoletas = $Venta->verBoletasActivas();
 
 $arrayDetalle = array();
 $nroitems = 0;

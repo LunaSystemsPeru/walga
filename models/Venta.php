@@ -360,4 +360,14 @@ class Venta
                 where v.id = '$this->id'";
         return $this->conectar->get_json_row($sql);
     }
+
+    public function verBoletasActivas()
+    {
+        $sql = "select v.id, pv.valor1, pv.valor2, v.serie, v.numero, v.total, v.estado, e.razonsocial, e.documento, v.igv
+                from ventas as v
+                inner join entidades e on v.entidad_id = e.id
+                inner join parametros_valores pv on v.comprobante_id = pv.id
+                where v.serie like 'B%' and v.fecha = '$this->fecha' and v.empresa_id = '$this->empresaid' and v.enviado_sunat = '0'";
+        return $this->conectar->get_Cursor($sql);
+    }
 }

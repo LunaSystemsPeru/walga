@@ -10,7 +10,7 @@ require '../../models/Venta.php';
 require '../../models/VentaServicio.php';
 require '../../models/Entidad.php';
 
-require '../functions/Comprobante_Sunat.php';
+require '../functions/SunatCPE.php';
 
 $ventaid = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 
@@ -18,7 +18,7 @@ $Venta = new Venta();
 $Venta->setId($ventaid);
 $Venta->obtenerDatos();
 
-$ComprobanteSunatCPE = new Comprobante_Sunat($Venta);
+$ComprobanteSunatCPE = new _SunatCPE($Venta);
 
 $VentaServicio = new VentaServicio();
 $VentaServicio->setVentaid($Venta->getId());

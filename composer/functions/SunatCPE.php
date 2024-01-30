@@ -16,7 +16,7 @@ require '../../tools/NumerosaLetras.php';
 
 require 'generateQR.php';
 
-class Comprobante_Sunat
+class _SunatCPE
 {
     private See $see;
     private Config $config;
