@@ -14,6 +14,11 @@ require '../functions/SunatCPE.php';
 
 $ventaid = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 
+if (!$ventaid) {
+    echo json_encode(["id" => 0, "aceptado" => "false", "observaciones" => "no hay id", "nombreDocumento" => "", "codigoSunat" => ""]);
+    return;
+}
+
 $Venta = new Venta();
 $Venta->setId($ventaid);
 $Venta->obtenerDatos();

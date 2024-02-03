@@ -29,6 +29,11 @@ $NumeroLetras = new NumerosaLetras();
 
 $ventaid = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
+if (!$ventaid) {
+    echo json_encode(["id" => 0, "aceptado" => "false", "observaciones" => "no hay id", "nombreDocumento" => "", "codigoSunat" => ""]);
+    return;
+}
+
 $Venta = new Venta(); //Nota
 $Venta->setIdventa($ventaid);
 $Venta->obtenerDatos();
