@@ -221,7 +221,7 @@ $pdf->Cell(93, 4, $Cliente->getNrodocumento(), 0, 0, 'L');
 $pdf->Cell(47, 4, "FECHA EMISION:", 0, 0, 'R');
 $pdf->Cell(25, 4, $Util->fecha_tabla($Venta->getFecha()), 0, 1, 'R');
 
-$pdf->Cell(118, 4, utf8_decode($Cliente->getRazonsocial()), 0, 0, 'L');
+$pdf->Cell(118, 4, addslashes($Cliente->getRazonsocial()), 0, 0, 'L');
 $pdf->Cell(47, 4, "MONEDA:", 0, 0, 'R');
 $pdf->Cell(25, 4, $nmoneda, 0, 1, 'R');
 
@@ -229,12 +229,12 @@ $itemguias = 0;
 
 $YACTUAL = $pdf->GetY();
 $pdf->Cell(25, 4, "DIRECCION:", 0, 0, 'L');
-//$pdf->Cell(130, 5, utf8_decode($c_entidad->getDireccion()), 0, 0, 'L');
+//$pdf->Cell(130, 5, addslashes($c_entidad->getDireccion()), 0, 0, 'L');
 $pdf->SetX(128);
 $pdf->Cell(47, 4, "FORMA DE PAGO:", 0, 0, 'R');
 $pdf->Cell(25, 4, $formapago, 0, 0, 'R');
 $pdf->SetX(35);
-$pdf->MultiCell(90, 4, utf8_decode(trim($Cliente->getDireccion())));
+$pdf->MultiCell(90, 4, addslashes(trim($Cliente->getDireccion())));
 $pdf->SetX(10);
 $pdf->Cell(170, 4, "GUIAS RELACIONADAS: " . $itemguias, 0, 1, 'L');
 
@@ -270,7 +270,7 @@ foreach ($a_servicios as $value) {
     $pdf->Cell(20, 4, number_format($precio, 2), 0, 0, 'R');
     $pdf->Cell(20, 4, number_format($subtotal, 2), 0, 0, 'R');
     $pdf->SetX(25);
-    $pdf->MultiCell(135, 4, utf8_decode($value['unidad'] . " | " . $value['descripcion']), 0, 'J');
+    $pdf->MultiCell(135, 4, addslashes($value['unidad'] . " | " . $value['descripcion']), 0, 'J');
     //$pdf->Ln(2);
 }
 
@@ -318,7 +318,7 @@ $total_final = number_format($Venta->getTotal(), 2, ".", "");
 $pdf->Cell(70, 4, "Importe en Letras", 0, 0, 'L');
 $pdf->Cell(100, 4, "IGV: ", 0, 0, 'R');
 $pdf->Cell(20, 4, number_format($Venta->getTotal() / 1.18 * 0.18, 2), 0, 1, 'R');
-$pdf->Cell(120, 4, utf8_decode($NumeroaLetra->to_word($total_final, $ncorto)), 0, 0, 'L');
+$pdf->Cell(120, 4, addslashes($NumeroaLetra->to_word($total_final, $ncorto)), 0, 0, 'L');
 $pdf->Cell(50, 4, "TOTAL: ", 0, 0, 'R');
 $pdf->Cell(20, 4, number_format($Venta->getTotal(), 2), 0, 1, 'R');
 
@@ -326,19 +326,19 @@ $pdf->Ln(3);
 $y = $pdf->GetY();
 $pdf->Line(10, $y, 200, $y);
 $pdf->Ln(2);
-$pdf->MultiCell(190, 4, utf8_decode("BANCO DE CREDITO DEL PERU (BCP) "), 0, 'L');
-$pdf->MultiCell(190, 4, utf8_decode("CUENTA CORRIENTE EN MONEDA NACIONAL:   310-2601665-0-56  - CCI: 00231000260166505611 "), 0, 'L');
+$pdf->MultiCell(190, 4, addslashes("BANCO DE CREDITO DEL PERU (BCP) "), 0, 'L');
+$pdf->MultiCell(190, 4, addslashes("CUENTA CORRIENTE EN MONEDA NACIONAL:   310-2601665-0-56  - CCI: 00231000260166505611 "), 0, 'L');
 $pdf->Ln(1);
-$pdf->MultiCell(190, 4, utf8_decode("VENTA SUJETA AL SPOT: CTA BANCO DE LA NACION:  00-781-236640"), 0, 'L');
+$pdf->MultiCell(190, 4, addslashes("VENTA SUJETA AL SPOT: CTA BANCO DE LA NACION:  00-781-236640"), 0, 'L');
 $pdf->Ln(2);
 
 $y = $pdf->GetY();
 $pdf->Line(10, $y, 200, $y);
 $pdf->Ln(2);
-$pdf->MultiCell(190, 4, utf8_decode("Representacion Impresa de la " . $nombreDocumentoSUNAT . " ELECTRONICA, visite https://walgainversiones.ga/"), 0, 'C');
-$pdf->MultiCell(190, 4, utf8_decode("Resumen: " . $Sunat->getHash()), 0, 'C');
-$pdf->MultiCell(190, 4, utf8_decode("Visita nuestro Facebook: https://www.facebook.com/walga.eirl/"), 0, 'C');
-$pdf->MultiCell(190, 4, utf8_decode("correo: walga.inversioneseirl@gmail.com"), 0, 'C');
+$pdf->MultiCell(190, 4, addslashes("Representacion Impresa de la " . $nombreDocumentoSUNAT . " ELECTRONICA, visite https://walgainversiones.ga/"), 0, 'C');
+$pdf->MultiCell(190, 4, addslashes("Resumen: " . $Sunat->getHash()), 0, 'C');
+$pdf->MultiCell(190, 4, addslashes("Visita nuestro Facebook: https://www.facebook.com/walga.eirl/"), 0, 'C');
+$pdf->MultiCell(190, 4, addslashes("correo: walga.inversioneseirl@gmail.com"), 0, 'C');
 
 
 $nombre_archivo = $Sunat->getNombre() . ".pdf";
